@@ -16,7 +16,7 @@ project:
           -o0,
           -gdwarf-4
         ]
-      ASM: [ -D__MICROLIB ]
+      ASM: [ -D__MICROLIB, -DStack_Size=0x2000 ]
       Link:
         [
           --library_type=microlib,

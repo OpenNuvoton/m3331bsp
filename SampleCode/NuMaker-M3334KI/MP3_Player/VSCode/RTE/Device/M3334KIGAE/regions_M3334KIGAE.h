@@ -38,7 +38,7 @@
 //   <o> Region size [bytes] <0x0-0xFFFFFFFF:8>
 //   <i> Defines size of memory region.
 //   <i> Default: 0x60000
-#define __RAM0_SIZE 0x60000
+#define __RAM0_SIZE 0x50000
 //   <q>Default region
 //   <i> Enables memory region globally for the application.
 #define __RAM0_DEFAULT 1
@@ -52,7 +52,7 @@
 // <h>Stack / Heap Configuration
 //   <o0> Stack Size (in Bytes) <0x0-0xFFFFFFFF:8>
 //   <o1> Heap Size (in Bytes) <0x0-0xFFFFFFFF:8>
-#define __STACK_SIZE 0x00002000
+#define __STACK_SIZE 0x00000000
 #define __HEAP_SIZE 0x00002000
 // </h>
 
