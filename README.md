@@ -5,7 +5,7 @@ To experience the powerful features of M3331 in few minutes, please select the s
 ## .\Document\
 
 - CMSIS.html<br>
-	Introduction of CMSIS version 5.0. CMSIS components included CMSIS-CORE, CMSIS-Driver, CMSIS-DSP, etc.
+	Introduction of CMSIS version 5.9.0 CMSIS components included CMSIS-CORE, CMSIS-Driver, CMSIS-DSP, etc.
 
 - NuMicro M3331 Series CMSIS BSP Revision History.pdf<br>
 	The revision history of M3331 Series BSP.
@@ -16,7 +16,7 @@ To experience the powerful features of M3331 in few minutes, please select the s
 ## .\Library\
 
 - CMSIS<br>
-	Cortex® Microcontroller Software Interface Standard (CMSIS) V5.0 definitions by ARM® Corp.
+	Cortex® Microcontroller Software Interface Standard (CMSIS) V5.9.0 definitions by ARM® Corp.
 
 - CMSIS-DSP<br>
 	CMSIS DSP Library.
