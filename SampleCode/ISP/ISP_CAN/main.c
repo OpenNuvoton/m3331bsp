@@ -45,6 +45,11 @@ void SH_Return(void);
 void SendChar_ToUART(int ch);
 uint32_t CAN_Parsing_MSG(uint8_t *u8pMsg);
 
+/* Add implementations to fix linker warnings from the newlib-nano C library in VSCode-GCC14.3.1 */
+void _close(void) {}
+void _lseek(void) {}
+void _read_r(void) {}
+void _write_r(void) {}
 
 /*---------------------------------------------------------------------------------------------------------*/
 /* ISR to handle CAN FD0 Line0 interrupt event                                                             */
