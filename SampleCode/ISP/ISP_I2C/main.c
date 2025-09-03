@@ -14,7 +14,6 @@
 #include "i2c_transfer.h"
 #include "isp_user.h"
 
-#define PLL_CLOCK 180000000
 
 uint32_t Pclk0;
 uint32_t Pclk1;
@@ -83,8 +82,8 @@ int32_t SYS_Init(void)
     CLK->CLKSEL0 = (CLK->CLKSEL0 & (~CLK_CLKSEL0_HCLKSEL_Msk)) | CLK_CLKSEL0_HCLKSEL_PLL;
 
     /* Update System Core Clock */
-    PllClock        = 180000000;
-    SystemCoreClock = 180000000;
+    PllClock        = FREQ_180MHZ;
+    SystemCoreClock = FREQ_180MHZ;
     CyclesPerUs     = SystemCoreClock / 1000000;  /* For CLK_SysTickDelay() */
 
     /* Enable UART0 module clock */

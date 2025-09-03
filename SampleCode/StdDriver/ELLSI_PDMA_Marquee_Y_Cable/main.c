@@ -11,7 +11,7 @@
 #include <stdio.h>
 #include "NuMicro.h"
 
-#define HCLK_CLK        180000000
+#define HCLK_CLK        FREQ_180MHZ
 #define TEST_COUNT      5
 #define LED_STRIP_COUNT 3
 

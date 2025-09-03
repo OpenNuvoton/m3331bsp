@@ -95,7 +95,7 @@ static uint32_t g_au32PllSetting[] =
     96000000,   /* PLL = 96MHz */
     144000000,  /* PLL = 144MHz */
     160000000,  /* PLL = 160MHz */
-    180000000   /* PLL = 180MHz */
+    FREQ_180MHZ   /* PLL = 180MHz */
 };
 
 void SYS_PLL_Test(void)
@@ -145,8 +145,8 @@ void SYS_Init(void)
     /* Set PCLK0 and PCLK1 to HCLK/2 */
     CLK->PCLKDIV = (CLK_PCLKDIV_APB0DIV_DIV2 | CLK_PCLKDIV_APB1DIV_DIV2);
 
-    /* Set core clock to 180MHz */
-    CLK_SetCoreClock(180000000);
+    /* Set core clock */
+    CLK_SetCoreClock(FREQ_180MHZ);
 
     /* Enable all GPIO clock */
     CLK->AHBCLK0 |= CLK_AHBCLK0_GPACKEN_Msk | CLK_AHBCLK0_GPBCKEN_Msk | CLK_AHBCLK0_GPCCKEN_Msk | CLK_AHBCLK0_GPDCKEN_Msk |

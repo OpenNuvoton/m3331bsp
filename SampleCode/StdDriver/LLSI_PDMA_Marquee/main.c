@@ -10,7 +10,7 @@
 #include <stdio.h>
 #include "NuMicro.h"
 
-#define HCLK_CLK    180000000
+#define HCLK_CLK    FREQ_180MHZ
 #define TEST_COUNT  5
 
 volatile uint32_t g_au32RED_Marquee0[TEST_COUNT] = {0x000000FF, 0x00000000, 0x00000000, 0x00000000, 0x00000000};

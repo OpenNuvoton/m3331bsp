@@ -61,7 +61,7 @@ void HardFault_Handler(void)
 {
     uint32_t *sp = (uint32_t *)__get_MSP();
     uint32_t n = 6;
-    
+
     printf("[HardFault] CPU accessed ECC Double Error Fault Address: 0x%08X\n", FMC->ECCDEFAR);
 
     sp[n] += 2;
@@ -113,8 +113,8 @@ void SYS_Init(void)
     /* Set PCLK0 and PCLK1 to HCLK/2 */
     CLK->PCLKDIV = (CLK_PCLKDIV_APB0DIV_DIV2 | CLK_PCLKDIV_APB1DIV_DIV2);
 
-    /* Set core clock to 180MHz */
-    CLK_SetCoreClock(180000000);
+    /* Set core clock */
+    CLK_SetCoreClock(FREQ_180MHZ);
 
     /* Enable all GPIO clock */
     CLK->AHBCLK0 |= CLK_AHBCLK0_GPACKEN_Msk | CLK_AHBCLK0_GPBCKEN_Msk | CLK_AHBCLK0_GPCCKEN_Msk | CLK_AHBCLK0_GPDCKEN_Msk |
@@ -186,10 +186,10 @@ int main()
     printf("  Select: ");
     u8IspIntEnable = getchar() - '0';
     printf("%d\n\n", u8IspIntEnable);
-    
+
     /* Enable FMC ISP function */
     FMC_Open();
-    
+
     if (u8IspIntEnable)
     {
         /* Enable ISP interrupt */
@@ -241,7 +241,7 @@ int main()
                 FMC->ECCSTS = FMC_ECCSTS_ECCDEBDF_Msk;
 
                 g_u32ECC_Error_Flag |= FMC_ECCSTS_ECCDEBDF_Msk;
-            }  
+            }
         }
 
         if (g_u32ECC_Error_Flag)
@@ -252,7 +252,7 @@ int main()
                 while (1)
                     ;
             }
-            
+
             printf("Press [ESC] to exit or any key to continue...\n");
             u8Option = getchar();
             if (u8Option == 0x1B) /* ESC */

@@ -9,8 +9,6 @@
 #include <stdio.h>
 #include "NuMicro.h"
 
-#define PLL_CLOCK                         180000000
-
 #define GPIO_SETMODE(port, pin, u32Mode)  ((port)->MODE = ((port)->MODE & ~(0x3ul << ((pin) << 1))) | ((u32Mode) << ((pin) << 1)))
 
 #define CAN_BAUD_RATE                     500000
@@ -123,8 +121,8 @@ int32_t SYS_Init(void)
     CLK->CLKSEL0 = (CLK->CLKSEL0 & (~CLK_CLKSEL0_HCLKSEL_Msk)) | CLK_CLKSEL0_HCLKSEL_PLL;
 
     /* Update System Core Clock */
-    PllClock        = 180000000;
-    SystemCoreClock = 180000000;
+    PllClock        = FREQ_180MHZ;
+    SystemCoreClock = FREQ_180MHZ;
     CyclesPerUs     = SystemCoreClock / 1000000;  /* For CLK_SysTickDelay() */
 
     /* Enable all GPIO clock */
@@ -272,7 +270,7 @@ int main(void)
                 {
                     FMC_Erase(psISPCanMsg->Address);
                 }
-                
+
                 if ((psISPCanMsg->Address & 0x7) == 0x0)
                 {
                     FMC_Write8Bytes(psISPCanMsg->Address, psISPCanMsg->Data, 0xFFFFFFFF);

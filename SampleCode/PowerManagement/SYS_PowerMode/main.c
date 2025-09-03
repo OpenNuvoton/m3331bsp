@@ -114,8 +114,8 @@ void SYS_Init(void)
     /* Set PCLK0 and PCLK1 to HCLK/2 */
     CLK->PCLKDIV = (CLK_PCLKDIV_APB0DIV_DIV2 | CLK_PCLKDIV_APB1DIV_DIV2);
 
-    /* Set core clock to 180MHz */
-    CLK_SetCoreClock(180000000);
+    /* Set core clock */
+    CLK_SetCoreClock(FREQ_180MHZ);
 
     /* Enable all GPIO clock */
     CLK->AHBCLK0 |= CLK_AHBCLK0_GPACKEN_Msk | CLK_AHBCLK0_GPBCKEN_Msk | CLK_AHBCLK0_GPCCKEN_Msk | CLK_AHBCLK0_GPDCKEN_Msk |
@@ -196,8 +196,8 @@ int main(void)
     printf("Set power level to 1.15V ");
     SYS_SetPowerLevel(SYS_PLCTL_PLSEL_PL0);
 
-    /* Set core clock as 180MHz from PLL */
-    CLK_SetCoreClock(180000000);
+    /* Set core clock */
+    CLK_SetCoreClock(FREQ_180MHZ);
 
     /* Check system work */
     CheckSystemWork();

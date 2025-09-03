@@ -73,8 +73,8 @@ int32_t SYS_Init(void)
     CLK->CLKSEL0 = (CLK->CLKSEL0 & (~CLK_CLKSEL0_HCLKSEL_Msk)) | CLK_CLKSEL0_HCLKSEL_PLL;
 
     /* Update System Core Clock */
-    PllClock        = 180000000;
-    SystemCoreClock = 180000000;
+    PllClock        = FREQ_180MHZ;
+    SystemCoreClock = FREQ_180MHZ;
     CyclesPerUs     = SystemCoreClock / 1000000;  /* For CLK_SysTickDelay() */
 
     /* Select HSUSBD */
