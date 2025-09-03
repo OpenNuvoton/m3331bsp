@@ -225,7 +225,7 @@ void SCU_Setup(void)
         NVIC_ITNS_CONF(USBH_IRQn);     /* Int of USBH_INT     */
         NVIC_ITNS_CONF(HSUSBH_IRQn);   /* Int of HSUSBH_INT   */
     }
-    if(SCU_INIT_PNSSET0_VAL & BIT27) NVIC_ITNS_CONF(SPB_IRQn);      /* Int of SPB_INT      */
+    if(SCU_INIT_PNSSET0_VAL & BIT27) NVIC_ITNS_CONF(PDCI_IRQn);     /* Int of PDCI_INT      */
 
     if(SCU_INIT_PNSSET1_VAL & BIT0)
     {
@@ -349,7 +349,7 @@ void SCU_IRQHandler(void)
     char const *master[] = {"CPU", 0, "PDMA0", 0, "SDH0", "HSUSBD", "HSUSBH", "CRC"};
     char const *ipname[] = {"FLASH", "SRAM0", "SRAM1", "SRAM2", "APB0", "APB1", "EBI", "SYS",
                             "FMC", "PDMA0", "CRC", "CANFD0", "CANFD1", "SCU", "GPIO", "HSUSBH",
-                            "HSUSBD", "SDH0", "CACHE", "SPB", "PDMA1"
+                            "HSUSBD", "SDH0", "CACHE", "PDCI", "PDMA1"
                            };
     const uint8_t info[] = {0x40, 0x48, 0x50, 0x58, 0x60, 0x68, 0x70, 0x78,
                             0x80, 0x88, 0x90, 0x98, 0xA0, 0xA8, 0xB0, 0xB8,

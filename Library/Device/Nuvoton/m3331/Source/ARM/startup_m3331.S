@@ -186,7 +186,7 @@ __Vectors:
     .word     Default_Handler           // ; 116:
     .word     Default_Handler           // ; 117:
     .word     Default_Handler           // ; 118:
-    .word     SPB_IRQHandler            // ; 119: SPB interrupt
+    .word     PDCI_IRQHandler           // ; 119: PDCI interrupt
     .word     Default_Handler           // ; 120:
     .word     Default_Handler           // ; 121:
     .word     Default_Handler           // ; 122:
@@ -357,7 +357,7 @@ SysTick_Handler:
     .weak  CANFD01_IRQHandler, "function"
     .weak  CANFD10_IRQHandler, "function"
     .weak  CANFD11_IRQHandler, "function"
-    .weak  SPB_IRQHandler, "function"
+    .weak  PDCI_IRQHandler, "function"
     .weak  LLSI0_IRQHandler, "function"
     .weak  LLSI1_IRQHandler, "function"
     .weak  LLSI2_IRQHandler, "function"
@@ -456,7 +456,7 @@ CANFD00_IRQHandler:
 CANFD01_IRQHandler:
 CANFD10_IRQHandler:
 CANFD11_IRQHandler:
-SPB_IRQHandler:
+PDCI_IRQHandler:
 LLSI0_IRQHandler:
 LLSI1_IRQHandler:
 LLSI2_IRQHandler:

@@ -185,7 +185,7 @@ __Vectors:
 	.long	0                     /* 116: Reserved                  */
 	.long	0                     /* 117: Reserved                  */
 	.long	0                     /* 118: Reserved                  */
-	.long	SPB_IRQHandler        /* 119: SPB                       */
+	.long	PDCI_IRQHandler       /* 119: PDCI                      */
 	.long	0                     /* 120: Reserved                  */
 	.long	0                     /* 121: Reserved                  */
 	.long	0                     /* 122: Reserved                  */
@@ -482,7 +482,7 @@ Default_Handler:
 	def_irq_handler	CANFD01_IRQHandler
 	def_irq_handler	CANFD10_IRQHandler
 	def_irq_handler	CANFD11_IRQHandler
-	def_irq_handler	SPB_IRQHandler
+	def_irq_handler	PDCI_IRQHandler
 	def_irq_handler LLSI0_IRQHandler
 	def_irq_handler LLSI1_IRQHandler
 	def_irq_handler LLSI2_IRQHandler

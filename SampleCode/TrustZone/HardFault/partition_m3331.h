@@ -89,7 +89,7 @@
 //   <o.24>  PDMA1      <0=> Secure <1=> Non-Secure
 //   <o.25>  HSUSBD     <0=> Secure <1=> Non-Secure
 //   <o.26>  HSUSBH     <0=> Secure <1=> Non-Secure
-//   <o.27>  SPB        <0=> Secure <1=> Non-Secure
+//   <o.27>  PDCI       <0=> Secure <1=> Non-Secure
 */
 #define SCU_INIT_PNSSET0_VAL      0x0
 /*

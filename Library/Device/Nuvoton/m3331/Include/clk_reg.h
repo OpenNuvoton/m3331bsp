@@ -145,9 +145,9 @@ typedef struct
      * |[10]    |HSUSBDCKEN|HSUSB Device Clock Enable Bit
      * |        |          |0 = HSUSB device controller clock Disabled.
      * |        |          |1 = HSUSB device controller clock Enabled.
-     * |[11]    |SPBCKEN   |SPB Clock Enable Bit
-     * |        |          |0 = SPB clock Disabled.
-     * |        |          |1 = SPB clock Enabled.
+     * |[11]    |PDCICKEN  |PDCI Clock Enable Bit
+     * |        |          |0 = PDCI clock Disabled.
+     * |        |          |1 = PDCI clock Enabled.
      * |[15]    |FMCIDLE   |Flash Memory Controller Clock Enable Bit in IDLE Mode
      * |        |          |0 = FMC clock Disabled when chip is under IDLE mode.
      * |        |          |1 = FMC clock Enabled when chip is under IDLE mode.
@@ -1503,8 +1503,8 @@ typedef struct
 #define CLK_AHBCLK0_HSUSBDCKEN_Pos       (10)                                              /*!< CLK_T::AHBCLK0: HSUSBDCKEN Position    */
 #define CLK_AHBCLK0_HSUSBDCKEN_Msk       (0x1ul << CLK_AHBCLK0_HSUSBDCKEN_Pos)             /*!< CLK_T::AHBCLK0: HSUSBDCKEN Mask        */
 
-#define CLK_AHBCLK0_SPBCKEN_Pos          (11)                                              /*!< CLK_T::AHBCLK0: SPBCKEN Position       */
-#define CLK_AHBCLK0_SPBCKEN_Msk          (0x1ul << CLK_AHBCLK0_SPBCKEN_Pos)                /*!< CLK_T::AHBCLK0: SPBCKEN Mask           */
+#define CLK_AHBCLK0_PDCICKEN_Pos         (11)                                              /*!< CLK_T::AHBCLK0: PDCICKEN Position      */
+#define CLK_AHBCLK0_PDCICKEN_Msk         (0x1ul << CLK_AHBCLK0_PDCICKEN_Pos)               /*!< CLK_T::AHBCLK0: PDCICKEN Mask          */
 
 #define CLK_AHBCLK0_FMCIDLE_Pos          (15)                                              /*!< CLK_T::AHBCLK0: FMCIDLE Position       */
 #define CLK_AHBCLK0_FMCIDLE_Msk          (0x1ul << CLK_AHBCLK0_FMCIDLE_Pos)                /*!< CLK_T::AHBCLK0: FMCIDLE Mask           */

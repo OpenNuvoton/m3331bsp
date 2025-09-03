@@ -153,11 +153,11 @@ typedef struct
      * |        |          |User needs to set this bit to 0 to release from the reset state.
      * |        |          |0 = HSUSBD controller normal operation.
      * |        |          |1 = HSUSBD controller reset.
-     * |[11]    |SPBRST    |SPB Controller Reset (Write Protect)
-     * |        |          |Setting this bit to 1 will generate a reset signal to the SPB controller.
+     * |[11]    |PDCIRST   |PDCI Controller Reset (Write Protect)
+     * |        |          |Setting this bit to 1 will generate a reset signal to the PDCI controller.
      * |        |          |User needs to set this bit to 0 to release from the reset state.
-     * |        |          |0 = SPB controller normal operation.
-     * |        |          |1 = SPB controller reset.
+     * |        |          |0 = PDCI controller normal operation.
+     * |        |          |1 = PDCI controller reset.
      * |[16]    |HSUSBHRST |HSUSBH Controller Reset (Write Protect)
      * |        |          |Set this bit to 1 will generate a reset signal to the HSUSBH controller.
      * |        |          |User needs to set this bit to 0 to release from the reset state.
@@ -2332,8 +2332,8 @@ typedef struct
 #define SYS_IPRST0_HSUSBDRST_Pos         (10)                                              /*!< SYS_T::IPRST0: HSUSBDRST Position      */
 #define SYS_IPRST0_HSUSBDRST_Msk         (0x1ul << SYS_IPRST0_HSUSBDRST_Pos)               /*!< SYS_T::IPRST0: HSUSBDRST Mask          */
 
-#define SYS_IPRST0_SPBRST_Pos            (11)                                              /*!< SYS_T::IPRST0: SPBRST Position         */
-#define SYS_IPRST0_SPBRST_Msk            (0x1ul << SYS_IPRST0_SPBRST_Pos)                  /*!< SYS_T::IPRST0: SPBRST Mask             */
+#define SYS_IPRST0_PDCIRST_Pos           (11)                                              /*!< SYS_T::IPRST0: PDCIRST Position        */
+#define SYS_IPRST0_PDCIRST_Msk           (0x1ul << SYS_IPRST0_PDCIRST_Pos)                 /*!< SYS_T::IPRST0: PDCIRST Mask            */
 
 #define SYS_IPRST0_HSUSBHRST_Pos         (16)                                              /*!< SYS_T::IPRST0: HSUSBHRST Position      */
 #define SYS_IPRST0_HSUSBHRST_Msk         (0x1ul << SYS_IPRST0_HSUSBHRST_Pos)               /*!< SYS_T::IPRST0: HSUSBHRST Mask          */
