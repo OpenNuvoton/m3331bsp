@@ -88,6 +88,7 @@
 //   <o.8>   PDMA0      <0=> Secure <1=> Non-Secure
 //   <o.13>  SDH0       <0=> Secure <1=> Non-Secure
 //   <o.16>  EBI        <0=> Secure <1=> Non-Secure
+//   <o.24>  PDMA1      <0=> Secure <1=> Non-Secure
 //   <o.25>  HSUSBD     <0=> Secure <1=> Non-Secure
 //   <o.26>  HSUSBH     <0=> Secure <1=> Non-Secure
 //   <o.27>  SPB        <0=> Secure <1=> Non-Secure

@@ -356,6 +356,10 @@ extern "C"
                         MODULE_CLKSEL_ENC( 0UL)|MODULE_CLKSEL_Msk_ENC(   3UL)|MODULE_CLKSEL_Pos_ENC(20UL)|\
                         MODULE_CLKDIV_ENC( 0UL)|MODULE_CLKDIV_Msk_ENC(0x0FUL)|MODULE_CLKDIV_Pos_ENC(24UL))  /*!< SDH0 Module */
 
+#define PDMA1_MODULE   (MODULE_APBCLK_ENC( 0UL)|MODULE_IP_EN_Pos_ENC((uint32_t)CLK_AHBCLK0_PDMA1CKEN_Pos)|\
+                        MODULE_CLKSEL_ENC(  NA)|MODULE_CLKSEL_Msk_ENC(NA)|MODULE_CLKSEL_Pos_ENC(NA)|\
+                        MODULE_CLKDIV_ENC(  NA)|MODULE_CLKDIV_Msk_ENC(NA)|MODULE_CLKDIV_Pos_ENC(NA))        /*!< PDMA1 Module */
+
 #define CRC_MODULE     (MODULE_APBCLK_ENC( 0UL)|MODULE_IP_EN_Pos_ENC((uint32_t)CLK_AHBCLK0_CRCCKEN_Pos)|\
                         MODULE_CLKSEL_ENC( NA)|MODULE_CLKSEL_Msk_ENC(NA)|MODULE_CLKSEL_Pos_ENC(NA)|\
                         MODULE_CLKDIV_ENC( NA)|MODULE_CLKDIV_Msk_ENC(NA)|MODULE_CLKDIV_Pos_ENC(NA))         /*!< CRC Module */
@@ -635,11 +639,15 @@ extern "C"
 /*---------------------------------------------------------------------------------------------------------*/
 /*  PDMSEL constant definitions.                                                                           */
 /*---------------------------------------------------------------------------------------------------------*/
-#define CLK_PMUCTL_PDMSEL_NPD         (0x0UL << CLK_PMUCTL_PDMSEL_Pos)        /*!< Select power down mode is Normal Power-down mode \hideinitializer */
-#define CLK_PMUCTL_PDMSEL_LLPD        (0x1UL << CLK_PMUCTL_PDMSEL_Pos)        /*!< Select power down mode is Low leakage Power-down mode \hideinitializer */
-#define CLK_PMUCTL_PDMSEL_FWPD        (0x2UL << CLK_PMUCTL_PDMSEL_Pos)        /*!< Select power down mode is Fast wake-up Power-down mode \hideinitializer */
-#define CLK_PMUCTL_PDMSEL_SPD         (0x4UL << CLK_PMUCTL_PDMSEL_Pos)        /*!< Select power down mode is Standby Power-down mode \hideinitializer */
-#define CLK_PMUCTL_PDMSEL_DPD         (0x6UL << CLK_PMUCTL_PDMSEL_Pos)        /*!< Select power down mode is Deep Power-down mode \hideinitializer */
+#define CLK_PMUCTL_PDMSEL_NPD0  (0x2UL << CLK_PMUCTL_PDMSEL_Pos)    /*!< Select power down mode is Normal Power-down mode 0 (NPD0) \hideinitializer */
+#define CLK_PMUCTL_PDMSEL_NPD1  (0x0UL << CLK_PMUCTL_PDMSEL_Pos)    /*!< Select power down mode is Normal Power-down mode 1 (NPD1) \hideinitializer */
+#define CLK_PMUCTL_PDMSEL_NPD2  (0x1UL << CLK_PMUCTL_PDMSEL_Pos)    /*!< Select power down mode is Normal Power-down mode 2 (NPD2) \hideinitializer */
+#define CLK_PMUCTL_PDMSEL_SPD   (0x4UL << CLK_PMUCTL_PDMSEL_Pos)    /*!< Select power down mode is Standby Power-down mode \hideinitializer */
+#define CLK_PMUCTL_PDMSEL_DPD   (0x6UL << CLK_PMUCTL_PDMSEL_Pos)    /*!< Select power down mode is Deep Power-down mode \hideinitializer */
+
+#define CLK_PMUCTL_PDMSEL_FWPD   CLK_PMUCTL_PDMSEL_NPD0             /*!< Select power down mode is Fast wake-up Power-down mode (FWPD) \hideinitializer */
+#define CLK_PMUCTL_PDMSEL_NPD    CLK_PMUCTL_PDMSEL_NPD1             /*!< Select power down mode is Normal Power-down mode (NPD) \hideinitializer */
+#define CLK_PMUCTL_PDMSEL_LLPD   CLK_PMUCTL_PDMSEL_NPD2             /*!< Select power down mode is Low leakage Power-down mode (LLPD) \hideinitializer */
 
 /*---------------------------------------------------------------------------------------------------------*/
 /*  WKTMRIS constant definitions.                                                                          */

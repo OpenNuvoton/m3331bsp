@@ -176,11 +176,10 @@ typedef struct
      * |        |          |(11) The input setting of XOM page erase function is wrong
      * |        |          |(12) The active XOM region is accessed (except for chip erase, page erase, checksum and read CID/DID)
      * |        |          |(13) The XOM setting page is accessed (except for chip erase, word program and read)
-     * |        |          |(14) Violate the load code read protection
-     * |        |          |(15) OTP is erased
-     * |        |          |(16) Checksum or Flash All One Verification is not executed in their valid range
-     * |        |          |(17) Bank erase is not executed in APROM
-     * |        |          |(18) ISP conflict error
+     * |        |          |(14) OTP is erased
+     * |        |          |(15) Checksum or Flash All One Verification is not executed in their valid range
+     * |        |          |(16) Bank erase is not executed in APROM
+     * |        |          |(17) ISP conflict error
      * |        |          |Note: This bit is write protected. Refer to the SYS_REGLCTL register.
      * |[7]     |ALLONE    |Flash All-one Verification Flag
      * |        |          |This bit is set by hardware if all of flash bits are 1, and clear if flash bits are not all 1 after "Run Flash All-One Verification" complete; this bit also can be clear by writing 1.
@@ -210,21 +209,21 @@ typedef struct
      * | :----: | :----:   | :---- |
      * |[3:0]   |CYCLE     |Flash Access Cycle Control (Write Protect)
      * |        |          |This register is updated by user before HCLK running in different frequency.
-     * |        |          |0001 = CPU access with one wait cycle if cache miss; Flash access cycle is 1.
-     * |        |          |The HCLK working frequency range range is <25 MHz.
-     * |        |          |0010 = CPU access with two wait cycles if cache miss; Flash access cycle is 2.
+     * |        |          |0001 = CPU access with one wait cycle; Flash access cycle is 1.
+     * |        |          |The HCLK working frequency range range is <24 MHz.
+     * |        |          |0010 = CPU access with two wait cycles; Flash access cycle is 2.
      * |        |          |The optimized HCLK working frequency range is 26~50 MHz.
-     * |        |          |0011 = CPU access with three wait cycles if cache miss; Flash access cycle is 3.
+     * |        |          |0011 = CPU access with three wait cycles; Flash access cycle is 3.
      * |        |          |The optimized HCLK working frequency range is 51~75 MHz.
-     * |        |          |0100 = CPU access with four wait cycles if cache miss; Flash access cycle is 4.
+     * |        |          |0100 = CPU access with four wait cycles; Flash access cycle is 4.
      * |        |          |The optimized HCLK working frequency range is 76~100 MHz.
-     * |        |          |0101 = CPU access with five wait cycles if cache miss; Flash access cycle is 5.
+     * |        |          |0101 = CPU access with five wait cycles; Flash access cycle is 5.
      * |        |          |The optimized HCLK working frequency range is 101~125 MHz.
-     * |        |          |0110 = CPU access with six wait cycles if cache miss; Flash access cycle is 6.
+     * |        |          |0110 = CPU access with six wait cycles; Flash access cycle is 6.
      * |        |          |The optimized HCLK working frequency range is 126~150 MHz.
-     * |        |          |0111 = CPU access with seven wait cycles if cache miss; Flash access cycle is 7.
+     * |        |          |0111 = CPU access with seven wait cycles; Flash access cycle is 7.
      * |        |          |The optimized HCLK working frequency range is 151~175 MHz.
-     * |        |          |1000 = CPU access with eight wait cycles if cache miss; Flash access cycle is 8.
+     * |        |          |1000 = CPU access with eight wait cycles; Flash access cycle is 8.
      * |        |          |The optimized HCLK working frequency range is >176 MHz.
      * |        |          |Others = Reserved.
      * |        |          |Note: These bits are write protected. Refer to the SYS_REGLCTL register.
@@ -353,7 +352,7 @@ typedef struct
      * | n=32,33|          |This bit indicates which APROM region is protected.
      * | ..63   |          |0 = APROM region n is not protected.
      * |        |          |1 = APROM region n is protected.
-     * |        |          |Note 1: APROM protect region is 0x0004_0000 + n*(0x2000) to 0x0004_1fff + n*(0x2000).
+     * |        |          |Note 1: APROM protect region is 0x0004_0000 + (n-32)*(0x2000) to 0x0004_1fff + (n-32)*(0x2000).
      * |        |          |Note 2: This bit is write protected. Refer to the SYS_REGLCTL register.
      * @var FMC_T::APWPKEEP
      * Offset: 0x118  APROM Write Protect Keep Register
@@ -577,7 +576,7 @@ typedef struct
 #define FMC_ISPSTS_NSINTFLAG_Msk         (0x01ul << FMC_ISPSTS_NSINTFLAG_Pos)              /*!< FMC_T::ISPSTS: NSINTFLAG Mask          */
 
 #define FMC_ISPSTS_VECMAP_Pos            (9)                                               /*!< FMC_T::ISPSTS: VECMAP Position         */
-#define FMC_ISPSTS_VECMAP_Msk            (0x7ffful << FMC_ISPSTS_VECMAP_Pos)               /*!< FMC_T::ISPSTS: VECMAP Mask             */
+#define FMC_ISPSTS_VECMAP_Msk            (0x7fffful << FMC_ISPSTS_VECMAP_Pos)              /*!< FMC_T::ISPSTS: VECMAP Mask             */
 
 #define FMC_ISPSTS_ISPCERR_Pos           (28)                                              /*!< FMC_T::ISPSTS: ISPCERR Position        */
 #define FMC_ISPSTS_ISPCERR_Msk           (0x1ul << FMC_ISPSTS_ISPCERR_Pos)                 /*!< FMC_T::ISPSTS: ISPCERR Mask            */

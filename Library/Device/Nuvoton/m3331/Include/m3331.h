@@ -154,6 +154,7 @@ typedef enum IRQn
     HSUSBH_IRQn                   = 92,       /*!< High speed USB host Interrupt                    */
     USBOTG20_IRQn                 = 93,       /*!< High speed USB OTG Interrupt                     */
     NS_RAMPE_IRQn                 = 96,       /*!< NS SRAM parity check failed Interrupt            */
+    PDMA1_IRQn                    = 98,       /*!< Peripheral DMA 1 Interrupt                       */
     I3C0_IRQn                     = 108,      /*!< I3C0 Interrupt                                   */
     CANFD00_IRQn                  = 112,      /*!< CANFD00 Interrupt                                */
     CANFD01_IRQn                  = 113,      /*!< CANFD01 Interrupt                                */
@@ -285,6 +286,7 @@ IRQn_Type;
 #define GPIO_INT7_BASE         (PERIPH_BASE + 0x04520UL)
 #define GPIO_PIN_DATA_BASE     (PERIPH_BASE + 0x04800UL)
 #define PDMA0_BASE             (PERIPH_BASE + 0x08000UL)
+#define PDMA1_BASE             (PERIPH_BASE + 0x18000UL)
 #define USBH_BASE              (PERIPH_BASE + 0x09000UL)
 #define HSUSBH_BASE            (PERIPH_BASE + 0x1A000UL)
 #define FMC_BASE               (PERIPH_BASE + 0x0C000UL)
@@ -467,6 +469,7 @@ IRQn_Type;
 #define INT6_S               ((GPIO_INT_T *) GPIO_INT6_BASE)
 #define INT7_S               ((GPIO_INT_T *) GPIO_INT7_BASE)
 #define PDMA0_S              ((PDMA_T *)  PDMA0_BASE)
+#define PDMA1_S              ((PDMA_T *)  PDMA1_BASE)
 #define USBH_S               ((USBH_T *)  USBH_BASE)
 #define HSUSBH_S             ((HSUSBH_T *)  HSUSBH_BASE)
 #define FMC_S                ((FMC_T *)   FMC_BASE)
@@ -567,6 +570,7 @@ IRQn_Type;
 #define INT6_NS               ((GPIO_INT_T *) (GPIO_INT6_BASE+NS_OFFSET))
 #define INT7_NS               ((GPIO_INT_T *) (GPIO_INT7_BASE+NS_OFFSET))
 #define PDMA0_NS              ((PDMA_T *)  (PDMA0_BASE+NS_OFFSET))
+#define PDMA1_NS              ((PDMA_T *)  (PDMA1_BASE+NS_OFFSET))
 #define USBH_NS               ((USBH_T *)  (USBH_BASE+NS_OFFSET))
 #define HSUSBH_NS             ((HSUSBH_T *)  (HSUSBH_BASE+NS_OFFSET))
 #define FMC_NS                ((FMC_T *)   (FMC_BASE+NS_OFFSET))
@@ -667,12 +671,6 @@ IRQn_Type;
 # define PDMA0 PDMA0_S
 #endif
 
-#if defined (SCU_INIT_PNSSET0_VAL) && (SCU_INIT_PNSSET0_VAL & BIT9 )
-# define USBH USBH_NS
-#else
-# define USBH USBH_S
-#endif
-
 #if defined (SCU_INIT_PNSSET0_VAL) && (SCU_INIT_PNSSET0_VAL & BIT13)
 # define SDH0 SDH0_NS
 #else
@@ -685,6 +683,12 @@ IRQn_Type;
 # define EBI EBI_S
 #endif
 
+#if defined (SCU_INIT_PNSSET0_VAL) && (SCU_INIT_PNSSET0_VAL & BIT8 )
+# define PDMA1 PDMA1_NS
+#else
+# define PDMA1 PDMA1_S
+#endif
+
 #if defined (SCU_INIT_PNSSET0_VAL) && (SCU_INIT_PNSSET0_VAL & BIT25)
 # define HSUSBD HSUSBD_NS
 #else
@@ -692,8 +696,10 @@ IRQn_Type;
 #endif
 
 #if defined (SCU_INIT_PNSSET0_VAL) && (SCU_INIT_PNSSET0_VAL & BIT26)
+# define USBH USBH_NS
 # define HSUSBH HSUSBH_NS
 #else
+# define USBH USBH_S
 # define HSUSBH HSUSBH_S
 #endif
 
