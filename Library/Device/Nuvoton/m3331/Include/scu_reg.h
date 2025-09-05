@@ -72,10 +72,10 @@ typedef struct
      * |        |          |0 = HSUSBH is a secure module (default).
      * |        |          |1 = HSUSBH is a non-secure module.
      * |        |          |Note: This bit is write-protected by SCU_SCWP.
-     * |[27]    |SPB       |Set SPB to Non-secure State
-     * |        |          |Write 1 to set SPB to non-secure state.
-     * |        |          |0 = SPB is a secure module (default).
-     * |        |          |1 = SPB is a non-secure module.
+     * |[27]    |PDCI      |Set PDCI to Non-secure State
+     * |        |          |Write 1 to set PDCI to non-secure state.
+     * |        |          |0 = PDCI is a secure module (default).
+     * |        |          |1 = PDCI is a non-secure module.
      * Offset: 0x04  Peripheral Non-secure Attribution Set Register1 (0x4002_0000~0x4003_FFFF)
      * ---------------------------------------------------------------------------------------------------
      * |Bits    |Field     |Descriptions
@@ -387,9 +387,9 @@ typedef struct
      * |[18]    |CACHEIEN  |CACHE Controller Security Violation Interrupt Enable Bit
      * |        |          |0 = Interrupt triggered from security violation of Cache Controller Disabled.
      * |        |          |1 = Interrupt triggered from security violation of Cache Controller Enabled.
-     * |[19]    |SPBIEN    |SPB Security Violation Interrupt Enable Bit
-     * |        |          |0 = Interrupt triggered from security violation of SPB Disabled.
-     * |        |          |1 = Interrupt triggered from security violation of SPB Enabled.
+     * |[19]    |PDCIIEN   |PDCI Security Violation Interrupt Enable Bit
+     * |        |          |0 = Interrupt triggered from security violation of PDCI Disabled.
+     * |        |          |1 = Interrupt triggered from security violation of PDCI Enabled.
      * |[20]    |PDMA1IEN  |PDMA1 Security Violation Interrupt Enable Bit
      * |        |          |0 = Interrupt triggered from security violation of PDMA1 Disabled.
      * |        |          |1 = Interrupt triggered from security violation of PDMA1 Enabled.
@@ -474,9 +474,9 @@ typedef struct
      * |        |          |0 = No Cache Controller violation interrupt event.
      * |        |          |1 = There is at least a Cache Controller violation interrupt event.
      * |        |          |Note: Write 1 to clear the interrupt flag.
-     * |[19]    |SPBIF     |SPB Security Violation Interrupt Status
-     * |        |          |0 = No SPB violation interrupt event.
-     * |        |          |1 = There is at least a SPB violation interrupt event.
+     * |[19]    |PDCIIF    |PDCI Security Violation Interrupt Status
+     * |        |          |0 = No PDCI violation interrupt event.
+     * |        |          |1 = There is at least a PDCI violation interrupt event.
      * |        |          |Note: Write 1 to clear the interrupt flag.
      * |[20]    |PDMA1IF   |PDMA1 Security Violation Interrupt Status
      * |        |          |0 = No PDMA1 violation interrupt event.
@@ -900,8 +900,8 @@ typedef struct
      * | :----: | :----:   | :---- |
      * |[31:0]  |VIOADDR   |Violation Address
      * |        |          |Indicate the target address of the access, which invokes the security violation.
-     * @var SCU_T::SPBVSRC
-     * offset: 0xD8  SPB Security Policy Violation Source
+     * @var SCU_T::PDCIVSRC
+     * offset: 0xD8  PDCI Security Policy Violation Source
      * ---------------------------------------------------------------------------------------------------
      * |Bits    |Field     |Descriptions
      * | :----: | :----:   | :---- |
@@ -915,8 +915,8 @@ typedef struct
      * |        |          |0x6 = High-speed USB Host Controller (HSUSBH).
      * |        |          |0x7 = CRC.
      * |        |          |Others = Others are undefined.
-     * @var SCU_T::SPBVA
-     * Offset: 0xDC  SPB Violation Address
+     * @var SCU_T::PDCIVA
+     * Offset: 0xDC  PDCI Violation Address
      * ---------------------------------------------------------------------------------------------------
      * |Bits    |Field     |Descriptions
      * | :----: | :----:   | :---- |
@@ -1193,8 +1193,8 @@ typedef struct
     __I  uint32_t SDH0VA;                /*!< [0x00cc] SDH0 Violation Address                                           */
     __I  uint32_t CACHEVSRC;             /*!< [0x00d0] CACHE Controller Security Policy Violation Source                */
     __I  uint32_t CACHEVA;               /*!< [0x00d4] CACHE Controller Violation Address                               */
-    __I  uint32_t SPBVSRC;               /*!< [0x00d8] SPB Security Policy Violation Source                             */
-    __I  uint32_t SPBVA;                 /*!< [0x00dc] SPB Violation Address                                            */
+    __I  uint32_t PDCIVSRC;              /*!< [0x00d8] PDCI Security Policy Violation Source                            */
+    __I  uint32_t PDCIVA;                /*!< [0x00dc] PDCI Violation Address                                           */
     __I  uint32_t PDMA1VSRC;             /*!< [0x00E0] PDMA1 Security Policy Violation Source                           */
     __I  uint32_t PDMA1VA;               /*!< [0x00E4] PDMA1 Violation Address                                          */
     __I  uint32_t RESERVE3[2];
@@ -1236,8 +1236,8 @@ typedef struct
 #define SCU_PNSSET0_HSUSBH_Pos           (26)                                              /*!< SCU_T::PNSSET0: HSUSBH Position        */
 #define SCU_PNSSET0_HSUSBH_Msk           (0x1ul << SCU_PNSSET0_HSUSBH_Pos)                 /*!< SCU_T::PNSSET0: HSUSBH Mask            */
 
-#define SCU_PNSSET0_SPB_Pos              (27)                                              /*!< SCU_T::PNSSET0: SPB Position           */
-#define SCU_PNSSET0_SPB_Msk              (0x1ul << SCU_PNSSET0_SPB_Pos)                    /*!< SCU_T::PNSSET0: SPB Mask               */
+#define SCU_PNSSET0_PDCI_Pos             (27)                                              /*!< SCU_T::PNSSET0: PDCI Position          */
+#define SCU_PNSSET0_PDCI_Msk             (0x1ul << SCU_PNSSET0_PDCI_Pos)                   /*!< SCU_T::PNSSET0: PDCI Mask              */
 
 #define SCU_PNSSET1_CANFD0_Pos           (0)                                               /*!< SCU_T::PNSSET1: CANFD0 Position        */
 #define SCU_PNSSET1_CANFD0_Msk           (0x1ul << SCU_PNSSET1_CANFD0_Pos)                 /*!< SCU_T::PNSSET1: CANFD0 Mask            */
@@ -1425,8 +1425,8 @@ typedef struct
 #define SCU_SVIEN_CACHEIEN_Pos           (18)                                              /*!< SCU_T::SVIEN: CACHEIEN Position        */
 #define SCU_SVIEN_CACHEIEN_Msk           (0x1ul << SCU_SVIEN_CACHEIEN_Pos)                 /*!< SCU_T::SVIEN: CACHEIEN Mask            */
 
-#define SCU_SVIEN_SPBIEN_Pos             (19)                                              /*!< SCU_T::SVIEN: SPBIEN Position          */
-#define SCU_SVIEN_SPBIEN_Msk             (0x1ul << SCU_SVIEN_SPBIEN_Pos)                   /*!< SCU_T::SVIEN: SPBIEN Mask              */
+#define SCU_SVIEN_PDCIIEN_Pos            (19)                                              /*!< SCU_T::SVIEN: PDCIIEN Position         */
+#define SCU_SVIEN_PDCIIEN_Msk            (0x1ul << SCU_SVIEN_PDCIIEN_Pos)                  /*!< SCU_T::SVIEN: PDCIIEN Mask             */
 
 #define SCU_SVIEN_PDMA1IEN_Pos           (20)                                              /*!< SCU_T::SVIEN: PDMA1IEN Position        */
 #define SCU_SVIEN_PDMA1IEN_Msk           (0x1ul << SCU_SVIEN_PDMA1IEN_Pos)                 /*!< SCU_T::SVIEN: PDMA1IEN Mask            */
@@ -1488,8 +1488,8 @@ typedef struct
 #define SCU_SVINTSTS_CACHEIF_Pos         (18)                                              /*!< SCU_T::SVINTSTS: CACHEIF Position      */
 #define SCU_SVINTSTS_CACHEIF_Msk         (0x1ul << SCU_SVINTSTS_CACHEIF_Pos)               /*!< SCU_T::SVINTSTS: CACHEIF Mask          */
 
-#define SCU_SVINTSTS_SPBIF_Pos           (19)                                              /*!< SCU_T::SVINTSTS: SPBIF Position        */
-#define SCU_SVINTSTS_SPBIF_Msk           (0x1ul << SCU_SVINTSTS_SPBIF_Pos)                 /*!< SCU_T::SVINTSTS: SPBIF Mask            */
+#define SCU_SVINTSTS_PDCIIF_Pos          (19)                                              /*!< SCU_T::SVINTSTS: PDCIIF Position       */
+#define SCU_SVINTSTS_PDCIIF_Msk          (0x1ul << SCU_SVINTSTS_PDCIIF_Pos)                /*!< SCU_T::SVINTSTS: PDCIIF Mask           */
 
 #define SCU_SVINTSTS_PDMA1IF_Pos         (20)                                              /*!< SCU_T::SVINTSTS: PDMA1IF Position      */
 #define SCU_SVINTSTS_PDMA1IF_Msk         (0x1ul << SCU_SVINTSTS_PDMA1IF_Pos)               /*!< SCU_T::SVINTSTS: PDMA1IF Mask          */
@@ -1608,11 +1608,11 @@ typedef struct
 #define SCU_CACHEVA_VIOADDR_Pos          (0)                                               /*!< SCU_T::CACHEVA: VIOADDR Position       */
 #define SCU_CACHEVA_VIOADDR_Msk          (0xfffffffful << SCU_CACHEVA_VIOADDR_Pos)         /*!< SCU_T::CACHEVA: VIOADDR Mask           */
 
-#define SCU_SPBVSRC_MASTER_Pos           (0)                                               /*!< SCU_T::SPBVSRC: MASTER Position        */
-#define SCU_SPBVSRC_MASTER_Msk           (0xful << SCU_SPBVSRC_MASTER_Pos)                 /*!< SCU_T::SPBVSRC: MASTER Mask            */
+#define SCU_PDCIVSRC_MASTER_Pos          (0)                                               /*!< SCU_T::PDCIVSRC: MASTER Position       */
+#define SCU_PDCIVSRC_MASTER_Msk          (0xful << SCU_PDCIVSRC_MASTER_Pos)                /*!< SCU_T::PDCIVSRC: MASTER Mask           */
 
-#define SCU_SPBVA_VIOADDR_Pos            (0)                                               /*!< SCU_T::SPBVA: VIOADDR Position         */
-#define SCU_SPBVA_VIOADDR_Msk            (0xfffffffful << SCU_SPBVA_VIOADDR_Pos)           /*!< SCU_T::SPBVA: VIOADDR Mask             */
+#define SCU_PDCIVA_VIOADDR_Pos           (0)                                               /*!< SCU_T::PDCIVA: VIOADDR Position        */
+#define SCU_PDCIVA_VIOADDR_Msk           (0xfffffffful << SCU_PDCIVA_VIOADDR_Pos)          /*!< SCU_T::PDCIVA: VIOADDR Mask            */
 
 #define SCU_PDMA1VSRC_MASTER_Pos         (0)                                               /*!< SCU_T::PDMA1VSRC: MASTER Position      */
 #define SCU_PDMA1VSRC_MASTER_Msk         (0xful << SCU_PDMA1VSRC_MASTER_Pos)               /*!< SCU_T::PDMA1VSRC: MASTER Mask          */

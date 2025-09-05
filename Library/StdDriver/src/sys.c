@@ -128,7 +128,7 @@ void SYS_ResetCPU(void)
   *             - \ref CANFD1_RST
   *             - \ref HSUSBD_RST
   *             - \ref HSUSBH_RST
-  *             - \ref SPB_RST
+  *             - \ref PDCI_RST
   *             - \ref GPIO_RST
   *             - \ref TMR0_RST
   *             - \ref TMR1_RST

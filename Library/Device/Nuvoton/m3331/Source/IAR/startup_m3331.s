@@ -165,7 +165,7 @@ __vector_table_0x1c
         DCD     Default_Handler           ; 116:
         DCD     Default_Handler           ; 117:
         DCD     Default_Handler           ; 118:
-        DCD     SPB_IRQHandler            ; 119: SPB
+        DCD     PDCI_IRQHandler           ; 119: PDCI
         DCD     Default_Handler           ; 120:
         DCD     Default_Handler           ; 121:
         DCD     Default_Handler           ; 122:
@@ -344,7 +344,7 @@ SysTick_Handler
         PUBWEAK  CANFD01_IRQHandler
         PUBWEAK  CANFD10_IRQHandler
         PUBWEAK  CANFD11_IRQHandler
-        PUBWEAK  SPB_IRQHandler
+        PUBWEAK  PDCI_IRQHandler
         PUBWEAK  LLSI0_IRQHandler
         PUBWEAK  LLSI1_IRQHandler
         PUBWEAK  LLSI2_IRQHandler
@@ -442,7 +442,7 @@ CANFD00_IRQHandler
 CANFD01_IRQHandler
 CANFD10_IRQHandler
 CANFD11_IRQHandler
-SPB_IRQHandler
+PDCI_IRQHandler
 LLSI0_IRQHandler
 LLSI1_IRQHandler
 LLSI2_IRQHandler

@@ -160,7 +160,7 @@ typedef enum IRQn
     CANFD01_IRQn                  = 113,      /*!< CANFD01 Interrupt                                */
     CANFD10_IRQn                  = 114,      /*!< CANFD10 Interrupt                                */
     CANFD11_IRQn                  = 115,      /*!< CANFD11 Interrupt                                */
-    SPB_IRQn                      = 119,      /*!< SPB Interrupt                                    */
+    PDCI_IRQn                     = 119,      /*!< PDCI Interrupt                                    */
     LLSI0_IRQn                    = 128,      /*!< LLSI0 Interrupt                                  */
     LLSI1_IRQn                    = 129,      /*!< LLSI1 Interrupt                                  */
     LLSI2_IRQn                    = 130,      /*!< LLSI2 Interrupt                                  */
@@ -704,9 +704,9 @@ IRQn_Type;
 #endif
 
 #if defined (SCU_INIT_PNSSET0_VAL) && (SCU_INIT_PNSSET0_VAL & BIT27)
-# define SPB SPB_NS
+# define PDCI PDCI_NS
 #else
-# define SPB SPB_S
+# define PDCI PDCI_S
 #endif
 
 #if defined (SCU_INIT_PNSSET1_VAL) && (SCU_INIT_PNSSET1_VAL & BIT0 )

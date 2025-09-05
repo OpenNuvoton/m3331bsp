@@ -779,7 +779,7 @@ void CLK_DisableXtalRC(uint32_t u32ClkMask)
   *             - \ref CANRAM1_MODULE
   *             - \ref HSUSBD_MODULE
   *             - \ref HSOTG_MODULE
-  *             - \ref SPB_MODULE
+  *             - \ref PDCI_MODULE
   *             - \ref FMCIDLE_MODULE
   *             - \ref USBH_MODULE
   *             - \ref TRACE_MODULE
@@ -872,7 +872,7 @@ void CLK_EnableModuleClock(uint32_t u32ModuleIdx)
   *             - \ref CANRAM1_MODULE
   *             - \ref HSUSBD_MODULE
   *             - \ref HSOTG_MODULE
-  *             - \ref SPB_MODULE
+  *             - \ref PDCI_MODULE
   *             - \ref FMCIDLE_MODULE
   *             - \ref USBH_MODULE
   *             - \ref TRACE_MODULE

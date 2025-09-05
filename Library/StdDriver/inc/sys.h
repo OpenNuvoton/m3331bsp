@@ -40,7 +40,7 @@ extern "C"
 #define CANFD1_RST          ((0UL<<24) | SYS_IPRST0_CANFD1RST_Pos)      /*!< Reset CANFD1 \hideinitializer */
 #define HSUSBD_RST          ((0UL<<24) | SYS_IPRST0_HSUSBDRST_Pos)      /*!< Reset HSUSBD \hideinitializer */
 #define HSUSBH_RST          ((0UL<<24) | SYS_IPRST0_HSUSBHRST_Pos)      /*!< Reset HSUSBH \hideinitializer */
-#define SPB_RST             ((0UL<<24) | SYS_IPRST0_SPBRST_Pos)         /*!< Reset SPB \hideinitializer */
+#define PDCI_RST            ((0UL<<24) | SYS_IPRST0_PDCIRST_Pos)        /*!< Reset PDCI \hideinitializer */
 
 #define GPIO_RST            ((4UL<<24) | SYS_IPRST1_GPIORST_Pos)        /*!< Reset GPIO \hideinitializer */
 #define TMR0_RST            ((4UL<<24) | SYS_IPRST1_TMR0RST_Pos)        /*!< Reset TMR0 \hideinitializer */
