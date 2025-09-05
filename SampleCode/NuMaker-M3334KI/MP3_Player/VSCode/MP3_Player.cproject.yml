@@ -15,6 +15,7 @@ project:
           -D__MICROLIB,
           -o0,
           -gdwarf-4
+          -fno-inline
         ]
       ASM: [ -D__MICROLIB, -DStack_Size=0x2000 ]
       Link:
@@ -44,7 +45,8 @@ project:
           -funsigned-char,
           -mthumb,
           -Wno-main,
-          -gdwarf-4
+          -gdwarf-4,
+          -Wno-stringop-overflow
         ]
       Link:
         - -Xlinker
