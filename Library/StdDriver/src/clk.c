@@ -767,6 +767,7 @@ void CLK_DisableXtalRC(uint32_t u32ClkMask)
   * @brief      Enable module clock
   * @param[in]  u32ModuleIdx is module index. Including :
   *             - \ref PDMA0_MODULE
+  *             - \ref PDMA1_MODULE
   *             - \ref ISP_MODULE
   *             - \ref EBI_MODULE
   *             - \ref ST_MODULE
@@ -859,6 +860,7 @@ void CLK_EnableModuleClock(uint32_t u32ModuleIdx)
   * @brief      Disable module clock
   * @param[in]  u32ModuleIdx is module index. Including :
   *             - \ref PDMA0_MODULE
+  *             - \ref PDMA1_MODULE
   *             - \ref ISP_MODULE
   *             - \ref EBI_MODULE
   *             - \ref ST_MODULE

@@ -119,6 +119,11 @@ typedef struct
      * |        |          |0 = EBI controller normal operation.
      * |        |          |1 = EBI controller reset.
      * |        |          |Note: This bit is write protected. Refer to the SYS_REGLCTL register.
+     * |[5]     |PDMA1RST  |PDMA1 Controller Reset (Write Protect)
+     * |        |          |Setting this bit to 1 will generate a reset signal to the PDMA1 controller.
+     * |        |          |User needs to set this bit to 0 to release from reset state.
+     * |        |          |0 = PDMA1 controller normal operation.
+     * |        |          |1 = PDMA1 controller reset.
      * |[6]     |SDH0RST   |SDH0 Controller Reset (Write Protect)
      * |        |          |Setting this bit to 1 will generate a reset signal to the SDH0 controller.
      * |        |          |User needs to set this bit to 0 to release from the reset state.
@@ -511,16 +516,16 @@ typedef struct
      * |        |          |This is the register to set the address of vector table after chip is waked up from SPD mode.
      * |        |          |The value will be loaded to Vector Table Offset Register, which is at the address 0xE000ED08, when chip wake up from SPD mode.
      * |        |          |Note: These bits are write protected. Refer to the SYS_REGLCTL register.
-     * @var SYS_T::SRAM_INTCTL
-     * Offset: 0xC0  System SRAM Interrupt Enable Control Register
+     * @var SYS_T::SRAM_SINTCTL
+     * Offset: 0xC0  System SRAM Secure Interrupt Enable Control Register
      * ---------------------------------------------------------------------------------------------------
      * |Bits    |Field     |Descriptions
      * | :----: | :----:   | :---- |
      * |[0]     |PERRIEN   |SRAM Parity Check Error Interrupt Enable Bit
      * |        |          |0 = SRAM parity check error interrupt Disabled.
      * |        |          |1 = SRAM parity check error interrupt Enabled.
-     * @var SYS_T::SRAM_STATUS
-     * Offset: 0xC4  System SRAM Parity Error Status Register
+     * @var SYS_T::SRAM_SSTATUS
+     * Offset: 0xC4  System SRAM Secure Parity Error Status Register
      * ---------------------------------------------------------------------------------------------------
      * |Bits    |Field     |Descriptions
      * | :----: | :----:   | :---- |
@@ -528,20 +533,20 @@ typedef struct
      * |        |          |This bit indicates the System SRAM parity error occurred. Write 1 to clear this to 0.
      * |        |          |0 = No System SRAM parity error.
      * |        |          |1 = System SRAM parity error occur.
-     * @var SYS_T::SRAM_ERRADDR
-     * Offset: 0xC8  System SRAM Parity Check Error Address Register
+     * @var SYS_T::SRAM_SERRADDR
+     * Offset: 0xC8  System SRAM Secure Parity Check Error Address Register
      * ---------------------------------------------------------------------------------------------------
      * |Bits    |Field     |Descriptions
      * | :----: | :----:   | :---- |
      * |[31:0]  |ERRADDR   |System SRAM Parity Error Address (Read Only)
      * |        |          |This register shows system SRAM parity error byte address.
      * @var SYS_T::SRAM_LSCTL
-     * Offset: 0xC8  System SRAM Light Sleep Mode Control Register
+     * Offset: 0xCC  System SRAM Light Sleep Mode Control Register
      * ---------------------------------------------------------------------------------------------------
      * |Bits    |Field     |Descriptions
      * | :----: | :----:   | :---- |
      * |[0]     |MKROMLS   |MKROM Light Sleep Mode Enable Bit (Write Protect)
-     * |        |          |This bit enables Light Sleep Mode for CANFD0 SRAM.
+     * |        |          |This bit enables Light Sleep Mode for MKROM.
      * |        |          |0 = MKROM Light Sleep Mode Disabled.
      * |        |          |1 = MKROM Light Sleep Mode Enabled.
      * |        |          |Note: This bit is write protected. Refer to the SYS_REGLCTL register.
@@ -594,11 +599,6 @@ typedef struct
      * |        |          |This bit enables BIST test for CAN SRAM.
      * |        |          |0 = CAN SRAM BIST Disabled.
      * |        |          |1 = CAN SRAM BIST Enabled.
-     * |        |          |Note: This bit is write protected. Refer to the SYS_REGLCTL register.
-     * |[5]     |USBHBIST  |USBH SRAM BIST Enable Bit (Write Protect)
-     * |        |          |This bit enables BIST test for USBH SRAM.
-     * |        |          |0 = USBH SRAM BIST Disabled.
-     * |        |          |1 = USBH SRAM BIST Enabled.
      * |        |          |Note: This bit is write protected. Refer to the SYS_REGLCTL register.
      * |[8]     |HSUSBDBIST|HSUSBD BIST Enable Bit (Write Protect)
      * |        |          |This bit enables BIST test for HSUSBD SRAM.
@@ -662,12 +662,6 @@ typedef struct
      * |        |          |0 = CAN SRAM BIST is active.
      * |        |          |1 = CAN SRAM BIST test finish.
      * |        |          |Note: All of the CAN SRAM macros BIST finish, this flag is 1.
-     * |[20]    |USBDBEND  |USBD SRAM BIST Test Finish
-     * |        |          |0 = USBD SRAM BIST is active. (Read Only)
-     * |        |          |1 = USBD SRAM BIST test finish.
-     * |[21]    |USBHBEND  |USBH SRAM BIST Test Finish
-     * |        |          |0 = USBH SRAM BIST is active. (Read Only)
-     * |        |          |1 = USBH SRAM BIST test finish.
      * |[24]    |HSUSBDBEND|HSUSBD SRAM BIST Test Finish (Read Only)
      * |        |          |0 = HSUSBD SRAM BIST is active.
      * |        |          |1 = HSUSBD SRAM BIST test finish.
@@ -713,9 +707,6 @@ typedef struct
      * |[9]     |BOUNDEN   |Boundary Enable Bit
      * |        |          |0 = Boundary function Disabled.
      * |        |          |1 = Boundary function Enabled.
-     * |[10]    |REFCKSEL  |Reference Clock Selection
-     * |        |          |0 = HIRC trim reference clock is from LXT (32.768 kHz).
-     * |        |          |1 = HIRC trim reference clock is from internal USB synchronous mode.
      * |[20:16] |BOUNDARY  |Boundary Selection
      * |        |          |Fill the boundary range from 0x1 to 0x31, 0x0 is reserved.
      * |        |          |Note: This field is effective only when the BOUNDEN(SYS_HIRCTCTL[9]) is enabled.
@@ -774,7 +765,7 @@ typedef struct
      * |        |          |0 = SRAM parity check error interrupt Disabled.
      * |        |          |1 = SRAM parity check error interrupt Enabled.
      * @var SYS_T::SRAM_NSSTATUS
-     * Offset: 0xC4  System SRAM Non-Secure Parity Error Status Register
+     * Offset: 0xF4  System SRAM Non-Secure Parity Error Status Register
      * ---------------------------------------------------------------------------------------------------
      * |Bits    |Field     |Descriptions
      * | :----: | :----:   | :---- |
@@ -783,7 +774,7 @@ typedef struct
      * |        |          |0 = No System SRAM parity error.
      * |        |          |1 = System SRAM parity error occur.
      * @var SYS_T::SRAM_NSERRADDR
-     * Offset: 0xC8  System SRAM Non-Secure Parity Check Error Address Register
+     * Offset: 0xF8  System SRAM Non-Secure Parity Check Error Address Register
      * ---------------------------------------------------------------------------------------------------
      * |Bits    |Field     |Descriptions
      * | :----: | :----:   | :---- |
@@ -2218,10 +2209,10 @@ typedef struct
     __I  uint32_t RESERVE2[2];
     __IO uint32_t VTORSET;               /*!< [0x00a8] VTOR Setting Register                                            */
     __I  uint32_t RESERVE3[5];
-    __IO uint32_t SRAM_INTCTL;           /*!< [0x00c0] System SRAM Interrupt Enable Control Register                    */
-    __IO uint32_t SRAM_STATUS;           /*!< [0x00c4] System SRAM Parity Error Status Register                         */
-    __I  uint32_t SRAM_ERRADDR;          /*!< [0x00c8] System SRAM Parity Check Error Address Register                  */
-    __IO uint32_t SRAM_LSCTL;            /*!< [0x00cc] System SRAM Secure Interrupt Enable Control Register             */
+    __IO uint32_t SRAM_SINTCTL;          /*!< [0x00c0] System SRAM Secure Interrupt Enable Control Register             */
+    __IO uint32_t SRAM_SSTATUS;          /*!< [0x00c4] System SRAM Secure Parity Error Status Register                  */
+    __I  uint32_t SRAM_SERRADDR;         /*!< [0x00c8] System SRAM Secure Parity Check Error Address Register           */
+    __IO uint32_t SRAM_LSCTL;            /*!< [0x00cc] System SRAM Light Sleep Mode Control Register                    */
     __IO uint32_t SRAM_BISTCTL;          /*!< [0x00d0] System SRAM BIST Test Control Register                           */
     __I  uint32_t SRAM_BISTSTS;          /*!< [0x00d4] System SRAM BIST Test Status Register                            */
     __I  uint32_t RESERVE4[3];
@@ -2322,6 +2313,9 @@ typedef struct
 
 #define SYS_IPRST0_EBIRST_Pos            (3)                                               /*!< SYS_T::IPRST0: EBIRST Position         */
 #define SYS_IPRST0_EBIRST_Msk            (0x1ul << SYS_IPRST0_EBIRST_Pos)                  /*!< SYS_T::IPRST0: EBIRST Mask             */
+
+#define SYS_IPRST0_PDMA1RST_Pos          (5)                                               /*!< SYS_T::IPRST0: PDMA1RST Position       */
+#define SYS_IPRST0_PDMA1RST_Msk          (0x1ul << SYS_IPRST0_PDMA1RST_Pos)                /*!< SYS_T::IPRST0: PDMA1RST Mask           */
 
 #define SYS_IPRST0_SDH0RST_Pos           (6)                                               /*!< SYS_T::IPRST0: SDH0RST Position        */
 #define SYS_IPRST0_SDH0RST_Msk           (0x1ul << SYS_IPRST0_SDH0RST_Pos)                 /*!< SYS_T::IPRST0: SDH0RST Mask            */
@@ -2926,14 +2920,14 @@ typedef struct
 #define SYS_VTORSET_VTORSET_Pos          (7)                                               /*!< SYS_T::VTORSET: VTORSET Position       */
 #define SYS_VTORSET_VTORSET_Msk          (0x1fffffful << SYS_VTORSET_VTORSET_Pos)          /*!< SYS_T::VTORSET: VTORSET Mask           */
 
-#define SYS_SRAM_INTCTL_PERRIEN_Pos      (0)                                               /*!< SYS_T::SRAM_INTCTL: PERRIEN Position   */
-#define SYS_SRAM_INTCTL_PERRIEN_Msk      (0x1ul << SYS_SRAM_INTCTL_PERRIEN_Pos)            /*!< SYS_T::SRAM_INTCTL: PERRIEN Mask       */
+#define SYS_SRAM_SINTCTL_PERRIEN_Pos     (0)                                               /*!< SYS_T::SRAM_SINTCTL: PERRIEN Position  */
+#define SYS_SRAM_SINTCTL_PERRIEN_Msk     (0x1ul << SYS_SRAM_SINTCTL_PERRIEN_Pos)           /*!< SYS_T::SRAM_SINTCTL: PERRIEN Mask      */
 
-#define SYS_SRAM_STATUS_PERRIF_Pos       (0)                                               /*!< SYS_T::SRAM_STATUS: PERRIF Position    */
-#define SYS_SRAM_STATUS_PERRIF_Msk       (0x1ul << SYS_SRAM_STATUS_PERRIF_Pos)             /*!< SYS_T::SRAM_STATUS: PERRIF Mask        */
+#define SYS_SRAM_SSTATUS_PERRIF_Pos      (0)                                               /*!< SYS_T::SRAM_SSTATUS: PERRIF Position   */
+#define SYS_SRAM_SSTATUS_PERRIF_Msk      (0x1ul << SYS_SRAM_SSTATUS_PERRIF_Pos)            /*!< SYS_T::SRAM_SSTATUS: PERRIF Mask       */
 
-#define SYS_SRAM_ERRADDR_ERRADDR_Pos     (0)                                               /*!< SYS_T::SRAM_ERRADDR: ERRADDR Position  */
-#define SYS_SRAM_ERRADDR_ERRADDR_Msk     (0xfffffffful << SYS_SRAM_ERRADDR_ERRADDR_Pos)    /*!< SYS_T::SRAM_ERRADDR: ERRADDR Mask      */
+#define SYS_SRAM_SERRADDR_ERRADDR_Pos    (0)                                               /*!< SYS_T::SRAM_SERRADDR: ERRADDR Position */
+#define SYS_SRAM_SERRADDR_ERRADDR_Msk    (0xfffffffful << SYS_SRAM_SERRADDR_ERRADDR_Pos)   /*!< SYS_T::SRAM_SERRADDR: ERRADDR Mask     */
 
 #define SYS_SRAM_LSCTL_MKROMLS_Pos       (0)                                               /*!< SYS_T::SRAM_LSCTL: MKROMLS Position    */
 #define SYS_SRAM_LSCTL_MKROMLS_Msk       (0x1ul << SYS_SRAM_LSCTL_MKROMLS_Pos)             /*!< SYS_T::SRAM_LSCTL: MKROMLS Mask        */
@@ -2965,9 +2959,6 @@ typedef struct
 #define SYS_SRAM_BISTCTL_CANBIST_Pos     (3)                                               /*!< SYS_T::SRAM_BISTCTL: CANBIST Position  */
 #define SYS_SRAM_BISTCTL_CANBIST_Msk     (0x1ul << SYS_SRAM_BISTCTL_CANBIST_Pos)           /*!< SYS_T::SRAM_BISTCTL: CANBIST Mask      */
 
-#define SYS_SRAM_BISTCTL_USBHBIST_Pos    (5)                                               /*!< SYS_T::SRAM_BISTCTL: USBHBIST Position */
-#define SYS_SRAM_BISTCTL_USBHBIST_Msk    (0x1ul << SYS_SRAM_BISTCTL_USBHBIST_Pos)          /*!< SYS_T::SRAM_BISTCTL: USBHBIST Mask     */
-
 #define SYS_SRAM_BISTCTL_HSUSBDBIST_Pos  (8)                                               /*!< SYS_T::SRAM_BISTCTL: HSUSBDBIST Position*/
 #define SYS_SRAM_BISTCTL_HSUSBDBIST_Msk  (0x1ul << SYS_SRAM_BISTCTL_HSUSBDBIST_Pos)        /*!< SYS_T::SRAM_BISTCTL: HSUSBDBIST Mask    */
 
@@ -2992,9 +2983,6 @@ typedef struct
 #define SYS_SRAM_BISTSTS_CANBEF_Pos      (3)                                               /*!< SYS_T::SRAM_BISTSTS: CANBEF Position   */
 #define SYS_SRAM_BISTSTS_CANBEF_Msk      (0x1ul << SYS_SRAM_BISTSTS_CANBEF_Pos)            /*!< SYS_T::SRAM_BISTSTS: CANBEF Mask       */
 
-#define SYS_SRAM_BISTSTS_USBHBEF_Pos     (5)                                               /*!< SYS_T::SRAM_BISTSTS: USBHBEF Position  */
-#define SYS_SRAM_BISTSTS_USBHBEF_Msk     (0x1ul << SYS_SRAM_BISTSTS_USBHBEF_Pos)           /*!< SYS_T::SRAM_BISTSTS: USBHBEF Mask      */
-
 #define SYS_SRAM_BISTSTS_HSUSBDBEF_Pos   (8)                                               /*!< SYS_T::SRAM_BISTSTS: HSUSBDBEF Position*/
 #define SYS_SRAM_BISTSTS_HSUSBDBEF_Msk   (0x1ul << SYS_SRAM_BISTSTS_HSUSBDBEF_Pos)         /*!< SYS_T::SRAM_BISTSTS: HSUSBDBEF Mask    */
 
@@ -3018,9 +3006,6 @@ typedef struct
 
 #define SYS_SRAM_BISTSTS_CANBEND_Pos     (19)                                              /*!< SYS_T::SRAM_BISTSTS: CANBEND Position  */
 #define SYS_SRAM_BISTSTS_CANBEND_Msk     (0x1ul << SYS_SRAM_BISTSTS_CANBEND_Pos)           /*!< SYS_T::SRAM_BISTSTS: CANBEND Mask      */
-
-#define SYS_SRAM_BISTSTS_USBHBEND_Pos    (21)                                              /*!< SYS_T::SRAM_BISTSTS: USBHBEND Position */
-#define SYS_SRAM_BISTSTS_USBHBEND_Msk    (0x1ul << SYS_SRAM_BISTSTS_USBHBEND_Pos)          /*!< SYS_T::SRAM_BISTSTS: USBHBEND Mask     */
 
 #define SYS_SRAM_BISTSTS_HSUSBDBEND_Pos  (24)                                              /*!< SYS_T::SRAM_BISTSTS: HSUSBDBEND Position*/
 #define SYS_SRAM_BISTSTS_HSUSBDBEND_Msk  (0x1ul << SYS_SRAM_BISTSTS_HSUSBDBEND_Pos)        /*!< SYS_T::SRAM_BISTSTS: HSUSBDBEND Mask   */
@@ -3048,9 +3033,6 @@ typedef struct
 
 #define SYS_HIRCTCTL_BOUNDEN_Pos         (9)                                               /*!< SYS_T::HIRCTCTL: BOUNDEN Position      */
 #define SYS_HIRCTCTL_BOUNDEN_Msk         (0x1ul << SYS_HIRCTCTL_BOUNDEN_Pos)               /*!< SYS_T::HIRCTCTL: BOUNDEN Mask          */
-
-#define SYS_HIRCTCTL_REFCKSEL_Pos        (10)                                              /*!< SYS_T::HIRCTCTL: REFCKSEL Position     */
-#define SYS_HIRCTCTL_REFCKSEL_Msk        (0x1ul << SYS_HIRCTCTL_REFCKSEL_Pos)              /*!< SYS_T::HIRCTCTL: REFCKSEL Mask         */
 
 #define SYS_HIRCTCTL_BOUNDARY_Pos        (16)                                              /*!< SYS_T::HIRCTCTL: BOUNDARY Position     */
 #define SYS_HIRCTCTL_BOUNDARY_Msk        (0x1ful << SYS_HIRCTCTL_BOUNDARY_Pos)             /*!< SYS_T::HIRCTCTL: BOUNDARY Mask         */
@@ -3550,13 +3532,13 @@ typedef struct
      * |        |          |0 = External interrupt from INT5 pins NMI source Disabled.
      * |        |          |1 = External interrupt from INT5 pins NMI source Enabled.
      * |        |          |Note: This bit is write protected. Refer to the SYS_REGLCTL register.
-     * |[14]    |UART0INT  |UART0 NMI Source Enable (Write Protect)
-     * |        |          |0 = UART0 NMI source Disabled.
-     * |        |          |1 = UART0 NMI source Enabled.
+     * |[14]    |UARTINT   |UART NMI Source Enable (Write Protect)
+     * |        |          |0 = UART0 and UART1 NMI source Disabled.
+     * |        |          |1 = UART0 and UART1 NMI source Enabled.
      * |        |          |Note: This bit is write protected. Refer to the SYS_REGLCTL register.
-     * |[15]    |UART1INT  |UART1 NMI Source Enable (Write Protect)
-     * |        |          |0 = UART1 NMI source Disabled.
-     * |        |          |1 = UART1 NMI source Enabled.
+     * |[15]    |FMCDED    |FMC Double Error Detection NMI Source Enable (Write Protect)
+     * |        |          |0 = FMCDED NMI source Disabled.
+     * |        |          |1 = FMCDED NMI source Enabled.
      * |        |          |Note: This bit is write protected. Refer to the SYS_REGLCTL register.
      * @var NMI_T::NMISTS
      * Offset: 0x04  NMI Source Interrupt Status Register
@@ -3599,12 +3581,12 @@ typedef struct
      * |[13]    |EINT5     |External Interrupt from INT5 Pins Interrupt Flag (Read Only)
      * |        |          |0 = External Interrupt from INT5 interrupt is deasserted.
      * |        |          |1 = External Interrupt from INT5 interrupt is asserted.
-     * |[14]    |UART0INT  |UART0 Interrupt Flag (Read Only)
-     * |        |          |0 = UART1 interrupt is deasserted.
-     * |        |          |1 = UART1 interrupt is asserted.
-     * |[15]    |UART1INT  |UART1 Interrupt Flag (Read Only)
-     * |        |          |0 = UART1 interrupt is deasserted.
-     * |        |          |1 = UART1 interrupt is asserted.
+     * |[14]    |UARTINT   |UART Interrupt Flag (Read Only)
+     * |        |          |0 = UART0 and UART1 interrupt is deasserted.
+     * |        |          |1 = UART0 and UART1 interrupt is asserted.
+     * |[15]    |FMCDED    |FMCDED Interrupt Flag (Read Only)
+     * |        |          |0 = FMCDED interrupt is deasserted.
+     * |        |          |1 = FMCDED interrupt is asserted.
      */
     __IO uint32_t NMIEN;                 /*!< [0x0000] NMI Source Interrupt Enable Register                             */
     __I  uint32_t NMISTS;                /*!< [0x0004] NMI Source Interrupt Status Register                             */

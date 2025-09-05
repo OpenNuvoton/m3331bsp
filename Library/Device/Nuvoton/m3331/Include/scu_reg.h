@@ -57,6 +57,11 @@ typedef struct
      * |        |          |0 = EBI is a secure module (default).
      * |        |          |1 = EBI is a non-secure module.
      * |        |          |Note: This bit is write-protected by SCU_SCWP.
+     * |[24]    |PDMA1     |Set PDMA1 to Non-secure State
+     * |        |          |Write 1 to set PDMA1 to non-secure state.
+     * |        |          |0 = PDMA1 is a secure module (default).
+     * |        |          |1 = PDMA1 is a non-secure module.
+     * |        |          |Note: This bit is write-protected by SCU_SCWP.
      * |[25]    |HSUSBD    |Set HSUSBD to Non-secure State
      * |        |          |Write 1 to set HSUSBD to non-secure state.
      * |        |          |0 = HSUSBD is a secure module (default).
@@ -80,7 +85,7 @@ typedef struct
      * |        |          |0 = CANFD0 is a secure module (default).
      * |        |          |1 = CANFD0 is a non-secure module.
      * |        |          |Note: This bit is write-protected by SCU_SCWP.
-     * |[1]     |CANFD1    |Set CANFD1 to Non-secure State
+     * |[4]     |CANFD1    |Set CANFD1 to Non-secure State
      * |        |          |Write 1 to set CANFD1 to non-secure state.
      * |        |          |0 = CANFD1 is a secure module (default).
      * |        |          |1 = CANFD1 is a non-secure module.
@@ -385,6 +390,9 @@ typedef struct
      * |[19]    |SPBIEN    |SPB Security Violation Interrupt Enable Bit
      * |        |          |0 = Interrupt triggered from security violation of SPB Disabled.
      * |        |          |1 = Interrupt triggered from security violation of SPB Enabled.
+     * |[20]    |PDMA1IEN  |PDMA1 Security Violation Interrupt Enable Bit
+     * |        |          |0 = Interrupt triggered from security violation of PDMA1 Disabled.
+     * |        |          |1 = Interrupt triggered from security violation of PDMA1 Enabled.
      * @var SCU_T::SVINTSTS
      * Offset: 0x34  Security Violation Interrupt Status Register
      * ---------------------------------------------------------------------------------------------------
@@ -470,6 +478,10 @@ typedef struct
      * |        |          |0 = No SPB violation interrupt event.
      * |        |          |1 = There is at least a SPB violation interrupt event.
      * |        |          |Note: Write 1 to clear the interrupt flag.
+     * |[20]    |PDMA1IF   |PDMA1 Security Violation Interrupt Status
+     * |        |          |0 = No PDMA1 violation interrupt event.
+     * |        |          |1 = There is at least a PDMA1 violation interrupt event.
+     * |        |          |Note: Write 1 to clear the interrupt flag.
      * @var SCU_T::FLASHVSRC
      * Offset: 0x40  Flash Security Policy Violation Source
      * ---------------------------------------------------------------------------------------------------
@@ -479,6 +491,7 @@ typedef struct
      * |        |          |Indicate which master invokes the security violation.
      * |        |          |0x0 = Core processor.
      * |        |          |0x2 = PDMA0.
+     * |        |          |0x3 = PDMA1.
      * |        |          |0x4 = Secure Digital Host Controller (SDH0).
      * |        |          |0x5 = High-speed USB Device Controller (HSUSBD).
      * |        |          |0x6 = High-speed USB Host Controller (HSUSBH).
@@ -500,6 +513,7 @@ typedef struct
      * |        |          |Indicate which master invokes the security violation.
      * |        |          |0x0 = Core processor.
      * |        |          |0x2 = PDMA0.
+     * |        |          |0x3 = PDMA1.
      * |        |          |0x4 = Secure Digital Host Controller (SDH0).
      * |        |          |0x5 = High-speed USB Device Controller (HSUSBD).
      * |        |          |0x6 = High-speed USB Host Controller (HSUSBH).
@@ -521,6 +535,7 @@ typedef struct
      * |        |          |Indicate which master invokes the security violation.
      * |        |          |0x0 = Core processor.
      * |        |          |0x2 = PDMA0.
+     * |        |          |0x3 = PDMA1.
      * |        |          |0x4 = Secure Digital Host Controller (SDH0).
      * |        |          |0x5 = High-speed USB Device Controller (HSUSBD).
      * |        |          |0x6 = High-speed USB Host Controller (HSUSBH).
@@ -542,6 +557,7 @@ typedef struct
      * |        |          |Indicate which master invokes the security violation.
      * |        |          |0x0 = Core processor.
      * |        |          |0x2 = PDMA0.
+     * |        |          |0x3 = PDMA1.
      * |        |          |0x4 = Secure Digital Host Controller (SDH0).
      * |        |          |0x5 = High-speed USB Device Controller (HSUSBD).
      * |        |          |0x6 = High-speed USB Host Controller (HSUSBH).
@@ -563,6 +579,7 @@ typedef struct
      * |        |          |Indicate which master invokes the security violation.
      * |        |          |0x0 = Core processor.
      * |        |          |0x2 = PDMA0.
+     * |        |          |0x3 = PDMA1.
      * |        |          |0x4 = Secure Digital Host Controller (SDH0).
      * |        |          |0x5 = High-speed USB Device Controller (HSUSBD).
      * |        |          |0x6 = High-speed USB Host Controller (HSUSBH).
@@ -584,6 +601,7 @@ typedef struct
      * |        |          |Indicate which master invokes the security violation.
      * |        |          |0x0 = Core processor.
      * |        |          |0x2 = PDMA0.
+     * |        |          |0x3 = PDMA1.
      * |        |          |0x4 = Secure Digital Host Controller (SDH0).
      * |        |          |0x5 = High-speed USB Device Controller (HSUSBD).
      * |        |          |0x6 = High-speed USB Host Controller (HSUSBH).
@@ -605,6 +623,7 @@ typedef struct
      * |        |          |Indicate which master invokes the security violation.
      * |        |          |0x0 = Core processor.
      * |        |          |0x2 = PDMA0.
+     * |        |          |0x3 = PDMA1.
      * |        |          |0x4 = Secure Digital Host Controller (SDH0).
      * |        |          |0x5 = High-speed USB Device Controller (HSUSBD).
      * |        |          |0x6 = High-speed USB Host Controller (HSUSBH).
@@ -626,6 +645,7 @@ typedef struct
      * |        |          |Indicate which master invokes the security violation.
      * |        |          |0x0 = Core processor.
      * |        |          |0x2 = PDMA0.
+     * |        |          |0x3 = PDMA1.
      * |        |          |0x4 = Secure Digital Host Controller (SDH0).
      * |        |          |0x5 = High-speed USB Device Controller (HSUSBD).
      * |        |          |0x6 = High-speed USB Host Controller (HSUSBH).
@@ -647,6 +667,7 @@ typedef struct
      * |        |          |Indicate which master invokes the security violation.
      * |        |          |0x0 = Core processor.
      * |        |          |0x2 = PDMA0.
+     * |        |          |0x3 = PDMA1.
      * |        |          |0x4 = Secure Digital Host Controller (SDH0).
      * |        |          |0x5 = High-speed USB Device Controller (HSUSBD).
      * |        |          |0x6 = High-speed USB Host Controller (HSUSBH).
@@ -668,6 +689,7 @@ typedef struct
      * |        |          |Indicate which master invokes the security violation.
      * |        |          |0x0 = Core processor.
      * |        |          |0x2 = PDMA0.
+     * |        |          |0x3 = PDMA1.
      * |        |          |0x4 = Secure Digital Host Controller (SDH0).
      * |        |          |0x5 = High-speed USB Device Controller (HSUSBD).
      * |        |          |0x6 = High-speed USB Host Controller (HSUSBH).
@@ -689,6 +711,7 @@ typedef struct
      * |        |          |Indicate which master invokes the security violation.
      * |        |          |0x0 = Core processor.
      * |        |          |0x2 = PDMA0.
+     * |        |          |0x3 = PDMA1.
      * |        |          |0x4 = Secure Digital Host Controller (SDH0).
      * |        |          |0x5 = High-speed USB Device Controller (HSUSBD).
      * |        |          |0x6 = High-speed USB Host Controller (HSUSBH).
@@ -710,6 +733,7 @@ typedef struct
      * |        |          |Indicate which master invokes the security violation.
      * |        |          |0x0 = Core processor.
      * |        |          |0x2 = PDMA0.
+     * |        |          |0x3 = PDMA1.
      * |        |          |0x4 = Secure Digital Host Controller (SDH0).
      * |        |          |0x5 = High-speed USB Device Controller (HSUSBD).
      * |        |          |0x6 = High-speed USB Host Controller (HSUSBH).
@@ -731,6 +755,7 @@ typedef struct
      * |        |          |Indicate which master invokes the security violation.
      * |        |          |0x0 = Core processor.
      * |        |          |0x2 = PDMA0.
+     * |        |          |0x3 = PDMA1.
      * |        |          |0x4 = Secure Digital Host Controller (SDH0).
      * |        |          |0x5 = High-speed USB Device Controller (HSUSBD).
      * |        |          |0x6 = High-speed USB Host Controller (HSUSBH).
@@ -752,6 +777,7 @@ typedef struct
      * |        |          |Indicate which master invokes the security violation.
      * |        |          |0x0 = Core processor.
      * |        |          |0x2 = PDMA0.
+     * |        |          |0x3 = PDMA1.
      * |        |          |0x4 = Secure Digital Host Controller (SDH0).
      * |        |          |0x5 = High-speed USB Device Controller (HSUSBD).
      * |        |          |0x6 = High-speed USB Host Controller (HSUSBH).
@@ -773,6 +799,7 @@ typedef struct
      * |        |          |Indicate which master invokes the security violation.
      * |        |          |0x0 = Core processor.
      * |        |          |0x2 = PDMA0.
+     * |        |          |0x3 = PDMA1.
      * |        |          |0x4 = Secure Digital Host Controller (SDH0).
      * |        |          |0x5 = High-speed USB Device Controller (HSUSBD).
      * |        |          |0x6 = High-speed USB Host Controller (HSUSBH).
@@ -794,6 +821,7 @@ typedef struct
      * |        |          |Indicate which master invokes the security violation.
      * |        |          |0x0 = Core processor
      * |        |          |0x2 = PDMA0
+     * |        |          |0x3 = PDMA1.
      * |        |          |0x4 = Secure Digital Host Controller (SDH0)
      * |        |          |0x5 = High-speed USB Device Controller (HSUSBD)
      * |        |          |0x6 = High-speed USB Host Controller (HSUSBH)
@@ -815,6 +843,7 @@ typedef struct
      * |        |          |Indicate which master invokes the security violation.
      * |        |          |0x0 = Core processor.
      * |        |          |0x2 = PDMA0.
+     * |        |          |0x3 = PDMA1.
      * |        |          |0x4 = Secure Digital Host Controller (SDH0).
      * |        |          |0x5 = High-speed USB Device Controller (HSUSBD).
      * |        |          |0x6 = High-speed USB Host Controller (HSUSBH).
@@ -836,6 +865,7 @@ typedef struct
      * |        |          |Indicate which master invokes the security violation.
      * |        |          |0x0 = Core processor.
      * |        |          |0x2 = PDMA0.
+     * |        |          |0x3 = PDMA1.
      * |        |          |0x4 = Secure Digital Host Controller (SDH0).
      * |        |          |0x5 = High-speed USB Device Controller (HSUSBD).
      * |        |          |0x6 = High-speed USB Host Controller (HSUSBH).
@@ -857,6 +887,7 @@ typedef struct
      * |        |          |Indicate which master invokes the security violation.
      * |        |          |0x0 = Core processor.
      * |        |          |0x2 = PDMA0.
+     * |        |          |0x3 = PDMA1.
      * |        |          |0x4 = Secure Digital Host Controller (SDH0).
      * |        |          |0x5 = High-speed USB Device Controller (HSUSBD).
      * |        |          |0x6 = High-speed USB Host Controller (HSUSBH).
@@ -878,6 +909,7 @@ typedef struct
      * |        |          |Indicate which master invokes the security violation.
      * |        |          |0x0 = Core processor.
      * |        |          |0x2 = PDMA0.
+     * |        |          |0x3 = PDMA1.
      * |        |          |0x4 = Secure Digital Host Controller (SDH0).
      * |        |          |0x5 = High-speed USB Device Controller (HSUSBD).
      * |        |          |0x6 = High-speed USB Host Controller (HSUSBH).
@@ -885,6 +917,28 @@ typedef struct
      * |        |          |Others = Others are undefined.
      * @var SCU_T::SPBVA
      * Offset: 0xDC  SPB Violation Address
+     * ---------------------------------------------------------------------------------------------------
+     * |Bits    |Field     |Descriptions
+     * | :----: | :----:   | :---- |
+     * |[31:0]  |VIOADDR   |Violation Address
+     * |        |          |Indicate the target address of the access, which invokes the security violation.
+     * @var SCU_T::PDMA1VSRC
+     * Offset: 0xE0  PDMA1 Security Policy Violation Source
+     * ---------------------------------------------------------------------------------------------------
+     * |Bits    |Field     |Descriptions
+     * | :----: | :----:   | :---- |
+     * |[3:0]   |MASTER    |Master Violating Security Policy
+     * |        |          |Indicate which master invokes the security violation.
+     * |        |          |0x0 = Core processor.
+     * |        |          |0x2 = PDMA0.
+     * |        |          |0x3 = PDMA1.
+     * |        |          |0x4 = Secure Digital Host Controller (SDH0).
+     * |        |          |0x5 = High-speed USB Device Controller (HSUSBD).
+     * |        |          |0x6 = High-speed USB Host Controller (HSUSBH).
+     * |        |          |0x7 = CRC.
+     * |        |          |Others = Others are undefined.
+     * @var SCU_T::PDMA1VA
+     * Offset: 0xE4  PDMA1 Violation Address
      * ---------------------------------------------------------------------------------------------------
      * |Bits    |Field     |Descriptions
      * | :----: | :----:   | :---- |
@@ -1089,7 +1143,7 @@ typedef struct
      * |        |          |1 = Core processor is in non-secure state.
      * |        |          |Note: This bit can be used to monitor the current secure/non-secure state of the core processor, even if the non-secure state monitor counter is disabled.
      * |[1]     |NSMIF     |Non-secure State Monitor Interrupt Flag
-     * |        |          |0 = Counter doesnu2019t count down to 0 since the last NSMIF has been cleared.
+     * |        |          |0 = Counter does not count down to 0 since the last NSMIF has been cleared.
      * |        |          |1 = Counter counts down to 0.
      * |        |          |Note: This bit is cleared by writing 1.
      */
@@ -1141,7 +1195,9 @@ typedef struct
     __I  uint32_t CACHEVA;               /*!< [0x00d4] CACHE Controller Violation Address                               */
     __I  uint32_t SPBVSRC;               /*!< [0x00d8] SPB Security Policy Violation Source                             */
     __I  uint32_t SPBVA;                 /*!< [0x00dc] SPB Violation Address                                            */
-    __I  uint32_t RESERVE3[4];
+    __I  uint32_t PDMA1VSRC;             /*!< [0x00E0] PDMA1 Security Policy Violation Source                           */
+    __I  uint32_t PDMA1VA;               /*!< [0x00E4] PDMA1 Violation Address                                          */
+    __I  uint32_t RESERVE3[2];
     __IO uint32_t SINFAEN;               /*!< [0x00f0] Shared Information Access Enable Register                        */
     __I  uint32_t RESERVE4[16];
     __IO uint32_t SCWP;                  /*!< [0x0134] Security Configuration Write Protection Register                 */
@@ -1170,6 +1226,9 @@ typedef struct
 
 #define SCU_PNSSET0_EBI_Pos              (16)                                              /*!< SCU_T::PNSSET0: EBI Position           */
 #define SCU_PNSSET0_EBI_Msk              (0x1ul << SCU_PNSSET0_EBI_Pos)                    /*!< SCU_T::PNSSET0: EBI Mask               */
+
+#define SCU_PNSSET0_PDMA1_Pos            (24)                                              /*!< SCU_T::PNSSET0: PDMA1 Position         */
+#define SCU_PNSSET0_PDMA1_Msk            (0x1ul << SCU_PNSSET0_PDMA1_Pos)                  /*!< SCU_T::PNSSET0: PDMA1 Mask             */
 
 #define SCU_PNSSET0_HSUSBD_Pos           (25)                                              /*!< SCU_T::PNSSET0: HSUSBD Position        */
 #define SCU_PNSSET0_HSUSBD_Msk           (0x1ul << SCU_PNSSET0_HSUSBD_Pos)                 /*!< SCU_T::PNSSET0: HSUSBD Mask            */
@@ -1369,6 +1428,9 @@ typedef struct
 #define SCU_SVIEN_SPBIEN_Pos             (19)                                              /*!< SCU_T::SVIEN: SPBIEN Position          */
 #define SCU_SVIEN_SPBIEN_Msk             (0x1ul << SCU_SVIEN_SPBIEN_Pos)                   /*!< SCU_T::SVIEN: SPBIEN Mask              */
 
+#define SCU_SVIEN_PDMA1IEN_Pos           (20)                                              /*!< SCU_T::SVIEN: PDMA1IEN Position        */
+#define SCU_SVIEN_PDMA1IEN_Msk           (0x1ul << SCU_SVIEN_PDMA1IEN_Pos)                 /*!< SCU_T::SVIEN: PDMA1IEN Mask            */
+
 #define SCU_SVINTSTS_FLASHIF_Pos         (0)                                               /*!< SCU_T::SVINTSTS: FLASHIF Position      */
 #define SCU_SVINTSTS_FLASHIF_Msk         (0x1ul << SCU_SVINTSTS_FLASHIF_Pos)               /*!< SCU_T::SVINTSTS: FLASHIF Mask          */
 
@@ -1428,6 +1490,9 @@ typedef struct
 
 #define SCU_SVINTSTS_SPBIF_Pos           (19)                                              /*!< SCU_T::SVINTSTS: SPBIF Position        */
 #define SCU_SVINTSTS_SPBIF_Msk           (0x1ul << SCU_SVINTSTS_SPBIF_Pos)                 /*!< SCU_T::SVINTSTS: SPBIF Mask            */
+
+#define SCU_SVINTSTS_PDMA1IF_Pos         (20)                                              /*!< SCU_T::SVINTSTS: PDMA1IF Position      */
+#define SCU_SVINTSTS_PDMA1IF_Msk         (0x1ul << SCU_SVINTSTS_PDMA1IF_Pos)               /*!< SCU_T::SVINTSTS: PDMA1IF Mask          */
 
 #define SCU_FLASHVSRC_MASTER_Pos         (0)                                               /*!< SCU_T::FLASHVSRC: MASTER Position      */
 #define SCU_FLASHVSRC_MASTER_Msk         (0xful << SCU_FLASHVSRC_MASTER_Pos)               /*!< SCU_T::FLASHVSRC: MASTER Mask          */
@@ -1548,6 +1613,12 @@ typedef struct
 
 #define SCU_SPBVA_VIOADDR_Pos            (0)                                               /*!< SCU_T::SPBVA: VIOADDR Position         */
 #define SCU_SPBVA_VIOADDR_Msk            (0xfffffffful << SCU_SPBVA_VIOADDR_Pos)           /*!< SCU_T::SPBVA: VIOADDR Mask             */
+
+#define SCU_PDMA1VSRC_MASTER_Pos         (0)                                               /*!< SCU_T::PDMA1VSRC: MASTER Position      */
+#define SCU_PDMA1VSRC_MASTER_Msk         (0xful << SCU_PDMA1VSRC_MASTER_Pos)               /*!< SCU_T::PDMA1VSRC: MASTER Mask          */
+
+#define SCU_PDMA1VA_VIOADDR_Pos          (0)                                               /*!< SCU_T::PDMA1VA: VIOADDR Position       */
+#define SCU_PDMA1VA_VIOADDR_Msk          (0xfffffffful << SCU_PDMA1VA_VIOADDR_Pos)         /*!< SCU_T::PDMA1VA: VIOADDR Mask           */
 
 #define SCU_SINFAEN_SCUSIAEN_Pos         (0)                                               /*!< SCU_T::SINFAEN: SCUSIAEN Position      */
 #define SCU_SINFAEN_SCUSIAEN_Msk         (0x1ul << SCU_SINFAEN_SCUSIAEN_Pos)               /*!< SCU_T::SINFAEN: SCUSIAEN Mask          */

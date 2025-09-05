@@ -107,8 +107,9 @@ typedef struct
      * |[31]    |HXTMD     |HXT Bypass Mode (Write Protect)
      * |        |          |0 = HXT work as crystal mode. PF.2 and PF.3 are configured as external high speed crystal (HXT) pins.
      * |        |          |1 = HXT works as external clock mode. PF.3 is configured as external clock input pin.
-     * |        |          |Note 1: This bit is write protected. Refer to the SYS_REGCTL register.
-     * |        |          |Note 2: When external clock mode enable, HXTSELTYP(CLK_PWRCTL[12]) must be set as GM type.
+     * |        |          |Note 1: When HXTMD = 1, PF.3 MFP should be setting as GPIO mode. The DC characteristic of XT1_IN is the same as GPIO.
+     * |        |          |Note 2: This bit is write protected. Refer to the SYS_REGCTL register.
+     * |        |          |Note 3: When external clock mode enable, HXTSELTYP(CLK_PWRCTL[12]) must be set as GM type.
      * @var CLK_T::AHBCLK0
      * Offset: 0x04  AHB Devices Clock Enable Control Register 0
      * ---------------------------------------------------------------------------------------------------
@@ -126,6 +127,9 @@ typedef struct
      * |[4]     |STCKEN    |System Tick Clock Enable Bit
      * |        |          |0 = System tick clock Disabled.
      * |        |          |1 = System tick clock Enabled.
+     * |[5]     |PDMA1CKEN |PDMA1 Controller Clock Enable Bit
+     * |        |          |0 = PDMA1 peripheral clock Disabled.
+     * |        |          |1 = PDMA1 peripheral clock Enabled.
      * |[6]     |SDH0CKEN  |SDH0 Controller Clock Enable Bit
      * |        |          |0 = SDH0 clock Disabled.
      * |        |          |1 = SDH0 clock Enabled.
@@ -188,9 +192,9 @@ typedef struct
      * ---------------------------------------------------------------------------------------------------
      * |Bits    |Field     |Descriptions
      * | :----: | :----:   | :---- |
-     * |[0]     |WDTCKEN   |Watchdog Timer Clock Enable Bit (Write Protect)
-     * |        |          |0 = Watchdog timer clock Disabled.
-     * |        |          |1 = Watchdog timer clock Enabled.
+     * |[0]     |WDT0CKEN  |Watchdog Timer Clock 0 Enable Bit (Write Protect)
+     * |        |          |0 = Watchdog timer 0 clock Disabled.
+     * |        |          |1 = Watchdog timer 0 clock Enabled.
      * |        |          |Note: This bit is write protected. Refer to the SYS_REGLCTL register.
      * |[1]     |RTCCKEN   |Real-time-clock APB Interface Clock Enable Bit
      * |        |          |This bit is used to control the RTC APB clock only.
@@ -272,6 +276,10 @@ typedef struct
      * |[30]    |HSOTGCKEN |HSUSB OTG Clock Enable Bit
      * |        |          |0 = HSUSB OTG clock Disabled.
      * |        |          |1 = HSUSB OTG clock Enabled.
+     * |[31]    |WDT1CKEN  |Watchdog Timer Clock 1 Enable Bit (Write Protect)
+     * |        |          |0 = Watchdog timer 1 clock Disabled.
+     * |        |          |1 = Watchdog timer 1 clock Enabled.
+     * |        |          |Note: This bit is write protected. Refer to the SYS_REGLCTL register.
      * @var CLK_T::APBCLK1
      * Offset: 0x0C  APB Devices Clock Enable Control Register 1
      * ---------------------------------------------------------------------------------------------------
@@ -609,7 +617,7 @@ typedef struct
      * |[9]     |LLSI9CKEN |LLSI9 Clock Enable Bit
      * |        |          |0 = LLSI9 clock Disabled.
      * |        |          |1 = LLSI9 clock Enabled.
-     * |[10]    |LLSI9CKEN |ELLSI0 Clock Enable Bit
+     * |[10]    |ELLSI0CKEN|ELLSI0 Clock Enable Bit
      * |        |          |0 = ELLSI0 clock Disabled.
      * |        |          |1 = ELLSI0 clock Enabled.
      * @var CLK_T::PLLCTL
@@ -788,9 +796,9 @@ typedef struct
      * | :----: | :----:   | :---- |
      * |[2:0]   |PDMSEL    |Power-down Mode Selection (Write Protect)
      * |        |          |These bits control chip power-down mode grade selection when CPU execute WFI/WFE instruction.
-     * |        |          |000 = Normal Power-down mode is selected (NPD).
-     * |        |          |001 = Low leakage Power-down mode is selected (LLPD).
-     * |        |          |010 = Fast wake-up Power-down mode is selected (FWPD).
+     * |        |          |000 = Normal Power-down mode 1 is selected (NPD1).
+     * |        |          |001 = Normal Power-down mode 2 is selected (NPD2).
+     * |        |          |010 = Normal Power-down mode 0 is selected (NPD0).
      * |        |          |011 = Reserved.
      * |        |          |100 = Standby Power-down mode is selected (SPD).
      * |        |          |101 = Reserved.
@@ -1354,35 +1362,35 @@ typedef struct
      * |        |          |Note: Software can clear this bit by writing 1 to it.
      * |[8]     |WKIOA0IF  |Wake-up I/O GPA group Pin 0 Interrupt Flag
      * |        |          |This flag indicates that Wake-upI/O interrupt happened.
-     * |        |          |Flag is set by hardware while Wake-up I/O event happen when WKIOPA0IE(CLK_PMUINTC[8])=1.
+     * |        |          |Flag is set by hardware while Wake-up I/O event happen when WKIOA0IE(CLK_PMUINTC[8])=1.
      * |        |          |Note: Software can clear this bit by writing 1 to it.
      * |[9]     |WKIOB0IF  |Wake-up I/O GPB group Pin 0 Interrupt Flag
      * |        |          |This flag indicates that Wake-up I/O interrupt happened.
-     * |        |          |Flag is set by hardware while Wake-up I/O event happen when WKIOPB0IE(CLK_PMUINTC[9])=1.
+     * |        |          |Flag is set by hardware while Wake-up I/O event happen when WKIOB0IE(CLK_PMUINTC[9])=1.
      * |        |          |Note: Software can clear this bit by writing 1 to it.
      * |[10]    |WKIOC0IF  |Wake-up I/O GPC group Pin 0 Interrupt Flag
      * |        |          |This flag indicates that Wake-up I/O interrupt happened.
-     * |        |          |Flag is set by hardware while Wake-up I/O event happen when WKIOPC0IE(CLK_PMUINTC[10])=1.
+     * |        |          |Flag is set by hardware while Wake-up I/O event happen when WKIOC0IE(CLK_PMUINTC[10])=1.
      * |        |          |Note: Software can clear this bit by writing 1 to it.
      * |[11]    |WKIOD0IF  |Wake-up I/O GPD group Pin 0 Interrupt Flag
      * |        |          |This flag indicates that Wake-up I/O interrupt happened.
-     * |        |          |Flag is set by hardware while Wake-up I/O event happen when WKIOPD0IE (CLK_PMUINTC[11])=1.
+     * |        |          |Flag is set by hardware while Wake-up I/O event happen when WKIOD0IE (CLK_PMUINTC[11])=1.
      * |        |          |Note: Software can clear this bit by writing 1 to it.
      * |[12]    |WKIOA1IF  |Wake-up I/O GPA group Pin 1 Interrupt Flag
      * |        |          |This flag indicates that Wake-up I/O interrupt happened.
-     * |        |          |Flag is set by hardware while Wake-up I/O event happen when WKIOPA1IE(CLK_PMUINTC[12])=1.
+     * |        |          |Flag is set by hardware while Wake-up I/O event happen when WKIOA1IE(CLK_PMUINTC[12])=1.
      * |        |          |Note: Software can clear this bit by writing 1 to it.
      * |[13]    |WKIOB1IF  |Wake-up I/O GPB group Pin 1 Interrupt Flag
      * |        |          |This flag indicates that Wake-up I/O interrupt happened.
-     * |        |          |Flag is set by hardware while Wake-up- /O event happen when WKIOPB1IE(CLK_PMUINTC[13])=1.
+     * |        |          |Flag is set by hardware while Wake-up- /O event happen when WKIOB1IE(CLK_PMUINTC[13])=1.
      * |        |          |Note: Software can clear this bit by writing 1 to it.
      * |[14]    |WKIOC1IF  |Wake-up I/O GPC group Pin 1 Interrupt Flag
      * |        |          |This flag indicates that Wake-up I/O interrupt happened.
-     * |        |          |Flag is set by hardware while Wake-up I/O event happen when WKIOPC1IE(CLK_PMUINTC[14])=1.
+     * |        |          |Flag is set by hardware while Wake-up I/O event happen when WKIOC1IE(CLK_PMUINTC[14])=1.
      * |        |          |Note: Software can clear this bit by writing 1 to it.
      * |[15]    |WKIOD1IF  |Wake-up I/O GPD group Pin 1 Interrupt Flag
      * |        |          |This flag indicates that Wake-up I/O interrupt happened.
-     * |        |          |Flag is set by hardware while Wake-up I/O event happen when WKIOPD1IE(CLK_PMUINTC[15])=1.
+     * |        |          |Flag is set by hardware while Wake-up I/O event happen when WKIOD1IE(CLK_PMUINTC[15])=1.
      * |        |          |Note: Software can clear this bit by writing 1 to it.
      */
     __IO uint32_t PWRCTL;                /*!< [0x0000] System Power-down Control Register                               */

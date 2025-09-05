@@ -39,6 +39,7 @@ typedef enum NSATTR
     PDMA0_Attr  =    8,
     SDH0_Attr   =   13,
     EBI_Attr    =   16,
+    PDMA1_Attr  =   24,
     HSUSBD_Attr =   25,
     HSUSBH_Attr =   26,
     SPB_Attr    =   27,
@@ -185,7 +186,8 @@ typedef enum NSATTR
  *              - \ref SCU_SVIEN_HSUSBDIEN_Msk
  *              - \ref SCU_SVIEN_SDH0IEN_Msk
  *              - \ref SCU_SVIEN_CACHEIEN_Msk
-  *             - \ref SCU_SVIEN_SPBIEN_Msk
+ *              - \ref SCU_SVIEN_SPBIEN_Msk
+ *              - \ref SCU_SVIEN_PDMA1IEN_Msk
  *
  * @return      None
  *
@@ -218,7 +220,8 @@ typedef enum NSATTR
  *              - \ref SCU_SVIEN_HSUSBDIEN_Msk
  *              - \ref SCU_SVIEN_SDH0IEN_Msk
  *              - \ref SCU_SVIEN_CACHEIEN_Msk
-  *             - \ref SCU_SVIEN_SPBIEN_Msk
+ *              - \ref SCU_SVIEN_SPBIEN_Msk
+ *              - \ref SCU_SVIEN_PDMA1IEN_Msk
  *
  * @return      None
  *
@@ -266,6 +269,7 @@ typedef enum NSATTR
   *             - \ref SCU_SVINTSTS_SDH0IF_Msk
   *             - \ref SCU_SVINTSTS_CACHEIF_Msk
   *             - \ref SCU_SVINTSTS_SPBIF_Msk
+  *             - \ref SCU_SVINTSTS_PDMA1IF_Msk
   *
   * @return     None
   *

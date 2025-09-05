@@ -89,7 +89,7 @@ int32_t main(void)
     u32VECMAP = FMC_GetVECMAP();
 
     /* Set Vector Table Offset Register */
-    if(u32VECMAP == 0x100000)
+    if(u32VECMAP == 0xF100000)
         SCB->VTOR = FMC_LDROM_BASE;
     else
         SCB->VTOR = u32VECMAP;

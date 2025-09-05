@@ -121,6 +121,7 @@ void SYS_ResetCPU(void)
   * @param[in]  u32ModuleIndex is module index. Including :
   *             - \ref PDMA0_RST
   *             - \ref EBI_RST
+  *             - \ref PDMA1_RST
   *             - \ref SDH0_RST
   *             - \ref CRC_RST
   *             - \ref CANFD0_RST

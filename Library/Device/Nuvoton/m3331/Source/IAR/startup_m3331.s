@@ -144,7 +144,7 @@ __vector_table_0x1c
         DCD     Default_Handler           ; 95:
         DCD     NS_RAMPE_IRQHandler       ; 96: Non-secure RAM parity error
         DCD     Default_Handler           ; 97:
-        DCD     Default_Handler           ; 98:
+        DCD     PDMA1_IRQHandler          ; 98: PDMA1
         DCD     Default_Handler           ; 99:
         DCD     Default_Handler           ; 100:
         DCD     Default_Handler           ; 101:
@@ -338,6 +338,7 @@ SysTick_Handler
         PUBWEAK  EHCI_IRQHandler
         PUBWEAK  USBOTG20_IRQHandler
         PUBWEAK  NS_RAMPE_IRQHandler
+        PUBWEAK  PDMA1_IRQHandler
         PUBWEAK  I3C0_IRQHandler
         PUBWEAK  CANFD00_IRQHandler
         PUBWEAK  CANFD01_IRQHandler
@@ -435,6 +436,7 @@ WWDT1_IRQHandler
 EHCI_IRQHandler
 USBOTG20_IRQHandler
 NS_RAMPE_IRQHandler
+PDMA1_IRQHandler
 I3C0_IRQHandler
 CANFD00_IRQHandler
 CANFD01_IRQHandler

@@ -165,7 +165,7 @@ __Vectors:
     .word     Default_Handler           // ; 95:
     .word     NS_RAMPE_IRQHandler       // ; 96: Non-secure RAM parity error
     .word     Default_Handler           // ; 97:
-    .word     Default_Handler           // ; 98:
+    .word     PDMA1_IRQHandler          // ; 98: PDMA1
     .word     Default_Handler           // ; 99:
     .word     Default_Handler           // ; 100:
     .word     Default_Handler           // ; 101:
@@ -351,6 +351,7 @@ SysTick_Handler:
     .weak  EHCI_IRQHandler, "function"
     .weak  USBOTG20_IRQHandler, "function"
     .weak  NS_RAMPE_IRQHandler, "function"
+    .weak  PDMA1_IRQHandler, "function"
     .weak  I3C0_IRQHandler, "function"
     .weak  CANFD00_IRQHandler, "function"
     .weak  CANFD01_IRQHandler, "function"
@@ -449,6 +450,7 @@ WWDT1_IRQHandler:
 EHCI_IRQHandler:
 USBOTG20_IRQHandler:
 NS_RAMPE_IRQHandler:
+PDMA1_IRQHandler:
 I3C0_IRQHandler:
 CANFD00_IRQHandler:
 CANFD01_IRQHandler:

@@ -218,6 +218,7 @@ void SCU_Setup(void)
     /* Set interrupt to non-secure according to PNNSET settings */
     if(SCU_INIT_PNSSET0_VAL & BIT8)  NVIC_ITNS_CONF(PDMA0_IRQn);    /* Int of PDMA0_INT    */
     if(SCU_INIT_PNSSET0_VAL & BIT13) NVIC_ITNS_CONF(SDH0_IRQn);     /* Int of SDH0_INT     */
+    if(SCU_INIT_PNSSET0_VAL & BIT24)  NVIC_ITNS_CONF(PDMA1_IRQn);   /* Int of PDMA1_INT    */
     if(SCU_INIT_PNSSET0_VAL & BIT25) NVIC_ITNS_CONF(USBD20_IRQn);   /* Int of HSUSBD_INT   */
     if(SCU_INIT_PNSSET0_VAL & BIT26)
     {
@@ -348,11 +349,11 @@ void SCU_IRQHandler(void)
     char const *master[] = {"CPU", 0, "PDMA0", 0, "SDH0", "HSUSBD", "HSUSBH", "CRC"};
     char const *ipname[] = {"FLASH", "SRAM0", "SRAM1", "SRAM2", "APB0", "APB1", "EBI", "SYS",
                             "FMC", "PDMA0", "CRC", "CANFD0", "CANFD1", "SCU", "GPIO", "HSUSBH",
-                            "HSUSBD", "SDH0", "CACHE", "SPB"
+                            "HSUSBD", "SDH0", "CACHE", "SPB", "PDMA1"
                            };
     const uint8_t info[] = {0x40, 0x48, 0x50, 0x58, 0x60, 0x68, 0x70, 0x78,
                             0x80, 0x88, 0x90, 0x98, 0xA0, 0xA8, 0xB0, 0xB8,
-                            0xC0, 0xC8, 0xD0, 0xD8
+                            0xC0, 0xC8, 0xD0, 0xD8, 0xE0
                            };
     uint32_t u32Reg, u32Addr;
     uint32_t i;

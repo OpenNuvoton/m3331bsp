@@ -164,7 +164,7 @@ __Vectors:
 	.long	0                     /* 95: Reserved                   */
 	.long	NS_RAMPE_IRQHandler   /* 96: NS RAMPE                   */
 	.long	0                     /* 97: Reserved                   */
-	.long	0                     /* 98: Reserved                   */
+	.long	PDMA1_IRQHandler      /* 98: PDMA1                      */
 	.long	0                     /* 99: Reserved                   */
 	.long	0                     /* 100: Reserved                  */
 	.long	0                     /* 101: Reserved                  */
@@ -476,6 +476,7 @@ Default_Handler:
 	def_irq_handler	EHCI_IRQHandler
 	def_irq_handler	USBOTG20_IRQHandler
 	def_irq_handler	NS_RAMPE_IRQHandler
+	def_irq_handler	PDMA1_IRQHandler
 	def_irq_handler	I3C0_IRQHandler
 	def_irq_handler	CANFD00_IRQHandler
 	def_irq_handler	CANFD01_IRQHandler

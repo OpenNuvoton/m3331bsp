@@ -33,6 +33,7 @@ extern "C"
 /*---------------------------------------------------------------------------------------------------------*/
 #define PDMA0_RST           ((0UL<<24) | SYS_IPRST0_PDMA0RST_Pos)       /*!< Reset PDMA0 \hideinitializer*/
 #define EBI_RST             ((0UL<<24) | SYS_IPRST0_EBIRST_Pos)         /*!< Reset EBI \hideinitializer*/
+#define PDMA1_RST           ((0UL<<24) | SYS_IPRST0_PDMA1RST_Pos)       /*!< Reset PDMA1 \hideinitializer*/
 #define SDH0_RST            ((0UL<<24) | SYS_IPRST0_SDH0RST_Pos)        /*!< Reset SDH0 \hideinitializer */
 #define CRC_RST             ((0UL<<24) | SYS_IPRST0_CRCRST_Pos)         /*!< Reset CRC \hideinitializer */
 #define CANFD0_RST          ((0UL<<24) | SYS_IPRST0_CANFD0RST_Pos)      /*!< Reset CANFD0 \hideinitializer */
