@@ -165,7 +165,7 @@ extern "C"
 #define SYS_GPA_MFP0_PA1MFP_GPIO             (0x00UL<<SYS_GPA_MFP0_PA1MFP_Pos)   /*!< GPA_MFP0 PA1  setting for GPIO            */
 #define SYS_GPA_MFP0_PA1MFP_QSPI0_MISO0      (0x03UL<<SYS_GPA_MFP0_PA1MFP_Pos)   /*!< GPA_MFP0 PA1  setting for QSPI0_MISO0     */
 #define SYS_GPA_MFP0_PA1MFP_SPI0_MISO        (0x04UL<<SYS_GPA_MFP0_PA1MFP_Pos)   /*!< GPA_MFP0 PA1  setting for SPI0_MISO       */
-#define SYS_GPA_MFP0_PA1MFP_SPB_G3_TX3       (0x05UL<<SYS_GPA_MFP0_PA1MFP_Pos)   /*!< GPA_MFP0 PA1  setting for SPB_G3_TX3      */
+#define SYS_GPA_MFP0_PA1MFP_PDCI_G3_TX3      (0x05UL<<SYS_GPA_MFP0_PA1MFP_Pos)   /*!< GPA_MFP0 PA1  setting for PDCI_G3_TX3     */
 #define SYS_GPA_MFP0_PA1MFP_UART0_TXD        (0x07UL<<SYS_GPA_MFP0_PA1MFP_Pos)   /*!< GPA_MFP0 PA1  setting for UART0_TXD       */
 #define SYS_GPA_MFP0_PA1MFP_UART1_nCTS       (0x08UL<<SYS_GPA_MFP0_PA1MFP_Pos)   /*!< GPA_MFP0 PA1  setting for UART1_nCTS      */
 #define SYS_GPA_MFP0_PA1MFP_I2C2_SCL         (0x09UL<<SYS_GPA_MFP0_PA1MFP_Pos)   /*!< GPA_MFP0 PA1  setting for I2C2_SCL        */
@@ -178,7 +178,7 @@ extern "C"
 #define SYS_GPA_MFP0_PA2MFP_GPIO             (0x00UL<<SYS_GPA_MFP0_PA2MFP_Pos)   /*!< GPA_MFP0 PA2  setting for GPIO            */
 #define SYS_GPA_MFP0_PA2MFP_QSPI0_CLK        (0x03UL<<SYS_GPA_MFP0_PA2MFP_Pos)   /*!< GPA_MFP0 PA2  setting for QSPI0_CLK       */
 #define SYS_GPA_MFP0_PA2MFP_SPI0_CLK         (0x04UL<<SYS_GPA_MFP0_PA2MFP_Pos)   /*!< GPA_MFP0 PA2  setting for SPI0_CLK        */
-#define SYS_GPA_MFP0_PA2MFP_SPB_G3_TX2       (0x05UL<<SYS_GPA_MFP0_PA2MFP_Pos)   /*!< GPA_MFP0 PA2  setting for SPB_G3_TX2      */
+#define SYS_GPA_MFP0_PA2MFP_PDCI_G3_TX2      (0x05UL<<SYS_GPA_MFP0_PA2MFP_Pos)   /*!< GPA_MFP0 PA2  setting for PDCI_G3_TX2     */
 #define SYS_GPA_MFP0_PA2MFP_UART4_RXD        (0x07UL<<SYS_GPA_MFP0_PA2MFP_Pos)   /*!< GPA_MFP0 PA2  setting for UART4_RXD       */
 #define SYS_GPA_MFP0_PA2MFP_UART1_RXD        (0x08UL<<SYS_GPA_MFP0_PA2MFP_Pos)   /*!< GPA_MFP0 PA2  setting for UART1_RXD       */
 #define SYS_GPA_MFP0_PA2MFP_I2C1_SDA         (0x09UL<<SYS_GPA_MFP0_PA2MFP_Pos)   /*!< GPA_MFP0 PA2  setting for I2C1_SDA        */
@@ -192,7 +192,7 @@ extern "C"
 #define SYS_GPA_MFP0_PA3MFP_GPIO             (0x00UL<<SYS_GPA_MFP0_PA3MFP_Pos)   /*!< GPA_MFP0 PA3  setting for GPIO            */
 #define SYS_GPA_MFP0_PA3MFP_QSPI0_SS         (0x03UL<<SYS_GPA_MFP0_PA3MFP_Pos)   /*!< GPA_MFP0 PA3  setting for QSPI0_SS        */
 #define SYS_GPA_MFP0_PA3MFP_SPI0_SS          (0x04UL<<SYS_GPA_MFP0_PA3MFP_Pos)   /*!< GPA_MFP0 PA3  setting for SPI0_SS         */
-#define SYS_GPA_MFP0_PA3MFP_SPB_G3_TX1       (0x05UL<<SYS_GPA_MFP0_PA3MFP_Pos)   /*!< GPA_MFP0 PA3  setting for SPB_G3_TX1      */
+#define SYS_GPA_MFP0_PA3MFP_PDCI_G3_TX1      (0x05UL<<SYS_GPA_MFP0_PA3MFP_Pos)   /*!< GPA_MFP0 PA3  setting for PDCI_G3_TX1     */
 #define SYS_GPA_MFP0_PA3MFP_UART4_TXD        (0x07UL<<SYS_GPA_MFP0_PA3MFP_Pos)   /*!< GPA_MFP0 PA3  setting for UART4_TXD       */
 #define SYS_GPA_MFP0_PA3MFP_UART1_TXD        (0x08UL<<SYS_GPA_MFP0_PA3MFP_Pos)   /*!< GPA_MFP0 PA3  setting for UART1_TXD       */
 #define SYS_GPA_MFP0_PA3MFP_I2C1_SCL         (0x09UL<<SYS_GPA_MFP0_PA3MFP_Pos)   /*!< GPA_MFP0 PA3  setting for I2C1_SCL        */
@@ -208,7 +208,7 @@ extern "C"
 #define SYS_GPA_MFP1_PA4MFP_SPI1_MOSI        (0x02UL<<SYS_GPA_MFP1_PA4MFP_Pos)   /*!< GPA_MFP1 PA4  setting for SPI1_MOSI       */
 #define SYS_GPA_MFP1_PA4MFP_QSPI0_MOSI1      (0x03UL<<SYS_GPA_MFP1_PA4MFP_Pos)   /*!< GPA_MFP1 PA4  setting for QSPI0_MOSI1     */
 #define SYS_GPA_MFP1_PA4MFP_SPI0_I2SMCLK     (0x04UL<<SYS_GPA_MFP1_PA4MFP_Pos)   /*!< GPA_MFP1 PA4  setting for SPI0_I2SMCLK    */
-#define SYS_GPA_MFP1_PA4MFP_SPB_G3_TX0       (0x05UL<<SYS_GPA_MFP1_PA4MFP_Pos)   /*!< GPA_MFP1 PA4  setting for SPB_G3_TX0      */
+#define SYS_GPA_MFP1_PA4MFP_PDCI_G3_TX0      (0x05UL<<SYS_GPA_MFP1_PA4MFP_Pos)   /*!< GPA_MFP1 PA4  setting for PDCI_G3_TX0     */
 #define SYS_GPA_MFP1_PA4MFP_UART0_nRTS       (0x07UL<<SYS_GPA_MFP1_PA4MFP_Pos)   /*!< GPA_MFP1 PA4  setting for UART0_nRTS      */
 #define SYS_GPA_MFP1_PA4MFP_EBI_AD1          (0x08UL<<SYS_GPA_MFP1_PA4MFP_Pos)   /*!< GPA_MFP1 PA4  setting for EBI_AD1         */
 #define SYS_GPA_MFP1_PA4MFP_I2C0_SDA         (0x09UL<<SYS_GPA_MFP1_PA4MFP_Pos)   /*!< GPA_MFP1 PA4  setting for I2C0_SDA        */
@@ -224,7 +224,7 @@ extern "C"
 #define SYS_GPA_MFP1_PA5MFP_SPI1_MISO        (0x02UL<<SYS_GPA_MFP1_PA5MFP_Pos)   /*!< GPA_MFP1 PA5  setting for SPI1_MISO       */
 #define SYS_GPA_MFP1_PA5MFP_QSPI0_MISO1      (0x03UL<<SYS_GPA_MFP1_PA5MFP_Pos)   /*!< GPA_MFP1 PA5  setting for QSPI0_MISO1     */
 #define SYS_GPA_MFP1_PA5MFP_SPI1_I2SMCLK     (0x04UL<<SYS_GPA_MFP1_PA5MFP_Pos)   /*!< GPA_MFP1 PA5  setting for SPI1_I2SMCLK    */
-#define SYS_GPA_MFP1_PA5MFP_SPB_G3_CLK       (0x05UL<<SYS_GPA_MFP1_PA5MFP_Pos)   /*!< GPA_MFP1 PA5  setting for SPB_G3_CLK      */
+#define SYS_GPA_MFP1_PA5MFP_PDCI_G3_CLK      (0x05UL<<SYS_GPA_MFP1_PA5MFP_Pos)   /*!< GPA_MFP1 PA5  setting for PDCI_G3_CLK     */
 #define SYS_GPA_MFP1_PA5MFP_CANFD0_TXH       (0x06UL<<SYS_GPA_MFP1_PA5MFP_Pos)   /*!< GPA_MFP1 PA5  setting for CANFD0_TXH      */
 #define SYS_GPA_MFP1_PA5MFP_UART0_nCTS       (0x07UL<<SYS_GPA_MFP1_PA5MFP_Pos)   /*!< GPA_MFP1 PA5  setting for UART0_nCTS      */
 #define SYS_GPA_MFP1_PA5MFP_EBI_AD0          (0x08UL<<SYS_GPA_MFP1_PA5MFP_Pos)   /*!< GPA_MFP1 PA5  setting for EBI_AD0         */
@@ -235,7 +235,7 @@ extern "C"
 #define SYS_GPA_MFP1_PA5MFP_EPWM0_CH0        (0x0dUL<<SYS_GPA_MFP1_PA5MFP_Pos)   /*!< GPA_MFP1 PA5  setting for EPWM0_CH0       */
 #define SYS_GPA_MFP1_PA5MFP_EQEI0_INDEX      (0x0eUL<<SYS_GPA_MFP1_PA5MFP_Pos)   /*!< GPA_MFP1 PA5  setting for EQEI0_INDEX     */
 #define SYS_GPA_MFP1_PA5MFP_I3C0_SCL         (0x0fUL<<SYS_GPA_MFP1_PA5MFP_Pos)   /*!< GPA_MFP1 PA5  setting for I3C0_SCL        */
-#define SYS_GPA_MFP1_PA5MFP_SPB_G3_RX1       (0x10UL<<SYS_GPA_MFP1_PA5MFP_Pos)   /*!< GPA_MFP1 PA5  setting for SPB_G3_RX1      */
+#define SYS_GPA_MFP1_PA5MFP_PDCI_G3_RX1      (0x10UL<<SYS_GPA_MFP1_PA5MFP_Pos)   /*!< GPA_MFP1 PA5  setting for PDCI_G3_RX1     */
 
 /* PA.6 MFP */
 #define SYS_GPA_MFP1_PA6MFP_GPIO             (0x00UL<<SYS_GPA_MFP1_PA6MFP_Pos)   /*!< GPA_MFP1 PA6  setting for GPIO            */
@@ -244,7 +244,7 @@ extern "C"
 #define SYS_GPA_MFP1_PA6MFP_CANFD0_TXL       (0x06UL<<SYS_GPA_MFP1_PA6MFP_Pos)   /*!< GPA_MFP1 PA6  setting for CANFD0_TXL      */
 #define SYS_GPA_MFP1_PA6MFP_UART0_RXD        (0x07UL<<SYS_GPA_MFP1_PA6MFP_Pos)   /*!< GPA_MFP1 PA6  setting for UART0_RXD       */
 #define SYS_GPA_MFP1_PA6MFP_I2C1_SDA         (0x08UL<<SYS_GPA_MFP1_PA6MFP_Pos)   /*!< GPA_MFP1 PA6  setting for I2C1_SDA        */
-#define SYS_GPA_MFP1_PA6MFP_SPB_G2_TX3       (0x0aUL<<SYS_GPA_MFP1_PA6MFP_Pos)   /*!< GPA_MFP1 PA6  setting for SPB_G2_TX3      */
+#define SYS_GPA_MFP1_PA6MFP_PDCI_G2_TX3      (0x0aUL<<SYS_GPA_MFP1_PA6MFP_Pos)   /*!< GPA_MFP1 PA6  setting for PDCI_G2_TX3     */
 #define SYS_GPA_MFP1_PA6MFP_EPWM1_CH5        (0x0bUL<<SYS_GPA_MFP1_PA6MFP_Pos)   /*!< GPA_MFP1 PA6  setting for EPWM1_CH5       */
 #define SYS_GPA_MFP1_PA6MFP_BPWM1_CH3        (0x0cUL<<SYS_GPA_MFP1_PA6MFP_Pos)   /*!< GPA_MFP1 PA6  setting for BPWM1_CH3       */
 #define SYS_GPA_MFP1_PA6MFP_ACMP1_WLAT       (0x0dUL<<SYS_GPA_MFP1_PA6MFP_Pos)   /*!< GPA_MFP1 PA6  setting for ACMP1_WLAT      */
@@ -257,7 +257,7 @@ extern "C"
 #define SYS_GPA_MFP1_PA7MFP_SPI1_CLK         (0x04UL<<SYS_GPA_MFP1_PA7MFP_Pos)   /*!< GPA_MFP1 PA7  setting for SPI1_CLK        */
 #define SYS_GPA_MFP1_PA7MFP_UART0_TXD        (0x07UL<<SYS_GPA_MFP1_PA7MFP_Pos)   /*!< GPA_MFP1 PA7  setting for UART0_TXD       */
 #define SYS_GPA_MFP1_PA7MFP_I2C1_SCL         (0x08UL<<SYS_GPA_MFP1_PA7MFP_Pos)   /*!< GPA_MFP1 PA7  setting for I2C1_SCL        */
-#define SYS_GPA_MFP1_PA7MFP_SPB_G2_TX2       (0x0aUL<<SYS_GPA_MFP1_PA7MFP_Pos)   /*!< GPA_MFP1 PA7  setting for SPB_G2_TX2      */
+#define SYS_GPA_MFP1_PA7MFP_PDCI_G2_TX2      (0x0aUL<<SYS_GPA_MFP1_PA7MFP_Pos)   /*!< GPA_MFP1 PA7  setting for PDCI_G2_TX2     */
 #define SYS_GPA_MFP1_PA7MFP_EPWM1_CH4        (0x0bUL<<SYS_GPA_MFP1_PA7MFP_Pos)   /*!< GPA_MFP1 PA7  setting for EPWM1_CH4       */
 #define SYS_GPA_MFP1_PA7MFP_BPWM1_CH2        (0x0cUL<<SYS_GPA_MFP1_PA7MFP_Pos)   /*!< GPA_MFP1 PA7  setting for BPWM1_CH2       */
 #define SYS_GPA_MFP1_PA7MFP_ACMP0_WLAT       (0x0dUL<<SYS_GPA_MFP1_PA7MFP_Pos)   /*!< GPA_MFP1 PA7  setting for ACMP0_WLAT      */
@@ -276,9 +276,9 @@ extern "C"
 #define SYS_GPA_MFP2_PA8MFP_ECAP0_IC2        (0x0bUL<<SYS_GPA_MFP2_PA8MFP_Pos)   /*!< GPA_MFP2 PA8  setting for ECAP0_IC2       */
 #define SYS_GPA_MFP2_PA8MFP_BPWM3_CH3        (0x0cUL<<SYS_GPA_MFP2_PA8MFP_Pos)   /*!< GPA_MFP2 PA8  setting for BPWM3_CH3       */
 #define SYS_GPA_MFP2_PA8MFP_TM3_EXT          (0x0dUL<<SYS_GPA_MFP2_PA8MFP_Pos)   /*!< GPA_MFP2 PA8  setting for TM3_EXT         */
-#define SYS_GPA_MFP2_PA8MFP_SPB_G1_RX1       (0x0eUL<<SYS_GPA_MFP2_PA8MFP_Pos)   /*!< GPA_MFP2 PA8  setting for SPB_G1_RX1      */
+#define SYS_GPA_MFP2_PA8MFP_PDCI_G1_RX1      (0x0eUL<<SYS_GPA_MFP2_PA8MFP_Pos)   /*!< GPA_MFP2 PA8  setting for PDCI_G1_RX1     */
 #define SYS_GPA_MFP2_PA8MFP_INT4             (0x0fUL<<SYS_GPA_MFP2_PA8MFP_Pos)   /*!< GPA_MFP2 PA8  setting for INT4            */
-#define SYS_GPA_MFP2_PA8MFP_SPB_G1_CLK       (0x10UL<<SYS_GPA_MFP2_PA8MFP_Pos)   /*!< GPA_MFP2 PA8  setting for SPB_G1_CLK      */
+#define SYS_GPA_MFP2_PA8MFP_PDCI_G1_CLK      (0x10UL<<SYS_GPA_MFP2_PA8MFP_Pos)   /*!< GPA_MFP2 PA8  setting for PDCI_G1_CLK     */
 
 /* PA.9 MFP */
 #define SYS_GPA_MFP2_PA9MFP_GPIO             (0x00UL<<SYS_GPA_MFP2_PA9MFP_Pos)   /*!< GPA_MFP2 PA9  setting for GPIO            */
@@ -290,7 +290,7 @@ extern "C"
 #define SYS_GPA_MFP2_PA9MFP_ECAP0_IC1        (0x0bUL<<SYS_GPA_MFP2_PA9MFP_Pos)   /*!< GPA_MFP2 PA9  setting for ECAP0_IC1       */
 #define SYS_GPA_MFP2_PA9MFP_BPWM3_CH2        (0x0cUL<<SYS_GPA_MFP2_PA9MFP_Pos)   /*!< GPA_MFP2 PA9  setting for BPWM3_CH2       */
 #define SYS_GPA_MFP2_PA9MFP_TM2_EXT          (0x0dUL<<SYS_GPA_MFP2_PA9MFP_Pos)   /*!< GPA_MFP2 PA9  setting for TM2_EXT         */
-#define SYS_GPA_MFP2_PA9MFP_SPB_G1_TX3       (0x10UL<<SYS_GPA_MFP2_PA9MFP_Pos)   /*!< GPA_MFP2 PA9  setting for SPB_G1_TX3      */
+#define SYS_GPA_MFP2_PA9MFP_PDCI_G1_TX3      (0x10UL<<SYS_GPA_MFP2_PA9MFP_Pos)   /*!< GPA_MFP2 PA9  setting for PDCI_G1_TX3     */
 
 /* PA.10 MFP */
 #define SYS_GPA_MFP2_PA10MFP_GPIO            (0x00UL<<SYS_GPA_MFP2_PA10MFP_Pos)  /*!< GPA_MFP2 PA10 setting for GPIO            */
@@ -303,7 +303,7 @@ extern "C"
 #define SYS_GPA_MFP2_PA10MFP_ECAP0_IC0       (0x0bUL<<SYS_GPA_MFP2_PA10MFP_Pos)  /*!< GPA_MFP2 PA10 setting for ECAP0_IC0       */
 #define SYS_GPA_MFP2_PA10MFP_BPWM3_CH1       (0x0cUL<<SYS_GPA_MFP2_PA10MFP_Pos)  /*!< GPA_MFP2 PA10 setting for BPWM3_CH1       */
 #define SYS_GPA_MFP2_PA10MFP_TM1_EXT         (0x0dUL<<SYS_GPA_MFP2_PA10MFP_Pos)  /*!< GPA_MFP2 PA10 setting for TM1_EXT         */
-#define SYS_GPA_MFP2_PA10MFP_SPB_G1_TX2      (0x10UL<<SYS_GPA_MFP2_PA10MFP_Pos)  /*!< GPA_MFP2 PA10 setting for SPB_G1_TX2      */
+#define SYS_GPA_MFP2_PA10MFP_PDCI_G1_TX2     (0x10UL<<SYS_GPA_MFP2_PA10MFP_Pos)  /*!< GPA_MFP2 PA10 setting for PDCI_G1_TX2     */
 
 /* PA.11 MFP */
 #define SYS_GPA_MFP2_PA11MFP_GPIO            (0x00UL<<SYS_GPA_MFP2_PA11MFP_Pos)  /*!< GPA_MFP2 PA11 setting for GPIO            */
@@ -317,7 +317,7 @@ extern "C"
 #define SYS_GPA_MFP2_PA11MFP_EPWM0_BRAKE1    (0x0bUL<<SYS_GPA_MFP2_PA11MFP_Pos)  /*!< GPA_MFP2 PA11 setting for EPWM0_BRAKE1    */
 #define SYS_GPA_MFP2_PA11MFP_BPWM3_CH0       (0x0cUL<<SYS_GPA_MFP2_PA11MFP_Pos)  /*!< GPA_MFP2 PA11 setting for BPWM3_CH0       */
 #define SYS_GPA_MFP2_PA11MFP_TM0_EXT         (0x0dUL<<SYS_GPA_MFP2_PA11MFP_Pos)  /*!< GPA_MFP2 PA11 setting for TM0_EXT         */
-#define SYS_GPA_MFP2_PA11MFP_SPB_G1_TX1      (0x10UL<<SYS_GPA_MFP2_PA11MFP_Pos)  /*!< GPA_MFP2 PA11 setting for SPB_G1_TX1      */
+#define SYS_GPA_MFP2_PA11MFP_PDCI_G1_TX1     (0x10UL<<SYS_GPA_MFP2_PA11MFP_Pos)  /*!< GPA_MFP2 PA11 setting for PDCI_G1_TX1     */
 
 /* PA.12 MFP */
 #define SYS_GPA_MFP3_PA12MFP_GPIO            (0x00UL<<SYS_GPA_MFP3_PA12MFP_Pos)  /*!< GPA_MFP3 PA12 setting for GPIO            */
@@ -329,7 +329,7 @@ extern "C"
 #define SYS_GPA_MFP3_PA12MFP_CANFD0_TXH      (0x07UL<<SYS_GPA_MFP3_PA12MFP_Pos)  /*!< GPA_MFP3 PA12 setting for CANFD0_TXH      */
 #define SYS_GPA_MFP3_PA12MFP_BPWM1_CH2       (0x0bUL<<SYS_GPA_MFP3_PA12MFP_Pos)  /*!< GPA_MFP3 PA12 setting for BPWM1_CH2       */
 #define SYS_GPA_MFP3_PA12MFP_BPWM2_CH3       (0x0dUL<<SYS_GPA_MFP3_PA12MFP_Pos)  /*!< GPA_MFP3 PA12 setting for BPWM2_CH3       */
-#define SYS_GPA_MFP3_PA12MFP_SPB_G5_TX0      (0x10UL<<SYS_GPA_MFP3_PA12MFP_Pos)  /*!< GPA_MFP3 PA12 setting for SPB_G5_TX0      */
+#define SYS_GPA_MFP3_PA12MFP_PDCI_G5_TX0     (0x10UL<<SYS_GPA_MFP3_PA12MFP_Pos)  /*!< GPA_MFP3 PA12 setting for PDCI_G5_TX0     */
 
 /* PA.13 MFP */
 #define SYS_GPA_MFP3_PA13MFP_GPIO            (0x00UL<<SYS_GPA_MFP3_PA13MFP_Pos)  /*!< GPA_MFP3 PA13 setting for GPIO            */
@@ -340,7 +340,7 @@ extern "C"
 #define SYS_GPA_MFP3_PA13MFP_CANFD0_RXD      (0x06UL<<SYS_GPA_MFP3_PA13MFP_Pos)  /*!< GPA_MFP3 PA13 setting for CANFD0_RXD      */
 #define SYS_GPA_MFP3_PA13MFP_BPWM1_CH3       (0x0bUL<<SYS_GPA_MFP3_PA13MFP_Pos)  /*!< GPA_MFP3 PA13 setting for BPWM1_CH3       */
 #define SYS_GPA_MFP3_PA13MFP_BPWM2_CH4       (0x0dUL<<SYS_GPA_MFP3_PA13MFP_Pos)  /*!< GPA_MFP3 PA13 setting for BPWM2_CH4       */
-#define SYS_GPA_MFP3_PA13MFP_SPB_G5_TX1      (0x10UL<<SYS_GPA_MFP3_PA13MFP_Pos)  /*!< GPA_MFP3 PA13 setting for SPB_G5_TX1      */
+#define SYS_GPA_MFP3_PA13MFP_PDCI_G5_TX1     (0x10UL<<SYS_GPA_MFP3_PA13MFP_Pos)  /*!< GPA_MFP3 PA13 setting for PDCI_G5_TX1     */
 
 /* PA.14 MFP */
 #define SYS_GPA_MFP3_PA14MFP_GPIO            (0x00UL<<SYS_GPA_MFP3_PA14MFP_Pos)  /*!< GPA_MFP3 PA14 setting for GPIO            */
@@ -351,7 +351,7 @@ extern "C"
 #define SYS_GPA_MFP3_PA14MFP_I2C2_SCL        (0x06UL<<SYS_GPA_MFP3_PA14MFP_Pos)  /*!< GPA_MFP3 PA14 setting for I2C2_SCL        */
 #define SYS_GPA_MFP3_PA14MFP_BPWM1_CH4       (0x0bUL<<SYS_GPA_MFP3_PA14MFP_Pos)  /*!< GPA_MFP3 PA14 setting for BPWM1_CH4       */
 #define SYS_GPA_MFP3_PA14MFP_BPWM2_CH5       (0x0dUL<<SYS_GPA_MFP3_PA14MFP_Pos)  /*!< GPA_MFP3 PA14 setting for BPWM2_CH5       */
-#define SYS_GPA_MFP3_PA14MFP_SPB_G5_TX2      (0x10UL<<SYS_GPA_MFP3_PA14MFP_Pos)  /*!< GPA_MFP3 PA14 setting for SPB_G5_TX2      */
+#define SYS_GPA_MFP3_PA14MFP_PDCI_G5_TX2     (0x10UL<<SYS_GPA_MFP3_PA14MFP_Pos)  /*!< GPA_MFP3 PA14 setting for PDCI_G5_TX2     */
 
 /* PA.15 MFP */
 #define SYS_GPA_MFP3_PA15MFP_GPIO            (0x00UL<<SYS_GPA_MFP3_PA15MFP_Pos)  /*!< GPA_MFP3 PA15 setting for GPIO            */
@@ -361,7 +361,7 @@ extern "C"
 #define SYS_GPA_MFP3_PA15MFP_I2C2_SDA        (0x06UL<<SYS_GPA_MFP3_PA15MFP_Pos)  /*!< GPA_MFP3 PA15 setting for I2C2_SDA        */
 #define SYS_GPA_MFP3_PA15MFP_BPWM1_CH5       (0x0bUL<<SYS_GPA_MFP3_PA15MFP_Pos)  /*!< GPA_MFP3 PA15 setting for BPWM1_CH5       */
 #define SYS_GPA_MFP3_PA15MFP_EPWM0_SYNC_IN   (0x0cUL<<SYS_GPA_MFP3_PA15MFP_Pos)  /*!< GPA_MFP3 PA15 setting for EPWM0_SYNC_IN   */
-#define SYS_GPA_MFP3_PA15MFP_SPB_G5_TX3      (0x10UL<<SYS_GPA_MFP3_PA15MFP_Pos)  /*!< GPA_MFP3 PA15 setting for SPB_G5_TX3      */
+#define SYS_GPA_MFP3_PA15MFP_PDCI_G5_TX3     (0x10UL<<SYS_GPA_MFP3_PA15MFP_Pos)  /*!< GPA_MFP3 PA15 setting for PDCI_G5_TX3     */
 
 /* PB.0 MFP */
 #define SYS_GPB_MFP0_PB0MFP_GPIO             (0x00UL<<SYS_GPB_MFP0_PB0MFP_Pos)   /*!< GPB_MFP0 PB0  setting for GPIO            */
@@ -378,16 +378,16 @@ extern "C"
 #define SYS_GPB_MFP0_PB0MFP_EPWM0_BRAKE1     (0x0dUL<<SYS_GPB_MFP0_PB0MFP_Pos)   /*!< GPA_MFP0 PB0  setting for EPWM0_BRAKE1    */
 #define SYS_GPB_MFP0_PB0MFP_I3C0_SDA         (0x0eUL<<SYS_GPB_MFP0_PB0MFP_Pos)   /*!< GPA_MFP0 PB0  setting for I3C0_SDA        */
 #define SYS_GPB_MFP0_PB0MFP_QSPI0_MOSI1      (0x0fUL<<SYS_GPB_MFP0_PB0MFP_Pos)   /*!< GPA_MFP0 PB0  setting for QSPI0_MOSI1     */
-#define SYS_GPB_MFP0_PB0MFP_SPB_G1_TX0       (0x10UL<<SYS_GPB_MFP0_PB0MFP_Pos)   /*!< GPA_MFP0 PB0  setting for SPB_G1_TX0      */
+#define SYS_GPB_MFP0_PB0MFP_PDCI_G1_TX0      (0x10UL<<SYS_GPB_MFP0_PB0MFP_Pos)   /*!< GPA_MFP0 PB0  setting for PDCI_G1_TX0     */
 
 /* PB.1 MFP */
 #define SYS_GPB_MFP0_PB1MFP_GPIO             (0x00UL<<SYS_GPB_MFP0_PB1MFP_Pos)   /*!< GPB_MFP0 PB1  setting for GPIO            */
 #define SYS_GPB_MFP0_PB1MFP_EADC0_CH1        (0x01UL<<SYS_GPB_MFP0_PB1MFP_Pos)   /*!< GPA_MFP0 PB1  setting for EADC0_CH1       */
 #define SYS_GPB_MFP0_PB1MFP_EBI_ADR8         (0x02UL<<SYS_GPB_MFP0_PB1MFP_Pos)   /*!< GPA_MFP0 PB1  setting for EBI_ADR8        */
 #define SYS_GPB_MFP0_PB1MFP_SD0_CLK          (0x03UL<<SYS_GPB_MFP0_PB1MFP_Pos)   /*!< GPA_MFP0 PB1  setting for SD0_CLK         */
-#define SYS_GPB_MFP0_PB1MFP_SPB_G0_RX1       (0x04UL<<SYS_GPB_MFP0_PB1MFP_Pos)   /*!< GPA_MFP0 PB1  setting for SPB_G0_RX1      */
+#define SYS_GPB_MFP0_PB1MFP_PDCI_G0_RX1      (0x04UL<<SYS_GPB_MFP0_PB1MFP_Pos)   /*!< GPA_MFP0 PB1  setting for PDCI_G0_RX1     */
 #define SYS_GPB_MFP0_PB1MFP_SPI1_I2SMCLK     (0x05UL<<SYS_GPB_MFP0_PB1MFP_Pos)   /*!< GPA_MFP0 PB1  setting for SPI1_I2SMCLK    */
-#define SYS_GPB_MFP0_PB1MFP_SPB_G0_CLK       (0x06UL<<SYS_GPB_MFP0_PB1MFP_Pos)   /*!< GPA_MFP0 PB1  setting for SPB_G0_CLK      */
+#define SYS_GPB_MFP0_PB1MFP_PDCI_G0_CLK      (0x06UL<<SYS_GPB_MFP0_PB1MFP_Pos)   /*!< GPA_MFP0 PB1  setting for PDCI_G0_CLK     */
 #define SYS_GPB_MFP0_PB1MFP_UART2_TXD        (0x07UL<<SYS_GPB_MFP0_PB1MFP_Pos)   /*!< GPA_MFP0 PB1  setting for UART2_TXD       */
 #define SYS_GPB_MFP0_PB1MFP_USCI1_CLK        (0x08UL<<SYS_GPB_MFP0_PB1MFP_Pos)   /*!< GPA_MFP0 PB1  setting for USCI1_CLK       */
 #define SYS_GPB_MFP0_PB1MFP_I2C1_SCL         (0x09UL<<SYS_GPB_MFP0_PB1MFP_Pos)   /*!< GPA_MFP0 PB1  setting for I2C1_SCL        */
@@ -411,7 +411,7 @@ extern "C"
 #define SYS_GPB_MFP0_PB2MFP_I2S0_DO          (0x0aUL<<SYS_GPB_MFP0_PB2MFP_Pos)   /*!< GPA_MFP0 PB2  setting for I2S0_DO         */
 #define SYS_GPB_MFP0_PB2MFP_EPWM0_CH3        (0x0bUL<<SYS_GPB_MFP0_PB2MFP_Pos)   /*!< GPA_MFP0 PB2  setting for EPWM0_CH3       */
 #define SYS_GPB_MFP0_PB2MFP_I2C1_SDA         (0x0cUL<<SYS_GPB_MFP0_PB2MFP_Pos)   /*!< GPA_MFP0 PB2  setting for I2C1_SDA        */
-#define SYS_GPB_MFP0_PB2MFP_SPB_G0_TX3       (0x0dUL<<SYS_GPB_MFP0_PB2MFP_Pos)   /*!< GPA_MFP0 PB2  setting for SPB_G0_TX3      */
+#define SYS_GPB_MFP0_PB2MFP_PDCI_G0_TX3      (0x0dUL<<SYS_GPB_MFP0_PB2MFP_Pos)   /*!< GPA_MFP0 PB2  setting for PDCI_G0_TX3     */
 #define SYS_GPB_MFP0_PB2MFP_TM3              (0x0eUL<<SYS_GPB_MFP0_PB2MFP_Pos)   /*!< GPA_MFP0 PB2  setting for TM3             */
 #define SYS_GPB_MFP0_PB2MFP_INT3             (0x0fUL<<SYS_GPB_MFP0_PB2MFP_Pos)   /*!< GPA_MFP0 PB2  setting for INT3            */
 #define SYS_GPB_MFP0_PB2MFP_LLSI7_OUT        (0x10UL<<SYS_GPB_MFP0_PB2MFP_Pos)   /*!< GPA_MFP0 PB2  setting for LLSI7_OUT       */
@@ -428,7 +428,7 @@ extern "C"
 #define SYS_GPB_MFP0_PB3MFP_I2S0_DI          (0x0aUL<<SYS_GPB_MFP0_PB3MFP_Pos)   /*!< GPA_MFP0 PB3  setting for I2S0_DI         */
 #define SYS_GPB_MFP0_PB3MFP_EPWM0_CH2        (0x0bUL<<SYS_GPB_MFP0_PB3MFP_Pos)   /*!< GPA_MFP0 PB3  setting for EPWM0_CH2       */
 #define SYS_GPB_MFP0_PB3MFP_I2C1_SCL         (0x0cUL<<SYS_GPB_MFP0_PB3MFP_Pos)   /*!< GPA_MFP0 PB3  setting for I2C1_SCL        */
-#define SYS_GPB_MFP0_PB3MFP_SPB_G0_TX2       (0x0dUL<<SYS_GPB_MFP0_PB3MFP_Pos)   /*!< GPA_MFP0 PB3  setting for SPB_G0_TX2      */
+#define SYS_GPB_MFP0_PB3MFP_PDCI_G0_TX2      (0x0dUL<<SYS_GPB_MFP0_PB3MFP_Pos)   /*!< GPA_MFP0 PB3  setting for PDCI_G0_TX2     */
 #define SYS_GPB_MFP0_PB3MFP_TM2              (0x0eUL<<SYS_GPB_MFP0_PB3MFP_Pos)   /*!< GPA_MFP0 PB3  setting for TM2             */
 #define SYS_GPB_MFP0_PB3MFP_INT2             (0x0fUL<<SYS_GPB_MFP0_PB3MFP_Pos)   /*!< GPA_MFP0 PB3  setting for INT2            */
 #define SYS_GPB_MFP0_PB3MFP_LLSI6_OUT        (0x10UL<<SYS_GPB_MFP0_PB3MFP_Pos)   /*!< GPA_MFP0 PB3  setting for LLSI6_OUT       */
@@ -445,7 +445,7 @@ extern "C"
 #define SYS_GPB_MFP1_PB4MFP_I2S0_MCLK        (0x0aUL<<SYS_GPB_MFP1_PB4MFP_Pos)   /*!< GPA_MFP1 PB4  setting for I2S0_MCLK       */
 #define SYS_GPB_MFP1_PB4MFP_EPWM0_CH1        (0x0bUL<<SYS_GPB_MFP1_PB4MFP_Pos)   /*!< GPA_MFP1 PB4  setting for EPWM0_CH1       */
 #define SYS_GPB_MFP1_PB4MFP_UART2_RXD        (0x0cUL<<SYS_GPB_MFP1_PB4MFP_Pos)   /*!< GPA_MFP1 PB4  setting for UART2_RXD       */
-#define SYS_GPB_MFP1_PB4MFP_SPB_G0_TX1       (0x0dUL<<SYS_GPB_MFP1_PB4MFP_Pos)   /*!< GPA_MFP1 PB4  setting for SPB_G0_TX1      */
+#define SYS_GPB_MFP1_PB4MFP_PDCI_G0_TX1      (0x0dUL<<SYS_GPB_MFP1_PB4MFP_Pos)   /*!< GPA_MFP1 PB4  setting for PDCI_G0_TX1     */
 #define SYS_GPB_MFP1_PB4MFP_TM1              (0x0eUL<<SYS_GPB_MFP1_PB4MFP_Pos)   /*!< GPA_MFP1 PB4  setting for TM1             */
 #define SYS_GPB_MFP1_PB4MFP_INT1             (0x0fUL<<SYS_GPB_MFP1_PB4MFP_Pos)   /*!< GPA_MFP1 PB4  setting for INT1            */
 #define SYS_GPB_MFP1_PB4MFP_LLSI5_OUT        (0x10UL<<SYS_GPB_MFP1_PB4MFP_Pos)   /*!< GPA_MFP1 PB4  setting for LLSI5_OUT       */
@@ -462,7 +462,7 @@ extern "C"
 #define SYS_GPB_MFP1_PB5MFP_I2S0_BCLK        (0x0aUL<<SYS_GPB_MFP1_PB5MFP_Pos)   /*!< GPA_MFP1 PB5  setting for I2S0_BCLK       */
 #define SYS_GPB_MFP1_PB5MFP_EPWM0_CH0        (0x0bUL<<SYS_GPB_MFP1_PB5MFP_Pos)   /*!< GPA_MFP1 PB5  setting for EPWM0_CH0       */
 #define SYS_GPB_MFP1_PB5MFP_UART2_TXD        (0x0cUL<<SYS_GPB_MFP1_PB5MFP_Pos)   /*!< GPA_MFP1 PB5  setting for UART2_TXD       */
-#define SYS_GPB_MFP1_PB5MFP_SPB_G0_TX0       (0x0dUL<<SYS_GPB_MFP1_PB5MFP_Pos)   /*!< GPA_MFP1 PB5  setting for SPB_G0_TX0      */
+#define SYS_GPB_MFP1_PB5MFP_PDCI_G0_TX0      (0x0dUL<<SYS_GPB_MFP1_PB5MFP_Pos)   /*!< GPA_MFP1 PB5  setting for PDCI_G0_TX0     */
 #define SYS_GPB_MFP1_PB5MFP_TM0              (0x0eUL<<SYS_GPB_MFP1_PB5MFP_Pos)   /*!< GPA_MFP1 PB5  setting for TM0             */
 #define SYS_GPB_MFP1_PB5MFP_INT0             (0x0fUL<<SYS_GPB_MFP1_PB5MFP_Pos)   /*!< GPA_MFP1 PB5  setting for INT0            */
 #define SYS_GPB_MFP1_PB5MFP_LLSI4_OUT        (0x10UL<<SYS_GPB_MFP1_PB5MFP_Pos)   /*!< GPA_MFP1 PB5  setting for LLSI4_OUT       */
@@ -482,7 +482,7 @@ extern "C"
 #define SYS_GPB_MFP1_PB6MFP_EPWM1_BRAKE1     (0x0bUL<<SYS_GPB_MFP1_PB6MFP_Pos)   /*!< GPA_MFP1 PB6  setting for EPWM1_BRAKE1    */
 #define SYS_GPB_MFP1_PB6MFP_EPWM1_CH5        (0x0cUL<<SYS_GPB_MFP1_PB6MFP_Pos)   /*!< GPA_MFP1 PB6  setting for EPWM1_CH5       */
 #define SYS_GPB_MFP1_PB6MFP_INT4             (0x0dUL<<SYS_GPB_MFP1_PB6MFP_Pos)   /*!< GPA_MFP1 PB6  setting for INT4            */
-#define SYS_GPB_MFP1_PB6MFP_SPB_G3_TX2       (0x0eUL<<SYS_GPB_MFP1_PB6MFP_Pos)   /*!< GPA_MFP1 PB6  setting for SPB_G3_TX2      */
+#define SYS_GPB_MFP1_PB6MFP_PDCI_G3_TX2      (0x0eUL<<SYS_GPB_MFP1_PB6MFP_Pos)   /*!< GPA_MFP1 PB6  setting for PDCI_G3_TX2     */
 #define SYS_GPB_MFP1_PB6MFP_ACMP1_O          (0x0fUL<<SYS_GPB_MFP1_PB6MFP_Pos)   /*!< GPA_MFP1 PB6  setting for ACMP1_O         */
 #define SYS_GPB_MFP1_PB6MFP_TM1              (0x10UL<<SYS_GPB_MFP1_PB6MFP_Pos)   /*!< GPA_MFP1 PB6  setting for TM1             */
 
@@ -501,9 +501,8 @@ extern "C"
 #define SYS_GPB_MFP1_PB7MFP_EPWM1_BRAKE0     (0x0bUL<<SYS_GPB_MFP1_PB7MFP_Pos)   /*!< GPA_MFP1 PB7  setting for EPWM1_BRAKE0    */
 #define SYS_GPB_MFP1_PB7MFP_EPWM1_CH4        (0x0cUL<<SYS_GPB_MFP1_PB7MFP_Pos)   /*!< GPA_MFP1 PB7  setting for EPWM1_CH4       */
 #define SYS_GPB_MFP1_PB7MFP_INT5             (0x0dUL<<SYS_GPB_MFP1_PB7MFP_Pos)   /*!< GPA_MFP1 PB7  setting for INT5            */
-#define SYS_GPB_MFP1_PB7MFP_SPB_G3_TX3       (0x0eUL<<SYS_GPB_MFP1_PB7MFP_Pos)   /*!< GPA_MFP1 PB7  setting for SPB_G3_TX3      */
+#define SYS_GPB_MFP1_PB7MFP_PDCI_G3_TX3      (0x0eUL<<SYS_GPB_MFP1_PB7MFP_Pos)   /*!< GPA_MFP1 PB7  setting for PDCI_G3_TX3     */
 #define SYS_GPB_MFP1_PB7MFP_ACMP0_O          (0x0fUL<<SYS_GPB_MFP1_PB7MFP_Pos)   /*!< GPA_MFP1 PB7  setting for ACMP0_O         */
-#define SYS_GPB_MFP1_PB7MFP_SPB_G6_TX0       (0x10UL<<SYS_GPB_MFP1_PB7MFP_Pos)   /*!< GPA_MFP1 PB7  setting for SPB_G6_TX0      */
 
 /* PB.8 MFP */
 #define SYS_GPB_MFP2_PB8MFP_GPIO             (0x00UL<<SYS_GPB_MFP2_PB8MFP_Pos)   /*!< GPB_MFP2 PB8  setting for GPIO            */
@@ -517,8 +516,8 @@ extern "C"
 #define SYS_GPB_MFP2_PB8MFP_I2C0_SDA         (0x09UL<<SYS_GPB_MFP2_PB8MFP_Pos)   /*!< GPA_MFP2 PB8  setting for I2C0_SDA        */
 #define SYS_GPB_MFP2_PB8MFP_BPWM1_CH3        (0x0aUL<<SYS_GPB_MFP2_PB8MFP_Pos)   /*!< GPA_MFP2 PB8  setting for BPWM1_CH3       */
 #define SYS_GPB_MFP2_PB8MFP_INT6             (0x0dUL<<SYS_GPB_MFP2_PB8MFP_Pos)   /*!< GPA_MFP2 PB8  setting for INT6            */
-#define SYS_GPB_MFP2_PB8MFP_SPB_G3_RX1       (0x0eUL<<SYS_GPB_MFP2_PB8MFP_Pos)   /*!< GPA_MFP2 PB8  setting for SPB_G3_RX1      */
-#define SYS_GPB_MFP2_PB8MFP_SPB_G3_CLK       (0x0fUL<<SYS_GPB_MFP2_PB8MFP_Pos)   /*!< GPA_MFP2 PB8  setting for SPB_G3_CLK      */
+#define SYS_GPB_MFP2_PB8MFP_PDCI_G3_RX1      (0x0eUL<<SYS_GPB_MFP2_PB8MFP_Pos)   /*!< GPA_MFP2 PB8  setting for PDCI_G3_RX1     */
+#define SYS_GPB_MFP2_PB8MFP_PDCI_G3_CLK      (0x0fUL<<SYS_GPB_MFP2_PB8MFP_Pos)   /*!< GPA_MFP2 PB8  setting for PDCI_G3_CLK     */
 
 /* PB.9 MFP */
 #define SYS_GPB_MFP2_PB9MFP_GPIO             (0x00UL<<SYS_GPB_MFP2_PB9MFP_Pos)   /*!< GPB_MFP2 PB9  setting for GPIO            */
@@ -531,7 +530,7 @@ extern "C"
 #define SYS_GPB_MFP2_PB9MFP_I2C0_SCL         (0x09UL<<SYS_GPB_MFP2_PB9MFP_Pos)   /*!< GPA_MFP2 PB9  setting for I2C0_SCL        */
 #define SYS_GPB_MFP2_PB9MFP_BPWM1_CH2        (0x0aUL<<SYS_GPB_MFP2_PB9MFP_Pos)   /*!< GPA_MFP2 PB9  setting for BPWM1_CH2       */
 #define SYS_GPB_MFP2_PB9MFP_INT7             (0x0dUL<<SYS_GPB_MFP2_PB9MFP_Pos)   /*!< GPA_MFP2 PB9  setting for INT7            */
-#define SYS_GPB_MFP2_PB9MFP_SPB_G3_TX1       (0x0fUL<<SYS_GPB_MFP2_PB9MFP_Pos)   /*!< GPA_MFP2 PB9  setting for SPB_G3_TX1      */
+#define SYS_GPB_MFP2_PB9MFP_PDCI_G3_TX1      (0x0fUL<<SYS_GPB_MFP2_PB9MFP_Pos)   /*!< GPA_MFP2 PB9  setting for PDCI_G3_TX1     */
 #define SYS_GPB_MFP2_PB9MFP_ELLSI0_OUT       (0x10UL<<SYS_GPB_MFP2_PB9MFP_Pos)   /*!< GPA_MFP2 PB9  setting for ELLSI0_OUT      */
 
 /* PB.10 MFP */
@@ -545,7 +544,7 @@ extern "C"
 #define SYS_GPB_MFP2_PB10MFP_CANFD0_RXD      (0x08UL<<SYS_GPB_MFP2_PB10MFP_Pos)  /*!< GPA_MFP2 PB10 setting for CANFD0_RXD      */
 #define SYS_GPB_MFP2_PB10MFP_BPWM1_CH1       (0x0aUL<<SYS_GPB_MFP2_PB10MFP_Pos)  /*!< GPA_MFP2 PB10 setting for BPWM1_CH1       */
 #define SYS_GPB_MFP2_PB10MFP_HSUSB_VBUS_EN   (0x0eUL<<SYS_GPB_MFP2_PB10MFP_Pos)  /*!< GPA_MFP2 PB10 setting for HSUSB_VBUS_EN   */
-#define SYS_GPB_MFP2_PB10MFP_SPB_G3_TX0      (0x0fUL<<SYS_GPB_MFP2_PB10MFP_Pos)  /*!< GPA_MFP2 PB10 setting for SPB_G3_TX0      */
+#define SYS_GPB_MFP2_PB10MFP_PDCI_G3_TX0     (0x0fUL<<SYS_GPB_MFP2_PB10MFP_Pos)  /*!< GPA_MFP2 PB10 setting for PDCI_G3_TX0     */
 #define SYS_GPB_MFP2_PB10MFP_LLSI9_OUT       (0x10UL<<SYS_GPB_MFP2_PB10MFP_Pos)  /*!< GPA_MFP2 PB10 setting for LLSI9_OUT       */
 
 /* PB.11 MFP */
@@ -559,7 +558,7 @@ extern "C"
 #define SYS_GPB_MFP2_PB11MFP_CANFD0_TXD      (0x08UL<<SYS_GPB_MFP2_PB11MFP_Pos)  /*!< GPA_MFP2 PB11 setting for CANFD0_TXD      */
 #define SYS_GPB_MFP2_PB11MFP_SPI0_I2SMCLK    (0x09UL<<SYS_GPB_MFP2_PB11MFP_Pos)  /*!< GPA_MFP2 PB11 setting for SPI0_I2SMCLK    */
 #define SYS_GPB_MFP2_PB11MFP_BPWM1_CH0       (0x0aUL<<SYS_GPB_MFP2_PB11MFP_Pos)  /*!< GPA_MFP2 PB11 setting for BPWM1_CH0       */
-#define SYS_GPB_MFP2_PB11MFP_SPB_G3_RX0      (0x0cUL<<SYS_GPB_MFP2_PB11MFP_Pos)  /*!< GPA_MFP2 PB11 setting for SPB_G3_RX0      */
+#define SYS_GPB_MFP2_PB11MFP_PDCI_G3_RX0     (0x0cUL<<SYS_GPB_MFP2_PB11MFP_Pos)  /*!< GPA_MFP2 PB11 setting for PDCI_G3_RX0     */
 #define SYS_GPB_MFP2_PB11MFP_HSUSB_VBUS_ST   (0x0eUL<<SYS_GPB_MFP2_PB11MFP_Pos)  /*!< GPA_MFP2 PB11 setting for HSUSB_VBUS_ST   */
 #define SYS_GPB_MFP2_PB11MFP_LLSI8_OUT       (0x10UL<<SYS_GPB_MFP2_PB11MFP_Pos)  /*!< GPA_MFP2 PB11 setting for LLSI8_OUT       */
 
@@ -590,7 +589,7 @@ extern "C"
 #define SYS_GPB_MFP3_PB13MFP_ACMP0_P3        (0x01UL<<SYS_GPB_MFP3_PB13MFP_Pos)  /*!< GPA_MFP3 PB13 setting for ACMP0_P3        */
 #define SYS_GPB_MFP3_PB13MFP_ACMP1_P3        (0x01UL<<SYS_GPB_MFP3_PB13MFP_Pos)  /*!< GPA_MFP3 PB13 setting for ACMP1_P3        */
 #define SYS_GPB_MFP3_PB13MFP_EBI_AD14        (0x02UL<<SYS_GPB_MFP3_PB13MFP_Pos)  /*!< GPA_MFP3 PB13 setting for EBI_AD14        */
-#define SYS_GPB_MFP3_PB13MFP_SPB_G3_RX0      (0x03UL<<SYS_GPB_MFP3_PB13MFP_Pos)  /*!< GPA_MFP3 PB13 setting for SPB_G3_RX0      */
+#define SYS_GPB_MFP3_PB13MFP_PDCI_G3_RX0     (0x03UL<<SYS_GPB_MFP3_PB13MFP_Pos)  /*!< GPA_MFP3 PB13 setting for PDCI_G3_RX0     */
 #define SYS_GPB_MFP3_PB13MFP_SPI0_MISO       (0x04UL<<SYS_GPB_MFP3_PB13MFP_Pos)  /*!< GPA_MFP3 PB13 setting for SPI0_MISO       */
 #define SYS_GPB_MFP3_PB13MFP_USCI0_DAT0      (0x05UL<<SYS_GPB_MFP3_PB13MFP_Pos)  /*!< GPA_MFP3 PB13 setting for USCI0_DAT0      */
 #define SYS_GPB_MFP3_PB13MFP_UART0_TXD       (0x06UL<<SYS_GPB_MFP3_PB13MFP_Pos)  /*!< GPA_MFP3 PB13 setting for UART0_TXD       */
@@ -601,7 +600,6 @@ extern "C"
 #define SYS_GPB_MFP3_PB13MFP_EPWM1_CH2       (0x0bUL<<SYS_GPB_MFP3_PB13MFP_Pos)  /*!< GPA_MFP3 PB13 setting for EPWM1_CH2       */
 #define SYS_GPB_MFP3_PB13MFP_USCI0_CTL0      (0x0cUL<<SYS_GPB_MFP3_PB13MFP_Pos)  /*!< GPA_MFP3 PB13 setting for USCI0_CTL0      */
 #define SYS_GPB_MFP3_PB13MFP_TM2_EXT         (0x0dUL<<SYS_GPB_MFP3_PB13MFP_Pos)  /*!< GPA_MFP3 PB13 setting for TM2_EXT         */
-#define SYS_GPB_MFP3_PB13MFP_SPB_G6_TX3      (0x0eUL<<SYS_GPB_MFP3_PB13MFP_Pos)  /*!< GPA_MFP3 PB13 setting for SPB_G6_TX3      */
 #define SYS_GPB_MFP3_PB13MFP_HSUSB_VBUS_ST   (0x0fUL<<SYS_GPB_MFP3_PB13MFP_Pos)  /*!< GPA_MFP3 PB13 setting for HSUSB_VBUS_ST   */
 #define SYS_GPB_MFP3_PB13MFP_LLSI2_OUT       (0x10UL<<SYS_GPB_MFP3_PB13MFP_Pos)  /*!< GPA_MFP3 PB13 setting for LLSI2_OUT       */
 
@@ -614,12 +612,11 @@ extern "C"
 #define SYS_GPB_MFP3_PB14MFP_UART0_nRTS      (0x06UL<<SYS_GPB_MFP3_PB14MFP_Pos)  /*!< GPA_MFP3 PB14 setting for UART0_nRTS      */
 #define SYS_GPB_MFP3_PB14MFP_UART3_RXD       (0x07UL<<SYS_GPB_MFP3_PB14MFP_Pos)  /*!< GPA_MFP3 PB14 setting for UART3_RXD       */
 #define SYS_GPB_MFP3_PB14MFP_I2C2_SMBSUS     (0x08UL<<SYS_GPB_MFP3_PB14MFP_Pos)  /*!< GPA_MFP3 PB14 setting for I2C2_SMBSUS     */
-#define SYS_GPB_MFP3_PB14MFP_SPB_G2_RX0      (0x09UL<<SYS_GPB_MFP3_PB14MFP_Pos)  /*!< GPA_MFP3 PB14 setting for SPB_G2_RX0      */
+#define SYS_GPB_MFP3_PB14MFP_PDCI_G2_RX0     (0x09UL<<SYS_GPB_MFP3_PB14MFP_Pos)  /*!< GPA_MFP3 PB14 setting for PDCI_G2_RX0     */
 #define SYS_GPB_MFP3_PB14MFP_EPWM1_CH1       (0x0bUL<<SYS_GPB_MFP3_PB14MFP_Pos)  /*!< GPA_MFP3 PB14 setting for EPWM1_CH1       */
 #define SYS_GPB_MFP3_PB14MFP_BPWM2_CH2       (0x0cUL<<SYS_GPB_MFP3_PB14MFP_Pos)  /*!< GPA_MFP3 PB14 setting for BPWM2_CH2       */
 #define SYS_GPB_MFP3_PB14MFP_TM1_EXT         (0x0dUL<<SYS_GPB_MFP3_PB14MFP_Pos)  /*!< GPA_MFP3 PB14 setting for TM1_EXT         */
 #define SYS_GPB_MFP3_PB14MFP_CLKO            (0x0eUL<<SYS_GPB_MFP3_PB14MFP_Pos)  /*!< GPA_MFP3 PB14 setting for CLKO            */
-#define SYS_GPB_MFP3_PB14MFP_SPB_G6_TX2      (0x0fUL<<SYS_GPB_MFP3_PB14MFP_Pos)  /*!< GPA_MFP3 PB14 setting for SPB_G6_TX2      */
 #define SYS_GPB_MFP3_PB14MFP_LLSI1_OUT       (0x10UL<<SYS_GPB_MFP3_PB14MFP_Pos)  /*!< GPA_MFP3 PB14 setting for LLSI1_OUT       */
 
 /* PB.15 MFP */
@@ -631,21 +628,20 @@ extern "C"
 #define SYS_GPB_MFP3_PB15MFP_UART0_nCTS      (0x06UL<<SYS_GPB_MFP3_PB15MFP_Pos)  /*!< GPA_MFP3 PB15 setting for UART0_nCTS      */
 #define SYS_GPB_MFP3_PB15MFP_UART3_TXD       (0x07UL<<SYS_GPB_MFP3_PB15MFP_Pos)  /*!< GPA_MFP3 PB15 setting for UART3_TXD       */
 #define SYS_GPB_MFP3_PB15MFP_I2C2_SMBAL      (0x08UL<<SYS_GPB_MFP3_PB15MFP_Pos)  /*!< GPA_MFP3 PB15 setting for I2C2_SMBAL      */
-#define SYS_GPB_MFP3_PB15MFP_SPB_G1_RX0      (0x09UL<<SYS_GPB_MFP3_PB15MFP_Pos)  /*!< GPA_MFP3 PB15 setting for SPB_G1_RX0      */
+#define SYS_GPB_MFP3_PB15MFP_PDCI_G1_RX0     (0x09UL<<SYS_GPB_MFP3_PB15MFP_Pos)  /*!< GPA_MFP3 PB15 setting for PDCI_G1_RX0     */
 #define SYS_GPB_MFP3_PB15MFP_EPWM0_BRAKE1    (0x0aUL<<SYS_GPB_MFP3_PB15MFP_Pos)  /*!< GPA_MFP3 PB15 setting for EPWM0_BRAKE1    */
 #define SYS_GPB_MFP3_PB15MFP_EPWM1_CH0       (0x0bUL<<SYS_GPB_MFP3_PB15MFP_Pos)  /*!< GPA_MFP3 PB15 setting for EPWM1_CH0       */
 #define SYS_GPB_MFP3_PB15MFP_BPWM2_CH1       (0x0cUL<<SYS_GPB_MFP3_PB15MFP_Pos)  /*!< GPA_MFP3 PB15 setting for BPWM2_CH1       */
 #define SYS_GPB_MFP3_PB15MFP_TM0_EXT         (0x0dUL<<SYS_GPB_MFP3_PB15MFP_Pos)  /*!< GPA_MFP3 PB15 setting for TM0_EXT         */
-#define SYS_GPB_MFP3_PB15MFP_SPB_G6_TX1      (0x0eUL<<SYS_GPB_MFP3_PB15MFP_Pos)  /*!< GPA_MFP3 PB15 setting for SPB_G6_TX1      */
 #define SYS_GPB_MFP3_PB15MFP_HSUSB_VBUS_EN   (0x0fUL<<SYS_GPB_MFP3_PB15MFP_Pos)  /*!< GPA_MFP3 PB15 setting for HSUSB_VBUS_EN   */
 #define SYS_GPB_MFP3_PB15MFP_LLSI0_OUT       (0x10UL<<SYS_GPB_MFP3_PB15MFP_Pos)  /*!< GPA_MFP3 PB15 setting for LLSI0_OUT       */
 
 /* PC.0 MFP */
 #define SYS_GPC_MFP0_PC0MFP_GPIO             (0x00UL<<SYS_GPC_MFP0_PC0MFP_Pos)   /*!< GPC_MFP0 PC0  setting for GPIO            */
 #define SYS_GPC_MFP0_PC0MFP_EBI_AD0          (0x02UL<<SYS_GPC_MFP0_PC0MFP_Pos)   /*!< GPA_MFP0 PC0  setting for EBI_AD0         */
-#define SYS_GPC_MFP0_PC0MFP_SPB_G5_CLK       (0x03UL<<SYS_GPC_MFP0_PC0MFP_Pos)   /*!< GPA_MFP0 PC0  setting for SPB_G5_CLK      */
+#define SYS_GPC_MFP0_PC0MFP_PDCI_G5_CLK      (0x03UL<<SYS_GPC_MFP0_PC0MFP_Pos)   /*!< GPA_MFP0 PC0  setting for PDCI_G5_CLK     */
 #define SYS_GPC_MFP0_PC0MFP_QSPI0_MOSI0      (0x04UL<<SYS_GPC_MFP0_PC0MFP_Pos)   /*!< GPA_MFP0 PC0  setting for QSPI0_MOSI0     */
-#define SYS_GPC_MFP0_PC0MFP_SPB_G5_RX1       (0x05UL<<SYS_GPC_MFP0_PC0MFP_Pos)   /*!< GPA_MFP0 PC0  setting for SPB_G5_RX1      */
+#define SYS_GPC_MFP0_PC0MFP_PDCI_G5_RX1      (0x05UL<<SYS_GPC_MFP0_PC0MFP_Pos)   /*!< GPA_MFP0 PC0  setting for PDCI_G5_RX1     */
 #define SYS_GPC_MFP0_PC0MFP_I2S0_LRCK        (0x06UL<<SYS_GPC_MFP0_PC0MFP_Pos)   /*!< GPA_MFP0 PC0  setting for I2S0_LRCK       */
 #define SYS_GPC_MFP0_PC0MFP_SPI1_SS          (0x07UL<<SYS_GPC_MFP0_PC0MFP_Pos)   /*!< GPA_MFP0 PC0  setting for SPI1_SS         */
 #define SYS_GPC_MFP0_PC0MFP_UART2_RXD        (0x08UL<<SYS_GPC_MFP0_PC0MFP_Pos)   /*!< GPA_MFP0 PC0  setting for UART2_RXD       */
@@ -658,9 +654,9 @@ extern "C"
 /* PC.1 MFP */
 #define SYS_GPC_MFP0_PC1MFP_GPIO             (0x00UL<<SYS_GPC_MFP0_PC1MFP_Pos)   /*!< GPC_MFP0 PC1  setting for GPIO            */
 #define SYS_GPC_MFP0_PC1MFP_EBI_AD1          (0x02UL<<SYS_GPC_MFP0_PC1MFP_Pos)   /*!< GPA_MFP0 PC1  setting for EBI_AD1         */
-#define SYS_GPC_MFP0_PC1MFP_SPB_G4_CLK       (0x03UL<<SYS_GPC_MFP0_PC1MFP_Pos)   /*!< GPA_MFP0 PC1  setting for SPB_G4_CLK      */
+#define SYS_GPC_MFP0_PC1MFP_PDCI_G4_CLK      (0x03UL<<SYS_GPC_MFP0_PC1MFP_Pos)   /*!< GPA_MFP0 PC1  setting for PDCI_G4_CLK     */
 #define SYS_GPC_MFP0_PC1MFP_QSPI0_MISO0      (0x04UL<<SYS_GPC_MFP0_PC1MFP_Pos)   /*!< GPA_MFP0 PC1  setting for QSPI0_MISO0     */
-#define SYS_GPC_MFP0_PC1MFP_SPB_G4_RX1       (0x05UL<<SYS_GPC_MFP0_PC1MFP_Pos)   /*!< GPA_MFP0 PC1  setting for SPB_G4_RX1      */
+#define SYS_GPC_MFP0_PC1MFP_PDCI_G4_RX1      (0x05UL<<SYS_GPC_MFP0_PC1MFP_Pos)   /*!< GPA_MFP0 PC1  setting for PDCI_G4_RX1     */
 #define SYS_GPC_MFP0_PC1MFP_I2S0_DO          (0x06UL<<SYS_GPC_MFP0_PC1MFP_Pos)   /*!< GPA_MFP0 PC1  setting for I2S0_DO         */
 #define SYS_GPC_MFP0_PC1MFP_SPI1_CLK         (0x07UL<<SYS_GPC_MFP0_PC1MFP_Pos)   /*!< GPA_MFP0 PC1  setting for SPI1_CLK        */
 #define SYS_GPC_MFP0_PC1MFP_UART2_TXD        (0x08UL<<SYS_GPC_MFP0_PC1MFP_Pos)   /*!< GPA_MFP0 PC1  setting for UART2_TXD       */
@@ -675,7 +671,7 @@ extern "C"
 /* PC.2 MFP */
 #define SYS_GPC_MFP0_PC2MFP_GPIO             (0x00UL<<SYS_GPC_MFP0_PC2MFP_Pos)   /*!< GPC_MFP0 PC2  setting for GPIO            */
 #define SYS_GPC_MFP0_PC2MFP_EBI_AD2          (0x02UL<<SYS_GPC_MFP0_PC2MFP_Pos)   /*!< GPA_MFP0 PC2  setting for EBI_AD2         */
-#define SYS_GPC_MFP0_PC2MFP_SPB_G4_TX3       (0x03UL<<SYS_GPC_MFP0_PC2MFP_Pos)   /*!< GPA_MFP0 PC2  setting for SPB_G4_TX3      */
+#define SYS_GPC_MFP0_PC2MFP_PDCI_G4_TX3      (0x03UL<<SYS_GPC_MFP0_PC2MFP_Pos)   /*!< GPA_MFP0 PC2  setting for PDCI_G4_TX3     */
 #define SYS_GPC_MFP0_PC2MFP_QSPI0_CLK        (0x04UL<<SYS_GPC_MFP0_PC2MFP_Pos)   /*!< GPA_MFP0 PC2  setting for QSPI0_CLK       */
 #define SYS_GPC_MFP0_PC2MFP_I2S0_DI          (0x06UL<<SYS_GPC_MFP0_PC2MFP_Pos)   /*!< GPA_MFP0 PC2  setting for I2S0_DI         */
 #define SYS_GPC_MFP0_PC2MFP_SPI1_MOSI        (0x07UL<<SYS_GPC_MFP0_PC2MFP_Pos)   /*!< GPA_MFP0 PC2  setting for SPI1_MOSI       */
@@ -691,7 +687,7 @@ extern "C"
 /* PC.3 MFP */
 #define SYS_GPC_MFP0_PC3MFP_GPIO             (0x00UL<<SYS_GPC_MFP0_PC3MFP_Pos)   /*!< GPC_MFP0 PC3  setting for GPIO            */
 #define SYS_GPC_MFP0_PC3MFP_EBI_AD3          (0x02UL<<SYS_GPC_MFP0_PC3MFP_Pos)   /*!< GPA_MFP0 PC3  setting for EBI_AD3         */
-#define SYS_GPC_MFP0_PC3MFP_SPB_G4_TX2       (0x03UL<<SYS_GPC_MFP0_PC3MFP_Pos)   /*!< GPA_MFP0 PC3  setting for SPB_G4_TX2      */
+#define SYS_GPC_MFP0_PC3MFP_PDCI_G4_TX2      (0x03UL<<SYS_GPC_MFP0_PC3MFP_Pos)   /*!< GPA_MFP0 PC3  setting for PDCI_G4_TX2     */
 #define SYS_GPC_MFP0_PC3MFP_QSPI0_SS         (0x04UL<<SYS_GPC_MFP0_PC3MFP_Pos)   /*!< GPA_MFP0 PC3  setting for QSPI0_SS        */
 #define SYS_GPC_MFP0_PC3MFP_CANFD1_TXH       (0x05UL<<SYS_GPC_MFP0_PC3MFP_Pos)   /*!< GPA_MFP0 PC3  setting for CANFD1_TXH      */
 #define SYS_GPC_MFP0_PC3MFP_I2S0_MCLK        (0x06UL<<SYS_GPC_MFP0_PC3MFP_Pos)   /*!< GPA_MFP0 PC3  setting for I2S0_MCLK       */
@@ -707,7 +703,7 @@ extern "C"
 /* PC.4 MFP */
 #define SYS_GPC_MFP1_PC4MFP_GPIO             (0x00UL<<SYS_GPC_MFP1_PC4MFP_Pos)   /*!< GPC_MFP1 PC4  setting for GPIO            */
 #define SYS_GPC_MFP1_PC4MFP_EBI_AD4          (0x02UL<<SYS_GPC_MFP1_PC4MFP_Pos)   /*!< GPA_MFP1 PC4  setting for EBI_AD4         */
-#define SYS_GPC_MFP1_PC4MFP_SPB_G4_TX1       (0x03UL<<SYS_GPC_MFP1_PC4MFP_Pos)   /*!< GPA_MFP1 PC4  setting for SPB_G4_TX1      */
+#define SYS_GPC_MFP1_PC4MFP_PDCI_G4_TX1      (0x03UL<<SYS_GPC_MFP1_PC4MFP_Pos)   /*!< GPA_MFP1 PC4  setting for PDCI_G4_TX1     */
 #define SYS_GPC_MFP1_PC4MFP_QSPI0_MOSI1      (0x04UL<<SYS_GPC_MFP1_PC4MFP_Pos)   /*!< GPA_MFP1 PC4  setting for QSPI0_MOSI1     */
 #define SYS_GPC_MFP1_PC4MFP_CANFD1_TXL       (0x05UL<<SYS_GPC_MFP1_PC4MFP_Pos)   /*!< GPA_MFP1 PC4  setting for CANFD1_TXL      */
 #define SYS_GPC_MFP1_PC4MFP_I2S0_BCLK        (0x06UL<<SYS_GPC_MFP1_PC4MFP_Pos)   /*!< GPA_MFP1 PC4  setting for I2S0_BCLK       */
@@ -723,7 +719,7 @@ extern "C"
 /* PC.5 MFP */
 #define SYS_GPC_MFP1_PC5MFP_GPIO             (0x00UL<<SYS_GPC_MFP1_PC5MFP_Pos)   /*!< GPC_MFP1 PC5  setting for GPIO            */
 #define SYS_GPC_MFP1_PC5MFP_EBI_AD5          (0x02UL<<SYS_GPC_MFP1_PC5MFP_Pos)   /*!< GPA_MFP1 PC5  setting for EBI_AD5         */
-#define SYS_GPC_MFP1_PC5MFP_SPB_G4_TX0       (0x03UL<<SYS_GPC_MFP1_PC5MFP_Pos)   /*!< GPA_MFP1 PC5  setting for SPB_G4_TX0      */
+#define SYS_GPC_MFP1_PC5MFP_PDCI_G4_TX0      (0x03UL<<SYS_GPC_MFP1_PC5MFP_Pos)   /*!< GPA_MFP1 PC5  setting for PDCI_G4_TX0     */
 #define SYS_GPC_MFP1_PC5MFP_QSPI0_MISO1      (0x04UL<<SYS_GPC_MFP1_PC5MFP_Pos)   /*!< GPA_MFP1 PC5  setting for QSPI0_MISO1     */
 #define SYS_GPC_MFP1_PC5MFP_CANFD0_TXH       (0x07UL<<SYS_GPC_MFP1_PC5MFP_Pos)   /*!< GPA_MFP1 PC5  setting for CANFD0_TXH      */
 #define SYS_GPC_MFP1_PC5MFP_UART2_TXD        (0x08UL<<SYS_GPC_MFP1_PC5MFP_Pos)   /*!< GPA_MFP1 PC5  setting for UART2_TXD       */
@@ -744,10 +740,10 @@ extern "C"
 #define SYS_GPC_MFP1_PC6MFP_I2C1_SMBSUS      (0x08UL<<SYS_GPC_MFP1_PC6MFP_Pos)   /*!< GPA_MFP1 PC6  setting for I2C1_SMBSUS     */
 #define SYS_GPC_MFP1_PC6MFP_EPWM1_CH3        (0x0bUL<<SYS_GPC_MFP1_PC6MFP_Pos)   /*!< GPA_MFP1 PC6  setting for EPWM1_CH3       */
 #define SYS_GPC_MFP1_PC6MFP_BPWM1_CH1        (0x0cUL<<SYS_GPC_MFP1_PC6MFP_Pos)   /*!< GPA_MFP1 PC6  setting for BPWM1_CH1       */
-#define SYS_GPC_MFP1_PC6MFP_SPB_G0_CLK       (0x0dUL<<SYS_GPC_MFP1_PC6MFP_Pos)   /*!< GPA_MFP1 PC6  setting for SPB_G0_CLK      */
+#define SYS_GPC_MFP1_PC6MFP_PDCI_G0_CLK      (0x0dUL<<SYS_GPC_MFP1_PC6MFP_Pos)   /*!< GPA_MFP1 PC6  setting for PDCI_G0_CLK     */
 #define SYS_GPC_MFP1_PC6MFP_TM1              (0x0eUL<<SYS_GPC_MFP1_PC6MFP_Pos)   /*!< GPA_MFP1 PC6  setting for TM1             */
 #define SYS_GPC_MFP1_PC6MFP_INT2             (0x0fUL<<SYS_GPC_MFP1_PC6MFP_Pos)   /*!< GPA_MFP1 PC6  setting for INT2            */
-#define SYS_GPC_MFP1_PC6MFP_SPB_G0_RX0       (0x10UL<<SYS_GPC_MFP1_PC6MFP_Pos)   /*!< GPA_MFP1 PC6  setting for SPB_G0_RX0      */
+#define SYS_GPC_MFP1_PC6MFP_PDCI_G0_RX0      (0x10UL<<SYS_GPC_MFP1_PC6MFP_Pos)   /*!< GPA_MFP1 PC6  setting for PDCI_G0_RX0     */
 
 /* PC.7 MFP */
 #define SYS_GPC_MFP1_PC7MFP_GPIO             (0x00UL<<SYS_GPC_MFP1_PC7MFP_Pos)   /*!< GPC_MFP1 PC7  setting for GPIO            */
@@ -758,10 +754,8 @@ extern "C"
 #define SYS_GPC_MFP1_PC7MFP_I2C1_SMBAL       (0x08UL<<SYS_GPC_MFP1_PC7MFP_Pos)   /*!< GPA_MFP1 PC7  setting for I2C1_SMBAL      */
 #define SYS_GPC_MFP1_PC7MFP_EPWM1_CH2        (0x0bUL<<SYS_GPC_MFP1_PC7MFP_Pos)   /*!< GPA_MFP1 PC7  setting for EPWM1_CH2       */
 #define SYS_GPC_MFP1_PC7MFP_BPWM1_CH0        (0x0cUL<<SYS_GPC_MFP1_PC7MFP_Pos)   /*!< GPA_MFP1 PC7  setting for BPWM1_CH0       */
-#define SYS_GPC_MFP1_PC7MFP_SPB_G6_RX0       (0x0dUL<<SYS_GPC_MFP1_PC7MFP_Pos)   /*!< GPA_MFP1 PC7  setting for SPB_G6_RX0      */
 #define SYS_GPC_MFP1_PC7MFP_TM0              (0x0eUL<<SYS_GPC_MFP1_PC7MFP_Pos)   /*!< GPA_MFP1 PC7  setting for TM0             */
 #define SYS_GPC_MFP1_PC7MFP_INT3             (0x0fUL<<SYS_GPC_MFP1_PC7MFP_Pos)   /*!< GPA_MFP1 PC7  setting for INT3            */
-#define SYS_GPC_MFP1_PC7MFP_SPB_G6_CLK       (0x10UL<<SYS_GPC_MFP1_PC7MFP_Pos)   /*!< GPA_MFP1 PC7  setting for SPB_G6_CLK      */
 
 /* PC.8 MFP */
 #define SYS_GPC_MFP2_PC8MFP_GPIO             (0x00UL<<SYS_GPC_MFP2_PC8MFP_Pos)   /*!< GPC_MFP2 PC8  setting for GPIO            */
@@ -824,14 +818,12 @@ extern "C"
 #define SYS_GPC_MFP3_PC14MFP_SPI0_I2SMCLK    (0x04UL<<SYS_GPC_MFP3_PC14MFP_Pos)  /*!< GPA_MFP3 PC14 setting for SPI0_I2SMCLK    */
 #define SYS_GPC_MFP3_PC14MFP_USCI0_CTL0      (0x05UL<<SYS_GPC_MFP3_PC14MFP_Pos)  /*!< GPA_MFP3 PC14 setting for USCI0_CTL0      */
 #define SYS_GPC_MFP3_PC14MFP_QSPI0_CLK       (0x06UL<<SYS_GPC_MFP3_PC14MFP_Pos)  /*!< GPA_MFP3 PC14 setting for QSPI0_CLK       */
-#define SYS_GPC_MFP3_PC14MFP_SPB_G0_RX0      (0x09UL<<SYS_GPC_MFP3_PC14MFP_Pos)  /*!< GPA_MFP3 PC14 setting for SPB_G0_RX0      */
+#define SYS_GPC_MFP3_PC14MFP_PDCI_G0_RX0     (0x09UL<<SYS_GPC_MFP3_PC14MFP_Pos)  /*!< GPA_MFP3 PC14 setting for PDCI_G0_RX0     */
 #define SYS_GPC_MFP3_PC14MFP_TRACE_SWO       (0x0aUL<<SYS_GPC_MFP3_PC14MFP_Pos)  /*!< GPA_MFP3 PC14 setting for TRACE_SWO       */
 #define SYS_GPC_MFP3_PC14MFP_EPWM0_SYNC_IN   (0x0bUL<<SYS_GPC_MFP3_PC14MFP_Pos)  /*!< GPA_MFP3 PC14 setting for EPWM0_SYNC_IN   */
 #define SYS_GPC_MFP3_PC14MFP_BPWM2_CH0       (0x0cUL<<SYS_GPC_MFP3_PC14MFP_Pos)  /*!< GPA_MFP3 PC14 setting for BPWM2_CH0       */
 #define SYS_GPC_MFP3_PC14MFP_TM1             (0x0dUL<<SYS_GPC_MFP3_PC14MFP_Pos)  /*!< GPA_MFP3 PC14 setting for TM1             */
-#define SYS_GPC_MFP3_PC14MFP_SPB_G6_RX1      (0x0eUL<<SYS_GPC_MFP3_PC14MFP_Pos)  /*!< GPA_MFP3 PC14 setting for SPB_G6_RX1      */
 #define SYS_GPC_MFP3_PC14MFP_HSUSB_VBUS_ST   (0x0fUL<<SYS_GPC_MFP3_PC14MFP_Pos)  /*!< GPA_MFP3 PC14 setting for HSUSB_VBUS_ST   */
-#define SYS_GPC_MFP3_PC14MFP_SPB_G6_CLK      (0x10UL<<SYS_GPC_MFP3_PC14MFP_Pos)  /*!< GPA_MFP3 PC14 setting for SPB_G6_CLK      */
 
 /* PD.0 MFP */
 #define SYS_GPD_MFP0_PD0MFP_GPIO             (0x00UL<<SYS_GPD_MFP0_PD0MFP_Pos)   /*!< GPD_MFP0 PD0  setting for GPIO            */
@@ -1187,7 +1179,7 @@ extern "C"
 #define SYS_GPF_MFP0_PF2MFP_BPWM1_CH1        (0x0bUL<<SYS_GPF_MFP0_PF2MFP_Pos)   /*!< GPA_MFP0 PF2  setting for BPWM1_CH1       */
 #define SYS_GPF_MFP0_PF2MFP_BPWM5_CH5        (0x0cUL<<SYS_GPF_MFP0_PF2MFP_Pos)   /*!< GPA_MFP0 PF2  setting for BPWM5_CH5       */
 #define SYS_GPF_MFP0_PF2MFP_TM1_EXT          (0x0fUL<<SYS_GPF_MFP0_PF2MFP_Pos)   /*!< GPA_MFP0 PF2  setting for TM1_EXT         */
-#define SYS_GPF_MFP0_PF2MFP_SPB_G2_TX3       (0x10UL<<SYS_GPF_MFP0_PF2MFP_Pos)   /*!< GPA_MFP0 PF2  setting for SPB_G2_TX3      */
+#define SYS_GPF_MFP0_PF2MFP_PDCI_G2_TX3      (0x10UL<<SYS_GPF_MFP0_PF2MFP_Pos)   /*!< GPA_MFP0 PF2  setting for PDCI_G2_TX3     */
 
 /* PF.3 MFP */
 #define SYS_GPF_MFP0_PF3MFP_GPIO             (0x00UL<<SYS_GPF_MFP0_PF3MFP_Pos)   /*!< GPF_MFP0 PF3  setting for GPIO            */
@@ -1201,7 +1193,7 @@ extern "C"
 #define SYS_GPF_MFP0_PF3MFP_BPWM1_CH0        (0x0bUL<<SYS_GPF_MFP0_PF3MFP_Pos)   /*!< GPA_MFP0 PF3  setting for BPWM1_CH0       */
 #define SYS_GPF_MFP0_PF3MFP_BPWM5_CH4        (0x0cUL<<SYS_GPF_MFP0_PF3MFP_Pos)   /*!< GPA_MFP0 PF3  setting for BPWM5_CH4       */
 #define SYS_GPF_MFP0_PF3MFP_TM0_EXT          (0x0fUL<<SYS_GPF_MFP0_PF3MFP_Pos)   /*!< GPA_MFP0 PF3  setting for TM0_EXT         */
-#define SYS_GPF_MFP0_PF3MFP_SPB_G2_TX2       (0x10UL<<SYS_GPF_MFP0_PF3MFP_Pos)   /*!< GPA_MFP0 PF3  setting for SPB_G2_TX2      */
+#define SYS_GPF_MFP0_PF3MFP_PDCI_G2_TX2      (0x10UL<<SYS_GPF_MFP0_PF3MFP_Pos)   /*!< GPA_MFP0 PF3  setting for PDCI_G2_TX2     */
 
 /* PF.4 MFP */
 #define SYS_GPF_MFP1_PF4MFP_GPIO             (0x00UL<<SYS_GPF_MFP1_PF4MFP_Pos)   /*!< GPF_MFP1 PF4  setting for GPIO            */
@@ -1213,7 +1205,7 @@ extern "C"
 #define SYS_GPF_MFP1_PF4MFP_EPWM0_CH1        (0x07UL<<SYS_GPF_MFP1_PF4MFP_Pos)   /*!< GPA_MFP1 PF4  setting for EPWM0_CH1       */
 #define SYS_GPF_MFP1_PF4MFP_BPWM0_CH5        (0x08UL<<SYS_GPF_MFP1_PF4MFP_Pos)   /*!< GPA_MFP1 PF4  setting for BPWM0_CH5       */
 #define SYS_GPF_MFP1_PF4MFP_X32_OUT          (0x0aUL<<SYS_GPF_MFP1_PF4MFP_Pos)   /*!< GPA_MFP1 PF4  setting for X32_OUT         */
-#define SYS_GPF_MFP1_PF4MFP_SPB_G2_TX1       (0x10UL<<SYS_GPF_MFP1_PF4MFP_Pos)   /*!< GPA_MFP1 PF4  setting for SPB_G2_TX1      */
+#define SYS_GPF_MFP1_PF4MFP_PDCI_G2_TX1      (0x10UL<<SYS_GPF_MFP1_PF4MFP_Pos)   /*!< GPA_MFP1 PF4  setting for PDCI_G2_TX1     */
 
 /* PF.5 MFP */
 #define SYS_GPF_MFP1_PF5MFP_GPIO             (0x00UL<<SYS_GPF_MFP1_PF5MFP_Pos)   /*!< GPF_MFP1 PF5  setting for GPIO            */
@@ -1227,7 +1219,7 @@ extern "C"
 #define SYS_GPF_MFP1_PF5MFP_EPWM0_SYNC_OUT   (0x09UL<<SYS_GPF_MFP1_PF5MFP_Pos)   /*!< GPA_MFP1 PF5  setting for EPWM0_SYNC_OUT  */
 #define SYS_GPF_MFP1_PF5MFP_X32_IN           (0x0aUL<<SYS_GPF_MFP1_PF5MFP_Pos)   /*!< GPA_MFP1 PF5  setting for X32_IN          */
 #define SYS_GPF_MFP1_PF5MFP_EADC0_ST         (0x0bUL<<SYS_GPF_MFP1_PF5MFP_Pos)   /*!< GPA_MFP1 PF5  setting for EADC0_ST        */
-#define SYS_GPF_MFP1_PF5MFP_SPB_G2_TX0       (0x10UL<<SYS_GPF_MFP1_PF5MFP_Pos)   /*!< GPA_MFP1 PF5  setting for SPB_G2_TX0      */
+#define SYS_GPF_MFP1_PF5MFP_PDCI_G2_TX0      (0x10UL<<SYS_GPF_MFP1_PF5MFP_Pos)   /*!< GPA_MFP1 PF5  setting for PDCI_G2_TX0     */
 
 /* PF.6 MFP */
 #define SYS_GPF_MFP1_PF6MFP_GPIO             (0x00UL<<SYS_GPF_MFP1_PF6MFP_Pos)   /*!< GPF_MFP1 PF6  setting for GPIO            */
@@ -1238,7 +1230,7 @@ extern "C"
 #define SYS_GPF_MFP1_PF6MFP_EBI_nCS0         (0x07UL<<SYS_GPF_MFP1_PF6MFP_Pos)   /*!< GPA_MFP1 PF6  setting for EBI_nCS0        */
 #define SYS_GPF_MFP1_PF6MFP_BPWM3_CH4        (0x0cUL<<SYS_GPF_MFP1_PF6MFP_Pos)   /*!< GPA_MFP1 PF6  setting for BPWM3_CH4       */
 #define SYS_GPF_MFP1_PF6MFP_TRACE_SWO        (0x0eUL<<SYS_GPF_MFP1_PF6MFP_Pos)   /*!< GPA_MFP1 PF6  setting for TRACE_SWO       */
-#define SYS_GPF_MFP1_PF6MFP_SPB_G4_RX0       (0x0fUL<<SYS_GPF_MFP1_PF6MFP_Pos)   /*!< GPA_MFP1 PF6  setting for SPB_G4_RX0      */
+#define SYS_GPF_MFP1_PF6MFP_PDCI_G4_RX0      (0x0fUL<<SYS_GPF_MFP1_PF6MFP_Pos)   /*!< GPA_MFP1 PF6  setting for PDCI_G4_RX0     */
 
 /* PF.7 MFP */
 #define SYS_GPF_MFP1_PF7MFP_GPIO             (0x00UL<<SYS_GPF_MFP1_PF7MFP_Pos)   /*!< GPF_MFP1 PF7  setting for GPIO            */
@@ -1283,14 +1275,14 @@ extern "C"
 /* PF.14 MFP */
 #define SYS_GPF_MFP3_PF14MFP_GPIO            (0x00UL<<SYS_GPF_MFP3_PF14MFP_Pos)  /*!< GPF_MFP3 PF14 setting for GPIO            */
 #define SYS_GPF_MFP3_PF14MFP_BPWM3_CH5       (0x0cUL<<SYS_GPF_MFP3_PF14MFP_Pos)  /*!< GPA_MFP3 PF14 setting for BPWM3_CH5       */
-#define SYS_GPF_MFP3_PF14MFP_SPB_G5_RX0      (0x0fUL<<SYS_GPF_MFP3_PF14MFP_Pos)  /*!< GPA_MFP3 PF14 setting for SPB_G5_RX0      */
+#define SYS_GPF_MFP3_PF14MFP_PDCI_G5_RX0     (0x0fUL<<SYS_GPF_MFP3_PF14MFP_Pos)  /*!< GPA_MFP3 PF14 setting for PDCI_G5_RX0     */
 #define SYS_GPF_MFP3_PF14MFP_LLSI3_OUT       (0x10UL<<SYS_GPF_MFP3_PF14MFP_Pos)  /*!< GPA_MFP3 PF14 setting for LLSI3_OUT       */
 
 /* PF.15 MFP */
 #define SYS_GPF_MFP3_PF15MFP_GPIO            (0x00UL<<SYS_GPF_MFP3_PF15MFP_Pos)  /*!< GPF_MFP3 PF15 setting for GPIO            */
-#define SYS_GPF_MFP3_PF15MFP_SPB_G2_CLK      (0x05UL<<SYS_GPF_MFP3_PF15MFP_Pos)  /*!< GPA_MFP3 PF15 setting for SPB_G2_CLK      */
+#define SYS_GPF_MFP3_PF15MFP_PDCI_G2_CLK     (0x05UL<<SYS_GPF_MFP3_PF15MFP_Pos)  /*!< GPA_MFP3 PF15 setting for PDCI_G2_CLK     */
 #define SYS_GPF_MFP3_PF15MFP_BPWM3_CH5       (0x0cUL<<SYS_GPF_MFP3_PF15MFP_Pos)  /*!< GPA_MFP3 PF15 setting for BPWM3_CH5       */
-#define SYS_GPF_MFP3_PF15MFP_SPB_G2_RX1      (0x10UL<<SYS_GPF_MFP3_PF15MFP_Pos)  /*!< GPA_MFP3 PF15 setting for SPB_G2_RX1      */
+#define SYS_GPF_MFP3_PF15MFP_PDCI_G2_RX1     (0x10UL<<SYS_GPF_MFP3_PF15MFP_Pos)  /*!< GPA_MFP3 PF15 setting for PDCI_G2_RX1     */
 
 /* PG.2 MFP */
 #define SYS_GPG_MFP0_PG2MFP_GPIO             (0x00UL<<SYS_GPG_MFP0_PG2MFP_Pos)   /*!< GPG_MFP0 PG2  setting for GPIO            */
@@ -1322,28 +1314,24 @@ extern "C"
 #define SYS_GPG_MFP2_PG9MFP_EBI_AD0          (0x02UL<<SYS_GPG_MFP2_PG9MFP_Pos)   /*!< GPA_MFP2 PG9  setting for EBI_AD0         */
 #define SYS_GPG_MFP2_PG9MFP_BPWM0_CH5        (0x0cUL<<SYS_GPG_MFP2_PG9MFP_Pos)   /*!< GPA_MFP2 PG9  setting for BPWM0_CH5       */
 #define SYS_GPG_MFP2_PG9MFP_BPWM5_CH5        (0x0dUL<<SYS_GPG_MFP2_PG9MFP_Pos)   /*!< GPA_MFP2 PG9  setting for BPWM5_CH5       */
-#define SYS_GPG_MFP2_PG9MFP_SPB_G6_TX0       (0x10UL<<SYS_GPG_MFP2_PG9MFP_Pos)   /*!< GPA_MFP2 PG9  setting for SPB_G6_TX0      */
 
 /* PG.10 MFP */
 #define SYS_GPG_MFP2_PG10MFP_GPIO            (0x00UL<<SYS_GPG_MFP2_PG10MFP_Pos)  /*!< GPG_MFP2 PG10 setting for GPIO            */
 #define SYS_GPG_MFP2_PG10MFP_EBI_AD1         (0x02UL<<SYS_GPG_MFP2_PG10MFP_Pos)  /*!< GPA_MFP2 PG10 setting for EBI_AD1         */
 #define SYS_GPG_MFP2_PG10MFP_BPWM0_CH4       (0x0cUL<<SYS_GPG_MFP2_PG10MFP_Pos)  /*!< GPA_MFP2 PG10 setting for BPWM0_CH4       */
 #define SYS_GPG_MFP2_PG10MFP_BPWM5_CH4       (0x0dUL<<SYS_GPG_MFP2_PG10MFP_Pos)  /*!< GPA_MFP2 PG10 setting for BPWM5_CH4       */
-#define SYS_GPG_MFP2_PG10MFP_SPB_G6_TX1      (0x10UL<<SYS_GPG_MFP2_PG10MFP_Pos)  /*!< GPA_MFP2 PG10 setting for SPB_G6_TX1      */
 
 /* PG.11 MFP */
 #define SYS_GPG_MFP2_PG11MFP_GPIO            (0x00UL<<SYS_GPG_MFP2_PG11MFP_Pos)  /*!< GPG_MFP2 PG11 setting for GPIO            */
 #define SYS_GPG_MFP2_PG11MFP_EBI_AD2         (0x02UL<<SYS_GPG_MFP2_PG11MFP_Pos)  /*!< GPA_MFP2 PG11 setting for EBI_AD2         */
 #define SYS_GPG_MFP2_PG11MFP_BPWM0_CH3       (0x0cUL<<SYS_GPG_MFP2_PG11MFP_Pos)  /*!< GPA_MFP2 PG11 setting for BPWM0_CH3       */
 #define SYS_GPG_MFP2_PG11MFP_BPWM5_CH3       (0x0dUL<<SYS_GPG_MFP2_PG11MFP_Pos)  /*!< GPA_MFP2 PG11 setting for BPWM5_CH3       */
-#define SYS_GPG_MFP2_PG11MFP_SPB_G6_TX2      (0x10UL<<SYS_GPG_MFP2_PG11MFP_Pos)  /*!< GPA_MFP2 PG11 setting for SPB_G6_TX2      */
 
 /* PG.12 MFP */
 #define SYS_GPG_MFP3_PG12MFP_GPIO            (0x00UL<<SYS_GPG_MFP3_PG12MFP_Pos)  /*!< GPG_MFP3 PG12 setting for GPIO            */
 #define SYS_GPG_MFP3_PG12MFP_EBI_AD3         (0x02UL<<SYS_GPG_MFP3_PG12MFP_Pos)  /*!< GPA_MFP3 PG12 setting for EBI_AD3         */
 #define SYS_GPG_MFP3_PG12MFP_BPWM0_CH2       (0x0cUL<<SYS_GPG_MFP3_PG12MFP_Pos)  /*!< GPA_MFP3 PG12 setting for BPWM0_CH2       */
 #define SYS_GPG_MFP3_PG12MFP_BPWM5_CH2       (0x0dUL<<SYS_GPG_MFP3_PG12MFP_Pos)  /*!< GPA_MFP3 PG12 setting for BPWM5_CH2       */
-#define SYS_GPG_MFP3_PG12MFP_SPB_G6_TX3      (0x10UL<<SYS_GPG_MFP3_PG12MFP_Pos)  /*!< GPA_MFP3 PG12 setting for SPB_G6_TX3      */
 
 /* PG.13 MFP */
 #define SYS_GPG_MFP3_PG13MFP_GPIO            (0x00UL<<SYS_GPG_MFP3_PG13MFP_Pos)  /*!< GPG_MFP3 PG13 setting for GPIO            */
@@ -2137,72 +2125,60 @@ extern "C"
 #define SD0_nCD_PB12              SYS_GPB_MFP3_PB12MFP_SD0_nCD         /*!< GPB_MFP3  PB12 setting for SD0_nCD         */
 #define SD0_nCD_PD13              SYS_GPD_MFP3_PD13MFP_SD0_nCD         /*!< GPD_MFP3  PD13 setting for SD0_nCD         */
 
-/* SPB MFP Pins */
-#define SPB_G0_RX0_PC6            SYS_GPC_MFP1_PC6MFP_SPB_G0_RX0       /*!< GPC_MFP1  PC6  setting for SPB_G0_RX0      */
-#define SPB_G0_RX0_PC14           SYS_GPC_MFP3_PC14MFP_SPB_G0_RX0      /*!< GPC_MFP3  PC14 setting for SPB_G0_RX0      */
-#define SPB_G0_RX1_PB1            SYS_GPB_MFP0_PB1MFP_SPB_G0_RX1       /*!< GPB_MFP0  PB1  setting for SPB_G0_RX1      */
-#define SPB_G0_CLK_PB1            SYS_GPB_MFP0_PB1MFP_SPB_G0_CLK       /*!< GPB_MFP0  PB1  setting for SPB_G0_CLK      */
-#define SPB_G0_CLK_PC6            SYS_GPC_MFP1_PC6MFP_SPB_G0_CLK       /*!< GPC_MFP1  PC6  setting for SPB_G0_CLK      */
-#define SPB_G0_TX0_PB5            SYS_GPB_MFP1_PB5MFP_SPB_G0_TX0       /*!< GPB_MFP1  PB5  setting for SPB_G0_TX0      */
-#define SPB_G0_TX2_PB3            SYS_GPB_MFP0_PB3MFP_SPB_G0_TX2       /*!< GPB_MFP0  PB3  setting for SPB_G0_TX2      */
-#define SPB_G0_TX1_PB4            SYS_GPB_MFP1_PB4MFP_SPB_G0_TX1       /*!< GPB_MFP1  PB4  setting for SPB_G0_TX1      */
-#define SPB_G0_TX3_PB2            SYS_GPB_MFP0_PB2MFP_SPB_G0_TX3       /*!< GPB_MFP0  PB2  setting for SPB_G0_TX3      */
-#define SPB_G1_TX0_PB0            SYS_GPB_MFP0_PB0MFP_SPB_G1_TX0       /*!< GPB_MFP0  PB0  setting for SPB_G1_TX0      */
-#define SPB_G1_TX3_PA9            SYS_GPA_MFP2_PA9MFP_SPB_G1_TX3       /*!< GPA_MFP2  PA9  setting for SPB_G1_TX3      */
-#define SPB_G1_CLK_PA8            SYS_GPA_MFP2_PA8MFP_SPB_G1_CLK       /*!< GPA_MFP2  PA8  setting for SPB_G1_CLK      */
-#define SPB_G1_TX2_PA10           SYS_GPA_MFP2_PA10MFP_SPB_G1_TX2      /*!< GPA_MFP2  PA10 setting for SPB_G1_TX2      */
-#define SPB_G1_RX0_PB15           SYS_GPB_MFP3_PB15MFP_SPB_G1_RX0      /*!< GPB_MFP3  PB15 setting for SPB_G1_RX0      */
-#define SPB_G1_TX1_PA11           SYS_GPA_MFP2_PA11MFP_SPB_G1_TX1      /*!< GPA_MFP2  PA11 setting for SPB_G1_TX1      */
-#define SPB_G1_RX1_PA8            SYS_GPA_MFP2_PA8MFP_SPB_G1_RX1       /*!< GPA_MFP2  PA8  setting for SPB_G1_RX1      */
-#define SPB_G2_CLK_PF15           SYS_GPF_MFP3_PF15MFP_SPB_G2_CLK      /*!< GPF_MFP3  PF15 setting for SPB_G2_CLK      */
-#define SPB_G2_TX3_PA6            SYS_GPA_MFP1_PA6MFP_SPB_G2_TX3       /*!< GPA_MFP1  PA6  setting for SPB_G2_TX3      */
-#define SPB_G2_TX3_PF2            SYS_GPF_MFP0_PF2MFP_SPB_G2_TX3       /*!< GPF_MFP0  PF2  setting for SPB_G2_TX3      */
-#define SPB_G2_RX0_PB14           SYS_GPB_MFP3_PB14MFP_SPB_G2_RX0      /*!< GPB_MFP3  PB14 setting for SPB_G2_RX0      */
-#define SPB_G2_TX1_PF4            SYS_GPF_MFP1_PF4MFP_SPB_G2_TX1       /*!< GPF_MFP1  PF4  setting for SPB_G2_TX1      */
-#define SPB_G2_RX1_PF15           SYS_GPF_MFP3_PF15MFP_SPB_G2_RX1      /*!< GPF_MFP3  PF15 setting for SPB_G2_RX1      */
-#define SPB_G2_TX2_PA7            SYS_GPA_MFP1_PA7MFP_SPB_G2_TX2       /*!< GPA_MFP1  PA7  setting for SPB_G2_TX2      */
-#define SPB_G2_TX2_PF3            SYS_GPF_MFP0_PF3MFP_SPB_G2_TX2       /*!< GPF_MFP0  PF3  setting for SPB_G2_TX2      */
-#define SPB_G2_TX0_PF5            SYS_GPF_MFP1_PF5MFP_SPB_G2_TX0       /*!< GPF_MFP1  PF5  setting for SPB_G2_TX0      */
-#define SPB_G3_TX0_PA4            SYS_GPA_MFP1_PA4MFP_SPB_G3_TX0       /*!< GPA_MFP1  PA4  setting for SPB_G3_TX0      */
-#define SPB_G3_TX0_PB10           SYS_GPB_MFP2_PB10MFP_SPB_G3_TX0      /*!< GPB_MFP2  PB10 setting for SPB_G3_TX0      */
-#define SPB_G3_RX1_PA5            SYS_GPA_MFP1_PA5MFP_SPB_G3_RX1       /*!< GPA_MFP1  PA5  setting for SPB_G3_RX1      */
-#define SPB_G3_RX1_PB8            SYS_GPB_MFP2_PB8MFP_SPB_G3_RX1       /*!< GPB_MFP2  PB8  setting for SPB_G3_RX1      */
-#define SPB_G3_TX1_PA3            SYS_GPA_MFP0_PA3MFP_SPB_G3_TX1       /*!< GPA_MFP0  PA3  setting for SPB_G3_TX1      */
-#define SPB_G3_TX1_PB9            SYS_GPB_MFP2_PB9MFP_SPB_G3_TX1       /*!< GPB_MFP2  PB9  setting for SPB_G3_TX1      */
-#define SPB_G3_CLK_PA5            SYS_GPA_MFP1_PA5MFP_SPB_G3_CLK       /*!< GPA_MFP1  PA5  setting for SPB_G3_CLK      */
-#define SPB_G3_CLK_PB8            SYS_GPB_MFP2_PB8MFP_SPB_G3_CLK       /*!< GPB_MFP2  PB8  setting for SPB_G3_CLK      */
-#define SPB_G3_TX3_PA1            SYS_GPA_MFP0_PA1MFP_SPB_G3_TX3       /*!< GPA_MFP0  PA1  setting for SPB_G3_TX3      */
-#define SPB_G3_TX3_PB7            SYS_GPB_MFP1_PB7MFP_SPB_G3_TX3       /*!< GPB_MFP1  PB7  setting for SPB_G3_TX3      */
-#define SPB_G3_RX0_PB11           SYS_GPB_MFP2_PB11MFP_SPB_G3_RX0      /*!< GPB_MFP2  PB11 setting for SPB_G3_RX0      */
-#define SPB_G3_RX0_PB13           SYS_GPB_MFP3_PB13MFP_SPB_G3_RX0      /*!< GPB_MFP3  PB13 setting for SPB_G3_RX0      */
-#define SPB_G3_TX2_PA2            SYS_GPA_MFP0_PA2MFP_SPB_G3_TX2       /*!< GPA_MFP0  PA2  setting for SPB_G3_TX2      */
-#define SPB_G3_TX2_PB6            SYS_GPB_MFP1_PB6MFP_SPB_G3_TX2       /*!< GPB_MFP1  PB6  setting for SPB_G3_TX2      */
-#define SPB_G4_TX0_PC5            SYS_GPC_MFP1_PC5MFP_SPB_G4_TX0       /*!< GPC_MFP1  PC5  setting for SPB_G4_TX0      */
-#define SPB_G4_TX1_PC4            SYS_GPC_MFP1_PC4MFP_SPB_G4_TX1       /*!< GPC_MFP1  PC4  setting for SPB_G4_TX1      */
-#define SPB_G4_RX0_PF6            SYS_GPF_MFP1_PF6MFP_SPB_G4_RX0       /*!< GPF_MFP1  PF6  setting for SPB_G4_RX0      */
-#define SPB_G4_RX1_PC1            SYS_GPC_MFP0_PC1MFP_SPB_G4_RX1       /*!< GPC_MFP0  PC1  setting for SPB_G4_RX1      */
-#define SPB_G4_CLK_PC1            SYS_GPC_MFP0_PC1MFP_SPB_G4_CLK       /*!< GPC_MFP0  PC1  setting for SPB_G4_CLK      */
-#define SPB_G4_TX2_PC3            SYS_GPC_MFP0_PC3MFP_SPB_G4_TX2       /*!< GPC_MFP0  PC3  setting for SPB_G4_TX2      */
-#define SPB_G4_TX3_PC2            SYS_GPC_MFP0_PC2MFP_SPB_G4_TX3       /*!< GPC_MFP0  PC2  setting for SPB_G4_TX3      */
-#define SPB_G5_TX2_PA14           SYS_GPA_MFP3_PA14MFP_SPB_G5_TX2      /*!< GPA_MFP3  PA14 setting for SPB_G5_TX2      */
-#define SPB_G5_RX0_PF14           SYS_GPF_MFP3_PF14MFP_SPB_G5_RX0      /*!< GPF_MFP3  PF14 setting for SPB_G5_RX0      */
-#define SPB_G5_TX1_PA13           SYS_GPA_MFP3_PA13MFP_SPB_G5_TX1      /*!< GPA_MFP3  PA13 setting for SPB_G5_TX1      */
-#define SPB_G5_RX1_PC0            SYS_GPC_MFP0_PC0MFP_SPB_G5_RX1       /*!< GPC_MFP0  PC0  setting for SPB_G5_RX1      */
-#define SPB_G5_CLK_PC0            SYS_GPC_MFP0_PC0MFP_SPB_G5_CLK       /*!< GPC_MFP0  PC0  setting for SPB_G5_CLK      */
-#define SPB_G5_TX0_PA12           SYS_GPA_MFP3_PA12MFP_SPB_G5_TX0      /*!< GPA_MFP3  PA12 setting for SPB_G5_TX0      */
-#define SPB_G5_TX3_PA15           SYS_GPA_MFP3_PA15MFP_SPB_G5_TX3      /*!< GPA_MFP3  PA15 setting for SPB_G5_TX3      */
-#define SPB_G6_TX2_PB14           SYS_GPB_MFP3_PB14MFP_SPB_G6_TX2      /*!< GPB_MFP3  PB14 setting for SPB_G6_TX2      */
-#define SPB_G6_TX2_PG11           SYS_GPG_MFP2_PG11MFP_SPB_G6_TX2      /*!< GPG_MFP2  PG11 setting for SPB_G6_TX2      */
-#define SPB_G6_TX1_PB15           SYS_GPB_MFP3_PB15MFP_SPB_G6_TX1      /*!< GPB_MFP3  PB15 setting for SPB_G6_TX1      */
-#define SPB_G6_TX1_PG10           SYS_GPG_MFP2_PG10MFP_SPB_G6_TX1      /*!< GPG_MFP2  PG10 setting for SPB_G6_TX1      */
-#define SPB_G6_RX1_PC14           SYS_GPC_MFP3_PC14MFP_SPB_G6_RX1      /*!< GPC_MFP3  PC14 setting for SPB_G6_RX1      */
-#define SPB_G6_CLK_PC7            SYS_GPC_MFP1_PC7MFP_SPB_G6_CLK       /*!< GPC_MFP1  PC7  setting for SPB_G6_CLK      */
-#define SPB_G6_CLK_PC14           SYS_GPC_MFP3_PC14MFP_SPB_G6_CLK      /*!< GPC_MFP3  PC14 setting for SPB_G6_CLK      */
-#define SPB_G6_TX3_PB13           SYS_GPB_MFP3_PB13MFP_SPB_G6_TX3      /*!< GPB_MFP3  PB13 setting for SPB_G6_TX3      */
-#define SPB_G6_TX3_PG12           SYS_GPG_MFP3_PG12MFP_SPB_G6_TX3      /*!< GPG_MFP3  PG12 setting for SPB_G6_TX3      */
-#define SPB_G6_TX0_PB7            SYS_GPB_MFP1_PB7MFP_SPB_G6_TX0       /*!< GPB_MFP1  PB7  setting for SPB_G6_TX0      */
-#define SPB_G6_TX0_PG9            SYS_GPG_MFP2_PG9MFP_SPB_G6_TX0       /*!< GPG_MFP2  PG9  setting for SPB_G6_TX0      */
-#define SPB_G6_RX0_PC7            SYS_GPC_MFP1_PC7MFP_SPB_G6_RX0       /*!< GPC_MFP1  PC7  setting for SPB_G6_RX0      */
+/* PDCI MFP Pins */
+#define PDCI_G0_RX0_PC6           SYS_GPC_MFP1_PC6MFP_PDCI_G0_RX0      /*!< GPC_MFP1  PC6  setting for PDCI_G0_RX0     */
+#define PDCI_G0_RX0_PC14          SYS_GPC_MFP3_PC14MFP_PDCI_G0_RX0     /*!< GPC_MFP3  PC14 setting for PDCI_G0_RX0     */
+#define PDCI_G0_RX1_PB1           SYS_GPB_MFP0_PB1MFP_PDCI_G0_RX1      /*!< GPB_MFP0  PB1  setting for PDCI_G0_RX1     */
+#define PDCI_G0_CLK_PB1           SYS_GPB_MFP0_PB1MFP_PDCI_G0_CLK      /*!< GPB_MFP0  PB1  setting for PDCI_G0_CLK     */
+#define PDCI_G0_CLK_PC6           SYS_GPC_MFP1_PC6MFP_PDCI_G0_CLK      /*!< GPC_MFP1  PC6  setting for PDCI_G0_CLK     */
+#define PDCI_G0_TX0_PB5           SYS_GPB_MFP1_PB5MFP_PDCI_G0_TX0      /*!< GPB_MFP1  PB5  setting for PDCI_G0_TX0     */
+#define PDCI_G0_TX2_PB3           SYS_GPB_MFP0_PB3MFP_PDCI_G0_TX2      /*!< GPB_MFP0  PB3  setting for PDCI_G0_TX2     */
+#define PDCI_G0_TX1_PB4           SYS_GPB_MFP1_PB4MFP_PDCI_G0_TX1      /*!< GPB_MFP1  PB4  setting for PDCI_G0_TX1     */
+#define PDCI_G0_TX3_PB2           SYS_GPB_MFP0_PB2MFP_PDCI_G0_TX3      /*!< GPB_MFP0  PB2  setting for PDCI_G0_TX3     */
+#define PDCI_G1_TX0_PB0           SYS_GPB_MFP0_PB0MFP_PDCI_G1_TX0      /*!< GPB_MFP0  PB0  setting for PDCI_G1_TX0     */
+#define PDCI_G1_TX3_PA9           SYS_GPA_MFP2_PA9MFP_PDCI_G1_TX3      /*!< GPA_MFP2  PA9  setting for PDCI_G1_TX3     */
+#define PDCI_G1_CLK_PA8           SYS_GPA_MFP2_PA8MFP_PDCI_G1_CLK      /*!< GPA_MFP2  PA8  setting for PDCI_G1_CLK     */
+#define PDCI_G1_TX2_PA10          SYS_GPA_MFP2_PA10MFP_PDCI_G1_TX2     /*!< GPA_MFP2  PA10 setting for PDCI_G1_TX2     */
+#define PDCI_G1_RX0_PB15          SYS_GPB_MFP3_PB15MFP_PDCI_G1_RX0     /*!< GPB_MFP3  PB15 setting for PDCI_G1_RX0     */
+#define PDCI_G1_TX1_PA11          SYS_GPA_MFP2_PA11MFP_PDCI_G1_TX1     /*!< GPA_MFP2  PA11 setting for PDCI_G1_TX1     */
+#define PDCI_G1_RX1_PA8           SYS_GPA_MFP2_PA8MFP_PDCI_G1_RX1      /*!< GPA_MFP2  PA8  setting for PDCI_G1_RX1     */
+#define PDCI_G2_CLK_PF15          SYS_GPF_MFP3_PF15MFP_PDCI_G2_CLK     /*!< GPF_MFP3  PF15 setting for PDCI_G2_CLK     */
+#define PDCI_G2_TX3_PA6           SYS_GPA_MFP1_PA6MFP_PDCI_G2_TX3      /*!< GPA_MFP1  PA6  setting for PDCI_G2_TX3     */
+#define PDCI_G2_TX3_PF2           SYS_GPF_MFP0_PF2MFP_PDCI_G2_TX3      /*!< GPF_MFP0  PF2  setting for PDCI_G2_TX3     */
+#define PDCI_G2_RX0_PB14          SYS_GPB_MFP3_PB14MFP_PDCI_G2_RX0     /*!< GPB_MFP3  PB14 setting for PDCI_G2_RX0     */
+#define PDCI_G2_TX1_PF4           SYS_GPF_MFP1_PF4MFP_PDCI_G2_TX1      /*!< GPF_MFP1  PF4  setting for PDCI_G2_TX1     */
+#define PDCI_G2_RX1_PF15          SYS_GPF_MFP3_PF15MFP_PDCI_G2_RX1     /*!< GPF_MFP3  PF15 setting for PDCI_G2_RX1     */
+#define PDCI_G2_TX2_PA7           SYS_GPA_MFP1_PA7MFP_PDCI_G2_TX2      /*!< GPA_MFP1  PA7  setting for PDCI_G2_TX2     */
+#define PDCI_G2_TX2_PF3           SYS_GPF_MFP0_PF3MFP_PDCI_G2_TX2      /*!< GPF_MFP0  PF3  setting for PDCI_G2_TX2     */
+#define PDCI_G2_TX0_PF5           SYS_GPF_MFP1_PF5MFP_PDCI_G2_TX0      /*!< GPF_MFP1  PF5  setting for PDCI_G2_TX0     */
+#define PDCI_G3_TX0_PA4           SYS_GPA_MFP1_PA4MFP_PDCI_G3_TX0      /*!< GPA_MFP1  PA4  setting for PDCI_G3_TX0     */
+#define PDCI_G3_TX0_PB10          SYS_GPB_MFP2_PB10MFP_PDCI_G3_TX0     /*!< GPB_MFP2  PB10 setting for PDCI_G3_TX0     */
+#define PDCI_G3_RX1_PA5           SYS_GPA_MFP1_PA5MFP_PDCI_G3_RX1      /*!< GPA_MFP1  PA5  setting for PDCI_G3_RX1     */
+#define PDCI_G3_RX1_PB8           SYS_GPB_MFP2_PB8MFP_PDCI_G3_RX1      /*!< GPB_MFP2  PB8  setting for PDCI_G3_RX1     */
+#define PDCI_G3_TX1_PA3           SYS_GPA_MFP0_PA3MFP_PDCI_G3_TX1      /*!< GPA_MFP0  PA3  setting for PDCI_G3_TX1     */
+#define PDCI_G3_TX1_PB9           SYS_GPB_MFP2_PB9MFP_PDCI_G3_TX1      /*!< GPB_MFP2  PB9  setting for PDCI_G3_TX1     */
+#define PDCI_G3_CLK_PA5           SYS_GPA_MFP1_PA5MFP_PDCI_G3_CLK      /*!< GPA_MFP1  PA5  setting for PDCI_G3_CLK     */
+#define PDCI_G3_CLK_PB8           SYS_GPB_MFP2_PB8MFP_PDCI_G3_CLK      /*!< GPB_MFP2  PB8  setting for PDCI_G3_CLK     */
+#define PDCI_G3_TX3_PA1           SYS_GPA_MFP0_PA1MFP_PDCI_G3_TX3      /*!< GPA_MFP0  PA1  setting for PDCI_G3_TX3     */
+#define PDCI_G3_TX3_PB7           SYS_GPB_MFP1_PB7MFP_PDCI_G3_TX3      /*!< GPB_MFP1  PB7  setting for PDCI_G3_TX3     */
+#define PDCI_G3_RX0_PB11          SYS_GPB_MFP2_PB11MFP_PDCI_G3_RX0     /*!< GPB_MFP2  PB11 setting for PDCI_G3_RX0     */
+#define PDCI_G3_RX0_PB13          SYS_GPB_MFP3_PB13MFP_PDCI_G3_RX0     /*!< GPB_MFP3  PB13 setting for PDCI_G3_RX0     */
+#define PDCI_G3_TX2_PA2           SYS_GPA_MFP0_PA2MFP_PDCI_G3_TX2      /*!< GPA_MFP0  PA2  setting for PDCI_G3_TX2     */
+#define PDCI_G3_TX2_PB6           SYS_GPB_MFP1_PB6MFP_PDCI_G3_TX2      /*!< GPB_MFP1  PB6  setting for PDCI_G3_TX2     */
+#define PDCI_G4_TX0_PC5           SYS_GPC_MFP1_PC5MFP_PDCI_G4_TX0      /*!< GPC_MFP1  PC5  setting for PDCI_G4_TX0     */
+#define PDCI_G4_TX1_PC4           SYS_GPC_MFP1_PC4MFP_PDCI_G4_TX1      /*!< GPC_MFP1  PC4  setting for PDCI_G4_TX1     */
+#define PDCI_G4_RX0_PF6           SYS_GPF_MFP1_PF6MFP_PDCI_G4_RX0      /*!< GPF_MFP1  PF6  setting for PDCI_G4_RX0     */
+#define PDCI_G4_RX1_PC1           SYS_GPC_MFP0_PC1MFP_PDCI_G4_RX1      /*!< GPC_MFP0  PC1  setting for PDCI_G4_RX1     */
+#define PDCI_G4_CLK_PC1           SYS_GPC_MFP0_PC1MFP_PDCI_G4_CLK      /*!< GPC_MFP0  PC1  setting for PDCI_G4_CLK     */
+#define PDCI_G4_TX2_PC3           SYS_GPC_MFP0_PC3MFP_PDCI_G4_TX2      /*!< GPC_MFP0  PC3  setting for PDCI_G4_TX2     */
+#define PDCI_G4_TX3_PC2           SYS_GPC_MFP0_PC2MFP_PDCI_G4_TX3      /*!< GPC_MFP0  PC2  setting for PDCI_G4_TX3     */
+#define PDCI_G5_TX2_PA14          SYS_GPA_MFP3_PA14MFP_PDCI_G5_TX2     /*!< GPA_MFP3  PA14 setting for PDCI_G5_TX2     */
+#define PDCI_G5_RX0_PF14          SYS_GPF_MFP3_PF14MFP_PDCI_G5_RX0     /*!< GPF_MFP3  PF14 setting for PDCI_G5_RX0     */
+#define PDCI_G5_TX1_PA13          SYS_GPA_MFP3_PA13MFP_PDCI_G5_TX1     /*!< GPA_MFP3  PA13 setting for PDCI_G5_TX1     */
+#define PDCI_G5_RX1_PC0           SYS_GPC_MFP0_PC0MFP_PDCI_G5_RX1      /*!< GPC_MFP0  PC0  setting for PDCI_G5_RX1     */
+#define PDCI_G5_CLK_PC0           SYS_GPC_MFP0_PC0MFP_PDCI_G5_CLK      /*!< GPC_MFP0  PC0  setting for PDCI_G5_CLK     */
+#define PDCI_G5_TX0_PA12          SYS_GPA_MFP3_PA12MFP_PDCI_G5_TX0     /*!< GPA_MFP3  PA12 setting for PDCI_G5_TX0     */
+#define PDCI_G5_TX3_PA15          SYS_GPA_MFP3_PA15MFP_PDCI_G5_TX3     /*!< GPA_MFP3  PA15 setting for PDCI_G5_TX3     */
 
 /* SPI0 MFP Pins */
 #define SPI0_CLK_PA2              SYS_GPA_MFP0_PA2MFP_SPI0_CLK         /*!< GPA_MFP0  PA2  setting for SPI0_CLK        */
@@ -3219,72 +3195,60 @@ extern "C"
 #define SD0_nCD_PB12_Msk         SYS_GPB_MFP3_PB12MFP_Msk    /*!< SD0_nCD          PB12 MFP Mask */
 #define SD0_nCD_PD13_Msk         SYS_GPD_MFP3_PD13MFP_Msk    /*!< SD0_nCD          PD13 MFP Mask */
 
-/* SPB MFP Pin Mask */
-#define SPB_G0_RX0_PC6_Msk       SYS_GPC_MFP1_PC6MFP_Msk     /*!< SPB_G0_RX0       PC6  MFP Mask */
-#define SPB_G0_RX0_PC14_Msk      SYS_GPC_MFP3_PC14MFP_Msk    /*!< SPB_G0_RX0       PC14 MFP Mask */
-#define SPB_G0_RX1_PB1_Msk       SYS_GPB_MFP0_PB1MFP_Msk     /*!< SPB_G0_RX1       PB1  MFP Mask */
-#define SPB_G0_CLK_PB1_Msk       SYS_GPB_MFP0_PB1MFP_Msk     /*!< SPB_G0_CLK       PB1  MFP Mask */
-#define SPB_G0_CLK_PC6_Msk       SYS_GPC_MFP1_PC6MFP_Msk     /*!< SPB_G0_CLK       PC6  MFP Mask */
-#define SPB_G0_TX0_PB5_Msk       SYS_GPB_MFP1_PB5MFP_Msk     /*!< SPB_G0_TX0       PB5  MFP Mask */
-#define SPB_G0_TX2_PB3_Msk       SYS_GPB_MFP0_PB3MFP_Msk     /*!< SPB_G0_TX2       PB3  MFP Mask */
-#define SPB_G0_TX1_PB4_Msk       SYS_GPB_MFP1_PB4MFP_Msk     /*!< SPB_G0_TX1       PB4  MFP Mask */
-#define SPB_G0_TX3_PB2_Msk       SYS_GPB_MFP0_PB2MFP_Msk     /*!< SPB_G0_TX3       PB2  MFP Mask */
-#define SPB_G1_TX0_PB0_Msk       SYS_GPB_MFP0_PB0MFP_Msk     /*!< SPB_G1_TX0       PB0  MFP Mask */
-#define SPB_G1_TX3_PA9_Msk       SYS_GPA_MFP2_PA9MFP_Msk     /*!< SPB_G1_TX3       PA9  MFP Mask */
-#define SPB_G1_CLK_PA8_Msk       SYS_GPA_MFP2_PA8MFP_Msk     /*!< SPB_G1_CLK       PA8  MFP Mask */
-#define SPB_G1_TX2_PA10_Msk      SYS_GPA_MFP2_PA10MFP_Msk    /*!< SPB_G1_TX2       PA10 MFP Mask */
-#define SPB_G1_RX0_PB15_Msk      SYS_GPB_MFP3_PB15MFP_Msk    /*!< SPB_G1_RX0       PB15 MFP Mask */
-#define SPB_G1_TX1_PA11_Msk      SYS_GPA_MFP2_PA11MFP_Msk    /*!< SPB_G1_TX1       PA11 MFP Mask */
-#define SPB_G1_RX1_PA8_Msk       SYS_GPA_MFP2_PA8MFP_Msk     /*!< SPB_G1_RX1       PA8  MFP Mask */
-#define SPB_G2_CLK_PF15_Msk      SYS_GPF_MFP3_PF15MFP_Msk    /*!< SPB_G2_CLK       PF15 MFP Mask */
-#define SPB_G2_TX3_PA6_Msk       SYS_GPA_MFP1_PA6MFP_Msk     /*!< SPB_G2_TX3       PA6  MFP Mask */
-#define SPB_G2_TX3_PF2_Msk       SYS_GPF_MFP0_PF2MFP_Msk     /*!< SPB_G2_TX3       PF2  MFP Mask */
-#define SPB_G2_RX0_PB14_Msk      SYS_GPB_MFP3_PB14MFP_Msk    /*!< SPB_G2_RX0       PB14 MFP Mask */
-#define SPB_G2_TX1_PF4_Msk       SYS_GPF_MFP1_PF4MFP_Msk     /*!< SPB_G2_TX1       PF4  MFP Mask */
-#define SPB_G2_RX1_PF15_Msk      SYS_GPF_MFP3_PF15MFP_Msk    /*!< SPB_G2_RX1       PF15 MFP Mask */
-#define SPB_G2_TX2_PA7_Msk       SYS_GPA_MFP1_PA7MFP_Msk     /*!< SPB_G2_TX2       PA7  MFP Mask */
-#define SPB_G2_TX2_PF3_Msk       SYS_GPF_MFP0_PF3MFP_Msk     /*!< SPB_G2_TX2       PF3  MFP Mask */
-#define SPB_G2_TX0_PF5_Msk       SYS_GPF_MFP1_PF5MFP_Msk     /*!< SPB_G2_TX0       PF5  MFP Mask */
-#define SPB_G3_TX0_PA4_Msk       SYS_GPA_MFP1_PA4MFP_Msk     /*!< SPB_G3_TX0       PA4  MFP Mask */
-#define SPB_G3_TX0_PB10_Msk      SYS_GPB_MFP2_PB10MFP_Msk    /*!< SPB_G3_TX0       PB10 MFP Mask */
-#define SPB_G3_RX1_PA5_Msk       SYS_GPA_MFP1_PA5MFP_Msk     /*!< SPB_G3_RX1       PA5  MFP Mask */
-#define SPB_G3_RX1_PB8_Msk       SYS_GPB_MFP2_PB8MFP_Msk     /*!< SPB_G3_RX1       PB8  MFP Mask */
-#define SPB_G3_TX1_PA3_Msk       SYS_GPA_MFP0_PA3MFP_Msk     /*!< SPB_G3_TX1       PA3  MFP Mask */
-#define SPB_G3_TX1_PB9_Msk       SYS_GPB_MFP2_PB9MFP_Msk     /*!< SPB_G3_TX1       PB9  MFP Mask */
-#define SPB_G3_CLK_PA5_Msk       SYS_GPA_MFP1_PA5MFP_Msk     /*!< SPB_G3_CLK       PA5  MFP Mask */
-#define SPB_G3_CLK_PB8_Msk       SYS_GPB_MFP2_PB8MFP_Msk     /*!< SPB_G3_CLK       PB8  MFP Mask */
-#define SPB_G3_TX3_PA1_Msk       SYS_GPA_MFP0_PA1MFP_Msk     /*!< SPB_G3_TX3       PA1  MFP Mask */
-#define SPB_G3_TX3_PB7_Msk       SYS_GPB_MFP1_PB7MFP_Msk     /*!< SPB_G3_TX3       PB7  MFP Mask */
-#define SPB_G3_RX0_PB11_Msk      SYS_GPB_MFP2_PB11MFP_Msk    /*!< SPB_G3_RX0       PB11 MFP Mask */
-#define SPB_G3_RX0_PB13_Msk      SYS_GPB_MFP3_PB13MFP_Msk    /*!< SPB_G3_RX0       PB13 MFP Mask */
-#define SPB_G3_TX2_PA2_Msk       SYS_GPA_MFP0_PA2MFP_Msk     /*!< SPB_G3_TX2       PA2  MFP Mask */
-#define SPB_G3_TX2_PB6_Msk       SYS_GPB_MFP1_PB6MFP_Msk     /*!< SPB_G3_TX2       PB6  MFP Mask */
-#define SPB_G4_TX0_PC5_Msk       SYS_GPC_MFP1_PC5MFP_Msk     /*!< SPB_G4_TX0       PC5  MFP Mask */
-#define SPB_G4_TX1_PC4_Msk       SYS_GPC_MFP1_PC4MFP_Msk     /*!< SPB_G4_TX1       PC4  MFP Mask */
-#define SPB_G4_RX0_PF6_Msk       SYS_GPF_MFP1_PF6MFP_Msk     /*!< SPB_G4_RX0       PF6  MFP Mask */
-#define SPB_G4_RX1_PC1_Msk       SYS_GPC_MFP0_PC1MFP_Msk     /*!< SPB_G4_RX1       PC1  MFP Mask */
-#define SPB_G4_CLK_PC1_Msk       SYS_GPC_MFP0_PC1MFP_Msk     /*!< SPB_G4_CLK       PC1  MFP Mask */
-#define SPB_G4_TX2_PC3_Msk       SYS_GPC_MFP0_PC3MFP_Msk     /*!< SPB_G4_TX2       PC3  MFP Mask */
-#define SPB_G4_TX3_PC2_Msk       SYS_GPC_MFP0_PC2MFP_Msk     /*!< SPB_G4_TX3       PC2  MFP Mask */
-#define SPB_G5_TX2_PA14_Msk      SYS_GPA_MFP3_PA14MFP_Msk    /*!< SPB_G5_TX2       PA14 MFP Mask */
-#define SPB_G5_RX0_PF14_Msk      SYS_GPF_MFP3_PF14MFP_Msk    /*!< SPB_G5_RX0       PF14 MFP Mask */
-#define SPB_G5_TX1_PA13_Msk      SYS_GPA_MFP3_PA13MFP_Msk    /*!< SPB_G5_TX1       PA13 MFP Mask */
-#define SPB_G5_RX1_PC0_Msk       SYS_GPC_MFP0_PC0MFP_Msk     /*!< SPB_G5_RX1       PC0  MFP Mask */
-#define SPB_G5_CLK_PC0_Msk       SYS_GPC_MFP0_PC0MFP_Msk     /*!< SPB_G5_CLK       PC0  MFP Mask */
-#define SPB_G5_TX0_PA12_Msk      SYS_GPA_MFP3_PA12MFP_Msk    /*!< SPB_G5_TX0       PA12 MFP Mask */
-#define SPB_G5_TX3_PA15_Msk      SYS_GPA_MFP3_PA15MFP_Msk    /*!< SPB_G5_TX3       PA15 MFP Mask */
-#define SPB_G6_TX2_PB14_Msk      SYS_GPB_MFP3_PB14MFP_Msk    /*!< SPB_G6_TX2       PB14 MFP Mask */
-#define SPB_G6_TX2_PG11_Msk      SYS_GPG_MFP2_PG11MFP_Msk    /*!< SPB_G6_TX2       PG11 MFP Mask */
-#define SPB_G6_TX1_PB15_Msk      SYS_GPB_MFP3_PB15MFP_Msk    /*!< SPB_G6_TX1       PB15 MFP Mask */
-#define SPB_G6_TX1_PG10_Msk      SYS_GPG_MFP2_PG10MFP_Msk    /*!< SPB_G6_TX1       PG10 MFP Mask */
-#define SPB_G6_RX1_PC14_Msk      SYS_GPC_MFP3_PC14MFP_Msk    /*!< SPB_G6_RX1       PC14 MFP Mask */
-#define SPB_G6_CLK_PC7_Msk       SYS_GPC_MFP1_PC7MFP_Msk     /*!< SPB_G6_CLK       PC7  MFP Mask */
-#define SPB_G6_CLK_PC14_Msk      SYS_GPC_MFP3_PC14MFP_Msk    /*!< SPB_G6_CLK       PC14 MFP Mask */
-#define SPB_G6_TX3_PB13_Msk      SYS_GPB_MFP3_PB13MFP_Msk    /*!< SPB_G6_TX3       PB13 MFP Mask */
-#define SPB_G6_TX3_PG12_Msk      SYS_GPG_MFP3_PG12MFP_Msk    /*!< SPB_G6_TX3       PG12 MFP Mask */
-#define SPB_G6_TX0_PB7_Msk       SYS_GPB_MFP1_PB7MFP_Msk     /*!< SPB_G6_TX0       PB7  MFP Mask */
-#define SPB_G6_TX0_PG9_Msk       SYS_GPG_MFP2_PG9MFP_Msk     /*!< SPB_G6_TX0       PG9  MFP Mask */
-#define SPB_G6_RX0_PC7_Msk       SYS_GPC_MFP1_PC7MFP_Msk     /*!< SPB_G6_RX0       PC7  MFP Mask */
+/* PDCI MFP Pin Mask */
+#define PDCI_G0_RX0_PC6_Msk      SYS_GPC_MFP1_PC6MFP_Msk     /*!< PDCI_G0_RX0      PC6  MFP Mask */
+#define PDCI_G0_RX0_PC14_Msk     SYS_GPC_MFP3_PC14MFP_Msk    /*!< PDCI_G0_RX0      PC14 MFP Mask */
+#define PDCI_G0_RX1_PB1_Msk      SYS_GPB_MFP0_PB1MFP_Msk     /*!< PDCI_G0_RX1      PB1  MFP Mask */
+#define PDCI_G0_CLK_PB1_Msk      SYS_GPB_MFP0_PB1MFP_Msk     /*!< PDCI_G0_CLK      PB1  MFP Mask */
+#define PDCI_G0_CLK_PC6_Msk      SYS_GPC_MFP1_PC6MFP_Msk     /*!< PDCI_G0_CLK      PC6  MFP Mask */
+#define PDCI_G0_TX0_PB5_Msk      SYS_GPB_MFP1_PB5MFP_Msk     /*!< PDCI_G0_TX0      PB5  MFP Mask */
+#define PDCI_G0_TX2_PB3_Msk      SYS_GPB_MFP0_PB3MFP_Msk     /*!< PDCI_G0_TX2      PB3  MFP Mask */
+#define PDCI_G0_TX1_PB4_Msk      SYS_GPB_MFP1_PB4MFP_Msk     /*!< PDCI_G0_TX1      PB4  MFP Mask */
+#define PDCI_G0_TX3_PB2_Msk      SYS_GPB_MFP0_PB2MFP_Msk     /*!< PDCI_G0_TX3      PB2  MFP Mask */
+#define PDCI_G1_TX0_PB0_Msk      SYS_GPB_MFP0_PB0MFP_Msk     /*!< PDCI_G1_TX0      PB0  MFP Mask */
+#define PDCI_G1_TX3_PA9_Msk      SYS_GPA_MFP2_PA9MFP_Msk     /*!< PDCI_G1_TX3      PA9  MFP Mask */
+#define PDCI_G1_CLK_PA8_Msk      SYS_GPA_MFP2_PA8MFP_Msk     /*!< PDCI_G1_CLK      PA8  MFP Mask */
+#define PDCI_G1_TX2_PA10_Msk     SYS_GPA_MFP2_PA10MFP_Msk    /*!< PDCI_G1_TX2      PA10 MFP Mask */
+#define PDCI_G1_RX0_PB15_Msk     SYS_GPB_MFP3_PB15MFP_Msk    /*!< PDCI_G1_RX0      PB15 MFP Mask */
+#define PDCI_G1_TX1_PA11_Msk     SYS_GPA_MFP2_PA11MFP_Msk    /*!< PDCI_G1_TX1      PA11 MFP Mask */
+#define PDCI_G1_RX1_PA8_Msk      SYS_GPA_MFP2_PA8MFP_Msk     /*!< PDCI_G1_RX1      PA8  MFP Mask */
+#define PDCI_G2_CLK_PF15_Msk     SYS_GPF_MFP3_PF15MFP_Msk    /*!< PDCI_G2_CLK      PF15 MFP Mask */
+#define PDCI_G2_TX3_PA6_Msk      SYS_GPA_MFP1_PA6MFP_Msk     /*!< PDCI_G2_TX3      PA6  MFP Mask */
+#define PDCI_G2_TX3_PF2_Msk      SYS_GPF_MFP0_PF2MFP_Msk     /*!< PDCI_G2_TX3      PF2  MFP Mask */
+#define PDCI_G2_RX0_PB14_Msk     SYS_GPB_MFP3_PB14MFP_Msk    /*!< PDCI_G2_RX0      PB14 MFP Mask */
+#define PDCI_G2_TX1_PF4_Msk      SYS_GPF_MFP1_PF4MFP_Msk     /*!< PDCI_G2_TX1      PF4  MFP Mask */
+#define PDCI_G2_RX1_PF15_Msk     SYS_GPF_MFP3_PF15MFP_Msk    /*!< PDCI_G2_RX1      PF15 MFP Mask */
+#define PDCI_G2_TX2_PA7_Msk      SYS_GPA_MFP1_PA7MFP_Msk     /*!< PDCI_G2_TX2      PA7  MFP Mask */
+#define PDCI_G2_TX2_PF3_Msk      SYS_GPF_MFP0_PF3MFP_Msk     /*!< PDCI_G2_TX2      PF3  MFP Mask */
+#define PDCI_G2_TX0_PF5_Msk      SYS_GPF_MFP1_PF5MFP_Msk     /*!< PDCI_G2_TX0      PF5  MFP Mask */
+#define PDCI_G3_TX0_PA4_Msk      SYS_GPA_MFP1_PA4MFP_Msk     /*!< PDCI_G3_TX0      PA4  MFP Mask */
+#define PDCI_G3_TX0_PB10_Msk     SYS_GPB_MFP2_PB10MFP_Msk    /*!< PDCI_G3_TX0      PB10 MFP Mask */
+#define PDCI_G3_RX1_PA5_Msk      SYS_GPA_MFP1_PA5MFP_Msk     /*!< PDCI_G3_RX1      PA5  MFP Mask */
+#define PDCI_G3_RX1_PB8_Msk      SYS_GPB_MFP2_PB8MFP_Msk     /*!< PDCI_G3_RX1      PB8  MFP Mask */
+#define PDCI_G3_TX1_PA3_Msk      SYS_GPA_MFP0_PA3MFP_Msk     /*!< PDCI_G3_TX1      PA3  MFP Mask */
+#define PDCI_G3_TX1_PB9_Msk      SYS_GPB_MFP2_PB9MFP_Msk     /*!< PDCI_G3_TX1      PB9  MFP Mask */
+#define PDCI_G3_CLK_PA5_Msk      SYS_GPA_MFP1_PA5MFP_Msk     /*!< PDCI_G3_CLK      PA5  MFP Mask */
+#define PDCI_G3_CLK_PB8_Msk      SYS_GPB_MFP2_PB8MFP_Msk     /*!< PDCI_G3_CLK      PB8  MFP Mask */
+#define PDCI_G3_TX3_PA1_Msk      SYS_GPA_MFP0_PA1MFP_Msk     /*!< PDCI_G3_TX3      PA1  MFP Mask */
+#define PDCI_G3_TX3_PB7_Msk      SYS_GPB_MFP1_PB7MFP_Msk     /*!< PDCI_G3_TX3      PB7  MFP Mask */
+#define PDCI_G3_RX0_PB11_Msk     SYS_GPB_MFP2_PB11MFP_Msk    /*!< PDCI_G3_RX0      PB11 MFP Mask */
+#define PDCI_G3_RX0_PB13_Msk     SYS_GPB_MFP3_PB13MFP_Msk    /*!< PDCI_G3_RX0      PB13 MFP Mask */
+#define PDCI_G3_TX2_PA2_Msk      SYS_GPA_MFP0_PA2MFP_Msk     /*!< PDCI_G3_TX2      PA2  MFP Mask */
+#define PDCI_G3_TX2_PB6_Msk      SYS_GPB_MFP1_PB6MFP_Msk     /*!< PDCI_G3_TX2      PB6  MFP Mask */
+#define PDCI_G4_TX0_PC5_Msk      SYS_GPC_MFP1_PC5MFP_Msk     /*!< PDCI_G4_TX0      PC5  MFP Mask */
+#define PDCI_G4_TX1_PC4_Msk      SYS_GPC_MFP1_PC4MFP_Msk     /*!< PDCI_G4_TX1      PC4  MFP Mask */
+#define PDCI_G4_RX0_PF6_Msk      SYS_GPF_MFP1_PF6MFP_Msk     /*!< PDCI_G4_RX0      PF6  MFP Mask */
+#define PDCI_G4_RX1_PC1_Msk      SYS_GPC_MFP0_PC1MFP_Msk     /*!< PDCI_G4_RX1      PC1  MFP Mask */
+#define PDCI_G4_CLK_PC1_Msk      SYS_GPC_MFP0_PC1MFP_Msk     /*!< PDCI_G4_CLK      PC1  MFP Mask */
+#define PDCI_G4_TX2_PC3_Msk      SYS_GPC_MFP0_PC3MFP_Msk     /*!< PDCI_G4_TX2      PC3  MFP Mask */
+#define PDCI_G4_TX3_PC2_Msk      SYS_GPC_MFP0_PC2MFP_Msk     /*!< PDCI_G4_TX3      PC2  MFP Mask */
+#define PDCI_G5_TX2_PA14_Msk     SYS_GPA_MFP3_PA14MFP_Msk    /*!< PDCI_G5_TX2      PA14 MFP Mask */
+#define PDCI_G5_RX0_PF14_Msk     SYS_GPF_MFP3_PF14MFP_Msk    /*!< PDCI_G5_RX0      PF14 MFP Mask */
+#define PDCI_G5_TX1_PA13_Msk     SYS_GPA_MFP3_PA13MFP_Msk    /*!< PDCI_G5_TX1      PA13 MFP Mask */
+#define PDCI_G5_RX1_PC0_Msk      SYS_GPC_MFP0_PC0MFP_Msk     /*!< PDCI_G5_RX1      PC0  MFP Mask */
+#define PDCI_G5_CLK_PC0_Msk      SYS_GPC_MFP0_PC0MFP_Msk     /*!< PDCI_G5_CLK      PC0  MFP Mask */
+#define PDCI_G5_TX0_PA12_Msk     SYS_GPA_MFP3_PA12MFP_Msk    /*!< PDCI_G5_TX0      PA12 MFP Mask */
+#define PDCI_G5_TX3_PA15_Msk     SYS_GPA_MFP3_PA15MFP_Msk    /*!< PDCI_G5_TX3      PA15 MFP Mask */
 
 /* SPI0 MFP Pin Mask */
 #define SPI0_CLK_PA2_Msk         SYS_GPA_MFP0_PA2MFP_Msk     /*!< SPI0_CLK         PA2  MFP Mask */
@@ -4316,72 +4280,59 @@ extern "C"
 #define SET_SD0_nCD_PB12()       SYS->GPB_MFP3 = ((SYS->GPB_MFP3 & (~SD0_nCD_PB12_Msk      ))) | SD0_nCD_PB12          /*!< Set PB12 function to SD0_nCD          */
 #define SET_SD0_nCD_PD13()       SYS->GPD_MFP3 = ((SYS->GPD_MFP3 & (~SD0_nCD_PD13_Msk      ))) | SD0_nCD_PD13          /*!< Set PD13 function to SD0_nCD          */
 
-/* SPB MFP Macros*/
-#define SET_SPB_G0_RX0_PC6()     SYS->GPC_MFP1 = ((SYS->GPC_MFP1 & (~SPB_G0_RX0_PC6_Msk    ))) | SPB_G0_RX0_PC6        /*!< Set PC6  function to SPB_G0_RX0       */
-#define SET_SPB_G0_RX0_PC14()    SYS->GPC_MFP3 = ((SYS->GPC_MFP3 & (~SPB_G0_RX0_PC14_Msk   ))) | SPB_G0_RX0_PC14       /*!< Set PC14 function to SPB_G0_RX0       */
-#define SET_SPB_G0_RX1_PB1()     SYS->GPB_MFP0 = ((SYS->GPB_MFP0 & (~SPB_G0_RX1_PB1_Msk    ))) | SPB_G0_RX1_PB1        /*!< Set PB1  function to SPB_G0_RX1       */
-#define SET_SPB_G0_CLK_PB1()     SYS->GPB_MFP0 = ((SYS->GPB_MFP0 & (~SPB_G0_CLK_PB1_Msk    ))) | SPB_G0_CLK_PB1        /*!< Set PB1  function to SPB_G0_CLK       */
-#define SET_SPB_G0_CLK_PC6()     SYS->GPC_MFP1 = ((SYS->GPC_MFP1 & (~SPB_G0_CLK_PC6_Msk    ))) | SPB_G0_CLK_PC6        /*!< Set PC6  function to SPB_G0_CLK       */
-#define SET_SPB_G0_TX0_PB5()     SYS->GPB_MFP1 = ((SYS->GPB_MFP1 & (~SPB_G0_TX0_PB5_Msk    ))) | SPB_G0_TX0_PB5        /*!< Set PB5  function to SPB_G0_TX0       */
-#define SET_SPB_G0_TX2_PB3()     SYS->GPB_MFP0 = ((SYS->GPB_MFP0 & (~SPB_G0_TX2_PB3_Msk    ))) | SPB_G0_TX2_PB3        /*!< Set PB3  function to SPB_G0_TX2       */
-#define SET_SPB_G0_TX1_PB4()     SYS->GPB_MFP1 = ((SYS->GPB_MFP1 & (~SPB_G0_TX1_PB4_Msk    ))) | SPB_G0_TX1_PB4        /*!< Set PB4  function to SPB_G0_TX1       */
-#define SET_SPB_G0_TX3_PB2()     SYS->GPB_MFP0 = ((SYS->GPB_MFP0 & (~SPB_G0_TX3_PB2_Msk    ))) | SPB_G0_TX3_PB2        /*!< Set PB2  function to SPB_G0_TX3       */
-#define SET_SPB_G1_TX0_PB0()     SYS->GPB_MFP0 = ((SYS->GPB_MFP0 & (~SPB_G1_TX0_PB0_Msk    ))) | SPB_G1_TX0_PB0        /*!< Set PB0  function to SPB_G1_TX0       */
-#define SET_SPB_G1_TX3_PA9()     SYS->GPA_MFP2 = ((SYS->GPA_MFP2 & (~SPB_G1_TX3_PA9_Msk    ))) | SPB_G1_TX3_PA9        /*!< Set PA9  function to SPB_G1_TX3       */
-#define SET_SPB_G1_CLK_PA8()     SYS->GPA_MFP2 = ((SYS->GPA_MFP2 & (~SPB_G1_CLK_PA8_Msk    ))) | SPB_G1_CLK_PA8        /*!< Set PA8  function to SPB_G1_CLK       */
-#define SET_SPB_G1_TX2_PA10()    SYS->GPA_MFP2 = ((SYS->GPA_MFP2 & (~SPB_G1_TX2_PA10_Msk   ))) | SPB_G1_TX2_PA10       /*!< Set PA10 function to SPB_G1_TX2       */
-#define SET_SPB_G1_RX0_PB15()    SYS->GPB_MFP3 = ((SYS->GPB_MFP3 & (~SPB_G1_RX0_PB15_Msk   ))) | SPB_G1_RX0_PB15       /*!< Set PB15 function to SPB_G1_RX0       */
-#define SET_SPB_G1_TX1_PA11()    SYS->GPA_MFP2 = ((SYS->GPA_MFP2 & (~SPB_G1_TX1_PA11_Msk   ))) | SPB_G1_TX1_PA11       /*!< Set PA11 function to SPB_G1_TX1       */
-#define SET_SPB_G1_RX1_PA8()     SYS->GPA_MFP2 = ((SYS->GPA_MFP2 & (~SPB_G1_RX1_PA8_Msk    ))) | SPB_G1_RX1_PA8        /*!< Set PA8  function to SPB_G1_RX1       */
-#define SET_SPB_G2_CLK_PF15()    SYS->GPF_MFP3 = ((SYS->GPF_MFP3 & (~SPB_G2_CLK_PF15_Msk   ))) | SPB_G2_CLK_PF15       /*!< Set PF15 function to SPB_G2_CLK       */
-#define SET_SPB_G2_TX3_PA6()     SYS->GPA_MFP1 = ((SYS->GPA_MFP1 & (~SPB_G2_TX3_PA6_Msk    ))) | SPB_G2_TX3_PA6        /*!< Set PA6  function to SPB_G2_TX3       */
-#define SET_SPB_G2_TX3_PF2()     SYS->GPF_MFP0 = ((SYS->GPF_MFP0 & (~SPB_G2_TX3_PF2_Msk    ))) | SPB_G2_TX3_PF2        /*!< Set PF2  function to SPB_G2_TX3       */
-#define SET_SPB_G2_RX0_PB14()    SYS->GPB_MFP3 = ((SYS->GPB_MFP3 & (~SPB_G2_RX0_PB14_Msk   ))) | SPB_G2_RX0_PB14       /*!< Set PB14 function to SPB_G2_RX0       */
-#define SET_SPB_G2_TX1_PF4()     SYS->GPF_MFP1 = ((SYS->GPF_MFP1 & (~SPB_G2_TX1_PF4_Msk    ))) | SPB_G2_TX1_PF4        /*!< Set PF4  function to SPB_G2_TX1       */
-#define SET_SPB_G2_RX1_PF15()    SYS->GPF_MFP3 = ((SYS->GPF_MFP3 & (~SPB_G2_RX1_PF15_Msk   ))) | SPB_G2_RX1_PF15       /*!< Set PF15 function to SPB_G2_RX1       */
-#define SET_SPB_G2_TX2_PA7()     SYS->GPA_MFP1 = ((SYS->GPA_MFP1 & (~SPB_G2_TX2_PA7_Msk    ))) | SPB_G2_TX2_PA7        /*!< Set PA7  function to SPB_G2_TX2       */
-#define SET_SPB_G2_TX2_PF3()     SYS->GPF_MFP0 = ((SYS->GPF_MFP0 & (~SPB_G2_TX2_PF3_Msk    ))) | SPB_G2_TX2_PF3        /*!< Set PF3  function to SPB_G2_TX2       */
-#define SET_SPB_G2_TX0_PF5()     SYS->GPF_MFP1 = ((SYS->GPF_MFP1 & (~SPB_G2_TX0_PF5_Msk    ))) | SPB_G2_TX0_PF5        /*!< Set PF5  function to SPB_G2_TX0       */
-#define SET_SPB_G3_TX0_PA4()     SYS->GPA_MFP1 = ((SYS->GPA_MFP1 & (~SPB_G3_TX0_PA4_Msk    ))) | SPB_G3_TX0_PA4        /*!< Set PA4  function to SPB_G3_TX0       */
-#define SET_SPB_G3_TX0_PB10()    SYS->GPB_MFP2 = ((SYS->GPB_MFP2 & (~SPB_G3_TX0_PB10_Msk   ))) | SPB_G3_TX0_PB10       /*!< Set PB10 function to SPB_G3_TX0       */
-#define SET_SPB_G3_RX1_PA5()     SYS->GPA_MFP1 = ((SYS->GPA_MFP1 & (~SPB_G3_RX1_PA5_Msk    ))) | SPB_G3_RX1_PA5        /*!< Set PA5  function to SPB_G3_RX1       */
-#define SET_SPB_G3_RX1_PB8()     SYS->GPB_MFP2 = ((SYS->GPB_MFP2 & (~SPB_G3_RX1_PB8_Msk    ))) | SPB_G3_RX1_PB8        /*!< Set PB8  function to SPB_G3_RX1       */
-#define SET_SPB_G3_TX1_PA3()     SYS->GPA_MFP0 = ((SYS->GPA_MFP0 & (~SPB_G3_TX1_PA3_Msk    ))) | SPB_G3_TX1_PA3        /*!< Set PA3  function to SPB_G3_TX1       */
-#define SET_SPB_G3_TX1_PB9()     SYS->GPB_MFP2 = ((SYS->GPB_MFP2 & (~SPB_G3_TX1_PB9_Msk    ))) | SPB_G3_TX1_PB9        /*!< Set PB9  function to SPB_G3_TX1       */
-#define SET_SPB_G3_CLK_PA5()     SYS->GPA_MFP1 = ((SYS->GPA_MFP1 & (~SPB_G3_CLK_PA5_Msk    ))) | SPB_G3_CLK_PA5        /*!< Set PA5  function to SPB_G3_CLK       */
-#define SET_SPB_G3_CLK_PB8()     SYS->GPB_MFP2 = ((SYS->GPB_MFP2 & (~SPB_G3_CLK_PB8_Msk    ))) | SPB_G3_CLK_PB8        /*!< Set PB8  function to SPB_G3_CLK       */
-#define SET_SPB_G3_TX3_PA1()     SYS->GPA_MFP0 = ((SYS->GPA_MFP0 & (~SPB_G3_TX3_PA1_Msk    ))) | SPB_G3_TX3_PA1        /*!< Set PA1  function to SPB_G3_TX3       */
-#define SET_SPB_G3_TX3_PB7()     SYS->GPB_MFP1 = ((SYS->GPB_MFP1 & (~SPB_G3_TX3_PB7_Msk    ))) | SPB_G3_TX3_PB7        /*!< Set PB7  function to SPB_G3_TX3       */
-#define SET_SPB_G3_RX0_PB11()    SYS->GPB_MFP2 = ((SYS->GPB_MFP2 & (~SPB_G3_RX0_PB11_Msk   ))) | SPB_G3_RX0_PB11       /*!< Set PB11 function to SPB_G3_RX0       */
-#define SET_SPB_G3_RX0_PB13()    SYS->GPB_MFP3 = ((SYS->GPB_MFP3 & (~SPB_G3_RX0_PB13_Msk   ))) | SPB_G3_RX0_PB13       /*!< Set PB13 function to SPB_G3_RX0       */
-#define SET_SPB_G3_TX2_PA2()     SYS->GPA_MFP0 = ((SYS->GPA_MFP0 & (~SPB_G3_TX2_PA2_Msk    ))) | SPB_G3_TX2_PA2        /*!< Set PA2  function to SPB_G3_TX2       */
-#define SET_SPB_G3_TX2_PB6()     SYS->GPB_MFP1 = ((SYS->GPB_MFP1 & (~SPB_G3_TX2_PB6_Msk    ))) | SPB_G3_TX2_PB6        /*!< Set PB6  function to SPB_G3_TX2       */
-#define SET_SPB_G4_TX0_PC5()     SYS->GPC_MFP1 = ((SYS->GPC_MFP1 & (~SPB_G4_TX0_PC5_Msk    ))) | SPB_G4_TX0_PC5        /*!< Set PC5  function to SPB_G4_TX0       */
-#define SET_SPB_G4_TX1_PC4()     SYS->GPC_MFP1 = ((SYS->GPC_MFP1 & (~SPB_G4_TX1_PC4_Msk    ))) | SPB_G4_TX1_PC4        /*!< Set PC4  function to SPB_G4_TX1       */
-#define SET_SPB_G4_RX0_PF6()     SYS->GPF_MFP1 = ((SYS->GPF_MFP1 & (~SPB_G4_RX0_PF6_Msk    ))) | SPB_G4_RX0_PF6        /*!< Set PF6  function to SPB_G4_RX0       */
-#define SET_SPB_G4_RX1_PC1()     SYS->GPC_MFP0 = ((SYS->GPC_MFP0 & (~SPB_G4_RX1_PC1_Msk    ))) | SPB_G4_RX1_PC1        /*!< Set PC1  function to SPB_G4_RX1       */
-#define SET_SPB_G4_CLK_PC1()     SYS->GPC_MFP0 = ((SYS->GPC_MFP0 & (~SPB_G4_CLK_PC1_Msk    ))) | SPB_G4_CLK_PC1        /*!< Set PC1  function to SPB_G4_CLK       */
-#define SET_SPB_G4_TX2_PC3()     SYS->GPC_MFP0 = ((SYS->GPC_MFP0 & (~SPB_G4_TX2_PC3_Msk    ))) | SPB_G4_TX2_PC3        /*!< Set PC3  function to SPB_G4_TX2       */
-#define SET_SPB_G4_TX3_PC2()     SYS->GPC_MFP0 = ((SYS->GPC_MFP0 & (~SPB_G4_TX3_PC2_Msk    ))) | SPB_G4_TX3_PC2        /*!< Set PC2  function to SPB_G4_TX3       */
-#define SET_SPB_G5_TX2_PA14()    SYS->GPA_MFP3 = ((SYS->GPA_MFP3 & (~SPB_G5_TX2_PA14_Msk   ))) | SPB_G5_TX2_PA14       /*!< Set PA14 function to SPB_G5_TX2       */
-#define SET_SPB_G5_RX0_PF14()    SYS->GPF_MFP3 = ((SYS->GPF_MFP3 & (~SPB_G5_RX0_PF14_Msk   ))) | SPB_G5_RX0_PF14       /*!< Set PF14 function to SPB_G5_RX0       */
-#define SET_SPB_G5_TX1_PA13()    SYS->GPA_MFP3 = ((SYS->GPA_MFP3 & (~SPB_G5_TX1_PA13_Msk   ))) | SPB_G5_TX1_PA13       /*!< Set PA13 function to SPB_G5_TX1       */
-#define SET_SPB_G5_RX1_PC0()     SYS->GPC_MFP0 = ((SYS->GPC_MFP0 & (~SPB_G5_RX1_PC0_Msk    ))) | SPB_G5_RX1_PC0        /*!< Set PC0  function to SPB_G5_RX1       */
-#define SET_SPB_G5_CLK_PC0()     SYS->GPC_MFP0 = ((SYS->GPC_MFP0 & (~SPB_G5_CLK_PC0_Msk    ))) | SPB_G5_CLK_PC0        /*!< Set PC0  function to SPB_G5_CLK       */
-#define SET_SPB_G5_TX0_PA12()    SYS->GPA_MFP3 = ((SYS->GPA_MFP3 & (~SPB_G5_TX0_PA12_Msk   ))) | SPB_G5_TX0_PA12       /*!< Set PA12 function to SPB_G5_TX0       */
-#define SET_SPB_G5_TX3_PA15()    SYS->GPA_MFP3 = ((SYS->GPA_MFP3 & (~SPB_G5_TX3_PA15_Msk   ))) | SPB_G5_TX3_PA15       /*!< Set PA15 function to SPB_G5_TX3       */
-#define SET_SPB_G6_TX2_PB14()    SYS->GPB_MFP3 = ((SYS->GPB_MFP3 & (~SPB_G6_TX2_PB14_Msk   ))) | SPB_G6_TX2_PB14       /*!< Set PB14 function to SPB_G6_TX2       */
-#define SET_SPB_G6_TX2_PG11()    SYS->GPG_MFP2 = ((SYS->GPG_MFP2 & (~SPB_G6_TX2_PG11_Msk   ))) | SPB_G6_TX2_PG11       /*!< Set PG11 function to SPB_G6_TX2       */
-#define SET_SPB_G6_TX1_PB15()    SYS->GPB_MFP3 = ((SYS->GPB_MFP3 & (~SPB_G6_TX1_PB15_Msk   ))) | SPB_G6_TX1_PB15       /*!< Set PB15 function to SPB_G6_TX1       */
-#define SET_SPB_G6_TX1_PG10()    SYS->GPG_MFP2 = ((SYS->GPG_MFP2 & (~SPB_G6_TX1_PG10_Msk   ))) | SPB_G6_TX1_PG10       /*!< Set PG10 function to SPB_G6_TX1       */
-#define SET_SPB_G6_RX1_PC14()    SYS->GPC_MFP3 = ((SYS->GPC_MFP3 & (~SPB_G6_RX1_PC14_Msk   ))) | SPB_G6_RX1_PC14       /*!< Set PC14 function to SPB_G6_RX1       */
-#define SET_SPB_G6_CLK_PC7()     SYS->GPC_MFP1 = ((SYS->GPC_MFP1 & (~SPB_G6_CLK_PC7_Msk    ))) | SPB_G6_CLK_PC7        /*!< Set PC7  function to SPB_G6_CLK       */
-#define SET_SPB_G6_CLK_PC14()    SYS->GPC_MFP3 = ((SYS->GPC_MFP3 & (~SPB_G6_CLK_PC14_Msk   ))) | SPB_G6_CLK_PC14       /*!< Set PC14 function to SPB_G6_CLK       */
-#define SET_SPB_G6_TX3_PB13()    SYS->GPB_MFP3 = ((SYS->GPB_MFP3 & (~SPB_G6_TX3_PB13_Msk   ))) | SPB_G6_TX3_PB13       /*!< Set PB13 function to SPB_G6_TX3       */
-#define SET_SPB_G6_TX3_PG12()    SYS->GPG_MFP3 = ((SYS->GPG_MFP3 & (~SPB_G6_TX3_PG12_Msk   ))) | SPB_G6_TX3_PG12       /*!< Set PG12 function to SPB_G6_TX3       */
-#define SET_SPB_G6_TX0_PB7()     SYS->GPB_MFP1 = ((SYS->GPB_MFP1 & (~SPB_G6_TX0_PB7_Msk    ))) | SPB_G6_TX0_PB7        /*!< Set PB7  function to SPB_G6_TX0       */
-#define SET_SPB_G6_TX0_PG9()     SYS->GPG_MFP2 = ((SYS->GPG_MFP2 & (~SPB_G6_TX0_PG9_Msk    ))) | SPB_G6_TX0_PG9        /*!< Set PG9  function to SPB_G6_TX0       */
-#define SET_SPB_G6_RX0_PC7()     SYS->GPC_MFP1 = ((SYS->GPC_MFP1 & (~SPB_G6_RX0_PC7_Msk    ))) | SPB_G6_RX0_PC7        /*!< Set PC7  function to SPB_G6_RX0       */
+/* PDCI MFP Macros*/
+#define SET_PDCI_G0_RX0_PC6()    SYS->GPC_MFP1 = ((SYS->GPC_MFP1 & (~PDCI_G0_RX0_PC6_Msk   ))) | PDCI_G0_RX0_PC6       /*!< Set PC6  function to PDCI_G0_RX0      */
+#define SET_PDCI_G0_RX0_PC14()   SYS->GPC_MFP3 = ((SYS->GPC_MFP3 & (~PDCI_G0_RX0_PC14_Msk  ))) | PDCI_G0_RX0_PC14      /*!< Set PC14 function to PDCI_G0_RX0      */
+#define SET_PDCI_G0_RX1_PB1()    SYS->GPB_MFP0 = ((SYS->GPB_MFP0 & (~PDCI_G0_RX1_PB1_Msk   ))) | PDCI_G0_RX1_PB1       /*!< Set PB1  function to PDCI_G0_RX1      */
+#define SET_PDCI_G0_CLK_PB1()    SYS->GPB_MFP0 = ((SYS->GPB_MFP0 & (~PDCI_G0_CLK_PB1_Msk   ))) | PDCI_G0_CLK_PB1       /*!< Set PB1  function to PDCI_G0_CLK      */
+#define SET_PDCI_G0_CLK_PC6()    SYS->GPC_MFP1 = ((SYS->GPC_MFP1 & (~PDCI_G0_CLK_PC6_Msk   ))) | PDCI_G0_CLK_PC6       /*!< Set PC6  function to PDCI_G0_CLK      */
+#define SET_PDCI_G0_TX0_PB5()    SYS->GPB_MFP1 = ((SYS->GPB_MFP1 & (~PDCI_G0_TX0_PB5_Msk   ))) | PDCI_G0_TX0_PB5       /*!< Set PB5  function to PDCI_G0_TX0      */
+#define SET_PDCI_G0_TX2_PB3()    SYS->GPB_MFP0 = ((SYS->GPB_MFP0 & (~PDCI_G0_TX2_PB3_Msk   ))) | PDCI_G0_TX2_PB3       /*!< Set PB3  function to PDCI_G0_TX2      */
+#define SET_PDCI_G0_TX1_PB4()    SYS->GPB_MFP1 = ((SYS->GPB_MFP1 & (~PDCI_G0_TX1_PB4_Msk   ))) | PDCI_G0_TX1_PB4       /*!< Set PB4  function to PDCI_G0_TX1      */
+#define SET_PDCI_G0_TX3_PB2()    SYS->GPB_MFP0 = ((SYS->GPB_MFP0 & (~PDCI_G0_TX3_PB2_Msk   ))) | PDCI_G0_TX3_PB2       /*!< Set PB2  function to PDCI_G0_TX3      */
+#define SET_PDCI_G1_TX0_PB0()    SYS->GPB_MFP0 = ((SYS->GPB_MFP0 & (~PDCI_G1_TX0_PB0_Msk   ))) | PDCI_G1_TX0_PB0       /*!< Set PB0  function to PDCI_G1_TX0      */
+#define SET_PDCI_G1_TX3_PA9()    SYS->GPA_MFP2 = ((SYS->GPA_MFP2 & (~PDCI_G1_TX3_PA9_Msk   ))) | PDCI_G1_TX3_PA9       /*!< Set PA9  function to PDCI_G1_TX3      */
+#define SET_PDCI_G1_CLK_PA8()    SYS->GPA_MFP2 = ((SYS->GPA_MFP2 & (~PDCI_G1_CLK_PA8_Msk   ))) | PDCI_G1_CLK_PA8       /*!< Set PA8  function to PDCI_G1_CLK      */
+#define SET_PDCI_G1_TX2_PA10()   SYS->GPA_MFP2 = ((SYS->GPA_MFP2 & (~PDCI_G1_TX2_PA10_Msk  ))) | PDCI_G1_TX2_PA10      /*!< Set PA10 function to PDCI_G1_TX2      */
+#define SET_PDCI_G1_RX0_PB15()   SYS->GPB_MFP3 = ((SYS->GPB_MFP3 & (~PDCI_G1_RX0_PB15_Msk  ))) | PDCI_G1_RX0_PB15      /*!< Set PB15 function to PDCI_G1_RX0      */
+#define SET_PDCI_G1_RX1_PA8()    SYS->GPA_MFP2 = ((SYS->GPA_MFP2 & (~PDCI_G1_RX1_PA8_Msk   ))) | PDCI_G1_RX1_PA8       /*!< Set PA8  function to PDCI_G1_RX1      */
+#define SET_PDCI_G2_CLK_PF15()   SYS->GPF_MFP3 = ((SYS->GPF_MFP3 & (~PDCI_G2_CLK_PF15_Msk  ))) | PDCI_G2_CLK_PF15      /*!< Set PF15 function to PDCI_G2_CLK      */
+#define SET_PDCI_G2_TX3_PA6()    SYS->GPA_MFP1 = ((SYS->GPA_MFP1 & (~PDCI_G2_TX3_PA6_Msk   ))) | PDCI_G2_TX3_PA6       /*!< Set PA6  function to PDCI_G2_TX3      */
+#define SET_PDCI_G2_TX3_PF2()    SYS->GPF_MFP0 = ((SYS->GPF_MFP0 & (~PDCI_G2_TX3_PF2_Msk   ))) | PDCI_G2_TX3_PF2       /*!< Set PF2  function to PDCI_G2_TX3      */
+#define SET_PDCI_G2_RX0_PB14()   SYS->GPB_MFP3 = ((SYS->GPB_MFP3 & (~PDCI_G2_RX0_PB14_Msk  ))) | PDCI_G2_RX0_PB14      /*!< Set PB14 function to PDCI_G2_RX0      */
+#define SET_PDCI_G2_TX1_PF4()    SYS->GPF_MFP1 = ((SYS->GPF_MFP1 & (~PDCI_G2_TX1_PF4_Msk   ))) | PDCI_G2_TX1_PF4       /*!< Set PF4  function to PDCI_G2_TX1      */
+#define SET_PDCI_G2_RX1_PF15()   SYS->GPF_MFP3 = ((SYS->GPF_MFP3 & (~PDCI_G2_RX1_PF15_Msk  ))) | PDCI_G2_RX1_PF15      /*!< Set PF15 function to PDCI_G2_RX1      */
+#define SET_PDCI_G2_TX2_PA7()    SYS->GPA_MFP1 = ((SYS->GPA_MFP1 & (~PDCI_G2_TX2_PA7_Msk   ))) | PDCI_G2_TX2_PA7       /*!< Set PA7  function to PDCI_G2_TX2      */
+#define SET_PDCI_G2_TX2_PF3()    SYS->GPF_MFP0 = ((SYS->GPF_MFP0 & (~PDCI_G2_TX2_PF3_Msk   ))) | PDCI_G2_TX2_PF3       /*!< Set PF3  function to PDCI_G2_TX2      */
+#define SET_PDCI_G2_TX0_PF5()    SYS->GPF_MFP1 = ((SYS->GPF_MFP1 & (~PDCI_G2_TX0_PF5_Msk   ))) | PDCI_G2_TX0_PF5       /*!< Set PF5  function to PDCI_G2_TX0      */
+#define SET_PDCI_G3_TX0_PA4()    SYS->GPA_MFP1 = ((SYS->GPA_MFP1 & (~PDCI_G3_TX0_PA4_Msk   ))) | PDCI_G3_TX0_PA4       /*!< Set PA4  function to PDCI_G3_TX0      */
+#define SET_PDCI_G3_TX0_PB10()   SYS->GPB_MFP2 = ((SYS->GPB_MFP2 & (~PDCI_G3_TX0_PB10_Msk  ))) | PDCI_G3_TX0_PB10      /*!< Set PB10 function to PDCI_G3_TX0      */
+#define SET_PDCI_G3_RX1_PA5()    SYS->GPA_MFP1 = ((SYS->GPA_MFP1 & (~PDCI_G3_RX1_PA5_Msk   ))) | PDCI_G3_RX1_PA5       /*!< Set PA5  function to PDCI_G3_RX1      */
+#define SET_PDCI_G3_RX1_PB8()    SYS->GPB_MFP2 = ((SYS->GPB_MFP2 & (~PDCI_G3_RX1_PB8_Msk   ))) | PDCI_G3_RX1_PB8       /*!< Set PB8  function to PDCI_G3_RX1      */
+#define SET_PDCI_G3_TX1_PA3()    SYS->GPA_MFP0 = ((SYS->GPA_MFP0 & (~PDCI_G3_TX1_PA3_Msk   ))) | PDCI_G3_TX1_PA3       /*!< Set PA3  function to PDCI_G3_TX1      */
+#define SET_PDCI_G3_TX1_PB9()    SYS->GPB_MFP2 = ((SYS->GPB_MFP2 & (~PDCI_G3_TX1_PB9_Msk   ))) | PDCI_G3_TX1_PB9       /*!< Set PB9  function to PDCI_G3_TX1      */
+#define SET_PDCI_G3_CLK_PA5()    SYS->GPA_MFP1 = ((SYS->GPA_MFP1 & (~PDCI_G3_CLK_PA5_Msk   ))) | PDCI_G3_CLK_PA5       /*!< Set PA5  function to PDCI_G3_CLK      */
+#define SET_PDCI_G3_CLK_PB8()    SYS->GPB_MFP2 = ((SYS->GPB_MFP2 & (~PDCI_G3_CLK_PB8_Msk   ))) | PDCI_G3_CLK_PB8       /*!< Set PB8  function to PDCI_G3_CLK      */
+#define SET_PDCI_G3_TX3_PA1()    SYS->GPA_MFP0 = ((SYS->GPA_MFP0 & (~PDCI_G3_TX3_PA1_Msk   ))) | PDCI_G3_TX3_PA1       /*!< Set PA1  function to PDCI_G3_TX3      */
+#define SET_PDCI_G3_TX3_PB7()    SYS->GPB_MFP1 = ((SYS->GPB_MFP1 & (~PDCI_G3_TX3_PB7_Msk   ))) | PDCI_G3_TX3_PB7       /*!< Set PB7  function to PDCI_G3_TX3      */
+#define SET_PDCI_G3_RX0_PB11()   SYS->GPB_MFP2 = ((SYS->GPB_MFP2 & (~PDCI_G3_RX0_PB11_Msk  ))) | PDCI_G3_RX0_PB11      /*!< Set PB11 function to PDCI_G3_RX0      */
+#define SET_PDCI_G3_RX0_PB13()   SYS->GPB_MFP3 = ((SYS->GPB_MFP3 & (~PDCI_G3_RX0_PB13_Msk  ))) | PDCI_G3_RX0_PB13      /*!< Set PB13 function to PDCI_G3_RX0      */
+#define SET_PDCI_G3_TX2_PA2()    SYS->GPA_MFP0 = ((SYS->GPA_MFP0 & (~PDCI_G3_TX2_PA2_Msk   ))) | PDCI_G3_TX2_PA2       /*!< Set PA2  function to PDCI_G3_TX2      */
+#define SET_PDCI_G3_TX2_PB6()    SYS->GPB_MFP1 = ((SYS->GPB_MFP1 & (~PDCI_G3_TX2_PB6_Msk   ))) | PDCI_G3_TX2_PB6       /*!< Set PB6  function to PDCI_G3_TX2      */
+#define SET_PDCI_G4_TX0_PC5()    SYS->GPC_MFP1 = ((SYS->GPC_MFP1 & (~PDCI_G4_TX0_PC5_Msk   ))) | PDCI_G4_TX0_PC5       /*!< Set PC5  function to PDCI_G4_TX0      */
+#define SET_PDCI_G4_TX1_PC4()    SYS->GPC_MFP1 = ((SYS->GPC_MFP1 & (~PDCI_G4_TX1_PC4_Msk   ))) | PDCI_G4_TX1_PC4       /*!< Set PC4  function to PDCI_G4_TX1      */
+#define SET_PDCI_G4_RX0_PF6()    SYS->GPF_MFP1 = ((SYS->GPF_MFP1 & (~PDCI_G4_RX0_PF6_Msk   ))) | PDCI_G4_RX0_PF6       /*!< Set PF6  function to PDCI_G4_RX0      */
+#define SET_PDCI_G4_RX1_PC1()    SYS->GPC_MFP0 = ((SYS->GPC_MFP0 & (~PDCI_G4_RX1_PC1_Msk   ))) | PDCI_G4_RX1_PC1       /*!< Set PC1  function to PDCI_G4_RX1      */
+#define SET_PDCI_G4_CLK_PC1()    SYS->GPC_MFP0 = ((SYS->GPC_MFP0 & (~PDCI_G4_CLK_PC1_Msk   ))) | PDCI_G4_CLK_PC1       /*!< Set PC1  function to PDCI_G4_CLK      */
+#define SET_PDCI_G4_TX2_PC3()    SYS->GPC_MFP0 = ((SYS->GPC_MFP0 & (~PDCI_G4_TX2_PC3_Msk   ))) | PDCI_G4_TX2_PC3       /*!< Set PC3  function to PDCI_G4_TX2      */
+#define SET_PDCI_G4_TX3_PC2()    SYS->GPC_MFP0 = ((SYS->GPC_MFP0 & (~PDCI_G4_TX3_PC2_Msk   ))) | PDCI_G4_TX3_PC2       /*!< Set PC2  function to PDCI_G4_TX3      */
+#define SET_PDCI_G5_TX2_PA14()   SYS->GPA_MFP3 = ((SYS->GPA_MFP3 & (~PDCI_G5_TX2_PA14_Msk  ))) | PDCI_G5_TX2_PA14      /*!< Set PA14 function to PDCI_G5_TX2      */
+#define SET_PDCI_G5_RX0_PF14()   SYS->GPF_MFP3 = ((SYS->GPF_MFP3 & (~PDCI_G5_RX0_PF14_Msk  ))) | PDCI_G5_RX0_PF14      /*!< Set PF14 function to PDCI_G5_RX0      */
+#define SET_PDCI_G5_TX1_PA13()   SYS->GPA_MFP3 = ((SYS->GPA_MFP3 & (~PDCI_G5_TX1_PA13_Msk  ))) | PDCI_G5_TX1_PA13      /*!< Set PA13 function to PDCI_G5_TX1      */
+#define SET_PDCI_G5_RX1_PC0()    SYS->GPC_MFP0 = ((SYS->GPC_MFP0 & (~PDCI_G5_RX1_PC0_Msk   ))) | PDCI_G5_RX1_PC0       /*!< Set PC0  function to PDCI_G5_RX1      */
+#define SET_PDCI_G5_CLK_PC0()    SYS->GPC_MFP0 = ((SYS->GPC_MFP0 & (~PDCI_G5_CLK_PC0_Msk   ))) | PDCI_G5_CLK_PC0       /*!< Set PC0  function to PDCI_G5_CLK      */
+#define SET_PDCI_G5_TX0_PA12()   SYS->GPA_MFP3 = ((SYS->GPA_MFP3 & (~PDCI_G5_TX0_PA12_Msk  ))) | PDCI_G5_TX0_PA12      /*!< Set PA12 function to PDCI_G5_TX0      */
+#define SET_PDCI_G5_TX3_PA15()   SYS->GPA_MFP3 = ((SYS->GPA_MFP3 & (~PDCI_G5_TX3_PA15_Msk  ))) | PDCI_G5_TX3_PA15      /*!< Set PA15 function to PDCI_G5_TX3      */
 
 /* SPI0 MFP Macros*/
 #define SET_QSPI0_CLK_PA2()      SYS->GPA_MFP0 = ((SYS->GPA_MFP0 & (~QSPI0_CLK_PA2_Msk     ))) | QSPI0_CLK_PA2         /*!< Set PA2  function to QSPI0_CLK        */
