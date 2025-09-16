@@ -848,6 +848,7 @@ typedef struct
      * |        |          |00 = GPIO
      * |        |          |03 = QSPI0_MOSI0
      * |        |          |04 = SPI0_MOSI
+     * |        |          |05 = PDCI_G4_TX3
      * |        |          |07 = UART0_RXD
      * |        |          |08 = UART1_nRTS
      * |        |          |09 = I2C2_SDA
@@ -859,7 +860,7 @@ typedef struct
      * |        |          |00 = GPIO
      * |        |          |03 = QSPI0_MISO0
      * |        |          |04 = SPI0_MISO
-     * |        |          |05 = PDCI_G3_TX3
+     * |        |          |05 = PDCI_G4_TX2
      * |        |          |07 = UART0_TXD
      * |        |          |08 = UART1_nCTS
      * |        |          |09 = I2C2_SCL
@@ -871,7 +872,7 @@ typedef struct
      * |        |          |00 = GPIO
      * |        |          |03 = QSPI0_CLK
      * |        |          |04 = SPI0_CLK
-     * |        |          |05 = PDCI_G3_TX2
+     * |        |          |05 = PDCI_G4_TX1
      * |        |          |07 = UART4_RXD
      * |        |          |08 = UART1_RXD
      * |        |          |09 = I2C1_SDA
@@ -884,7 +885,7 @@ typedef struct
      * |        |          |00 = GPIO
      * |        |          |03 = QSPI0_SS
      * |        |          |04 = SPI0_SS
-     * |        |          |05 = PDCI_G3_TX1
+     * |        |          |05 = PDCI_G4_TX0
      * |        |          |07 = UART4_TXD
      * |        |          |08 = UART1_TXD
      * |        |          |09 = I2C1_SCL
@@ -938,7 +939,7 @@ typedef struct
      * |        |          |06 = CANFD0_TXL
      * |        |          |07 = UART0_RXD
      * |        |          |08 = I2C1_SDA
-     * |        |          |10 = PDCI_G2_TX3
+     * |        |          |10 = PDCI_G2_RX1
      * |        |          |11 = EPWM1_CH5
      * |        |          |12 = BPWM1_CH3
      * |        |          |13 = ACMP1_WLAT
@@ -950,7 +951,8 @@ typedef struct
      * |        |          |04 = SPI1_CLK
      * |        |          |07 = UART0_TXD
      * |        |          |08 = I2C1_SCL
-     * |        |          |10 = PDCI_G2_TX2
+     * |        |          |09 = PDCI_G2_CLK
+     * |        |          |10 = PDCI_G2_RX0
      * |        |          |11 = EPWM1_CH4
      * |        |          |12 = BPWM1_CH2
      * |        |          |13 = ACMP0_WLAT
@@ -975,7 +977,7 @@ typedef struct
      * |        |          |13 = TM3_EXT
      * |        |          |14 = PDCI_G1_RX1
      * |        |          |15 = INT4
-     * |        |          |16 = PDCI_G1_CLK
+     * |        |          |16 = PDCI_G2_TX1
      * |[12:8]  |PA9MFP    |PA.9 Multi-function Pin Selection
      * |        |          |00 = GPIO
      * |        |          |02 = EBI_MCLK
@@ -986,7 +988,7 @@ typedef struct
      * |        |          |11 = ECAP0_IC1
      * |        |          |12 = BPWM3_CH2
      * |        |          |13 = TM2_EXT
-     * |        |          |16 = PDCI_G1_TX3
+     * |        |          |16 = PDCI_G2_TX0
      * |[20:16] |PA10MFP   |PA.10 Multi-function Pin Selection
      * |        |          |00 = GPIO
      * |        |          |01 = ACMP1_P0
@@ -998,7 +1000,9 @@ typedef struct
      * |        |          |11 = ECAP0_IC0
      * |        |          |12 = BPWM3_CH1
      * |        |          |13 = TM1_EXT
-     * |        |          |16 = PDCI_G1_TX2
+     * |        |          |14 = PDCI_G3_TX3
+     * |        |          |15 = PDCI_G4_RX1
+     * |        |          |16 = PDCI_G0_RX3
      * |[28:24] |PA11MFP   |PA.11 Multi-function Pin Selection
      * |        |          |00 = GPIO
      * |        |          |01 = ACMP0_P0
@@ -1011,7 +1015,9 @@ typedef struct
      * |        |          |11 = EPWM0_BRAKE1
      * |        |          |12 = BPWM3_CH0
      * |        |          |13 = TM0_EXT
-     * |        |          |16 = PDCI_G1_TX1
+     * |        |          |14 = PDCI_G3_TX2
+     * |        |          |15 = PDCI_G4_RX0
+     * |        |          |16 = PDCI_G0_RX2
      * @var SYS_T::GPA_MFP3
      * Offset: 0x50C  GPIOA Multiple Function Control Register 3
      * ---------------------------------------------------------------------------------------------------
@@ -1027,7 +1033,8 @@ typedef struct
      * |        |          |07 = CANFD0_TXH
      * |        |          |11 = BPWM1_CH2
      * |        |          |13 = BPWM2_CH3
-     * |        |          |16 = PDCI_G5_TX0
+     * |        |          |15 = PDCI_G1_CLK
+     * |        |          |16 = PDCI_G1_RX0
      * |[12:8]  |PA13MFP   |PA.13 Multi-function Pin Selection
      * |        |          |00 = GPIO
      * |        |          |02 = I2S0_MCLK
@@ -1037,7 +1044,7 @@ typedef struct
      * |        |          |06 = CANFD0_RXD
      * |        |          |11 = BPWM1_CH3
      * |        |          |13 = BPWM2_CH4
-     * |        |          |16 = PDCI_G5_TX1
+     * |        |          |16 = PDCI_G1_RX1
      * |[20:16] |PA14MFP   |PA.14 Multi-function Pin Selection
      * |        |          |00 = GPIO
      * |        |          |02 = I2S0_DI
@@ -1047,7 +1054,8 @@ typedef struct
      * |        |          |06 = I2C2_SCL
      * |        |          |11 = BPWM1_CH4
      * |        |          |13 = BPWM2_CH5
-     * |        |          |16 = PDCI_G5_TX2
+     * |        |          |15 = PDCI_G5_TX1
+     * |        |          |16 = PDCI_G1_RX2
      * |[28:24] |PA15MFP   |PA.15 Multi-function Pin Selection
      * |        |          |00 = GPIO
      * |        |          |02 = I2S0_DO
@@ -1056,7 +1064,8 @@ typedef struct
      * |        |          |06 = I2C2_SDA
      * |        |          |11 = BPWM1_CH5
      * |        |          |12 = EPWM0_SYNC_IN
-     * |        |          |16 = PDCI_G5_TX3
+     * |        |          |15 = PDCI_G5_TX2
+     * |        |          |16 = PDCI_G1_RX3
      * @var SYS_T::GPB_MFP0
      * Offset: 0x510  GPIOB Multiple Function Control Register 0
      * ---------------------------------------------------------------------------------------------------
@@ -1072,18 +1081,19 @@ typedef struct
      * |        |          |07 = UART2_RXD
      * |        |          |08 = SPI0_I2SMCLK
      * |        |          |09 = I2C1_SDA
+     * |        |          |10 = PDCI_G3_TX1
      * |        |          |11 = EPWM0_CH5
      * |        |          |12 = EPWM1_CH5
      * |        |          |13 = EPWM0_BRAKE1
      * |        |          |14 = I3C0_SDA
      * |        |          |15 = QSPI0_MOSI1
-     * |        |          |16 = PDCI_G1_TX0
+     * |        |          |16 = PDCI_G0_RX1
      * |[12:8]  |PB1MFP    |PB.1 Multi-function Pin Selection
      * |        |          |00 = GPIO
      * |        |          |01 = EADC0_CH1
      * |        |          |02 = EBI_ADR8
      * |        |          |03 = SD0_CLK
-     * |        |          |04 = PDCI_G0_RX1
+     * |        |          |04 = PDCI_G0_RX0
      * |        |          |05 = SPI1_I2SMCLK
      * |        |          |06 = PDCI_G0_CLK
      * |        |          |07 = UART2_TXD
@@ -1298,6 +1308,7 @@ typedef struct
      * |        |          |00 = GPIO
      * |        |          |01 = EADC0_CH14
      * |        |          |02 = EBI_AD13
+     * |        |          |03 = PDCI_G4_TX1
      * |        |          |04 = SPI0_CLK
      * |        |          |05 = USCI0_DAT1
      * |        |          |06 = UART0_nRTS
@@ -1313,6 +1324,7 @@ typedef struct
      * |        |          |00 = GPIO
      * |        |          |01 = EADC0_CH15
      * |        |          |02 = EBI_AD12
+     * |        |          |03 = PDCI_G4_TX0
      * |        |          |04 = SPI0_SS
      * |        |          |05 = USCI0_CTL1
      * |        |          |06 = UART0_nCTS
@@ -1323,6 +1335,7 @@ typedef struct
      * |        |          |11 = EPWM1_CH0
      * |        |          |12 = BPWM2_CH1
      * |        |          |13 = TM0_EXT
+     * |        |          |14 = PDCI_G4_CLK
      * |        |          |15 = HSUSB_VBUS_EN
      * |        |          |16 = LLSI0_OUT
      * @var SYS_T::GPC_MFP0
@@ -1335,11 +1348,11 @@ typedef struct
      * |        |          |02 = EBI_AD0
      * |        |          |03 = PDCI_G5_CLK
      * |        |          |04 = QSPI0_MOSI0
-     * |        |          |05 = PDCI_G5_RX1
      * |        |          |06 = I2S0_LRCK
      * |        |          |07 = SPI1_SS
      * |        |          |08 = UART2_RXD
      * |        |          |09 = I2C0_SDA
+     * |        |          |10 = PDCI_G5_RX1
      * |        |          |11 = BPWM4_CH5
      * |        |          |12 = EPWM1_CH5
      * |        |          |14 = ACMP1_O
@@ -1347,13 +1360,14 @@ typedef struct
      * |[12:8]  |PC1MFP    |PC.1 Multi-function Pin Selection
      * |        |          |00 = GPIO
      * |        |          |02 = EBI_AD1
-     * |        |          |03 = PDCI_G4_CLK
+     * |        |          |03 = PDCI_G5_CLK
      * |        |          |04 = QSPI0_MISO0
      * |        |          |05 = PDCI_G4_RX1
      * |        |          |06 = I2S0_DO
      * |        |          |07 = SPI1_CLK
      * |        |          |08 = UART2_TXD
      * |        |          |09 = I2C0_SCL
+     * |        |          |10 = PDCI_G5_RX0
      * |        |          |11 = BPWM4_CH4
      * |        |          |12 = EPWM1_CH4
      * |        |          |13 = ELLSI0_OUT
@@ -1363,7 +1377,7 @@ typedef struct
      * |[20:16] |PC2MFP    |PC.2 Multi-function Pin Selection
      * |        |          |00 = GPIO
      * |        |          |02 = EBI_AD2
-     * |        |          |03 = PDCI_G4_TX3
+     * |        |          |03 = PDCI_G1_TX3
      * |        |          |04 = QSPI0_CLK
      * |        |          |06 = I2S0_DI
      * |        |          |07 = SPI1_MOSI
@@ -1378,7 +1392,7 @@ typedef struct
      * |[28:24] |PC3MFP    |PC.3 Multi-function Pin Selection
      * |        |          |00 = GPIO
      * |        |          |02 = EBI_AD3
-     * |        |          |03 = PDCI_G4_TX2
+     * |        |          |03 = PDCI_G1_TX2
      * |        |          |04 = QSPI0_SS
      * |        |          |05 = CANFD1_TXH
      * |        |          |06 = I2S0_MCLK
@@ -1398,7 +1412,7 @@ typedef struct
      * |[4:0]   |PC4MFP    |PC.4 Multi-function Pin Selection
      * |        |          |00 = GPIO
      * |        |          |02 = EBI_AD4
-     * |        |          |03 = PDCI_G4_TX1
+     * |        |          |03 = PDCI_G1_TX1
      * |        |          |04 = QSPI0_MOSI1
      * |        |          |05 = CANFD1_TXL
      * |        |          |06 = I2S0_BCLK
@@ -1413,7 +1427,7 @@ typedef struct
      * |[12:8]  |PC5MFP    |PC.5 Multi-function Pin Selection
      * |        |          |00 = GPIO
      * |        |          |02 = EBI_AD5
-     * |        |          |03 = PDCI_G4_TX0
+     * |        |          |03 = PDCI_G1_TX0
      * |        |          |04 = QSPI0_MISO1
      * |        |          |07 = CANFD0_TXH
      * |        |          |08 = UART2_TXD
@@ -1436,7 +1450,7 @@ typedef struct
      * |        |          |13 = PDCI_G0_CLK
      * |        |          |14 = TM1
      * |        |          |15 = INT2
-     * |        |          |16 = PDCI_G0_RX0
+     * |        |          |16 = PDCI_G3_TX3
      * |[28:24] |PC7MFP    |PC.7 Multi-function Pin Selection
      * |        |          |00 = GPIO
      * |        |          |02 = EBI_AD9
@@ -1448,6 +1462,7 @@ typedef struct
      * |        |          |12 = BPWM1_CH0
      * |        |          |14 = TM0
      * |        |          |15 = INT3
+     * |        |          |16 = PDCI_G3_TX2
      * @var SYS_T::GPC_MFP2
      * Offset: 0x528  GPIOC Multiple Function Control Register 2
      * ---------------------------------------------------------------------------------------------------
@@ -1518,7 +1533,9 @@ typedef struct
      * |        |          |11 = EPWM0_SYNC_IN
      * |        |          |12 = BPWM2_CH0
      * |        |          |13 = TM1
+     * |        |          |14 = PDCI_G5_TX3
      * |        |          |15 = HSUSB_VBUS_ST
+     * |        |          |16 = PDCI_G2_RX3
      * |[28:24] |PC15MFP   |PC.15 Multi-function Pin Selection
      * @var SYS_T::GPD_MFP0
      * Offset: 0x530  GPIOD Multiple Function Control Register 0
@@ -1916,7 +1933,7 @@ typedef struct
      * |        |          |07 = EPWM0_CH1
      * |        |          |08 = BPWM0_CH5
      * |        |          |10 = X32_OUT
-     * |        |          |16 = PDCI_G2_TX1
+     * |        |          |16 = PDCI_G2_TX3
      * |[12:8]  |PF5MFP    |PF.5 Multi-function Pin Selection
      * |        |          |00 = GPIO
      * |        |          |02 = UART2_RXD
@@ -1929,7 +1946,7 @@ typedef struct
      * |        |          |09 = EPWM0_SYNC_OUT
      * |        |          |10 = X32_IN
      * |        |          |11 = EADC0_ST
-     * |        |          |16 = PDCI_G2_TX0
+     * |        |          |16 = PDCI_G2_TX2
      * |[20:16] |PF6MFP    |PF.6 Multi-function Pin Selection
      * |        |          |00 = GPIO
      * |        |          |02 = EBI_ADR19
@@ -1939,7 +1956,7 @@ typedef struct
      * |        |          |07 = EBI_nCS0
      * |        |          |12 = BPWM3_CH4
      * |        |          |14 = TRACE_SWO
-     * |        |          |15 = PDCI_G4_RX0
+     * |        |          |15 = PDCI_G3_TX0
      * |[28:24] |PF7MFP    |PF.7 Multi-function Pin Selection
      * |        |          |00 = GPIO
      * |        |          |02 = EBI_ADR18
@@ -1990,13 +2007,14 @@ typedef struct
      * |[20:16] |PF14MFP   |PF.14 Multi-function Pin Selection
      * |        |          |00 = GPIO
      * |        |          |12 = BPWM3_CH5
-     * |        |          |15 = PDCI_G5_RX0
+     * |        |          |15 = PDCI_G3_TX1
      * |        |          |16 = LLSI3_OUT
      * |[28:24] |PF15MFP   |PF.15 Multi-function Pin Selection
      * |        |          |00 = GPIO
      * |        |          |05 = PDCI_G2_CLK
      * |        |          |12 = BPWM3_CH5
-     * |        |          |16 = PDCI_G2_RX1
+     * |        |          |15 = PDCI_G5_TX0
+     * |        |          |16 = PDCI_G2_RX2
      * @var SYS_T::GPG_MFP0
      * Offset: 0x560  GPIOG Multiple Function Control Register 0
      * ---------------------------------------------------------------------------------------------------
@@ -2045,16 +2063,21 @@ typedef struct
      * |        |          |02 = EBI_AD0
      * |        |          |12 = BPWM0_CH5
      * |        |          |13 = BPWM5_CH5
+     * |        |          |14 = PDCI_G3_CLK
+     * |        |          |15 = PDCI_G3_RX0
      * |[20:16] |PG10MFP   |PG.10 Multi-function Pin Selection
      * |        |          |00 = GPIO
      * |        |          |02 = EBI_AD1
      * |        |          |12 = BPWM0_CH4
      * |        |          |13 = BPWM5_CH4
+     * |        |          |16 = PDCI_G3_RX1
      * |[28:24] |PG11MFP   |PG.11 Multi-function Pin Selection
      * |        |          |00 = GPIO
      * |        |          |02 = EBI_AD2
      * |        |          |12 = BPWM0_CH3
      * |        |          |13 = BPWM5_CH3
+     * |        |          |15 = PDCI_G4_TX2
+     * |        |          |16 = PDCI_G3_RX2
      * @var SYS_T::GPG_MFP3
      * Offset: 0x56C  GPIOG Multiple Function Control Register 3
      * ---------------------------------------------------------------------------------------------------
@@ -2065,6 +2088,8 @@ typedef struct
      * |        |          |02 = EBI_AD3
      * |        |          |12 = BPWM0_CH2
      * |        |          |13 = BPWM5_CH2
+     * |        |          |15 = PDCI_G4_TX3
+     * |        |          |16 = PDCI_G3_RX3
      * |[12:8]  |PG13MFP   |PG.13 Multi-function Pin Selection
      * |        |          |00 = GPIO
      * |        |          |02 = EBI_AD4

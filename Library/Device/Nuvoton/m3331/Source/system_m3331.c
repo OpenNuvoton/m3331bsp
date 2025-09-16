@@ -225,7 +225,7 @@ void SCU_Setup(void)
         NVIC_ITNS_CONF(USBH_IRQn);     /* Int of USBH_INT     */
         NVIC_ITNS_CONF(HSUSBH_IRQn);   /* Int of HSUSBH_INT   */
     }
-    if(SCU_INIT_PNSSET0_VAL & BIT27) NVIC_ITNS_CONF(PDCI_IRQn);     /* Int of PDCI_INT      */
+    if(SCU_INIT_PNSSET0_VAL & BIT27) NVIC_ITNS_CONF(PDCI_IRQn);     /* Int of PDCI_INT     */
 
     if(SCU_INIT_PNSSET1_VAL & BIT0)
     {
