@@ -718,11 +718,22 @@ extern "C"
 /*---------------------------------------------------------------------------------------------------------*/
 /*  SPD Pin (WKIO) Rising/Falling Edge Wake-up Enable constant definitions.                                */
 /*---------------------------------------------------------------------------------------------------------*/
-#define CLK_SPDWKPIN_ENABLE         (0x1UL << CLK_PAPWCTL_WKEN0_Pos)      /*!< Enable Standby Power-down Pin Wake-up \hideinitializer */
-#define CLK_SPDWKPIN_RISING         (0x1UL << CLK_PAPWCTL_PRWKEN0_Pos)    /*!< Standby Power-down Wake-up on Standby Power-down Pin rising edge \hideinitializer */
-#define CLK_SPDWKPIN_FALLING        (0x1UL << CLK_PAPWCTL_PFWKEN0_Pos)    /*!< Standby Power-down Wake-up on Standby Power-down Pin falling edge \hideinitializer */
-#define CLK_SPDWKPIN_DEBOUNCEEN     (0x1UL << CLK_PAPWCTL_DBEN0_Pos)      /*!< Enable Standby power-down pin De-bounce function \hideinitializer */
-#define CLK_SPDWKPIN_DEBOUNCEDIS    (0x0UL << CLK_PAPWCTL_DBEN0_Pos)      /*!< Disable Standby power-down pin De-bounce function \hideinitializer */
+#define CLK_SPDWKPIN0_ENABLE         (0x1UL << CLK_PAPWCTL_WKEN0_Pos)      /*!< Enable Standby Power-down Pin 0 Wake-up \hideinitializer */
+#define CLK_SPDWKPIN0_RISING         (0x1UL << CLK_PAPWCTL_PRWKEN0_Pos)    /*!< Standby Power-down Wake-up on Standby Power-down Pin 0 rising edge \hideinitializer */
+#define CLK_SPDWKPIN0_FALLING        (0x1UL << CLK_PAPWCTL_PFWKEN0_Pos)    /*!< Standby Power-down Wake-up on Standby Power-down Pin 0 falling edge \hideinitializer */
+#define CLK_SPDWKPIN0_DEBOUNCEEN     (0x1UL << CLK_PAPWCTL_DBEN0_Pos)      /*!< Enable Standby power-down pin 0 De-bounce function \hideinitializer */
+#define CLK_SPDWKPIN0_DEBOUNCEDIS    (0x0UL << CLK_PAPWCTL_DBEN0_Pos)      /*!< Disable Standby power-down pin 0 De-bounce function \hideinitializer */
+#define CLK_SPDWKPIN1_ENABLE         (0x1UL << CLK_PAPWCTL_WKEN1_Pos)      /*!< Enable Standby Power-down Pin 1 Wake-up \hideinitializer */
+#define CLK_SPDWKPIN1_RISING         (0x1UL << CLK_PAPWCTL_PRWKEN1_Pos)    /*!< Standby Power-down Wake-up on Standby Power-down Pin 1 rising edge \hideinitializer */
+#define CLK_SPDWKPIN1_FALLING        (0x1UL << CLK_PAPWCTL_PFWKEN1_Pos)    /*!< Standby Power-down Wake-up on Standby Power-down Pin 1 falling edge \hideinitializer */
+#define CLK_SPDWKPIN1_DEBOUNCEEN     (0x1UL << CLK_PAPWCTL_DBEN1_Pos)      /*!< Enable Standby power-down pin 1 De-bounce function \hideinitializer */
+#define CLK_SPDWKPIN1_DEBOUNCEDIS    (0x0UL << CLK_PAPWCTL_DBEN1_Pos)      /*!< Disable Standby power-down pin 1 De-bounce function \hideinitializer */
+
+#define CLK_SPDWKPIN_ENABLE          CLK_SPDWKPIN0_ENABLE                  /*!< Enable Standby Power-down Pin 0 Wake-up \hideinitializer */
+#define CLK_SPDWKPIN_RISING          CLK_SPDWKPIN0_RISING                  /*!< Standby Power-down Wake-up on Standby Power-down Pin 0 rising edge \hideinitializer */
+#define CLK_SPDWKPIN_FALLING         CLK_SPDWKPIN0_FALLING                 /*!< Standby Power-down Wake-up on Standby Power-down Pin 0 falling edge \hideinitializer */
+#define CLK_SPDWKPIN_DEBOUNCEEN      CLK_SPDWKPIN0_DEBOUNCEEN              /*!< Enable Standby power-down pin 0 De-bounce function \hideinitializer */
+#define CLK_SPDWKPIN_DEBOUNCEDIS     CLK_SPDWKPIN0_DEBOUNCEDIS             /*!< Disable Standby power-down pin 0 De-bounce function \hideinitializer */
 
 /*---------------------------------------------------------------------------------------------------------*/
 /*  SRAM Retention Range Selection constant definitions.                                                   */

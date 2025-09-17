@@ -113,7 +113,7 @@ int32_t CheckPowerSource(void)
         switch(s_u32PowerDownMode)
         {
 
-            case CLK_PMUCTL_PDMSEL_NPD:
+            case CLK_PMUCTL_PDMSEL_NPD0:
 
                 /* It is the start of sample code by pressing reset button */
                 printf("\n\nCPU @ %dHz\n", SystemCoreClock);
@@ -138,7 +138,7 @@ int32_t CheckPowerSource(void)
 
                 /* End of sample code and clear Power-down Mode flag */
                 printf("\nSample code end. Press Reset Button and continue.\n");
-                M32(PDMD_FLAG_ADDR) = 0;
+                M32(PDMD_FLAG_ADDR) = CLK_PMUCTL_PDMSEL_NPD0;
                 return 1;
 
         }
@@ -233,9 +233,9 @@ int main(void)
 
     /*
         This sample code will enter to different Power-down mode and wake-up by Wake-up Timer:
-        1. Normal Power-down mode (NPD).
-        2. Low Leakage Power-down mode (LLPD).
-        3. Fast Wake-up Power-down mode (FWPD).
+        1. Normal Power-down mode 0 (NPD0).
+        2. Normal Power-down mode 1 (NPD1).
+        3. Normal Power-down mode 2 (NPD2).
         4. Standby Power-down mode (SPD).
         5. Deep Power-down mode (DPD).
     */
@@ -246,14 +246,14 @@ int main(void)
         s_u32PowerDownMode = M32(PDMD_FLAG_ADDR);
         switch(s_u32PowerDownMode)
         {
-            case CLK_PMUCTL_PDMSEL_NPD:
-                printf("\nSystem enters to NPD power-down mode ... ");
+            case CLK_PMUCTL_PDMSEL_NPD0:
+                printf("\nSystem enters to NPD0 power-down mode ... ");
                 break;
-            case CLK_PMUCTL_PDMSEL_LLPD:
-                printf("\nSystem enters to LLPD power-down mode ... ");
+            case CLK_PMUCTL_PDMSEL_NPD1:
+                printf("\nSystem enters to NPD1 power-down mode ... ");
                 break;
-            case CLK_PMUCTL_PDMSEL_FWPD:
-                printf("\nSystem enters to FWPD power-down mode ... ");
+            case CLK_PMUCTL_PDMSEL_NPD2:
+                printf("\nSystem enters to NPD2 power-down mode ... ");
                 break;
             case CLK_PMUCTL_PDMSEL_SPD:
                 printf("\nSystem enters to SPD power-down mode ... ");
@@ -263,7 +263,7 @@ int main(void)
                 break;
             default:
                 printf("\nInit sample code. Press Reset Button and continue.\n");
-                M32(PDMD_FLAG_ADDR) = 0;
+                M32(PDMD_FLAG_ADDR) = CLK_PMUCTL_PDMSEL_NPD0;
                 goto lexit;
         }
 
@@ -285,18 +285,18 @@ int main(void)
         /* Select next Power-down mode */
         switch(s_u32PowerDownMode)
         {
-            case CLK_PMUCTL_PDMSEL_NPD:
-                M32(PDMD_FLAG_ADDR) = CLK_PMUCTL_PDMSEL_LLPD;
+            case CLK_PMUCTL_PDMSEL_NPD0:
+                M32(PDMD_FLAG_ADDR) = CLK_PMUCTL_PDMSEL_NPD1;
                 break;
-            case CLK_PMUCTL_PDMSEL_LLPD:
-                M32(PDMD_FLAG_ADDR) = CLK_PMUCTL_PDMSEL_FWPD;
+            case CLK_PMUCTL_PDMSEL_NPD1:
+                M32(PDMD_FLAG_ADDR) = CLK_PMUCTL_PDMSEL_NPD2;
                 break;
-            case CLK_PMUCTL_PDMSEL_FWPD:
+            case CLK_PMUCTL_PDMSEL_NPD2:
                 M32(PDMD_FLAG_ADDR) = CLK_PMUCTL_PDMSEL_SPD;
                 break;
             default:
                 printf("\nInit sample code. Press Reset Button and continue.\n");
-                M32(PDMD_FLAG_ADDR) = 0;
+                M32(PDMD_FLAG_ADDR) = CLK_PMUCTL_PDMSEL_NPD0;
                 goto lexit;
         }
     }

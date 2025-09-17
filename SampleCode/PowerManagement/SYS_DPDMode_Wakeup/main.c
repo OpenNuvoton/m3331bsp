@@ -1,8 +1,7 @@
 /**************************************************************************//**
  * @file     main.c
  * @version  V3.00
- * @brief    Show how to wake up system from DPD Power-down mode by Wake-up pin(PC.0)
- *           and Wake-up Timer.
+ * @brief    Show how to wake up system from DPD Power-down mode by different wakeup sources.
  *
  * @copyright SPDX-License-Identifier: Apache-2.0
  * @copyright Copyright (C) 2025 Nuvoton Technology Corp. All rights reserved.

@@ -16,9 +16,9 @@
 
 /*
 // <o0> Power-down Mode
-//      <0=> NPD
-//      <1=> LLPD
-//      <2=> FWPD
+//      <2=> NPD0
+//      <0=> NPD1
+//      <1=> NPD2
 //      <4=> SPD
 //      <6=> DPD
 */
@@ -27,9 +27,12 @@
 /*
 // <o0> SPD mode SRAM retention size
 //      <0=> 0KB
-//      <1=> 64KB
-//      <2=> 192KB
-//      <3=> 320KB
+//      <1=> 64KB(for M3331I)
+//      <2=> 192KB(for M3331I)
+//      <3=> 320KB(for M3331I)
+//      <1=> 32KB(for M3331G)
+//      <2=> 64KB(for M3331G)
+//      <3=> 96KB(for M3331G)
 */
 #define SET_SRETSEL   0
 
@@ -409,9 +412,9 @@ int main(void)
     CLK->PMUCTL = (CLK->PMUCTL & (~CLK_PMUCTL_SRETSEL_Msk)) | (SET_SRETSEL << CLK_PMUCTL_SRETSEL_Pos);
 
     /* Wake-up source configuration */
-    if((SET_PDMSEL == CLK_PMUCTL_PDMSEL_NPD) ||
-            (SET_PDMSEL == CLK_PMUCTL_PDMSEL_LLPD) ||
-            (SET_PDMSEL == CLK_PMUCTL_PDMSEL_FWPD))
+    if((SET_PDMSEL == CLK_PMUCTL_PDMSEL_NPD0) ||
+            (SET_PDMSEL == CLK_PMUCTL_PDMSEL_NPD1) ||
+            (SET_PDMSEL == CLK_PMUCTL_PDMSEL_NPD2))
     {
         /* Configure PB.2 as Quasi mode and enable interrupt by falling edge trigger */
         GPIO_SetMode(PB, BIT2, GPIO_MODE_QUASI);
@@ -435,9 +438,9 @@ int main(void)
     }
 
     /* Enter to Power-down mode */
-    if(SET_PDMSEL == CLK_PMUCTL_PDMSEL_NPD)       printf("Enter to NPD Power-Down ......\n");
-    else if(SET_PDMSEL == CLK_PMUCTL_PDMSEL_LLPD) printf("Enter to LLPD Power-Down ......\n");
-    else if(SET_PDMSEL == CLK_PMUCTL_PDMSEL_FWPD) printf("Enter to FWPD Power-Down ......\n");
+    if(SET_PDMSEL == CLK_PMUCTL_PDMSEL_NPD0)      printf("Enter to NPD0 Power-Down ......\n");
+    else if(SET_PDMSEL == CLK_PMUCTL_PDMSEL_NPD1) printf("Enter to NPD1 Power-Down ......\n");
+    else if(SET_PDMSEL == CLK_PMUCTL_PDMSEL_NPD2) printf("Enter to NPD2 Power-Down ......\n");
     else if(SET_PDMSEL == CLK_PMUCTL_PDMSEL_SPD)  printf("Enter to SPD Power-Down ......\n");
     else if(SET_PDMSEL == CLK_PMUCTL_PDMSEL_DPD)  printf("Enter to DPD Power-Down ......\n");
 

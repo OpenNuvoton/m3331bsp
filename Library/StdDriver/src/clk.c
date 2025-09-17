@@ -1243,9 +1243,9 @@ void CLK_DisableSysTick(void)
 /**
   * @brief      Power-down mode selected
   * @param[in]  u32PDMode is power down mode index. Including :
-  *             - \ref CLK_PMUCTL_PDMSEL_NPD
-  *             - \ref CLK_PMUCTL_PDMSEL_LLPD
-  *             - \ref CLK_PMUCTL_PDMSEL_FWPD
+  *             - \ref CLK_PMUCTL_PDMSEL_NPD0
+  *             - \ref CLK_PMUCTL_PDMSEL_NPD1
+  *             - \ref CLK_PMUCTL_PDMSEL_NPD2
   *             - \ref CLK_PMUCTL_PDMSEL_SPD
   *             - \ref CLK_PMUCTL_PDMSEL_DPD
   * @return     None
@@ -1338,11 +1338,15 @@ uint32_t CLK_GetPMUWKSrc(void)
  * @param[in]   u32Port GPIO port. It could be 0~3.
  * @param[in]   u32Pin  The pin of specified GPIO port. It could be 0 ~ 15.
  * @param[in]   u32TriggerType Wake-up pin trigger type
- *              - \ref CLK_SPDWKPIN_RISING
- *              - \ref CLK_SPDWKPIN_FALLING
+ *              - \ref CLK_SPDWKPIN0_RISING
+ *              - \ref CLK_SPDWKPIN0_FALLING
+ *              - \ref CLK_SPDWKPIN1_RISING
+ *              - \ref CLK_SPDWKPIN1_FALLING
  * @param[in]   u32DebounceEn Standby Power-down mode wake-up pin de-bounce function
- *              - \ref CLK_SPDWKPIN_DEBOUNCEEN
- *              - \ref CLK_SPDWKPIN_DEBOUNCEDIS
+ *              - \ref CLK_SPDWKPIN0_DEBOUNCEEN
+ *              - \ref CLK_SPDWKPIN0_DEBOUNCEDIS
+ *              - \ref CLK_SPDWKPIN1_DEBOUNCEEN
+ *              - \ref CLK_SPDWKPIN1_DEBOUNCEDIS
  * @return      None
  *
  * @details     This function is used to set specified GPIO as wake up source at Standby Power-down mode.
@@ -1357,8 +1361,19 @@ void CLK_EnableSPDWKPin(uint32_t u32Port, uint32_t u32Pin, uint32_t u32TriggerTy
     u32tmpAddr += (0x4UL * u32Port);
 
     u32tmpVal = inpw((uint32_t *)u32tmpAddr);
-    u32tmpVal = (u32tmpVal & ~(CLK_PAPWCTL_WKPSEL0_Msk | CLK_PAPWCTL_PRWKEN0_Msk | CLK_PAPWCTL_PFWKEN0_Msk | CLK_PAPWCTL_DBEN0_Msk | CLK_PAPWCTL_WKEN0_Msk)) |
-                (u32Pin << CLK_PAPWCTL_WKPSEL0_Pos) | u32TriggerType | u32DebounceEn | CLK_SPDWKPIN_ENABLE;
+
+    if(u32TriggerType & (CLK_SPDWKPIN0_RISING | CLK_SPDWKPIN0_FALLING))
+    {
+        u32tmpVal = (u32tmpVal & ~(CLK_PAPWCTL_WKPSEL0_Msk | CLK_PAPWCTL_PRWKEN0_Msk | CLK_PAPWCTL_PFWKEN0_Msk | CLK_PAPWCTL_DBEN0_Msk | CLK_PAPWCTL_WKEN0_Msk)) |
+                    (u32Pin << CLK_PAPWCTL_WKPSEL0_Pos) | u32TriggerType | u32DebounceEn | CLK_SPDWKPIN0_ENABLE;
+    }
+
+    if(u32TriggerType & (CLK_SPDWKPIN1_RISING | CLK_SPDWKPIN1_FALLING))
+    {
+        u32tmpVal = (u32tmpVal & ~(CLK_PAPWCTL_WKPSEL1_Msk | CLK_PAPWCTL_PRWKEN1_Msk | CLK_PAPWCTL_PFWKEN1_Msk | CLK_PAPWCTL_DBEN1_Msk | CLK_PAPWCTL_WKEN1_Msk)) |
+                    (u32Pin << CLK_PAPWCTL_WKPSEL1_Pos) | u32TriggerType | u32DebounceEn | CLK_SPDWKPIN1_ENABLE;
+    }
+
     outpw((uint32_t *)u32tmpAddr, u32tmpVal);
 }
 

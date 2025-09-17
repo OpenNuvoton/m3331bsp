@@ -1,8 +1,7 @@
 /**************************************************************************//**
  * @file     main.c
  * @version  V3.00
- * @brief    Show how to wake up system from SPD Power-down mode by Wake-up pin(PC.0),
- *           Wake-up Timer, Wake-up ACMP, RTC Tick, RTC Alarm, LVR or BOD.
+ * @brief    Show how to wake up system from SPD Power-down mode by different wakeup sources.
  *
  * @copyright SPDX-License-Identifier: Apache-2.0
  * @copyright Copyright (C) 2025 Nuvoton Technology Corp. All rights reserved.
@@ -18,9 +17,12 @@
 /*
 // <o0> SPD mode SRAM retention size
 //      <0=> 0KB
-//      <1=> 64KB
-//      <2=> 192KB
-//      <3=> 320KB
+//      <1=> 64KB(for M3331I)
+//      <2=> 192KB(for M3331I)
+//      <3=> 320KB(for M3331I)
+//      <1=> 32KB(for M3331G)
+//      <2=> 64KB(for M3331G)
+//      <3=> 96KB(for M3331G)
 */
 #define SET_SRETSEL   0
 
