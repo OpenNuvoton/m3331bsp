@@ -62,6 +62,10 @@ extern "C"
 #define BPWM_SSCTL_SSRC_PWM1                      (1UL<<BPWM_SSCTL_SSRC_Pos)    /*!< Synchronous start source comes from PWM1  */
 #define BPWM_SSCTL_SSRC_BPWM0                     (2UL<<BPWM_SSCTL_SSRC_Pos)    /*!< Synchronous start source comes from BPWM0 */
 #define BPWM_SSCTL_SSRC_BPWM1                     (3UL<<BPWM_SSCTL_SSRC_Pos)    /*!< Synchronous start source comes from BPWM1 */
+#define BPWM_SSCTL_SSRC_BPWM2                     (4UL<<BPWM_SSCTL_SSRC_Pos)    /*!< Synchronous start source comes from BPWM2 */
+#define BPWM_SSCTL_SSRC_BPWM3                     (5UL<<BPWM_SSCTL_SSRC_Pos)    /*!< Synchronous start source comes from BPWM3 */
+#define BPWM_SSCTL_SSRC_BPWM4                     (6UL<<BPWM_SSCTL_SSRC_Pos)    /*!< Synchronous start source comes from BPWM4 */
+#define BPWM_SSCTL_SSRC_BPWM5                     (7UL<<BPWM_SSCTL_SSRC_Pos)    /*!< Synchronous start source comes from BPWM5 */
 
 /*---------------------------------------------------------------------------------------------------------*/
 /*  Trigger Source Select Constant Definitions                                                             */
@@ -95,7 +99,7 @@ extern "C"
 /*---------------------------------------------------------------------------------------------------------*/
 /*  Clock Source Select Constant Definitions                                                               */
 /*---------------------------------------------------------------------------------------------------------*/
-#define BPWM_CLKSRC_BPWM_CLK                      (0UL)    /*!< BPWM Clock source selects to BPWM0_CLK or BPWM1_CLK \hideinitializer */
+#define BPWM_CLKSRC_BPWM_CLK                      (0UL)    /*!< BPWM Clock source selects to BPWM[0,1 .. 5]_CLK \hideinitializer */
 #define BPWM_CLKSRC_TIMER0                        (1UL)    /*!< BPWM Clock source selects to TIMER0 overflow \hideinitializer */
 #define BPWM_CLKSRC_TIMER1                        (2UL)    /*!< BPWM Clock source selects to TIMER1 overflow \hideinitializer */
 #define BPWM_CLKSRC_TIMER2                        (3UL)    /*!< BPWM Clock source selects to TIMER2 overflow \hideinitializer */
@@ -117,6 +121,10 @@ extern "C"
  *              - \ref BPWM_SSCTL_SSRC_PWM1
  *              - \ref BPWM_SSCTL_SSRC_BPWM0
  *              - \ref BPWM_SSCTL_SSRC_BPWM1
+ *              - \ref BPWM_SSCTL_SSRC_BPWM2
+ *              - \ref BPWM_SSCTL_SSRC_BPWM3
+ *              - \ref BPWM_SSCTL_SSRC_BPWM4
+ *              - \ref BPWM_SSCTL_SSRC_BPWM5
  * @return None
  * @details This macro is used to enable timer synchronous start counting function of specified channel(s).
  * @note All channels share channel 0's setting.
@@ -139,7 +147,7 @@ extern "C"
  * @brief This macro enable BPWM counter synchronous start counting function.
  * @param[in] bpwm The pointer of the specified BPWM module
  * @return None
- * @details This macro is used to make selected BPWM0 and BPWM1 channel(s) start counting at the same time.
+ * @details This macro is used to make selected BPWM[0,1 .. 5] channel(s) start counting at the same time.
  *          To configure synchronous start counting channel(s) by BPWM_ENABLE_TIMER_SYNC() and BPWM_DISABLE_TIMER_SYNC().
  * \hideinitializer
  */

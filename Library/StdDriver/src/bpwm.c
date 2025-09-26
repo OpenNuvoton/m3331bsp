@@ -26,6 +26,10 @@
  * @param[in] bpwm The pointer of the specified BPWM module
  *                - BPWM0 : BPWM Group 0
  *                - BPWM1 : BPWM Group 1
+ *                - BPWM2 : BPWM Group 2
+ *                - BPWM3 : BPWM Group 3
+ *                - BPWM4 : BPWM Group 4
+ *                - BPWM5 : BPWM Group 5
  * @param[in] u32ChannelNum BPWM channel number. Valid values are between 0~5
  * @param[in] u32UnitTimeNsec The unit time of counter
  * @param[in] u32CaptureEdge The condition to latch the counter. This parameter is not used
@@ -46,9 +50,25 @@ uint32_t BPWM_ConfigCaptureChannel(BPWM_T *bpwm, uint32_t u32ChannelNum, uint32_
     {
         u32Src = CLK->CLKSEL2 & CLK_CLKSEL2_BPWM0SEL_Msk;
     }
-    else     /* (bpwm == BPWM1) */
+    else if(bpwm == BPWM1)
     {
         u32Src = CLK->CLKSEL2 & CLK_CLKSEL2_BPWM1SEL_Msk;
+    }
+    else if(bpwm == BPWM2)
+    {
+        u32Src = CLK->CLKSEL2 & CLK_CLKSEL2_BPWM2SEL_Msk;
+    }
+    else if(bpwm == BPWM3)
+    {
+        u32Src = CLK->CLKSEL2 & CLK_CLKSEL2_BPWM3SEL_Msk;
+    }
+    else if(bpwm == BPWM4)
+    {
+        u32Src = CLK->CLKSEL2 & CLK_CLKSEL2_BPWM4SEL_Msk;
+    }
+    else /* (bpwm == BPWM5) */
+    {
+        u32Src = CLK->CLKSEL2 & CLK_CLKSEL2_BPWM5SEL_Msk;
     }
 
     if(u32Src == 0U)
@@ -60,11 +80,11 @@ uint32_t BPWM_ConfigCaptureChannel(BPWM_T *bpwm, uint32_t u32ChannelNum, uint32_
     {
         /* clock source is from PCLK */
         SystemCoreClockUpdate();
-        if(bpwm == BPWM0)
+        if(bpwm == BPWM0 || bpwm == BPWM2 || bpwm == BPWM4)
         {
             u32PWMClockSrc = CLK_GetPCLK0Freq();
         }
-        else    /* (bpwm == BPWM1) */
+        else    /* (bpwm == BPWM1 || bpwm == BPWM3 || bpwm == BPWM5) */
         {
             u32PWMClockSrc = CLK_GetPCLK1Freq();
         }
@@ -122,6 +142,10 @@ uint32_t BPWM_ConfigCaptureChannel(BPWM_T *bpwm, uint32_t u32ChannelNum, uint32_
  * @param[in] bpwm The pointer of the specified BPWM module
  *                - BPWM0 : BPWM Group 0
  *                - BPWM1 : BPWM Group 1
+ *                - BPWM2 : BPWM Group 2
+ *                - BPWM3 : BPWM Group 3
+ *                - BPWM4 : BPWM Group 4
+ *                - BPWM5 : BPWM Group 5
  * @param[in] u32ChannelNum BPWM channel number. Valid values are between 0~5
  * @param[in] u32Frequency Target generator frequency
  * @param[in] u32DutyCycle Target generator duty cycle percentage. Valid range are between 0 ~ 100. 10 means 10%, 20 means 20%...
@@ -142,9 +166,25 @@ uint32_t BPWM_ConfigOutputChannel(BPWM_T *bpwm, uint32_t u32ChannelNum, uint32_t
     {
         u32Src = CLK->CLKSEL2 & CLK_CLKSEL2_BPWM0SEL_Msk;
     }
-    else     /* (bpwm == BPWM1) */
+    else if(bpwm == BPWM1)
     {
         u32Src = CLK->CLKSEL2 & CLK_CLKSEL2_BPWM1SEL_Msk;
+    }
+    else if(bpwm == BPWM2)
+    {
+        u32Src = CLK->CLKSEL2 & CLK_CLKSEL2_BPWM2SEL_Msk;
+    }
+    else if(bpwm == BPWM3)
+    {
+        u32Src = CLK->CLKSEL2 & CLK_CLKSEL2_BPWM3SEL_Msk;
+    }
+    else if(bpwm == BPWM4)
+    {
+        u32Src = CLK->CLKSEL2 & CLK_CLKSEL2_BPWM4SEL_Msk;
+    }
+    else /* (bpwm == BPWM5) */
+    {
+        u32Src = CLK->CLKSEL2 & CLK_CLKSEL2_BPWM5SEL_Msk;
     }
 
     if(u32Src == 0U)
@@ -156,11 +196,11 @@ uint32_t BPWM_ConfigOutputChannel(BPWM_T *bpwm, uint32_t u32ChannelNum, uint32_t
     {
         /* clock source is from PCLK */
         SystemCoreClockUpdate();
-        if(bpwm == BPWM0)
+        if(bpwm == BPWM0 || bpwm == BPWM2 || bpwm == BPWM4)
         {
             u32PWMClockSrc = CLK_GetPCLK0Freq();
         }
-        else     /* (bpwm == BPWM1) */
+        else     /* (bpwm == BPWM1 || bpwm == BPWM3 || bpwm == BPWM5) */
         {
             u32PWMClockSrc = CLK_GetPCLK1Freq();
         }
@@ -204,6 +244,10 @@ uint32_t BPWM_ConfigOutputChannel(BPWM_T *bpwm, uint32_t u32ChannelNum, uint32_t
  * @param[in] bpwm The pointer of the specified BPWM module
  *                - BPWM0 : BPWM Group 0
  *                - BPWM1 : BPWM Group 1
+ *                - BPWM2 : BPWM Group 2
+ *                - BPWM3 : BPWM Group 3
+ *                - BPWM4 : BPWM Group 4
+ *                - BPWM5 : BPWM Group 5
  * @param[in] u32ChannelMask Combination of enabled channels. This parameter is not used.
  * @return None
  * @details This function is used to start BPWM module.
@@ -220,6 +264,10 @@ void BPWM_Start(BPWM_T *bpwm, uint32_t u32ChannelMask)
  * @param[in] bpwm The pointer of the specified BPWM module
  *                - BPWM0 : BPWM Group 0
  *                - BPWM1 : BPWM Group 1
+ *                - BPWM2 : BPWM Group 2
+ *                - BPWM3 : BPWM Group 3
+ *                - BPWM4 : BPWM Group 4
+ *                - BPWM5 : BPWM Group 5
  * @param[in] u32ChannelMask Combination of enabled channels. This parameter is not used.
  * @return None
  * @details This function is used to stop BPWM module.
@@ -236,6 +284,10 @@ void BPWM_Stop(BPWM_T *bpwm, uint32_t u32ChannelMask)
  * @param[in] bpwm The pointer of the specified BPWM module
  *                - BPWM0 : BPWM Group 0
  *                - BPWM1 : BPWM Group 1
+ *                - BPWM2 : BPWM Group 2
+ *                - BPWM3 : BPWM Group 3
+ *                - BPWM4 : BPWM Group 4
+ *                - BPWM5 : BPWM Group 5
  * @param[in] u32ChannelMask Combination of enabled channels. This parameter is not used.
  * @return None
  * @details This function is used to stop BPWM generation immediately by clear channel enable bit.
@@ -252,6 +304,10 @@ void BPWM_ForceStop(BPWM_T *bpwm, uint32_t u32ChannelMask)
  * @param[in] bpwm The pointer of the specified BPWM module
  *                - BPWM0 : BPWM Group 0
  *                - BPWM1 : BPWM Group 1
+ *                - BPWM2 : BPWM Group 2
+ *                - BPWM3 : BPWM Group 3
+ *                - BPWM4 : BPWM Group 4
+ *                - BPWM5 : BPWM Group 5
  * @param[in] u32ChannelNum BPWM channel number. Valid values are between 0~5
  * @param[in] u32Condition The condition to trigger ADC. Combination of following conditions:
  *                  - \ref BPWM_TRIGGER_ADC_EVEN_ZERO_POINT
@@ -283,6 +339,10 @@ void BPWM_EnableADCTrigger(BPWM_T *bpwm, uint32_t u32ChannelNum, uint32_t u32Con
  * @param[in] bpwm The pointer of the specified BPWM module
  *                - BPWM0 : BPWM Group 0
  *                - BPWM1 : BPWM Group 1
+ *                - BPWM2 : BPWM Group 2
+ *                - BPWM3 : BPWM Group 3
+ *                - BPWM4 : BPWM Group 4
+ *                - BPWM5 : BPWM Group 5
  * @param[in] u32ChannelNum BPWM channel number. Valid values are between 0~3
  * @return None
  * @details This function is used to disable selected channel to trigger ADC
@@ -304,6 +364,10 @@ void BPWM_DisableADCTrigger(BPWM_T *bpwm, uint32_t u32ChannelNum)
  * @param[in] bpwm The pointer of the specified BPWM module
  *                - BPWM0 : BPWM Group 0
  *                - BPWM1 : BPWM Group 1
+ *                - BPWM2 : BPWM Group 2
+ *                - BPWM3 : BPWM Group 3
+ *                - BPWM4 : BPWM Group 4
+ *                - BPWM5 : BPWM Group 5
  * @param[in] u32ChannelNum BPWM channel number. Valid values are between 0~5
  * @param[in] u32Condition This parameter is not used
  * @return None
@@ -320,6 +384,10 @@ void BPWM_ClearADCTriggerFlag(BPWM_T *bpwm, uint32_t u32ChannelNum, uint32_t u32
  * @param[in] bpwm The pointer of the specified BPWM module
  *                - BPWM0 : BPWM Group 0
  *                - BPWM1 : BPWM Group 1
+ *                - BPWM2 : BPWM Group 2
+ *                - BPWM3 : BPWM Group 3
+ *                - BPWM4 : BPWM Group 4
+ *                - BPWM5 : BPWM Group 5
  * @param[in] u32ChannelNum BPWM channel number. Valid values are between 0~5
  * @retval 0 The specified channel trigger ADC to start of conversion flag is not set
  * @retval 1 The specified channel trigger ADC to start of conversion flag is set
@@ -335,6 +403,10 @@ uint32_t BPWM_GetADCTriggerFlag(BPWM_T *bpwm, uint32_t u32ChannelNum)
  * @param[in] bpwm The pointer of the specified BPWM module
  *                - BPWM0 : BPWM Group 0
  *                - BPWM1 : BPWM Group 1
+ *                - BPWM2 : BPWM Group 2
+ *                - BPWM3 : BPWM Group 3
+ *                - BPWM4 : BPWM Group 4
+ *                - BPWM5 : BPWM Group 5
  * @param[in] u32ChannelMask Combination of enabled channels. Each bit corresponds to a channel.
  *                           Bit 0 is channel 0, bit 1 is channel 1...
  * @return None
@@ -351,6 +423,10 @@ void BPWM_EnableCapture(BPWM_T *bpwm, uint32_t u32ChannelMask)
  * @param[in] bpwm The pointer of the specified BPWM module
  *                - BPWM0 : BPWM Group 0
  *                - BPWM1 : BPWM Group 1
+ *                - BPWM2 : BPWM Group 2
+ *                - BPWM3 : BPWM Group 3
+ *                - BPWM4 : BPWM Group 4
+ *                - BPWM5 : BPWM Group 5
  * @param[in] u32ChannelMask Combination of enabled channels. Each bit corresponds to a channel.
  *                           Bit 0 is channel 0, bit 1 is channel 1...
  * @return None
@@ -367,6 +443,10 @@ void BPWM_DisableCapture(BPWM_T *bpwm, uint32_t u32ChannelMask)
  * @param[in] bpwm The pointer of the specified BPWM module
  *                - BPWM0 : BPWM Group 0
  *                - BPWM1 : BPWM Group 1
+ *                - BPWM2 : BPWM Group 2
+ *                - BPWM3 : BPWM Group 3
+ *                - BPWM4 : BPWM Group 4
+ *                - BPWM5 : BPWM Group 5
  * @param[in] u32ChannelMask Combination of enabled channels. Each bit corresponds to a channel.
  *                           Set bit 0 to 1 enables channel 0 output, set bit 1 to 1 enables channel 1 output...
  * @return None
@@ -382,6 +462,10 @@ void BPWM_EnableOutput(BPWM_T *bpwm, uint32_t u32ChannelMask)
  * @param[in] bpwm The pointer of the specified BPWM module
  *                - BPWM0 : BPWM Group 0
  *                - BPWM1 : BPWM Group 1
+ *                - BPWM2 : BPWM Group 2
+ *                - BPWM3 : BPWM Group 3
+ *                - BPWM4 : BPWM Group 4
+ *                - BPWM5 : BPWM Group 5
  * @param[in] u32ChannelMask Combination of enabled channels. Each bit corresponds to a channel
  *                           Set bit 0 to 1 disables channel 0 output, set bit 1 to 1 disables channel 1 output...
  * @return None
@@ -397,6 +481,10 @@ void BPWM_DisableOutput(BPWM_T *bpwm, uint32_t u32ChannelMask)
  * @param[in] bpwm The pointer of the specified BPWM module
  *                - BPWM0 : BPWM Group 0
  *                - BPWM1 : BPWM Group 1
+ *                - BPWM2 : BPWM Group 2
+ *                - BPWM3 : BPWM Group 3
+ *                - BPWM4 : BPWM Group 4
+ *                - BPWM5 : BPWM Group 5
  * @param[in] u32ChannelNum BPWM channel number. Valid values are between 0~5
  * @param[in] u32Edge Rising or falling edge to latch counter.
  *              - \ref BPWM_CAPTURE_INT_RISING_LATCH
@@ -414,6 +502,10 @@ void BPWM_EnableCaptureInt(BPWM_T *bpwm, uint32_t u32ChannelNum, uint32_t u32Edg
  * @param[in] bpwm The pointer of the specified BPWM module
  *                - BPWM0 : BPWM Group 0
  *                - BPWM1 : BPWM Group 1
+ *                - BPWM2 : BPWM Group 2
+ *                - BPWM3 : BPWM Group 3
+ *                - BPWM4 : BPWM Group 4
+ *                - BPWM5 : BPWM Group 5
  * @param[in] u32ChannelNum BPWM channel number. Valid values are between 0~5
  * @param[in] u32Edge Rising or falling edge to latch counter.
  *              - \ref BPWM_CAPTURE_INT_RISING_LATCH
@@ -431,6 +523,10 @@ void BPWM_DisableCaptureInt(BPWM_T *bpwm, uint32_t u32ChannelNum, uint32_t u32Ed
  * @param[in] bpwm The pointer of the specified BPWM module
  *                - BPWM0 : BPWM Group 0
  *                - BPWM1 : BPWM Group 1
+ *                - BPWM2 : BPWM Group 2
+ *                - BPWM3 : BPWM Group 3
+ *                - BPWM4 : BPWM Group 4
+ *                - BPWM5 : BPWM Group 5
  * @param[in] u32ChannelNum BPWM channel number. Valid values are between 0~5
  * @param[in] u32Edge Rising or falling edge to latch counter.
  *              - \ref BPWM_CAPTURE_INT_RISING_LATCH
@@ -448,6 +544,10 @@ void BPWM_ClearCaptureIntFlag(BPWM_T *bpwm, uint32_t u32ChannelNum, uint32_t u32
  * @param[in] bpwm The pointer of the specified BPWM module
  *                - BPWM0 : BPWM Group 0
  *                - BPWM1 : BPWM Group 1
+ *                - BPWM2 : BPWM Group 2
+ *                - BPWM3 : BPWM Group 3
+ *                - BPWM4 : BPWM Group 4
+ *                - BPWM5 : BPWM Group 5
  * @param[in] u32ChannelNum BPWM channel number. Valid values are between 0~5
  * @retval 0 No capture interrupt
  * @retval 1 Rising edge latch interrupt
@@ -469,6 +569,10 @@ uint32_t BPWM_GetCaptureIntFlag(BPWM_T *bpwm, uint32_t u32ChannelNum)
  * @param[in] bpwm The pointer of the specified BPWM module
  *                - BPWM0 : BPWM Group 0
  *                - BPWM1 : BPWM Group 1
+ *                - BPWM2 : BPWM Group 2
+ *                - BPWM3 : BPWM Group 3
+ *                - BPWM4 : BPWM Group 4
+ *                - BPWM5 : BPWM Group 5
  * @param[in] u32ChannelNum BPWM channel number. Valid values are between 0~5
  * @param[in] u32IntDutyType Duty interrupt type, could be either
  *              - \ref BPWM_DUTY_INT_DOWN_COUNT_MATCH_CMP
@@ -486,6 +590,10 @@ void BPWM_EnableDutyInt(BPWM_T *bpwm, uint32_t u32ChannelNum, uint32_t u32IntDut
  * @param[in] bpwm The pointer of the specified BPWM module
  *                - BPWM0 : BPWM Group 0
  *                - BPWM1 : BPWM Group 1
+ *                - BPWM2 : BPWM Group 2
+ *                - BPWM3 : BPWM Group 3
+ *                - BPWM4 : BPWM Group 4
+ *                - BPWM5 : BPWM Group 5
  * @param[in] u32ChannelNum BPWM channel number. Valid values are between 0~5
  * @return None
  * @details This function is used to disable duty interrupt of selected channel
@@ -500,6 +608,10 @@ void BPWM_DisableDutyInt(BPWM_T *bpwm, uint32_t u32ChannelNum)
  * @param[in] bpwm The pointer of the specified BPWM module
  *                - BPWM0 : BPWM Group 0
  *                - BPWM1 : BPWM Group 1
+ *                - BPWM2 : BPWM Group 2
+ *                - BPWM3 : BPWM Group 3
+ *                - BPWM4 : BPWM Group 4
+ *                - BPWM5 : BPWM Group 5
  * @param[in] u32ChannelNum BPWM channel number. Valid values are between 0~5
  * @return None
  * @details This function is used to clear duty interrupt flag of selected channel
@@ -514,6 +626,10 @@ void BPWM_ClearDutyIntFlag(BPWM_T *bpwm, uint32_t u32ChannelNum)
  * @param[in] bpwm The pointer of the specified BPWM module
  *                - BPWM0 : BPWM Group 0
  *                - BPWM1 : BPWM Group 1
+ *                - BPWM2 : BPWM Group 2
+ *                - BPWM3 : BPWM Group 3
+ *                - BPWM4 : BPWM Group 4
+ *                - BPWM5 : BPWM Group 5
  * @param[in] u32ChannelNum BPWM channel number. Valid values are between 0~5
  * @return Duty interrupt flag of specified channel
  * @retval 0 Duty interrupt did not occur
@@ -530,6 +646,10 @@ uint32_t BPWM_GetDutyIntFlag(BPWM_T *bpwm, uint32_t u32ChannelNum)
  * @param[in] bpwm The pointer of the specified BPWM module
  *                - BPWM0 : BPWM Group 0
  *                - BPWM1 : BPWM Group 1
+ *                - BPWM2 : BPWM Group 2
+ *                - BPWM3 : BPWM Group 3
+ *                - BPWM4 : BPWM Group 4
+ *                - BPWM5 : BPWM Group 5
  * @param[in] u32ChannelNum BPWM channel number. This parameter is not used.
  * @param[in] u32IntPeriodType Period interrupt type. This parameter is not used.
  * @return None
@@ -548,6 +668,10 @@ void BPWM_EnablePeriodInt(BPWM_T *bpwm, uint32_t u32ChannelNum,  uint32_t u32Int
  * @param[in] bpwm The pointer of the specified BPWM module
  *                - BPWM0 : BPWM Group 0
  *                - BPWM1 : BPWM Group 1
+ *                - BPWM2 : BPWM Group 2
+ *                - BPWM3 : BPWM Group 3
+ *                - BPWM4 : BPWM Group 4
+ *                - BPWM5 : BPWM Group 5
  * @param[in] u32ChannelNum BPWM channel number. This parameter is not used.
  * @return None
  * @details This function is used to disable period interrupt of selected channel.
@@ -564,6 +688,10 @@ void BPWM_DisablePeriodInt(BPWM_T *bpwm, uint32_t u32ChannelNum)
  * @param[in] bpwm The pointer of the specified BPWM module
  *                - BPWM0 : BPWM Group 0
  *                - BPWM1 : BPWM Group 1
+ *                - BPWM2 : BPWM Group 2
+ *                - BPWM3 : BPWM Group 3
+ *                - BPWM4 : BPWM Group 4
+ *                - BPWM5 : BPWM Group 5
  * @param[in] u32ChannelNum BPWM channel number. This parameter is not used.
  * @return None
  * @details This function is used to clear period interrupt of selected channel
@@ -580,6 +708,10 @@ void BPWM_ClearPeriodIntFlag(BPWM_T *bpwm, uint32_t u32ChannelNum)
  * @param[in] bpwm The pointer of the specified BPWM module
  *                - BPWM0 : BPWM Group 0
  *                - BPWM1 : BPWM Group 1
+ *                - BPWM2 : BPWM Group 2
+ *                - BPWM3 : BPWM Group 3
+ *                - BPWM4 : BPWM Group 4
+ *                - BPWM5 : BPWM Group 5
  * @param[in] u32ChannelNum BPWM channel number. This parameter is not used.
  * @return Period interrupt flag of specified channel
  * @retval 0 Period interrupt did not occur
@@ -598,6 +730,10 @@ uint32_t BPWM_GetPeriodIntFlag(BPWM_T *bpwm, uint32_t u32ChannelNum)
  * @param[in] bpwm The pointer of the specified BPWM module
  *                - BPWM0 : BPWM Group 0
  *                - BPWM1 : BPWM Group 1
+ *                - BPWM2 : BPWM Group 2
+ *                - BPWM3 : BPWM Group 3
+ *                - BPWM4 : BPWM Group 4
+ *                - BPWM5 : BPWM Group 5
  * @param[in] u32ChannelNum BPWM channel number. This parameter is not used.
  * @return None
  * @details This function is used to enable zero interrupt of selected channel.
@@ -614,6 +750,10 @@ void BPWM_EnableZeroInt(BPWM_T *bpwm, uint32_t u32ChannelNum)
  * @param[in] bpwm The pointer of the specified BPWM module
  *                - BPWM0 : BPWM Group 0
  *                - BPWM1 : BPWM Group 1
+ *                - BPWM2 : BPWM Group 2
+ *                - BPWM3 : BPWM Group 3
+ *                - BPWM4 : BPWM Group 4
+ *                - BPWM5 : BPWM Group 5
  * @param[in] u32ChannelNum BPWM channel number. This parameter is not used.
  * @return None
  * @details This function is used to disable zero interrupt of selected channel.
@@ -630,6 +770,10 @@ void BPWM_DisableZeroInt(BPWM_T *bpwm, uint32_t u32ChannelNum)
  * @param[in] bpwm The pointer of the specified BPWM module
  *                - BPWM0 : BPWM Group 0
  *                - BPWM1 : BPWM Group 1
+ *                - BPWM2 : BPWM Group 2
+ *                - BPWM3 : BPWM Group 3
+ *                - BPWM4 : BPWM Group 4
+ *                - BPWM5 : BPWM Group 5
  * @param[in] u32ChannelNum BPWM channel number. This parameter is not used.
  * @return None
  * @details This function is used to clear zero interrupt of selected channel.
@@ -646,6 +790,10 @@ void BPWM_ClearZeroIntFlag(BPWM_T *bpwm, uint32_t u32ChannelNum)
  * @param[in] bpwm The pointer of the specified BPWM module
  *                - BPWM0 : BPWM Group 0
  *                - BPWM1 : BPWM Group 1
+ *                - BPWM2 : BPWM Group 2
+ *                - BPWM3 : BPWM Group 3
+ *                - BPWM4 : BPWM Group 4
+ *                - BPWM5 : BPWM Group 5
  * @param[in] u32ChannelNum BPWM channel number. This parameter is not used.
  * @return zero interrupt flag of specified channel
  * @retval 0 zero interrupt did not occur
@@ -664,6 +812,10 @@ uint32_t BPWM_GetZeroIntFlag(BPWM_T *bpwm, uint32_t u32ChannelNum)
  * @param[in] bpwm The pointer of the specified BPWM module
  *                - BPWM0 : BPWM Group 0
  *                - BPWM1 : BPWM Group 1
+ *                - BPWM2 : BPWM Group 2
+ *                - BPWM3 : BPWM Group 3
+ *                - BPWM4 : BPWM Group 4
+ *                - BPWM5 : BPWM Group 5
  * @param[in] u32ChannelNum BPWM channel number. Valid values are between 0~5
  * @param[in] u32LoadMode BPWM counter loading mode.
  *              - \ref BPWM_LOAD_MODE_IMMEDIATE
@@ -681,6 +833,10 @@ void BPWM_EnableLoadMode(BPWM_T *bpwm, uint32_t u32ChannelNum, uint32_t u32LoadM
  * @param[in] bpwm The pointer of the specified BPWM module
  *                - BPWM0 : BPWM Group 0
  *                - BPWM1 : BPWM Group 1
+ *                - BPWM2 : BPWM Group 2
+ *                - BPWM3 : BPWM Group 3
+ *                - BPWM4 : BPWM Group 4
+ *                - BPWM5 : BPWM Group 5
  * @param[in] u32ChannelNum BPWM channel number. Valid values are between 0~5
  * @param[in] u32LoadMode BPWM counter loading mode.
  *              - \ref BPWM_LOAD_MODE_IMMEDIATE
@@ -698,6 +854,10 @@ void BPWM_DisableLoadMode(BPWM_T *bpwm, uint32_t u32ChannelNum, uint32_t u32Load
  * @param[in] bpwm The pointer of the specified BPWM module
  *                - BPWM0 : BPWM Group 0
  *                - BPWM1 : BPWM Group 1
+ *                - BPWM2 : BPWM Group 2
+ *                - BPWM3 : BPWM Group 3
+ *                - BPWM4 : BPWM Group 4
+ *                - BPWM5 : BPWM Group 5
  * @param[in] u32ChannelNum BPWM channel number. This parameter is not used.
  * @param[in] u32ClkSrcSel BPWM external clock source.
  *              - \ref BPWM_CLKSRC_BPWM_CLK
@@ -720,6 +880,10 @@ void BPWM_SetClockSource(BPWM_T *bpwm, uint32_t u32ChannelNum, uint32_t u32ClkSr
  * @param[in] bpwm The pointer of the specified BPWM module
  *                - BPWM0 : BPWM Group 0
  *                - BPWM1 : BPWM Group 1
+ *                - BPWM2 : BPWM Group 2
+ *                - BPWM3 : BPWM Group 3
+ *                - BPWM4 : BPWM Group 4
+ *                - BPWM5 : BPWM Group 5
  * @param[in] u32ChannelNum BPWM channel number. This parameter is not used.
  * @return Count to max interrupt flag of specified channel
  * @retval 0 Count to max interrupt did not occur
@@ -738,6 +902,10 @@ uint32_t BPWM_GetWrapAroundFlag(BPWM_T *bpwm, uint32_t u32ChannelNum)
  * @param[in] bpwm The pointer of the specified BPWM module
  *                - BPWM0 : BPWM Group 0
  *                - BPWM1 : BPWM Group 1
+ *                - BPWM2 : BPWM Group 2
+ *                - BPWM3 : BPWM Group 3
+ *                - BPWM4 : BPWM Group 4
+ *                - BPWM5 : BPWM Group 5
  * @param[in] u32ChannelNum BPWM channel number. This parameter is not used.
  * @return None
  * @details This function is used to clear the time-base counter reached its maximum value flag of selected channel.

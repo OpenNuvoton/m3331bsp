@@ -742,11 +742,15 @@ typedef struct
      * |        |          |When synchronous start function is enabled, the BPWM_CH0 counter enable bit (CNTEN0) can be enabled by writing BPWM synchronous start trigger bit (CNTSEN).
      * |        |          |0 = BPWM synchronous start function Disabled.
      * |        |          |1 = BPWM synchronous start function Enabled.
-     * |[9:8]   |SSRC      |BPWM Synchronous Start Source Select
-     * |        |          |00 = Synchronous start source come from PWM0.
-     * |        |          |01 = Synchronous start source come from PWM1.
-     * |        |          |10 = Synchronous start source come from BPWM0.
-     * |        |          |11 = Synchronous start source come from BPWM1.
+     * |[10:8]  |SSRC      |BPWM Synchronous Start Source Select
+     * |        |          |000 = Synchronous start source come from PWM0.
+     * |        |          |001 = Synchronous start source come from PWM1.
+     * |        |          |010 = Synchronous start source come from BPWM0.
+     * |        |          |011 = Synchronous start source come from BPWM1.
+     * |        |          |100 = Synchronous start source come from BPWM2.
+     * |        |          |101 = Synchronous start source come from BPWM3.
+     * |        |          |110 = Synchronous start source come from BPWM4.
+     * |        |          |111 = Synchronous start source come from BPWM5.
      * @var BPWM_T::SSTRG
      * Offset: 0x114  BPWM Synchronous Start Trigger Register
      * ---------------------------------------------------------------------------------------------------
@@ -1543,7 +1547,7 @@ typedef struct
 #define BPWM_SSCTL_SSEN0_Msk             (0x1ul << BPWM_SSCTL_SSEN0_Pos)                   /*!< BPWM_T::SSCTL: SSEN0 Mask              */
 
 #define BPWM_SSCTL_SSRC_Pos              (8)                                               /*!< BPWM_T::SSCTL: SSRC Position           */
-#define BPWM_SSCTL_SSRC_Msk              (0x3ul << BPWM_SSCTL_SSRC_Pos)                    /*!< BPWM_T::SSCTL: SSRC Mask               */
+#define BPWM_SSCTL_SSRC_Msk              (0x7ul << BPWM_SSCTL_SSRC_Pos)                    /*!< BPWM_T::SSCTL: SSRC Mask               */
 
 #define BPWM_SSTRG_CNTSEN_Pos            (0)                                               /*!< BPWM_T::SSTRG: CNTSEN Position         */
 #define BPWM_SSTRG_CNTSEN_Msk            (0x1ul << BPWM_SSTRG_CNTSEN_Pos)                  /*!< BPWM_T::SSTRG: CNTSEN Mask             */

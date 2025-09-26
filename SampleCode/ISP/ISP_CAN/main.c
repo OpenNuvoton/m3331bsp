@@ -20,6 +20,7 @@
 #define CMD_READ_CONFIG                   0xA2000000
 #define CMD_RUN_APROM                     0xAB000000
 #define CMD_GET_DEVICEID                  0xB1000000
+#define CMD_READ_FLASH_64                 0xB3000000
 
 /*---------------------------------------------------------------------------*/
 /*  Function Declare                                                         */
@@ -217,6 +218,8 @@ void CAN_Init(void)
 /*---------------------------------------------------------------------------------------------------------*/
 int main(void)
 {
+    __IO uint32_t u32LSWData = 0;
+
     /* Unlock protected registers */
     SYS_UnlockReg();
 
@@ -262,11 +265,16 @@ int main(void)
             }
             else if(psISPCanMsg->Address == CMD_READ_CONFIG)
             {
-                psISPCanMsg->Data = FMC_Read(psISPCanMsg->Data);
+                psISPCanMsg->Data = FMC_Read((psISPCanMsg->Data | FMC_CONFIG_BASE));
             }
             else if(psISPCanMsg->Address == CMD_RUN_APROM)
             {
                 break;
+            }
+            else if (psISPCanMsg->Address == CMD_READ_FLASH_64)
+            {
+                /* read back MSW data */
+                psISPCanMsg->Data = FMC_Read(psISPCanMsg->Data);
             }
             else
             {
@@ -276,16 +284,30 @@ int main(void)
                     FMC_Erase(psISPCanMsg->Address);
                 }
 
-                if ((psISPCanMsg->Address & 0x7) == 0x0)
+                if ((psISPCanMsg->Address & 0x00300000UL) == 0x00300000UL) /* User Configuration */
                 {
-                    FMC_Write8Bytes(psISPCanMsg->Address, psISPCanMsg->Data, 0xFFFFFFFF);
+                    FMC_Write((psISPCanMsg->Address | FMC_CONFIG_BASE), psISPCanMsg->Data);
+                    psISPCanMsg->Data = FMC_Read((psISPCanMsg->Address | FMC_CONFIG_BASE));
                 }
                 else
                 {
-                    FMC_Write8Bytes((psISPCanMsg->Address & 0x8), 0xFFFFFFFF, psISPCanMsg->Data);
+                    if ((psISPCanMsg->Address & 0x7) == 0x0)
+                    {
+                        /* must keep LSW data for next write */
+                        u32LSWData = psISPCanMsg->Data;
+                        
+                        /* return ack */
+                        psISPCanMsg->Data = ~u32LSWData;
+                    }
+                    else
+                    {
+                        FMC_Write8Bytes((psISPCanMsg->Address & 0xFFFFFFF8), u32LSWData, psISPCanMsg->Data);
+
+                        /* read back LSW data */
+                        psISPCanMsg->Data = FMC_Read(psISPCanMsg->Address & 0xFFFFFFF8);
+                    }
                 }
 
-                psISPCanMsg->Data = FMC_Read(psISPCanMsg->Address);
                 PD2 = 1;
             }
 
