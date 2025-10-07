@@ -6,7 +6,7 @@ project:
         type: ["elf", "bin"]
     - setup: Options for Secure
       processor:
-        fpu: off
+        fpu: sp
         endian: little
         trustzone: secure
       add-path:

@@ -570,6 +570,12 @@ void SystemInit(void)
 #endif
 
 #if defined (__ARM_FEATURE_CMSE) && (__ARM_FEATURE_CMSE == 3)
+
+    #if (__FPU_PRESENT == 1U) && (__FPU_USED == 1U)
+    /* Enables Non-secure access to the Floating-point Extension */
+    SCB->NSACR |= (1u<<10) | (1u<<11);
+    #endif
+
     if(IS_SECURE())
     {
         TZ_SAU_Setup();

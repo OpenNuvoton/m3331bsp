@@ -6,7 +6,7 @@ project:
         type: ["elf", "bin"]
     - setup: Options for Nonsecure
       processor:
-        fpu: off
+        fpu: sp
         endian: little
         trustzone: non-secure
       add-path:
