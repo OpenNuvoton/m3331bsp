@@ -23,7 +23,7 @@ extern "C"
 /*---------------------------------------------------------------------------------------------------------*/
 /* Define the vendor id and product id */
 #define USBD_VID                            0x0416     
-#define USBD_PID                            0x200F /* For MCU/NuMaker connecting to NuVotonAudioGUI */ // 0x120B Test
+#define USBD_PID                            0x200F /* For MCU/NuMaker connecting to NuVotonAudioGUI */
 
 /*!<Define Audio Class Current State */
 #define UAC_STOP_AUDIO_RECORD               0
