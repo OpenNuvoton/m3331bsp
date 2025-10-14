@@ -541,31 +541,31 @@ __STATIC_INLINE uint32_t ELLSI_SET_FB_COUNT(ELLSI_T *ellsi, uint32_t u32ID, uint
 }
 
 /**
-  * @brief      Get the feedback pixel current.
+  * @brief      Get the feedback pixel code.
   * @param[in]  ellsi The pointer of the specified ELLSI module.
   * @param[in]  u32ID The 4-bit strip ID. It can be 1 ~ 15.
-  * @retval     0  The current feedback from the LED is 5mA.
-  * @retval     1  The current feedback from the LED is 12mA.
+  * @retval     0  The code feedback from the LED is 0.
+  * @retval     1  The code feedback from the LED is 1.
   * @retval     -1 Unknown strip ID number.
-  * @details    Read FBPCUR bit of ELLSI_FBPCNTn register to get the feedback pixel current of IDn.
+  * @details    Read FBPCODE bit of ELLSI_FBPCNTn register to get the feedback pixel code of IDn.
   */
 __STATIC_INLINE uint32_t ELLSI_GET_FB_CURRENT(ELLSI_T *ellsi, uint32_t u32ID)
 {
     uint32_t i;
-    uint32_t u32FBPCUR;
+    uint32_t u32FBPCODE;
 
     if((u32ID == 0) || (u32ID >= 16))
         return -1;
 
     for(i = 0; i < ELLSI_MAX_STRIP_CNT; i++)
     {
-        u32FBPCUR = ellsi->FB[i].FBPCNT;
+        u32FBPCODE = ellsi->FB[i].FBPCNT;
 
         if(i == (u32ID - 1))
             break;
     }
 
-    return (u32FBPCUR & ELLSI_FBPCNT_FBPCUR_Msk) >> ELLSI_FBPCNT_FBPCUR_Pos;
+    return (u32FBPCODE & ELLSI_FBPCNT_FBPCODE_Msk) >> ELLSI_FBPCNT_FBPCODE_Pos;
 }
 
 /**

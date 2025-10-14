@@ -38,8 +38,9 @@ typedef struct
      * |        |          |It will be set 1 when feedback pixel count over 1024.
      * |        |          |Write one to clear this register.
      * |        |          |Note: FBSTSIEN (ELLSI_CTL[29]) need to be set.
-     * |[24]    |FBPCUR    |Feedback Pixel Current
-     * |        |          |The current feedback from the LED.
+     * |[24]    |FBPCODE   |Feedback Pixel Code
+     * |        |          |The code feedback from the LED.
+     * |        |          |This value is the same as the last pixel code in the Feedback count command Mode.
      * @var ELLSI_FB_T::FBSID
      * Offset: 0x04  ELLSI Feedback Strip ID Register
      * ---------------------------------------------------------------------------------------------------
@@ -688,8 +689,8 @@ typedef struct
 #define ELLSI_FBPCNT_FBPOV_Pos           (16)                                              /*!< ELLSI_T::FBPCNT: FBPOV Position        */
 #define ELLSI_FBPCNT_FBPOV_Msk           (0x1ul << ELLSI_FBPCNT_FBPOV_Pos)                 /*!< ELLSI_T::FBPCNT: FBPOV Mask            */
 
-#define ELLSI_FBPCNT_FBPCUR_Pos          (24)                                              /*!< ELLSI_T::FBPCNT: FBPCUR Position       */
-#define ELLSI_FBPCNT_FBPCUR_Msk          (0x1ul << ELLSI_FBPCNT_FBPCUR_Pos)                /*!< ELLSI_T::FBPCNT: FBPCUR Mask           */
+#define ELLSI_FBPCNT_FBPCODE_Pos         (24)                                              /*!< ELLSI_T::FBPCNT: FBPCODE Position      */
+#define ELLSI_FBPCNT_FBPCODE_Msk         (0x1ul << ELLSI_FBPCNT_FBPCODE_Pos)               /*!< ELLSI_T::FBPCNT: FBPCODE Mask          */
 
 #define ELLSI_FBSID_FBSID_Pos            (0)                                               /*!< ELLSI_T::FBSID: FBSID Position         */
 #define ELLSI_FBSID_FBSID_Msk            (0xfffffffful << ELLSI_FBSID_FBSID_Pos)           /*!< ELLSI_T::FBSID: FBSID Mask             */
