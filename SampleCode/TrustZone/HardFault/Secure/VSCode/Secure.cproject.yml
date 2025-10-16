@@ -23,7 +23,6 @@ project:
           C:
             - -std=c99
           C-CPP:
-            - -mfloat-abi=soft -Wno-documentation -Wno-reserved-id-macro
             - -fno-rtti
             - -funsigned-char
             - -ffunction-sections

@@ -740,12 +740,12 @@ extern "C"
 /*---------------------------------------------------------------------------------------------------------*/
 #define CLK_SPDSRETSEL_NO           (0x0UL << CLK_PMUCTL_SRETSEL_Pos)     /*!< No SRAM retention when chip enter SPD mode \hideinitializer */
 
-/* For M3331G */
+/* For M3333xGA/M3334xGA */
 #define CLK_SPDSRETSEL_32K_M3331G   (0x1UL << CLK_PMUCTL_SRETSEL_Pos)     /*!< 32K SRAM retention when chip enter SPD mode for M3331G \hideinitializer */
 #define CLK_SPDSRETSEL_64K_M3331G   (0x2UL << CLK_PMUCTL_SRETSEL_Pos)     /*!< 64K SRAM retention when chip enter SPD mode for M3331G \hideinitializer */
 #define CLK_SPDSRETSEL_96K_M3331G   (0x3UL << CLK_PMUCTL_SRETSEL_Pos)     /*!< 96K SRAM retention when chip enter SPD mode for M3331G \hideinitializer */
 
-/* For M3331I */
+/* For M3333xIG/M3334xIG */
 #define CLK_SPDSRETSEL_64K_M3331I   (0x1UL << CLK_PMUCTL_SRETSEL_Pos)     /*!< 64K SRAM retention when chip enter SPD mode for M3331I \hideinitializer */
 #define CLK_SPDSRETSEL_192K_M3331I  (0x2UL << CLK_PMUCTL_SRETSEL_Pos)     /*!< 192K SRAM retention when chip enter SPD mode for M3331I \hideinitializer */
 #define CLK_SPDSRETSEL_320K_M3331I  (0x3UL << CLK_PMUCTL_SRETSEL_Pos)     /*!< 320K SRAM retention when chip enter SPD mode for M3331I \hideinitializer */
