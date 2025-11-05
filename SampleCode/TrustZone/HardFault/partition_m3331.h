@@ -220,7 +220,7 @@
 //   <o.6>  PA6       <0=> Secure <1=> Non-Secure
 //   <o.7>  PA7       <0=> Secure <1=> Non-Secure
 //   <o.8>  PA8       <0=> Secure <1=> Non-Secure
-//   <o.7>  PA9       <0=> Secure <1=> Non-Secure
+//   <o.9>  PA9       <0=> Secure <1=> Non-Secure
 //   <o.10>  PA10       <0=> Secure <1=> Non-Secure
 //   <o.11>  PA11       <0=> Secure <1=> Non-Secure
 //   <o.12>  PA12       <0=> Secure <1=> Non-Secure
@@ -699,7 +699,48 @@
 #define SCB_AIRCR_BFHFNMINS_VAL 0
 
 /*
-// </e>
+   </e>
+*/
+
+/*
+   <e>Setup behaviour of Floating Point Unit (FPU)
+*/
+#define TZ_FPU_NS_USAGE 1
+
+/*
+   <o>Floating Point Unit usage
+        <0=> Secure state only
+       <3=> Secure and Non-secure state
+     <i> Value for SCB->NSACR register bits CP10, CP11
+*/
+#define SCB_NSACR_CP10_11_VAL       3
+
+/*
+   <o>Treat floating-point registers as Secure
+       <0=> Disabled
+       <1=> Enabled
+     <i> Value for FPU->FPCCR register bit TS
+*/
+#define FPU_FPCCR_TS_VAL            0
+
+/*
+   <o>Clear on return (CLRONRET) accessibility
+       <0=> Secure and Non-secure state
+       <1=> Secure state only
+     <i> Value for FPU->FPCCR register bit CLRONRETS
+*/
+#define FPU_FPCCR_CLRONRETS_VAL     0
+
+/*
+   <o>Clear floating-point caller saved registers on exception return
+       <0=> Disabled
+       <1=> Enabled
+     <i> Value for FPU->FPCCR register bit CLRONRET
+*/
+#define FPU_FPCCR_CLRONRET_VAL      0
+
+/*
+   </e>
 */
 
 /*

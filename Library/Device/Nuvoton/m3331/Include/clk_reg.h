@@ -812,13 +812,13 @@ typedef struct
      * |        |          |Note: This bit is write protected. Refer to the SYS_REGLCTL register.
      * |[6:4]   |SRETSEL   |SRAM Retention Range Select Bit (Write Protect)
      * |        |          |Select SRAM retention range when chip enter SPD mode.
-     * |        |          |For M3331Gx:
+     * |        |          |For M3333xGA/M3334xGA:
      * |        |          |000 = No SRAM retention.
      * |        |          |001 = 32K SRAM retention when chip enter SPD mode.
      * |        |          |010 = 64K SRAM retention when chip enter SPD mode.
      * |        |          |011 = 96K SRAM retention when chip enter SPD mode.(default)
      * |        |          |Others = Reserved.
-     * |        |          |For M3331Ix:
+     * |        |          |For M3333xIG/M3334xIG:
      * |        |          |000 = No SRAM retention.
      * |        |          |001 = 64K SRAM retention when chip enter SPD mode.
      * |        |          |010 = 192K SRAM retention when chip enter SPD mode.
