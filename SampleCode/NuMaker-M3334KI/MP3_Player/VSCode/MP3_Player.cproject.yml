@@ -99,9 +99,6 @@ project:
         - file: ../../../../Library/StdDriver/src/pdma.c
         - file: ../../../../Library/StdDriver/src/sdh.c
         - file: ../../../../Library/StdDriver/src/gpio.c
-        - file: ../../../../Library/Device/Nuvoton/m3331/Include/NuMicro.h
-        - file: ../../../../Library/Device/Nuvoton/m3331/Include/m3331.h
-        - file: ../../../../Library/CMSIS/Core/Include/core_cm33.h
     - group: FATFS
       files:
         - file: ../../../../ThirdParty/FatFs/source/ff.c
