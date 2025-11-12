@@ -12,6 +12,7 @@ project:
         - -Xlinker
         - --gc-sections
         - --specs=nano.specs
+        - --specs=nosys.specs
         - -Wl,-Map,"$OutDir()$/$Project$.map"
 
   setups:
@@ -30,9 +31,9 @@ project:
   groups:
     - group: CMSIS
       files:
-        - file: ../../../../../Library/Device/Nuvoton/m3331/Source/ARM/startup_m3331.S
+        - file: ../../../../../Library/Device/Nuvoton/m3331/Source/startup_m3331.c
           for-compiler: AC6
-        - file: ../../../../../Library/Device/Nuvoton/m3331/Source/GCC/startup_m3331.S
+        - file: ../../../../../Library/Device/Nuvoton/m3331/Source/startup_m3331.c
           for-compiler: GCC
         - file: ../../../../../Library/Device/Nuvoton/m3331/Source/system_m3331.c
     - group: Library

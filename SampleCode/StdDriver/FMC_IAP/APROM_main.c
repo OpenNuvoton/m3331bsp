@@ -11,7 +11,7 @@
 #include "NuMicro.h"
 
 
-extern uint32_t  loaderImage1Base, loaderImage1Limit;   /* symbol of image start and end */
+extern uint32_t  loaderImage1Base[], loaderImage1Limit[];   /* symbol of image start and end */
 
 
 void SYS_Init(void)

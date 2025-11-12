@@ -119,6 +119,11 @@
       <TargetDriverDllRegistry>
         <SetRegEntry>
           <Number>0</Number>
+          <Key>UL2V8M</Key>
+          <Name>UL2V8M(-S0 -C0 -P0 -FD20000000 -FC4000 -FN3 -FF0M3331_AP_512 -FS00 -FL080000 -FF1M3331_LD_8 -FS1F100000 -FL12000 -FF2M3331_NS_512 -FS210000000 -FL280000 -FP0($$Device:M3334KIGAE$Flash\M3331_AP_512.FLM) -FP1($$Device:M3334KIGAE$Flash\M3331_LD_8.FLM) -FP2($$Device:M3334KIGAE$Flash\M3331_NS_512.FLM))</Name>
+        </SetRegEntry>
+        <SetRegEntry>
+          <Number>0</Number>
           <Key>UL2CM3</Key>
           <Name>UL2CM3(-S0 -C0 -P0 -FD20000000 -FC1000 -FN1 -FF0M3331_AP_512 -FS00 -FL0100000 -FP0($$Device:M3334KIGAE$Flash\M3331_AP_512.FLM))</Name>
         </SetRegEntry>
@@ -190,12 +195,12 @@
     <File>
       <GroupNumber>1</GroupNumber>
       <FileNumber>2</FileNumber>
-      <FileType>2</FileType>
+      <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\Library\Device\Nuvoton\m3331\Source\ARM\startup_m3331.S</PathWithFileName>
-      <FilenameWithoutPath>startup_m3331.S</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\Library\Device\Nuvoton\m3331\Source\startup_m3331.c</PathWithFileName>
+      <FilenameWithoutPath>startup_m3331.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>

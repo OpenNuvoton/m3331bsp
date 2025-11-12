@@ -4,7 +4,7 @@
  * @brief    CMSIS Cortex-M33 Core Peripheral Access Layer Header File for M3331
  *
  * @copyright SPDX-License-Identifier: Apache-2.0
- * @copyright Copyright (c) 2024 Nuvoton Technology Corp. All rights reserved.
+ * @copyright Copyright (c) 2024-2025 Nuvoton Technology Corp. All rights reserved.
 *****************************************************************************/
 
 #ifndef __SYSTEM_M3331_H__
@@ -15,8 +15,8 @@ extern "C" {
 #endif
 
 #include <stdint.h>
-#if defined (__ARM_FEATURE_CMSE)
-#include "partition_m3331.h"
+#if defined (__ARM_FEATURE_CMSE) || defined (__NONSECURE_CODE)
+# include "partition_m3331.h"
 #endif
 
 /*----------------------------------------------------------------------------
@@ -77,6 +77,11 @@ extern "C" {
 extern uint32_t SystemCoreClock;     /*!< System Clock Frequency (Core Clock)  */
 extern uint32_t CyclesPerUs;         /*!< Cycles per micro second              */
 extern uint32_t PllClock;            /*!< PLL Output Clock Frequency           */
+
+/**
+  \brief Exception / Interrupt Handler Function Prototype
+*/
+typedef void(*VECTOR_TABLE_Type)(void);
 
 /**
  * Return true if the code is running in secure state

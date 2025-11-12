@@ -19,7 +19,7 @@ project:
       ASM:
         [
           -D__MICROLIB,
-          -DBINFILE='"$SolutionDir()$/bin/ARMCLANG/FMC_IAP_LDROM.bin"',
+          -DBINFILE='"$ProjectDir()$/../bin/FMC_IAP_LDROM.bin"'
         ]
       Link:
         [
@@ -51,14 +51,15 @@ project:
           -Wno-main,
           -gdwarf-4,
         ]
-      ASM: [-DBINFILE='"$SolutionDir()$/bin/GNUC/FMC_IAP_LDROM.bin"']
+      ASM: [-DBINFILE='"$ProjectDir()$/../bin/FMC_IAP_LDROM.bin"']
       Link:
+        - --specs=nosys.specs
         - -Xlinker
         - --gc-sections
         - -Wl,--gc-sections,-Map="$elf()$.map"
   linker:
     - for-compiler: GCC
-      script: ../../../../../Library/Device/Nuvoton/m3331/Source/GCC/gcc_arm.ld
+      script: ../../../../../Library/Device/Nuvoton/m3331/Config/m3331_gcc.ld
   setups:
     - output:
         type: ["elf", "bin"]
@@ -69,9 +70,9 @@ project:
   groups:
     - group: CMSIS
       files:
-        - file: ../../../../../Library/Device/Nuvoton/m3331/Source/ARM/startup_m3331.S
+        - file: ../../../../../Library/Device/Nuvoton/m3331/Source/startup_m3331.c
           for-compiler: AC6
-        - file: ../../../../../Library/Device/Nuvoton/m3331/Source/GCC/startup_m3331.S
+        - file: ../../../../../Library/Device/Nuvoton/m3331/Source/startup_m3331.c
           for-compiler: GCC
         - file: ../../../../../Library/Device/Nuvoton/m3331/Source/system_m3331.c
     - group: Library

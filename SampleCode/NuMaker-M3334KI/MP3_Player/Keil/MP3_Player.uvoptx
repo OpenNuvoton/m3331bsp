@@ -27,7 +27,6 @@
     <ToolsetName>ARM-ADS</ToolsetName>
     <TargetOption>
       <CLKADS>12000000</CLKADS>
-      <CLKADS>12000000</CLKADS>
       <OPTTT>
         <gFlags>1</gFlags>
         <BeepAtEnd>1</BeepAtEnd>
@@ -105,7 +104,6 @@
         <bSchkAxf>0</bSchkAxf>
         <bTchkAxf>0</bTchkAxf>
         <nTsel>7</nTsel>
-        <nTsel>7</nTsel>
         <sDll></sDll>
         <sDllPa></sDllPa>
         <sDlgDll></sDlgDll>
@@ -116,7 +114,6 @@
         <tDlgDll></tDlgDll>
         <tDlgPa></tDlgPa>
         <tIfile></tIfile>
-        <pMon>NULink\Nu_Link.dll</pMon>
         <pMon>NULink\Nu_Link.dll</pMon>
       </DebugOpt>
       <TargetDriverDllRegistry>
@@ -133,7 +130,6 @@
         <SetRegEntry>
           <Number>0</Number>
           <Key>DLGTARM</Key>
-          <Name>(1010=1345,162,1795,719,0)(1007=-1,-1,-1,-1,0)(1008=-1,-1,-1,-1,0)(1009=-1,-1,-1,-1,0)</Name>
           <Name>UL2V8M(-S0 -C0 -P0 )  -FN3 -FC4000 -FD20000000 -FF0M3331_AP_512 -FF1M3331_LD_8 -FF2M3331_NS_512 -FL080000 -FL12000 -FL280000 -FS00 -FS1F100000 -FS210000000 -FP0($$Device:M3334KIGAE$Flash\M3331_AP_512.FLM) -FP1($$Device:M3334KIGAE$Flash\M3331_LD_8.FLM) -FP2($$Device:M3334KIGAE$Flash\M3331_NS_512.FLM)</Name>
         </SetRegEntry>
         <SetRegEntry>
@@ -143,8 +139,6 @@
         </SetRegEntry>
         <SetRegEntry>
           <Number>0</Number>
-          <Key>ARMDBGFLAGS</Key>
-          <Name></Name>
           <Key>ARMDBGFLAGS</Key>
           <Name></Name>
         </SetRegEntry>
@@ -167,7 +161,6 @@
           <Expression>\\MP3_Player\../../../../Library/StdDriver/src/sdh.c\567</Expression>
         </Bp>
         <Bp>
-          <Number>1</Number>
           <Number>1</Number>
           <Type>0</Type>
           <LineNumber>319</LineNumber>
@@ -293,14 +286,12 @@
     <File>
       <GroupNumber>1</GroupNumber>
       <FileNumber>2</FileNumber>
-      <FileType>2</FileType>
+      <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\Library\Device\Nuvoton\m3331\Source\ARM\startup_m3331.S</PathWithFileName>
-      <FilenameWithoutPath>startup_m3331.S</FilenameWithoutPath>
-      <PathWithFileName>..\..\..\..\Library\Device\Nuvoton\m3331\Source\ARM\startup_m3331.S</PathWithFileName>
-      <FilenameWithoutPath>startup_m3331.S</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\Library\Device\Nuvoton\m3331\Source\startup_m3331.c</PathWithFileName>
+      <FilenameWithoutPath>startup_m3331.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>

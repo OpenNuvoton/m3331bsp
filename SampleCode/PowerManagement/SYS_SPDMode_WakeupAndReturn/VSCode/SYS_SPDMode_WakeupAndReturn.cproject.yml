@@ -12,6 +12,7 @@ project:
         - -Xlinker
         - --gc-sections
         - --specs=nano.specs
+        - --specs=nosys.specs
         - -Wl,-Map,"$OutDir()$/$Project$.map"
 
   setups:
@@ -19,7 +20,7 @@ project:
         type: ["elf", "bin"]
   linker:
     - for-compiler: GCC
-      script: ../../../../Library/Device/Nuvoton/m3331/Source/GCC/gcc_arm.ld
+      script: ../../../../Library/Device/Nuvoton/m3331/Config/m3331_gcc.ld
   add-path:
     - ../../../../Library/Device/Nuvoton/m3331/Include
     - ../../../../Library/StdDriver/inc

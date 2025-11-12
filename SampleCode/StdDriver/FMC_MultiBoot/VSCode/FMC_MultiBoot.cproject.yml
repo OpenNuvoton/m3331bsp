@@ -17,13 +17,30 @@ project:
           ASM:
             - -masm=auto
           Link:
-            - --library_type=microlib --map --load_addr_map_info --symbols
-            - --info sizes --info totals --strict --summary_stderr --info summarysizes
+            - --library_type=microlib
+            - --map
+            - --load_addr_map_info
+            - --symbols
+            - --info sizes
+            - --info totals
+            - --strict
+            - --summary_stderr
+            - --info summarysizes
         - for-compiler: GCC
           C:
-            - -std=gnu11 -mthumb -masm-syntax-unified -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections
+            - -std=gnu11
+            - -mthumb
+            - -masm-syntax-unified
+            - -fmessage-length=0
+            - -fsigned-char
+            - -ffunction-sections
+            - -fdata-sections
           Link:
-            - -mthumb -fmessage-length=0 -fsigned-char --specs=nano.specs --specs=nosys.specs
+            - -mthumb
+            - -fmessage-length=0
+            - -fsigned-char
+            - --specs=nano.specs
+            - --specs=nosys.specs
             - -Wl,--gc-sections,-Map="$elf()$.map"
     - setup: Options for FMC_MultiBoot_Base
       output :
@@ -113,7 +130,7 @@ project:
       define:
         - __BOOTLD__
       linker:
-        - script: ../../../../Library/Device/Nuvoton/m3331/Source/ARM/LDROM.sct
+        - script: ../../../../Library/Device/Nuvoton/m3331/Config/m3331_ac6_ldrom.sct
           for-compiler: AC6
         - script: ./FMC_MultiBoot.ld
           for-compiler: GCC
@@ -122,9 +139,9 @@ project:
   groups:
     - group: CMSIS
       files:
-        - file: ../../../../Library/Device/Nuvoton/m3331/Source/ARM/startup_m3331.S
+        - file: ../../../../Library/Device/Nuvoton/m3331/Source/startup_m3331.c
           for-compiler: AC6
-        - file: ../../../../Library/Device/Nuvoton/m3331/Source/GCC/startup_m3331.S
+        - file: ../../../../Library/Device/Nuvoton/m3331/Source/startup_m3331.c
           for-compiler: GCC
         - file: ../../../../Library/Device/Nuvoton/m3331/Source/system_m3331.c
     - group: Library

@@ -264,7 +264,7 @@
         <LExpSel>0</LExpSel>
       </OPTXL>
       <OPTFL>
-        <tvExp>0</tvExp>
+        <tvExp>1</tvExp>
         <tvExpOptDlg>0</tvExpOptDlg>
         <IsCurrentTarget>0</IsCurrentTarget>
       </OPTFL>
@@ -347,7 +347,7 @@
           <SizeOfObject>0</SizeOfObject>
           <BreakByAccess>0</BreakByAccess>
           <BreakIfRCount>1</BreakIfRCount>
-          <Filename>&lt;1&gt;..\main.c</Filename>
+          <Filename>C:\MCU_MS20\MAG071_M3331\m3331bsp\SampleCode\StdDriver\FMC_IAP\main.c</Filename>
           <ExecCommand></ExecCommand>
           <Expression>\\NewApp\../main.c\170</Expression>
         </Bp>
@@ -363,7 +363,7 @@
           <SizeOfObject>0</SizeOfObject>
           <BreakByAccess>0</BreakByAccess>
           <BreakIfRCount>1</BreakIfRCount>
-          <Filename>&lt;2&gt;..\..\..\..\..\Library\NuMaker\xmodem\xmodem.c</Filename>
+          <Filename>C:\MCU_MS20\MAG071_M3331\Library\NuMaker\xmodem\xmodem.c</Filename>
           <ExecCommand></ExecCommand>
           <Expression>\\NewApp\../../../../../Library/NuMaker/xmodem/xmodem.c\291</Expression>
         </Bp>
@@ -379,7 +379,7 @@
           <SizeOfObject>0</SizeOfObject>
           <BreakByAccess>0</BreakByAccess>
           <BreakIfRCount>1</BreakIfRCount>
-          <Filename>&lt;2&gt;..\..\..\..\..\Library\NuMaker\xmodem\xmodem.c</Filename>
+          <Filename>C:\MCU_MS20\MAG071_M3331\Library\NuMaker\xmodem\xmodem.c</Filename>
           <ExecCommand></ExecCommand>
           <Expression>\\NewApp\../../../../../Library/NuMaker/xmodem/xmodem.c\286</Expression>
         </Bp>
@@ -459,19 +459,19 @@
 
   <Group>
     <GroupName>CMSIS</GroupName>
-    <tvExp>0</tvExp>
+    <tvExp>1</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>
     <File>
       <GroupNumber>1</GroupNumber>
       <FileNumber>1</FileNumber>
-      <FileType>2</FileType>
+      <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\..\Library\Device\Nuvoton\m3331\Source\ARM\startup_m3331.S</PathWithFileName>
-      <FilenameWithoutPath>startup_m3331.S</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\..\Library\Device\Nuvoton\m3331\Source\startup_m3331.c</PathWithFileName>
+      <FilenameWithoutPath>startup_m3331.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -511,7 +511,7 @@
 
   <Group>
     <GroupName>Library</GroupName>
-    <tvExp>0</tvExp>
+    <tvExp>1</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>

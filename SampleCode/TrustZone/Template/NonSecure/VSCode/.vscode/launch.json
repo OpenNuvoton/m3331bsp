@@ -15,8 +15,29 @@
                 "${command:openocd-helper.getOpenOcdConfigPath}"
             ],
             "runToEntryPoint": "main",
-			"overrideLaunchCommands": [
-            "monitor reset halt"
+            "overrideLaunchCommands": [
+                "monitor reset halt"
+            ]
+        },
+        {
+            "name": "CMSIS_DAP@pyOCD (attach)",
+            "type": "gdbtarget",
+            "request": "attach",
+            "cwd": "${workspaceFolder}/",
+            "program": "out/NonSecure/ARMCLANG/Release/NonSecure.axf",
+            "gdb": "arm-none-eabi-gdb",
+            "initCommands": [
+                ""
+            ],
+            "customResetCommands": [
+                "monitor reset halt"
+            ],
+            "target": {
+                "port": "3333"
+            },
+            "cmsis": {
+                "updateConfiguration": "auto"
+            }
         }
     ]
 }

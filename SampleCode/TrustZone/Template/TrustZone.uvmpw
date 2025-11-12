@@ -5,15 +5,16 @@
 
   <Header>### uVision Project, (C) Keil Software</Header>
 
-  <WorkspaceName>WorkSpace</WorkspaceName>
+  <WorkspaceName>TrustZone</WorkspaceName>
 
   <project>
     <PathAndName>.\Secure\KEIL\Secure.uvprojx</PathAndName>
-    <NodeIsActive>1</NodeIsActive>
+    <NodeIsExpanded>1</NodeIsExpanded>
   </project>
 
   <project>
     <PathAndName>.\Nonsecure\KEIL\Nonsecure.uvprojx</PathAndName>
+    <NodeIsActive>1</NodeIsActive>
   </project>
 
 </ProjectWorkspace>

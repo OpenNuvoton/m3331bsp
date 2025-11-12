@@ -1,12 +1,74 @@
-/* Linker script to configure memory regions. */
+/******************************************************************************
+ * @file     Device_gcc.ld
+ * @brief    GNU Linker Script for Cortex-M based device
+ * @version  V2.3.0
+ * @date     23. June 2023
+ ******************************************************************************/
+/*
+ * Copyright (c) 2009-2023 Arm Limited. All rights reserved.
+ *
+ * SPDX-License-Identifier: Apache-2.0
+ *
+ * Licensed under the Apache License, Version 2.0 (the License); you may
+ * not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an AS IS BASIS, WITHOUT
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/*
+ *-------- <<< Use Configuration Wizard in Context Menu >>> -------------------
+ */
+
+/*---------------------- Flash Configuration ----------------------------------
+  <h> Flash Configuration
+    <o0> Flash Base Address <0x0-0xFFFFFFFF:8>
+    <o1> Flash Size (in Bytes) <0x0-0xFFFFFFFF:8>
+  </h>
+  -----------------------------------------------------------------------------*/
+__ROM_BASE = 0x00000000;
+__ROM_SIZE = 0x00080000;
+
+/*--------------------- Embedded RAM Configuration ----------------------------
+  <h> RAM Configuration
+    <o0> RAM Base Address    <0x0-0xFFFFFFFF:8>
+    <o1> RAM Size (in Bytes) <0x0-0xFFFFFFFF:8>
+  </h>
+ -----------------------------------------------------------------------------*/
+__RAM_BASE = 0x20000000;
+__RAM_SIZE = 0x00050000;
+
+/*--------------------- Stack / Heap Configuration ----------------------------
+  <h> Stack / Heap Configuration
+    <o0> Stack Size (in Bytes) <0x0-0xFFFFFFFF:8>
+    <o1> Heap Size (in Bytes) <0x0-0xFFFFFFFF:8>
+  </h>
+  -----------------------------------------------------------------------------*/
+__STACK_SIZE = 0x00000400;
+__HEAP_SIZE  = 0x00000C00;
+
+/*
+ *-------------------- <<< end of configuration section >>> -------------------
+ */
+
+/* ARMv8-M stack sealing:
+   to use ARMv8-M stack sealing set __STACKSEAL_SIZE to 8 otherwise keep 0
+ */
+__STACKSEAL_SIZE = 0;
+
+
 MEMORY
 {
-  FLASH (rx) : ORIGIN = 0x00000000, LENGTH = 0x80000   /* 512k */
-  RAM (rwx)  : ORIGIN = 0x20000000, LENGTH = 0x50000   /* 320k */
+  FLASH (rx)  : ORIGIN = __ROM_BASE, LENGTH = __ROM_SIZE
+  RAM   (rwx) : ORIGIN = __RAM_BASE, LENGTH = __RAM_SIZE
+  ERAM  (rwx) : ORIGIN = __RAM_BASE + 0x10000, LENGTH = 0x4000
 }
-
-/* Library configurations */
-GROUP(libgcc.a libc.a libm.a libnosys.a)
 
 /* Linker script to place sections and symbol values. Should be used together
  * with other linker script that defines memory regions FLASH and RAM.
@@ -20,7 +82,7 @@ GROUP(libgcc.a libc.a libm.a libnosys.a)
  *   __copy_table_end__
  *   __zero_table_start__
  *   __zero_table_end__
- *   __etext
+ *   __etext          (deprecated)
  *   __data_start__
  *   __preinit_array_start
  *   __preinit_array_end
@@ -37,168 +99,228 @@ GROUP(libgcc.a libc.a libm.a libnosys.a)
  *   __StackLimit
  *   __StackTop
  *   __stack
- *   __Vectors_End
- *   __Vectors_Size
+ *   __StackSeal      (only if ARMv8-M stack sealing is used)
  */
 ENTRY(Reset_Handler)
 
 SECTIONS
 {
-	.text :
-	{
-		KEEP(*(.vectors))
-		__Vectors_End = .;
-		__Vectors_Size = __Vectors_End - __Vectors;
-		__end__ = .;
+  .text :
+  {
+    KEEP(*(.vectors))
+    *(.text*)
 
-		/* *(.text*) */
+    KEEP(*(.init))
+    KEEP(*(.fini))
 
-        *(EXCLUDE_FILE(*exeinsram.c.obj) .text*)
+    /* .ctors */
+    *crtbegin.o(.ctors)
+    *crtbegin?.o(.ctors)
+    *(EXCLUDE_FILE(*crtend?.o *crtend.o) .ctors)
+    *(SORT(.ctors.*))
+    *(.ctors)
 
-		KEEP(*(.init))
-		KEEP(*(.fini))
+    /* .dtors */
+    *crtbegin.o(.dtors)
+    *crtbegin?.o(.dtors)
+    *(EXCLUDE_FILE(*crtend?.o *crtend.o) .dtors)
+    *(SORT(.dtors.*))
+    *(.dtors)
 
-		/* .ctors */
-		*crtbegin.o(.ctors)
-		*crtbegin?.o(.ctors)
-		*(EXCLUDE_FILE(*crtend?.o *crtend.o) .ctors)
-		*(SORT(.ctors.*))
-		*(.ctors)
+    *(.rodata*)
 
-		/* .dtors */
- 		*crtbegin.o(.dtors)
- 		*crtbegin?.o(.dtors)
- 		*(EXCLUDE_FILE(*crtend?.o *crtend.o) .dtors)
- 		*(SORT(.dtors.*))
- 		*(.dtors)
+    KEEP(*(.eh_frame*))
+  } > FLASH
 
-		/* *(.rodata*) */
+  /*
+   * SG veneers:
+   * All SG veneers are placed in the special output section .gnu.sgstubs. Its start address
+   * must be set, either with the command line option '--section-start' or in a linker script,
+   * to indicate where to place these veneers in memory.
+   */
+/*
+  .gnu.sgstubs :
+  {
+    . = ALIGN(32);
+  } > FLASH
+*/
+  .ARM.extab :
+  {
+    *(.ARM.extab* .gnu.linkonce.armextab.*)
+  } > FLASH
 
-        *(EXCLUDE_FILE(*exeinsram.c.obj) .rodata*)
+  __exidx_start = .;
+  .ARM.exidx :
+  {
+    *(.ARM.exidx* .gnu.linkonce.armexidx.*)
+  } > FLASH
+  __exidx_end = .;
 
-		KEEP(*(.eh_frame*))
-	} > FLASH
+  .copy.table (READONLY):
+  {
+    . = ALIGN(4);
+    __copy_table_start__ = .;
 
-	.ARM.extab :
-	{
-		*(.ARM.extab* .gnu.linkonce.armextab.*)
-	} > FLASH
+    LONG (LOADADDR(.data))
+    LONG (ADDR(.data))
+    LONG (SIZEOF(.data) / 4)
 
-	__exidx_start = .;
-	.ARM.exidx :
-	{
-		*(.ARM.exidx* .gnu.linkonce.armexidx.*)
-	} > FLASH
-	__exidx_end = .;
+    LONG (LOADADDR(.exeinsram))
+    LONG (ADDR(.exeinsram))
+    LONG (SIZEOF(.exeinsram) / 4)
 
-	/* To copy multiple ROM to RAM sections,
-	 * uncomment .copy.table section and,
-	 * define __STARTUP_COPY_MULTIPLE in startup_ARMCMx.S */
-	/*
-	.copy.table :
-	{
-		. = ALIGN(4);
-		__copy_table_start__ = .;
-		LONG (__etext)
-		LONG (__data_start__)
-		LONG (__data_end__ - __data_start__)
-		LONG (__etext2)
-		LONG (__data2_start__)
-		LONG (__data2_end__ - __data2_start__)
-		__copy_table_end__ = .;
-	} > FLASH
-	*/
+    /* Add each additional data section here */
+/*
+    LONG (LOADADDR(.data2))
+    LONG (ADDR(.data2))
+    LONG (SIZEOF(.data2) / 4)
+*/
+    __copy_table_end__ = .;
+  } > FLASH
 
-	/* To clear multiple BSS sections,
-	 * uncomment .zero.table section and,
-	 * define __STARTUP_CLEAR_BSS_MULTIPLE in startup_ARMCMx.S */
-	/*
-	.zero.table :
-	{
-		. = ALIGN(4);
-		__zero_table_start__ = .;
-		LONG (__bss_start__)
-		LONG (__bss_end__ - __bss_start__)
-		LONG (__bss2_start__)
-		LONG (__bss2_end__ - __bss2_start__)
-		__zero_table_end__ = .;
-	} > FLASH
-	*/
+  .zero.table :
+  {
+    . = ALIGN(4);
+    __zero_table_start__ = .;
 
-	__etext = .;
+/*  .bss initialization to zero is already done during C Run-Time Startup.
+    LONG (ADDR(.bss))
+    LONG (SIZEOF(.bss) / 4)
+*/
 
-	.data : AT (__etext)
-	{
-		__data_start__ = .;
-		
-		*exeinsram.c.obj (.text*) 
-		*(.fastcode) 
-		*exeinsram.c.obj (.rodata*)
-		
-		*(vtable)
-		*(.data*)
+    /* Add each additional bss section here */
+/*
+    LONG (ADDR(.bss2))
+    LONG (SIZEOF(.bss2) / 4)
+*/
+    __zero_table_end__ = .;
+  } > FLASH
 
-		. = ALIGN(4);
-		/* preinit data */
-		PROVIDE_HIDDEN (__preinit_array_start = .);
-		KEEP(*(.preinit_array))
-		PROVIDE_HIDDEN (__preinit_array_end = .);
+  /*
+   * This __etext variable is kept for backward compatibility with older,
+   * ASM based startup files.
+   */
+  PROVIDE(__etext = LOADADDR(.data));
 
-		. = ALIGN(4);
-		/* init data */
-		PROVIDE_HIDDEN (__init_array_start = .);
-		KEEP(*(SORT(.init_array.*)))
-		KEEP(*(.init_array))
-		PROVIDE_HIDDEN (__init_array_end = .);
+  /* Stack at the beginning of RAM */
+  .stack (ORIGIN(RAM)) (NOLOAD) :
+  {
+    . = ALIGN(8);
+    __StackLimit = .;
+    . = . + __STACK_SIZE;
+    . = ALIGN(8);
+    __StackTop = .;
+  } > RAM
+  PROVIDE(__stack = __StackTop);
 
+  /* ARMv8-M stack sealing immediately after stack */
+  .stackseal (NOLOAD) :
+  {
+    . = ALIGN(8);
+    __StackSeal = .;
+    . = . + __STACKSEAL_SIZE;
+    . = ALIGN(8);
+  } > RAM
 
-		. = ALIGN(4);
-		/* finit data */
-		PROVIDE_HIDDEN (__fini_array_start = .);
-		KEEP(*(SORT(.fini_array.*)))
-		KEEP(*(.fini_array))
-		PROVIDE_HIDDEN (__fini_array_end = .);
+  .data : ALIGN(4)
+  {
+    __data_start__ = .;
+    *(vtable)
+    *(.data)
+    *(.data.*)
 
-		KEEP(*(.jcr*))
-		. = ALIGN(4);
-		/* All data end */
-		__data_end__ = .;
+    . = ALIGN(4);
+    /* preinit data */
+    PROVIDE_HIDDEN (__preinit_array_start = .);
+    KEEP(*(.preinit_array))
+    PROVIDE_HIDDEN (__preinit_array_end = .);
 
-	} > RAM
+    . = ALIGN(4);
+    /* init data */
+    PROVIDE_HIDDEN (__init_array_start = .);
+    KEEP(*(SORT(.init_array.*)))
+    KEEP(*(.init_array))
+    PROVIDE_HIDDEN (__init_array_end = .);
 
-	.bss :
-	{
-		. = ALIGN(4);
-		__bss_start__ = .;
-		*(.bss*)
-		*(COMMON)
-		. = ALIGN(4);
-		__bss_end__ = .;
-	} > RAM
+    . = ALIGN(4);
+    /* finit data */
+    PROVIDE_HIDDEN (__fini_array_start = .);
+    KEEP(*(SORT(.fini_array.*)))
+    KEEP(*(.fini_array))
+    PROVIDE_HIDDEN (__fini_array_end = .);
 
-	.heap (COPY):
-	{
-		__HeapBase = .;
-		__end__ = .;
-		end = __end__;
-		KEEP(*(.heap*))
-		__HeapLimit = .;
-	} > RAM
+    KEEP(*(.jcr*))
+    . = ALIGN(4);
+    /* All data end */
+    __data_end__ = .;
 
-	/* .stack_dummy section doesn't contains any symbols. It is only
-	 * used for linker to calculate size of stack sections, and assign
-	 * values to stack symbols later */
-	.stack_dummy (COPY):
-	{
-		KEEP(*(.stack*))
-	} > RAM
+  } > RAM AT > FLASH
 
-	/* Set stack top to end of RAM, and stack limit move down by
-	 * size of stack_dummy section */
-	__StackTop = ORIGIN(RAM) + LENGTH(RAM);
-	__StackLimit = __StackTop - SIZEOF(.stack_dummy);
-	PROVIDE(__stack = __StackTop);
+  .exeinsram : ALIGN(4)
+  {
+    KEEP(*(.fastcode))
+  } > ERAM AT > FLASH
 
-	/* Check if data + heap + stack exceeds RAM limit */
-	ASSERT(__StackLimit >= __HeapLimit, "region RAM overflowed with stack")
+  /*
+   * Secondary data section, optional
+   *
+   * Remember to add each additional data section
+   * to the .copy.table above to assure proper
+   * initialization during startup.
+   */
+/*
+  .data2 : ALIGN(4)
+  {
+    . = ALIGN(4);
+    __data2_start__ = .;
+    *(.data2)
+    *(.data2.*)
+    . = ALIGN(4);
+    __data2_end__ = .;
+
+  } > RAM2 AT > FLASH
+*/
+
+  .bss :
+  {
+    . = ALIGN(4);
+    __bss_start__ = .;
+    *(.bss)
+    *(.bss.*)
+    *(COMMON)
+    . = ALIGN(4);
+    __bss_end__ = .;
+  } > RAM AT > RAM
+
+  /*
+   * Secondary bss section, optional
+   *
+   * Remember to add each additional bss section
+   * to the .zero.table above to assure proper
+   * initialization during startup.
+   */
+/*
+  .bss2 :
+  {
+    . = ALIGN(4);
+    __bss2_start__ = .;
+    *(.bss2)
+    *(.bss2.*)
+    . = ALIGN(4);
+    __bss2_end__ = .;
+  } > RAM2 AT > RAM2
+*/
+
+  .heap (NOLOAD) :
+  {
+    . = ALIGN(8);
+    __end__ = .;
+    PROVIDE(end = .);
+    . = . + __HEAP_SIZE;
+    . = ALIGN(8);
+    __HeapLimit = .;
+  } > RAM
+
+  /* Check if data + bss + heap + stack exceeds RAM limit */
+  ASSERT(__HeapLimit <= (ORIGIN(RAM) + LENGTH(RAM)), "region RAM overflowed")
 }

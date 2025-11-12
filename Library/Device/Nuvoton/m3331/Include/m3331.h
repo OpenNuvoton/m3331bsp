@@ -68,18 +68,19 @@ extern "C" {
  */
 typedef enum IRQn
 {
-    /******  Cortex-M33 Processor Exceptions Numbers ***************************************************/
+    /******  Cortex-M33 Processor Exceptions Numbers ************************************************/
+    Reset_IRQn                    = -15,      /*!<  1 Reset Vector                                  */
     NonMaskableInt_IRQn           = -14,      /*!<  2 Non Maskable Interrupt                        */
+	  HardFault_IRQn                = -13,      /*!<  3 Hard Fault Interrupt                          */
     MemoryManagement_IRQn         = -12,      /*!<  4 Memory Management Interrupt                   */
     BusFault_IRQn                 = -11,      /*!<  5 Bus Fault Interrupt                           */
     UsageFault_IRQn               = -10,      /*!<  6 Usage Fault Interrupt                         */
+	  SecureFault_IRQn              =  -9,      /*!<  7 Secure Fault Interrupt                        */
     SVCall_IRQn                   = -5,       /*!< 11 SV Call Interrupt                             */
     DebugMonitor_IRQn             = -4,       /*!< 12 Debug Monitor Interrupt                       */
     PendSV_IRQn                   = -2,       /*!< 14 Pend SV Interrupt                             */
     SysTick_IRQn                  = -1,       /*!< 15 System Tick Interrupt                         */
-
-    /******  M3331 Specific Interrupt Numbers ********************************************************/
-
+    /******  M3331 Specific Interrupt Numbers *******************************************************/
     BOD_IRQn                      = 0,        /*!< Brown Out detection Interrupt                    */
     IRC_IRQn                      = 1,        /*!< Internal RC Interrupt                            */
     PWRWU_IRQn                    = 2,        /*!< Power Down Wake Up Interrupt                     */
@@ -186,6 +187,28 @@ IRQn_Type;
  * ==========================================================================
  */
 
+#if   defined (__CC_ARM)
+  #pragma push
+  #pragma anon_unions
+#elif defined (__ICCARM__)
+  #pragma language=extended
+#elif defined(__ARMCC_VERSION) && (__ARMCC_VERSION >= 6010050)
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wc11-extensions"
+  #pragma clang diagnostic ignored "-Wreserved-id-macro"
+#elif defined (__GNUC__)
+  /* anonymous unions are enabled by default */
+#elif defined (__TMS470__)
+  /* anonymous unions are enabled by default */
+#elif defined (__TASKING__)
+  #pragma warning 586
+#elif defined (__CSMC__)
+  /* anonymous unions are enabled by default */
+#else
+  #warning Not supported compiler type
+#endif
+
+
 /* Configuration of the Processor and Core Peripherals */
 #define __NVIC_PRIO_BITS          3UL         /*!< Number of Bits used for Priority Levels          */
 #define __Vendor_SysTickConfig    0UL         /*!< Set to 1 if different SysTick Config is used     */
@@ -195,12 +218,12 @@ IRQn_Type;
 #define __FPU_PRESENT             1UL         /*!< FPU present or not                               */
 #define __DSP_PRESENT             1UL         /*!< DSP present or not                               */
 
+
 /*@}*/ /* end of group CMSIS_Device */
 
 
 #include "core_cm33.h"               /* Cortex-M33 processor and core peripherals           */
 #include "system_m3331.h"            /* System include file                         */
-#include <stdint.h>
 
 
 

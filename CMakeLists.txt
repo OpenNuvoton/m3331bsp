@@ -60,7 +60,7 @@ if(C_COMPILER_ID STREQUAL ARMCLANG)
 
     set(LINK_MCU_CORE "Cortex-M33")
 
-    set(C_FLAGS "--target=arm-arm-none-eabi -mcpu=cortex-m4+fp -mfloat-abi=hard -c -fno-rtti -funsigned-char -fshort-enums -fshort-wchar -D__MICROLIB -gdwarf-3 -O2 -fno-function-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -D__MICROLIB -DMBEDTLS_CONFIG_FILE=mbedtls_config.h -Ic:/Keil_v5/ARM/ARMCLANG/include")
+    set(C_FLAGS "--target=arm-arm-none-eabi -mcpu=cortex-m33 -mfloat-abi=hard -c -fno-rtti -funsigned-char -fshort-enums -fshort-wchar -D__MICROLIB -gdwarf-3 -O2 -fno-function-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -D__MICROLIB -DMBEDTLS_CONFIG_FILE=mbedtls_config.h -Ic:/Keil_v5/ARM/ARMCLANG/include")
     set(CMAKE_C_FLAGS "-xc -std=c99  ${C_FLAGS}")
     set(CMAKE_CXX_FLAGS ${C_FLAGS})
     set(CMAKE_ASM_FLAGS "--target=arm-arm-none-eabi -mcpu=cortex-m33")
@@ -92,7 +92,7 @@ if(C_COMPILER_ID STREQUAL GCC)
     set(STACK_SIZE 0x4000)
     set(HEAP_SIZE 0x20000)
 
-    set(C_FLAGS "-mcpu=cortex-m33 --specs=nano.specs --specs=nosys.specs -Wall -Wno-format -Wno-return-type -Wno-unused-function -fdata-sections -ffunction-sections -fno-builtin -fshort-enums -funsigned-char -mthumb -std=gnu11 -DMBEDTLS_CONFIG_FILE=mbedtls_config.h -I\"C:/Program Files (x86)/GNU Tools ARM Embedded/6 2017-q1-update/arm-none-eabi/include\"")
+    set(C_FLAGS "-mcpu=cortex-m33 --specs=nano.specs --specs=nosys.specs -Wall -Wno-format -Wno-return-type -Wno-unused-function -fdata-sections -ffunction-sections -fno-builtin -fshort-enums -funsigned-char -mthumb -std=gnu11 -DMBEDTLS_CONFIG_FILE=mbedtls_config.h")
     set(CMAKE_C_FLAGS ${C_FLAGS})
     set(CMAKE_CXX_FLAGS ${C_FLAGS})
     set(CMAKE_ASM_FLAGS "-mcpu=cortex-m33")
@@ -100,24 +100,23 @@ endif()
 
 project(m3331bsp)
 
+set(RETARGET "${CMAKE_CURRENT_LIST_DIR}/Library/StdDriver/src/retarget.c")
+set(STARTUP "${CMAKE_CURRENT_LIST_DIR}/Library/Device/Nuvoton/m3331/Source/startup_m3331.c" "${CMAKE_CURRENT_LIST_DIR}/Library/Device/Nuvoton/m3331/Source/system_m3331.c")
+
 function(create_project PRJ)
-    add_executable(${PRJ} ${ARGN})
-    target_link_libraries(${PRJ} system_startup standard_driver)
+    add_executable(${PRJ} ${ARGN} ${RETARGET} ${STARTUP})
+    target_link_libraries(${PRJ} standard_driver)
 
     if(C_COMPILER_ID STREQUAL ARMCLANG)
         target_link_options(${PRJ}
             PUBLIC
             --cpu=Cortex-M33
             --library_type=microlib
-            --ro-base 0x00000000
-            --rw-base 0x20000000
+            --scatter ${BSP_DIR}/Library/Device/Nuvoton/m3331/Config/m3331_ac6.sct
             --entry Reset_Handler
-            --first __Vectors
-            --strict
             --map
             --datacompressor=off
             --info=inline
-            --entry Reset_Handler
             --summary_stderr
             --info totals
             --map
@@ -136,7 +135,7 @@ function(create_project PRJ)
     if(C_COMPILER_ID STREQUAL GCC)
         target_link_options(${PRJ}
             PUBLIC
-            -T ${BSP_DIR}/Library/Device/Nuvoton/m3331/Source/GCC/gcc_arm.ld
+            -T ${BSP_DIR}/Library/Device/Nuvoton/m3331/Config/m3331_gcc.ld
             -Xlinker
             --gc-sections
             -Wl,-Map=${PRJ}.map
@@ -160,10 +159,8 @@ function(create_project_no_startup PRJ)
             PUBLIC
             --cpu=Cortex-M33
             --library_type=microlib
-            --ro-base 0x00000000
-            --rw-base 0x20000000
+            --scatter ${BSP_DIR}/Library/Device/Nuvoton/m3331/Config/m3331_ac6.sct
             --entry Reset_Handler
-            --first __Vectors
             --strict
             --map
             --datacompressor=off
@@ -187,7 +184,7 @@ function(create_project_no_startup PRJ)
     if(C_COMPILER_ID STREQUAL GCC)
         target_link_options(${PRJ}
             PUBLIC
-            -T ${BSP_DIR}/Library/Device/Nuvoton/m3331/Source/GCC/gcc_arm.ld
+            -T ${BSP_DIR}/Library/Device/Nuvoton/m3331/Config/m3331_gcc.ld
             -Xlinker
             --gc-sections
             -Wl,-Map=${PRJ}.map
@@ -216,7 +213,6 @@ include_directories(${BSP_DIR}/ThirdParty/LibMAD/inc)
 
 # Build library
 add_subdirectory(${BSP_DIR}/Library/StdDriver/src)
-add_subdirectory(${BSP_DIR}/Library/Device/Nuvoton/m3331/Source)
 add_subdirectory(${BSP_DIR}/Library/NuMaker/xmodem)
 add_subdirectory(${BSP_DIR}/ThirdParty/FatFs/source)
 add_subdirectory(${BSP_DIR}/ThirdParty/LibMAD)

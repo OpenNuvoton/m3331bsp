@@ -117,7 +117,7 @@
                 <option>
                     <name>GBECoreSlave</name>
                     <version>28</version>
-                    <state>39</state>
+                    <state>59</state>
                 </option>
                 <option>
                     <name>OGUseCmsis</name>
@@ -134,7 +134,7 @@
                 <option>
                     <name>CoreVariant</name>
                     <version>28</version>
-                    <state>39</state>
+                    <state>59</state>
                 </option>
                 <option>
                     <name>GFPUDeviceSlave</name>
@@ -143,12 +143,12 @@
                 <option>
                     <name>FPU2</name>
                     <version>0</version>
-                    <state>4</state>
+                    <state>0</state>
                 </option>
                 <option>
                     <name>NrRegs</name>
                     <version>0</version>
-                    <state>1</state>
+                    <state>0</state>
                 </option>
                 <option>
                     <name>NEON</name>
@@ -157,7 +157,7 @@
                 <option>
                     <name>GFPUCoreSlave2</name>
                     <version>28</version>
-                    <state>39</state>
+                    <state>59</state>
                 </option>
                 <option>
                     <name>OGCMSISPackSelectDevice</name>
@@ -264,7 +264,7 @@
                 </option>
                 <option>
                     <name>CCDiagSuppress</name>
-                    <state></state>
+                    <state>Pa082</state>
                 </option>
                 <option>
                     <name>CCDiagRemark</name>
@@ -1061,7 +1061,7 @@
     <group>
         <name>CMSIS</name>
         <file>
-            <name>$PROJ_DIR$\..\..\..\..\Library\Device\Nuvoton\m3331\Source\IAR\startup_m3331.s</name>
+            <name>$PROJ_DIR$\..\..\..\..\Library\Device\Nuvoton\m3331\Source\startup_m3331.c</name>
         </file>
         <file>
             <name>$PROJ_DIR$\..\..\..\..\Library\Device\Nuvoton\m3331\Source\system_m3331.c</name>

@@ -10,6 +10,8 @@
 #include <arm_cmse.h>
 #include "NuMicro.h"
 
+#define LED_INIT()	{GPIO_SetMode(PC, BIT14, GPIO_MODE_OUTPUT);}
+#define LED			PC14
 
 typedef int32_t (*funcptr)(uint32_t);
 
@@ -37,7 +39,7 @@ int32_t NonSecure_LED_On(uint32_t num)
 {
     (void)num;
     printf("Nonsecure LED On call by Secure\n");
-    PC0 = 0;
+    LED = 0;
     return 0;
 }
 
@@ -45,7 +47,7 @@ int32_t NonSecure_LED_Off(uint32_t num)
 {
     (void)num;
     printf("Nonsecure LED Off call by Secure\n");
-    PC0 = 1;
+    LED = 1;
     return 0;
 }
 
@@ -56,14 +58,14 @@ void LED_On(uint32_t us)
 {
     (void)us;
     printf("Nonsecure LED On\n");
-    PC1 = 0;
+    LED = 0;
 }
 
 void LED_Off(uint32_t us)
 {
     (void)us;
     printf("Nonsecure LED Off\n");
-    PC1 = 1;
+    LED = 1;
 }
 
 /*---------------------------------------------------------------------------------------------------------*/
@@ -112,15 +114,15 @@ int main(void)
     Secure_func();
 
     /* Init PC for Nonsecure LED control */
-    GPIO_SetMode(PC, BIT1 | BIT0, GPIO_MODE_OUTPUT);
+    LED_INIT()
 
     /* register NonSecure callbacks in Secure application */
     Secure_LED_On_callback(&NonSecure_LED_On);
     Secure_LED_Off_callback(&NonSecure_LED_Off);
 
-    /* Generate Systick interrupt each 10 ms */
+    /* Generate Systick interrupt each 1 ms */
     SystemCoreClockUpdate();
-    SysTick_Config(SystemCoreClock / 100);
+    SysTick_Config(SystemCoreClock / 1000);
 
     while(1);
 }

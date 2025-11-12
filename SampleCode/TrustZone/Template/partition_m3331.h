@@ -276,7 +276,7 @@
 //   <o.14>  PC14       <0=> Secure <1=> Non-Secure
 //   </h>
 */
-#define SCU_INIT_IONSSET2_VAL      0x00000003
+#define SCU_INIT_IONSSET2_VAL      0x00004000
 
 /*
 // Bit 0..31

@@ -12,6 +12,7 @@ project:
         - -Xlinker
         - --gc-sections
         - --specs=nano.specs
+        - --specs=nosys.specs
         - -Wl,-Map,"$OutDir()$/$Project$.map"
 
   setups:

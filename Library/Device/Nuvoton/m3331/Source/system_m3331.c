@@ -1,29 +1,56 @@
-/**************************************************************************//**
+/*************************************************************************//**
  * @file     system_m3331.c
- * @version  V2.00
- * @brief    System Setting Source File
+ * @brief    CMSIS-Core(M) Device Peripheral Access Layer Source File for
+ *           Device m3331
+ * @version  V1.0.0
+ * @date     November 5, 2025
+ *****************************************************************************/
+/*
+ * Copyright (c) 2009-2021 Arm Limited. All rights reserved.
+ * Copyright (c) 2025 Nuvoton Technology Corp. All rights reserved.
  *
- * @copyright SPDX-License-Identifier: Apache-2.0
- * @copyright Copyright (c) 2024 Nuvoton Technology Corp. All rights reserved.
- ******************************************************************************/
-#if defined (__ARMCC_VERSION) && (__ARMCC_VERSION >= 6010050)       /* ARM Compiler 6 */
-    #include <arm_cmse.h>
-#endif
+ * SPDX-License-Identifier: Apache-2.0
+ *
+ * Licensed under the Apache License, Version 2.0 (the License); you may
+ * not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an AS IS BASIS, WITHOUT
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 
-#include <stdio.h>
 #include <stdint.h>
-#include "NuMicro.h"
-#include "partition_m3331.h"
-
-extern void *__Vectors;                   /* see startup file */
+#include "m3331.h"
 
 
-/*----------------------------------------------------------------------------
-  Clock Variable definitions
- *----------------------------------------------------------------------------*/
+/*---------------------------------------------------------------------------
+  Define clocks
+ *---------------------------------------------------------------------------*/
+/* ToDo: Add here your necessary defines for device initialization
+         following is an example for different system frequencies */
+#define XTAL            (12000000U)       /* Oscillator frequency */
+
+#define SYSTEM_CLOCK    (5 * XTAL)
+
+
+/*---------------------------------------------------------------------------
+  Exception / Interrupt Vector table
+ *---------------------------------------------------------------------------*/
+extern const VECTOR_TABLE_Type __VECTOR_TABLE[161];
+
+
+/*---------------------------------------------------------------------------
+  System Core Clock Variable
+ *---------------------------------------------------------------------------*/
 uint32_t SystemCoreClock  = __HSI;              /*!< System Clock Frequency (Core Clock) */
 uint32_t CyclesPerUs      = (__HSI / 1000000UL);/*!< Cycles per micro second             */
 uint32_t PllClock         = __HSI;              /*!< PLL Output Clock Frequency          */
+
 
 void FMC_NSBA_Setup(void);
 void SCU_Setup(void);
@@ -338,12 +365,6 @@ void SCU_Setup(void)
 
 }
 
-
-#if defined( __ICCARM__ )
-    __WEAK
-#else
-    __attribute__((weak))
-#endif
 void SCU_IRQHandler(void)
 {
     char const *master[] = {"CPU", 0, "PDMA0", 0, "SDH0", "HSUSBD", "HSUSBH", "CRC"};
@@ -425,7 +446,7 @@ void NSC_Init(void)
 void TZ_SAU_Setup(void)
 {
 
-#if defined (__SAU_PRESENT) && (__SAU_PRESENT == 1U)
+#if defined (__SAUREGION_PRESENT) && (__SAUREGION_PRESENT == 1U)
 
 #if defined (SAU_INIT_REGION0) && (SAU_INIT_REGION0 == 1U)
     SAU_INIT_REGION(0);
@@ -467,7 +488,7 @@ void TZ_SAU_Setup(void)
                 ((SAU_INIT_CTRL_ALLNS  << SAU_CTRL_ALLNS_Pos)  & SAU_CTRL_ALLNS_Msk)   ;
 #endif
 
-#endif /* defined (__SAU_PRESENT) && (__SAU_PRESENT == 1U) */
+#endif /* defined (__SAUREGION_PRESENT) && (__SAUREGION_PRESENT == 1U) */
 
 #if defined (SCB_CSR_AIRCR_INIT) && (SCB_CSR_AIRCR_INIT == 1U)
     SCB->SCR   = (SCB->SCR   & ~(SCB_SCR_SLEEPDEEPS_Msk)) |
@@ -503,11 +524,6 @@ void TZ_SAU_Setup(void)
     NSC_Init();
 }
 #else
-#if defined( __ICCARM__ )
-    __WEAK
-#else
-    __attribute__((weak))
-#endif
 void SCU_IRQHandler(void)
 {
     while(1);
@@ -532,8 +548,6 @@ void SystemCoreClockUpdate(void)
     /* Update Cycles per micro second */
     CyclesPerUs = (SystemCoreClock + 500000UL) / 1000000UL;
 }
-
-
 
 /**
  * @brief    System Initialization
@@ -576,7 +590,13 @@ void SystemInit(void)
 #endif
 
 #if defined (__VTOR_PRESENT) && (__VTOR_PRESENT == 1U)
-    SCB->VTOR = (uint32_t) &__Vectors;
+  SCB->VTOR = (uint32_t)(&__VECTOR_TABLE[0]);
+#endif
+
+#if (defined (__FPU_USED) && (__FPU_USED == 1U)) || \
+    (defined (__ARM_FEATURE_MVE) && (__ARM_FEATURE_MVE > 0U))
+  SCB->CPACR |= ((3U << 10U*2U) |           /* enable CP10 Full Access */
+                 (3U << 11U*2U)  );         /* enable CP11 Full Access */
 #endif
 
 #if defined (__ARM_FEATURE_CMSE) && (__ARM_FEATURE_CMSE == 3)

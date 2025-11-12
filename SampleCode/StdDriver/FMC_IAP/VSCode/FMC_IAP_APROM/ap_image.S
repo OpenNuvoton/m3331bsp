@@ -7,7 +7,7 @@
 ; * @copyright (C) 2025 Nuvoton Technology Corp. All rights reserved.
 ;*****************************************************************************/
 
-    .section _image,"ax"
+    .section .rodata
     .global loaderImage1Base
     .global loaderImage1Limit
     .align 4

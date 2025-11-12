@@ -19,7 +19,6 @@ set(DRV_SRC
     llsi.c
     pdma.c
     qspi.c
-    retarget.c
     rtc.c
     sdh.c
     spi.c
