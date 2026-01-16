@@ -15,7 +15,7 @@ solution:
       target-set:
         - set:
           images:
-            - project-context: Secure.Release
+            - project-context: Template_Secure.Release
           debugger:
             name: Nu-Link@pyOCD
             port: 3333
