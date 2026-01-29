@@ -48,7 +48,10 @@ To experience the powerful features of M3331 in few minutes, please select the s
 	Sample codes for In-System-Programming.
 
 - NuMaker-M3334KI<br>
-	MP3 player sample plays MP3 files stored on SD memory card.
+	MP3 player sample plays MP3 files stored on SD memory card and NAU88C22 configuration tool main program.
+	
+- NuMaker-M3334KIv2<br>
+	Use the timer periodic mode to generate timer interrupt every 1 second.
 
 - PowerManagement<br>
 	Power management sample code.
