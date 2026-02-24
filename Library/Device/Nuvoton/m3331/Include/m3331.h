@@ -271,6 +271,7 @@ IRQn_Type;
 #include "i3c_reg.h"
 #include "llsi_reg.h"
 #include "ellsi_reg.h"
+#include "pdci_reg.h"
 
 
 
@@ -285,7 +286,7 @@ IRQn_Type;
 
 /*!< AHB peripherals */
 //HCLK
-// CPU,CRC,EBI,FMC,PDMA,SD0,SRAM,HSUSBD, HSUSBH, USBH
+// CPU,CRC,EBI,FMC,PDMA,SD0,SRAM,HSUSBD,HSUSBH,USBH,PDCI
 #define SYS_BASE               (PERIPH_BASE + 0x00000UL)
 #define CLK_BASE               (PERIPH_BASE + 0x00200UL)
 #define NMI_BASE               (PERIPH_BASE + 0x00300UL)
@@ -317,6 +318,7 @@ IRQn_Type;
 #define EBI_BASE               (PERIPH_BASE + 0x10000UL)
 #define HSUSBD_BASE            (PERIPH_BASE + 0x19000UL)
 #define CRC_BASE               (PERIPH_BASE + 0x31000UL)
+#define PDCI_BASE              (PERIPH_BASE + 0x1B000UL)
 
 //PCLK0
 // BPWM0,QSPI0,ECAP2,I2C0/2/4,I2S0,OPA,EPWM0,EQEI0/2,SPI1,TMR01,UR0/2/4,USCI0,WDT
@@ -557,6 +559,7 @@ IRQn_Type;
 #define LLSI8_S              ((LLSI_T *) LLSI8_BASE)
 #define LLSI9_S              ((LLSI_T *) LLSI9_BASE)
 #define ELLSI0_S             ((ELLSI_T *) ELLSI0_BASE)
+#define PDCI_S               ((PDCI_T *) PDCI_BASE)
 /**@}*/ /* end of group PMODULE_S */
 
 
@@ -658,6 +661,7 @@ IRQn_Type;
 #define LLSI8_NS              ((LLSI_T *)  (LLSI8_BASE+NS_OFFSET))
 #define LLSI9_NS              ((LLSI_T *)  (LLSI9_BASE+NS_OFFSET))
 #define ELLSI0_NS             ((ELLSI_T *) (ELLSI0_BASE+NS_OFFSET))
+#define PDCI_NS               ((PDCI_T *)  (PDCI_BASE+NS_OFFSET))
 /**@}*/ /* end of group PMODULE_NS */
 
 
@@ -1263,6 +1267,7 @@ typedef volatile unsigned int   vu32;       ///< Define 32-bit unsigned volatile
 #include "hsotg.h"
 #include "llsi.h"
 #include "ellsi.h"
+#include "pdci.h"
 #include "cache.h"
 #ifndef __NONSECURE_CODE
 #include "scu.h"

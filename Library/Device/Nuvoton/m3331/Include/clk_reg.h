@@ -1488,6 +1488,9 @@ typedef struct
 #define CLK_AHBCLK0_STCKEN_Pos           (4)                                               /*!< CLK_T::AHBCLK0: STCKEN Position        */
 #define CLK_AHBCLK0_STCKEN_Msk           (0x1ul << CLK_AHBCLK0_STCKEN_Pos)                 /*!< CLK_T::AHBCLK0: STCKEN Mask            */
 
+#define CLK_AHBCLK0_PDMA1CKEN_Pos        (5)                                               /*!< CLK_T::AHBCLK0: PDMA1CKEN Position     */
+#define CLK_AHBCLK0_PDMA1CKEN_Msk        (0x1ul << CLK_AHBCLK0_PDMA1CKEN_Pos)              /*!< CLK_T::AHBCLK0: PDMA1CKEN Mask         */
+
 #define CLK_AHBCLK0_SDH0CKEN_Pos         (6)                                               /*!< CLK_T::AHBCLK0: SDH0CKEN Position      */
 #define CLK_AHBCLK0_SDH0CKEN_Msk         (0x1ul << CLK_AHBCLK0_SDH0CKEN_Pos)               /*!< CLK_T::AHBCLK0: SDH0CKEN Mask          */
 

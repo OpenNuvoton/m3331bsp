@@ -184,6 +184,19 @@ extern "C"
 #define PDMA_LLSI8_TX         107UL /*!<DMA Connect to LLSI8_TX \hideinitializer */
 #define PDMA_LLSI9_TX         108UL /*!<DMA Connect to LLSI9_TX \hideinitializer */
 
+#define PDMA_PDCI_TX0         110UL /*!<DMA Connect to PDCI_TX0 \hideinitializer */
+#define PDMA_PDCI_TX1         111UL /*!<DMA Connect to PDCI_TX1 \hideinitializer */
+#define PDMA_PDCI_TX2         112UL /*!<DMA Connect to PDCI_TX2 \hideinitializer */
+#define PDMA_PDCI_TX3         113UL /*!<DMA Connect to PDCI_TX3 \hideinitializer */
+#define PDMA_PDCI_TX4         114UL /*!<DMA Connect to PDCI_TX4 \hideinitializer */
+#define PDMA_PDCI_TX5         115UL /*!<DMA Connect to PDCI_TX5 \hideinitializer */
+#define PDMA_PDCI_RX0         118UL /*!<DMA Connect to PDCI_RX0 \hideinitializer */
+#define PDMA_PDCI_RX1         119UL /*!<DMA Connect to PDCI_RX1 \hideinitializer */
+#define PDMA_PDCI_RX2         120UL /*!<DMA Connect to PDCI_RX2 \hideinitializer */
+#define PDMA_PDCI_RX3         121UL /*!<DMA Connect to PDCI_RX3 \hideinitializer */
+#define PDMA_PDCI_RX4         122UL /*!<DMA Connect to PDCI_RX4 \hideinitializer */
+#define PDMA_PDCI_RX5         123UL /*!<DMA Connect to PDCI_RX5 \hideinitializer */
+
 
 /*---------------------------------------------------------------------------------------------------------*/
 /*  Interrupt Type Constant Definitions                                                                    */
