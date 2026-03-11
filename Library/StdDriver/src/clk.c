@@ -91,6 +91,8 @@ void CLK_PowerDown(void)
     SYS->HIRCTCTL &= (~SYS_HIRCTCTL_FREQSEL_Msk);
 
     /* Chip enter Power-down mode after CPU run WFI instruction */
+    __DSB();
+    __ISB();
     __WFI();
 
     /* Restore SysTick interrupt and HIRC auto trim setting */
@@ -270,7 +272,7 @@ __NONSECURE_ENTRY
 uint32_t CLK_GetCPUFreq(void)
 {
     uint32_t u32Freq, u32HclkSrc, u32HclkDiv;
-    uint32_t au32ClkTbl[] = {__HXT, __LXT, 0UL, __LIRC, 0UL, 0UL, 0UL, __HIRC};
+    uint32_t au32ClkTbl[] = {__HXT, __LXT, __HIRC, __LIRC, __HIRC, __HIRC, __HIRC, __HIRC}; // item 2, 4, 5, 6 are set to default __HIRC for safe.
     uint32_t u32PllReg, u32FIN, u32NF, u32NR, u32NO;
     uint8_t au8NoTbl[4] = {1U, 2U, 2U, 4U};
 

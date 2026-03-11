@@ -1,0 +1,19 @@
+solution:
+  created-by: uv2csolution@1.6.0
+  created-for: CMSIS-Toolbox@2.7.0
+  compiler: AC6
+  target-types:
+    - type: Release
+      device: M3334KIGAE
+      optimize: speed   # -O2
+      debug: on         # 保留 debug symbol 方便 post-mortem 分析
+      define:
+        - NDEBUG         # 讓 assert() 靜默
+    - type: Debug
+      device: M3334KIGAE
+      optimize: none    # -O0
+      debug: on
+      define:
+        - DEBUG          # 可供程式碼中 #ifdef DEBUG 條件編譯
+  projects:
+    - project: emWin_SimpleDemo.cproject.yml

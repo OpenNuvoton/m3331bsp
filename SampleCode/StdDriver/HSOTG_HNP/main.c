@@ -414,7 +414,7 @@ void USBOTG20_IRQHandler(void)
 
 int main(void)
 {
-    HID_DEV_T    *hdev, *hdev_list;
+    HID_DEV_T    *hdev = NULL, *hdev_list;
 
     SYS_Init();                        /* Init System, IP clock and multi-function I/O */
     UART_Open(UART0, 115200);          /* Initialize UART0 */

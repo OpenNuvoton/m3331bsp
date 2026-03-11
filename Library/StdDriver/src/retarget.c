@@ -144,6 +144,7 @@ void abort(void)
 }
 
 # else
+
 __asm("  .global __ARM_use_no_argv\n");
 __asm("  .global __use_no_semihosting\n");
 
@@ -376,7 +377,7 @@ __WEAK uint32_t ProcessHardFault(uint32_t lr, uint32_t msp, uint32_t psp)
     */
 
 
-    printf("HardFault @ 0x%08x\n", sp[6]);
+    // printf("HardFault @ 0x%08x\n", sp[6]);
     /* Get the instruction caused the hardfault */
     if(sp != NULL)
     {
@@ -612,7 +613,7 @@ char GetChar(void)
     do{
         ch = ITM_ReceiveChar();
     }while(ch < 0);
-    
+
     return ch;
 #else
 
@@ -739,33 +740,33 @@ int _read(int fd, char *ptr, int len)
 }
 
 /* Add implementations to fix linker warnings from the newlib-nano C library in VSCode-GCC14.3.1 */
-int _close(int file) 
+int _close(int file)
 {
     return -1;
 }
 
-int _lseek(int file, int ptr, int dir) 
+int _lseek(int file, int ptr, int dir)
 {
     return 0;
 }
 
-int _fstat(int file, struct stat *st) 
+int _fstat(int file, struct stat *st)
 {
     st->st_mode = S_IFCHR;
     return 0;
 }
 
-int _isatty(int file) 
+int _isatty(int file)
 {
     return 1;
 }
 
-int _kill(int pid, int sig) 
+int _kill(int pid, int sig)
 {
     return -1;
 }
 
-int _getpid(void) 
+int _getpid(void)
 {
     return 1;
 }

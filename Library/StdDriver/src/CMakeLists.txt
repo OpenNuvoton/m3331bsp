@@ -17,6 +17,7 @@ set(DRV_SRC
     i2s.c
     i3c.c
     llsi.c
+    pdci.c
     pdma.c
     qspi.c
     rtc.c

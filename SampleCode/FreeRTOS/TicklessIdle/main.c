@@ -11,9 +11,6 @@
 /* FreeRTOS includes. */
 #include "FreeRTOS.h"
 #include "task.h"
-
-/* Demo application include. */
-#include "partest.h"
 #include "NuMicro.h"
 
 //*** <<< Use Configuration Wizard in Context Menu >>> ***
@@ -24,9 +21,10 @@
 
 #define tickless_task_PRIORITY  (configMAX_PRIORITIES - 2)
 
-#define LED     PH4
+#define LED     PG4
 
 static void Tickless_task(void *pvParameters);
+void vParTestInitialise(void);
 
 /*-----------------------------------------------------------*/
 
@@ -82,3 +80,15 @@ static void prvSetupHardware(void)
 }
 
 /*-----------------------------------------------------------*/
+#if ( configCHECK_FOR_STACK_OVERFLOW > 0 )
+
+    void vApplicationStackOverflowHook( TaskHandle_t xTask,
+                                        char * pcTaskName )
+    {
+        /* Check pcTaskName for the name of the offending task,
+         * or pxCurrentTCB if pcTaskName has itself been corrupted. */
+        ( void ) xTask;
+        ( void ) pcTaskName;
+    }
+
+#endif /* #if ( configCHECK_FOR_STACK_OVERFLOW > 0 ) */

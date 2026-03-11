@@ -188,9 +188,9 @@ int32_t FMC_Erase(uint32_t u32PageAddr)
         }
     }
 
-    if(FMC->ISPCTL & FMC_ISPCTL_ISPFF_Msk)
+    if(FMC->ISPSTS & FMC_ISPSTS_ISPFF_Msk)
     {
-        FMC->ISPCTL |= FMC_ISPCTL_ISPFF_Msk;
+        FMC->ISPSTS |= FMC_ISPSTS_ISPFF_Msk;
         g_FMC_i32ErrCode = -1;
         ret = -1;
     }
@@ -231,9 +231,9 @@ int32_t FMC_Erase_Bank(uint32_t u32BankAddr)
         }
     }
 
-    if(FMC->ISPCTL & FMC_ISPCTL_ISPFF_Msk)
+    if(FMC->ISPSTS & FMC_ISPSTS_ISPFF_Msk)
     {
-        FMC->ISPCTL |= FMC_ISPCTL_ISPFF_Msk;
+        FMC->ISPSTS |= FMC_ISPSTS_ISPFF_Msk;
         g_FMC_i32ErrCode = -1;
         ret = -1;
     }
@@ -312,9 +312,9 @@ int32_t FMC_EraseXOM(uint32_t u32XomNum)
             }
 
             /* Check ISPFF flag to know whether erase OK or fail. */
-            if(FMC->ISPCTL & FMC_ISPCTL_ISPFF_Msk)
+            if(FMC->ISPSTS & FMC_ISPSTS_ISPFF_Msk)
             {
-                FMC->ISPCTL |= FMC_ISPCTL_ISPFF_Msk;
+                FMC->ISPSTS |= FMC_ISPSTS_ISPFF_Msk;
                 err = -1;
             }
         }
@@ -662,9 +662,9 @@ int32_t FMC_EraseConfig(uint32_t u32ConfigAddr)
         }
     }
 
-    if(FMC->ISPCTL & FMC_ISPCTL_ISPFF_Msk)
+    if(FMC->ISPSTS & FMC_ISPSTS_ISPFF_Msk)
     {
-        FMC->ISPCTL |= FMC_ISPCTL_ISPFF_Msk;
+        FMC->ISPSTS |= FMC_ISPSTS_ISPFF_Msk;
         g_FMC_i32ErrCode = FMC_ERR_FAIL;
         i32RetCode = FMC_ERR_FAIL;
     }
@@ -845,9 +845,9 @@ int32_t FMC_RemapBank(uint32_t u32Bank)
         }
     }
 
-    if(FMC->ISPCTL & FMC_ISPCTL_ISPFF_Msk)
+    if(FMC->ISPSTS & FMC_ISPSTS_ISPFF_Msk)
     {
-        FMC->ISPCTL |= FMC_ISPCTL_ISPFF_Msk;
+        FMC->ISPSTS |= FMC_ISPSTS_ISPFF_Msk;
         g_FMC_i32ErrCode = -1;
         ret = -1;
     }

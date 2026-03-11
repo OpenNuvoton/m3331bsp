@@ -171,8 +171,7 @@ void MP3Player(void)
     FRESULT res;
     uint8_t *ReadStart;
     uint8_t *GuardPtr;
-    volatile uint8_t u8PCMBufferTargetIdx = 0;
-    volatile uint32_t pcmbuf_idx, i;
+    volatile uint32_t pcmbuf_idx;
     volatile unsigned int Mp3FileOffset = 0;
     uint32_t u32Timeout;
 

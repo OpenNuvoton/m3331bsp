@@ -557,7 +557,7 @@ static int  hub_polling(void)
 {
     HUB_DEV_T   *hub;
     UTR_T       *utr;
-    int         i, ret, port, change = 0;
+    int         i, ret = 0, port, change = 0;
 
     if(_hub_polling_mutex)                  /* do nothing                                 */
         return 0;

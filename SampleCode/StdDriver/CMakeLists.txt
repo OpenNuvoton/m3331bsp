@@ -101,4 +101,38 @@ create_project(QSPI_DualMode_Flash ${CMAKE_CURRENT_LIST_DIR}/QSPI_DualMode_Flash
 create_project(QSPI_QuadMode_Flash ${CMAKE_CURRENT_LIST_DIR}/QSPI_QuadMode_Flash/main.c)
 create_project(QSPI_Slave3Wire ${CMAKE_CURRENT_LIST_DIR}/QSPI_Slave3Wire/main.c)
 
+add_subdirectory(${CMAKE_CURRENT_LIST_DIR}/HSOTG_Dual_Role_UMAS)
+
+# --- HSOTG / HSUSBH projects ---
+add_subdirectory(${CMAKE_CURRENT_LIST_DIR}/HSOTG_HNP)
+
+create_project(HSUSBH_USBH_AudioClass ${CMAKE_CURRENT_LIST_DIR}/HSUSBH_USBH_AudioClass/main.c)
+target_link_libraries(HSUSBH_USBH_AudioClass usbhost_uac)
+
+create_project(HSUSBH_USBH_DEV_CONN ${CMAKE_CURRENT_LIST_DIR}/HSUSBH_USBH_DEV_CONN/main.c)
+target_link_libraries(HSUSBH_USBH_DEV_CONN usbhost_core)
+
+add_subdirectory(${CMAKE_CURRENT_LIST_DIR}/HSUSBH_USBH_Firmware_Update)
+
+create_project(HSUSBH_USBH_HID ${CMAKE_CURRENT_LIST_DIR}/HSUSBH_USBH_HID/main.c)
+target_link_libraries(HSUSBH_USBH_HID usbhost_hid)
+
+add_subdirectory(${CMAKE_CURRENT_LIST_DIR}/HSUSBH_USBH_HID_Keyboard)
+add_subdirectory(${CMAKE_CURRENT_LIST_DIR}/HSUSBH_USBH_HID_Mouse_Keyboard)
+add_subdirectory(${CMAKE_CURRENT_LIST_DIR}/HSUSBH_USBH_MassStorage)
+
+create_project(HSUSBH_USBH_UAC_HID ${CMAKE_CURRENT_LIST_DIR}/HSUSBH_USBH_UAC_HID/main.c)
+target_link_libraries(HSUSBH_USBH_UAC_HID usbhost_uac usbhost_hid)
+
+add_subdirectory(${CMAKE_CURRENT_LIST_DIR}/HSUSBH_USBH_UAC_LoopBack)
+
+create_project(HSUSBH_USBH_VCOM ${CMAKE_CURRENT_LIST_DIR}/HSUSBH_USBH_VCOM/main.c)
+target_link_libraries(HSUSBH_USBH_VCOM usbhost_cdc)
+
+add_subdirectory(${CMAKE_CURRENT_LIST_DIR}/HSUSBH_USBH_VENDOR_LBK)
+
+# --- PDCI projects ---
+create_project(PDCI_Output ${CMAKE_CURRENT_LIST_DIR}/PDCI_Output/main.c)
+create_project(PDCI_PDMA_Output ${CMAKE_CURRENT_LIST_DIR}/PDCI_PDMA_Output/main.c)
+
 # create_project(USBD_VCOM_MultiPort ${CMAKE_CURRENT_LIST_DIR}/USBD_VCOM_MultiPort/main.c ${CMAKE_CURRENT_LIST_DIR}/USBD_VCOM_MultiPort/descriptors.c ${CMAKE_CURRENT_LIST_DIR}/USBD_VCOM_MultiPort/vcom_serial.c)

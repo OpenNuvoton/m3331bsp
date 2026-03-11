@@ -66,8 +66,6 @@ static void add_to_ED_remove_list(ED_T *ed)
 
 static int ohci_reset(void)
 {
-    volatile int  t0;
-
     /* Disable HC interrupts  */
     _ohci->HcInterruptDisable = USBH_HcInterruptDisable_MIE_Msk;
 
@@ -170,7 +168,6 @@ static int get_ohci_interval(int interval)
 static int  ohci_init(void)
 {
     uint32_t    fminterval;
-    volatile int    i;
 
     if(ohci_reset() < 0)
         return -1;

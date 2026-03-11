@@ -76,7 +76,7 @@ int32_t I3C_DeviceInit(I3C_DEVICE_T *dev)
 
         /* Enable device */
         dev->port->DEVCTL |= I3C_DEVCTL_ENABLE_Msk;
-        
+
         /* Enable GETMXDS CCC response */
         dev->port->SLVCHAR |= I3C_SLVCHAR_MXDSLIMT_Msk;
     }
@@ -120,7 +120,7 @@ int32_t I3C_DeviceInit(I3C_DEVICE_T *dev)
             dev->port->DEVCTL |= I3C_DEVCTL_ADAPTIVE_Msk;
             dev->port->SLVEVNTS &= ~I3C_SLVEVNTS_HJEN_Msk;
         }
-        
+
         /* Enable GETMXDS CCC response */
         dev->port->SLVCHAR |= I3C_SLVCHAR_MXDSLIMT_Msk;
     }
@@ -812,17 +812,17 @@ int32_t I3C_CtrBTWrite(I3C_DEVICE_T *dev)
             | I3C_UNICMDATTR_UNIFIED_CMD );
     I3C_DrvMsg("[ DRV ] [DWORD0 val: 0x%08x] - I3C_CtrBTWrite\n", val);
     dev->port->CMDQUE = val;
-    
+
     // DWORD1
 	val = (dev->tx_len<< I3C_UNICMD_DATLEN_Pos);
     I3C_DrvMsg("[ DRV ] [DWORD1 val: 0x%08x] - I3C_CtrBTWrite\n", val);
     dev->port->CMDQUE = val;
-    
+
     // DWORD2
 	val = dev->HDRBT_cmd;
     I3C_DrvMsg("[ DRV ] [DWORD2 val: 0x%08x] - I3C_CtrBTWrite\n", val);
     dev->port->CMDQUE = val;
-    
+
     // DWORD3
 	val = 0x1;
     I3C_DrvMsg("[ DRV ] [DWORD3 val: 0x%08x] - I3C_CtrBTWrite\n", val);
@@ -921,11 +921,11 @@ int32_t I3C_CtrDEFTGTS(I3C_DEVICE_T *dev)
     dev->target_index = 0; // for Broadcast CCC
     dev->tx_len       = (1 + 4 + (dev->tx_buf[0] * 4));
     dev->is_last_cmd  = TRUE;
-    dev->ccc_code     = I3C_CCC_DEFTGTS; // Not support IRQ  
+    dev->ccc_code     = I3C_CCC_DEFTGTS; // Not support IRQ
     I3C_CtrCCCSet(dev);
     while((dev->port->INTSTS & I3C_INTSTS_RESPRDY_Msk) == 0) {}
     dev->cmd_response = dev->port->RESPQUE;
-    I3C_DrvMsg("[ DRV ] DEFTGTS CCC - RespQ status 0x%08x.\n", dev->cmd_response);        
+    I3C_DrvMsg("[ DRV ] DEFTGTS CCC - RespQ status 0x%08x.\n", dev->cmd_response);
     if((dev->cmd_response&I3C_CTRRESP_ERRSTS_Msk) == I3C_CTRRESP_NO_ERR)
     {
         I3C_DrvMsg("[ DRV ] [ DEFTGTS, PASS ] (RESP: 0x%08x)\n", dev->cmd_response);
@@ -936,9 +936,9 @@ int32_t I3C_CtrDEFTGTS(I3C_DEVICE_T *dev)
             (uint32_t)((dev->cmd_response&I3C_CTRRESP_ERRSTS_Msk) >> I3C_CTRRESP_ERRSTS_Pos), dev->cmd_response);
         return -1;
     }
-    
+
     I3C_DrvMsg("\n");
-    
+
     return I3C_STS_NO_ERR;
 }
 
@@ -947,9 +947,8 @@ int32_t I3C_CtrDEFTGTS(I3C_DEVICE_T *dev)
   */
 int32_t I3C_CtrGETACCCR(I3C_DEVICE_T *dev)
 {
-	volatile uint32_t i;
 	uint32_t *p32Buf;
-    
+
     I3C_DrvMsg("\n");
 
     //dev->target_index = i; /* Set target_index in I3C_CtrGetIBI(...) */
@@ -961,7 +960,7 @@ int32_t I3C_CtrGETACCCR(I3C_DEVICE_T *dev)
     dev->cmd_response = dev->port->RESPQUE;
     I3C_DrvMsg("[ DRV ] GETACCCR CCC - RespQ status 0x%08x.\n", dev->cmd_response);
     if(dev->is_DMA)
-    {                        
+    {
         /* Enable PDMA channel for I3C Rx function */
         I3C_ConfigRxDMA(dev, (uint32_t)(&dev->port->TXRXDAT), (uint32_t)(dev->rx_buf), (I3C_DEVICE_RX_BUF_CNT * 4));
     }
@@ -986,9 +985,9 @@ int32_t I3C_CtrGETACCCR(I3C_DEVICE_T *dev)
         I3C_DrvMsg("[ DRV ] [ GETACCCR, error code %d ]\n", (uint32_t)((dev->cmd_response&I3C_CTRRESP_ERRSTS_Msk) >> I3C_CTRRESP_ERRSTS_Pos));
         return -1;
     }
-    
+
     I3C_DrvMsg("\n");
-    
+
 	return I3C_STS_NO_ERR;
 }
 
@@ -1114,10 +1113,10 @@ int32_t I3C_CtrGetIBI(I3C_DEVICE_T *dev)
 
                     if(dev->ibi_id == dev->main_controller_da)
                     {
-                        /* 
+                        /*
                             Device Role of Main Controller will return to Controller Role from Target Role.
                             Current active Controller no need to send DEFTGTS CCC.
-                        */ 
+                        */
                         I3C_DrvMsg("\t[ DRV ] Direct return to Controller\n");
                     }
                     else
@@ -1129,7 +1128,7 @@ int32_t I3C_CtrGetIBI(I3C_DEVICE_T *dev)
 
                     /* Add delay loop */
                     I3C_DelayLoop(SystemCoreClock/500);
-                    
+
                     /* Perform GETACCCR CCC */
                     if(I3C_CtrGETACCCR(dev) != I3C_STS_NO_ERR)
                         return -5; /* I3C_DEFTGTS error */
@@ -1192,10 +1191,12 @@ void I3C_CtrHandleTransErr(I3C_DEVICE_T *dev)
     uint32_t    TID, LEN;
 
     I3C_DrvMsg("\n");
-    
+
     err_status = (dev->cmd_response & I3C_CTRRESP_ERRSTS_Msk);
     TID        = (((uint32_t)dev->cmd_response & I3C_CTRRESP_TID_Msk) >> I3C_CTRRESP_TID_Pos);
     LEN        = (((uint32_t)dev->cmd_response & I3C_CTRRESP_DATLEN_Msk) >> I3C_CTRRESP_DATLEN_Pos);
+    (void)TID;
+    (void)LEN;
 
     I3C_DrvMsg("[ DRV ] Controller error status 0x%08x.\n", err_status);
     switch(err_status)
@@ -1275,7 +1276,7 @@ void I3C_CtrHandleTransErr(I3C_DEVICE_T *dev)
 static void I3C_TgtResetAndResume(I3C_DEVICE_T *dev, uint8_t ExtCmdIdx)
 {
     I3C_DrvMsg("\n");
-    
+
     /* Reset all FIFO -> apply resume */
     dev->port->RSTCTL = (I3C_RSTCTL_RESPRST_Msk | I3C_RSTCTL_RXRST_Msk | I3C_RSTCTL_IBIQRST_Msk);
     while(dev->port->RSTCTL != 0) {}
@@ -1303,7 +1304,7 @@ int32_t I3C_TgtRecv(I3C_DEVICE_T *dev)
     uint32_t            *pu32RxBuf;
 
     I3C_DrvMsg("\n");
-    
+
     dev->tgtRespQ[0].ErrSts = (uint8_t)I3C_TGTRESP_INITIAL_VALUE;
 
     if( !(dev->port->INTSTS & I3C_INTSTS_RESPRDY_Msk) )
@@ -1335,7 +1336,7 @@ int32_t I3C_TgtRecv(I3C_DEVICE_T *dev)
     dev->tgtRespQ[0].CmdSize  = u8CmdSize;
     dev->tgtRespQ[0].CmdWord  = 0;
     dev->tgtRespQ[0].CmdCCC   = 0;
-    
+
     RxBufIdx  = 0;
     pu32RxBuf = (uint32_t *)dev->rx_buf;
 
@@ -1386,7 +1387,7 @@ int32_t I3C_TgtRecv(I3C_DEVICE_T *dev)
             dev->tgtRespQ[0].CmdWord = pu32RxBuf[0];
             dev->tgtRespQ[0].CmdCCC = I3C_CCC_HDRBT;
         }
-        else            
+        else
         {
             // u8CmdSize 1 or Others
             dev->tgtRespQ[0].CmdWord = (pu32RxBuf[0] & 0xFF);
@@ -1459,7 +1460,7 @@ int32_t I3C_TgtSend(I3C_DEVICE_T *dev)
     I3C_DrvMsg("\n");
 
     I3C_DrvMsg("[ DRV ] I3C_TgtSend. CCC 0x%x.\n", dev->ccc_code);
-    
+
     /* Reset EXT CMD Transmit Data Buffer first */
     dev->port->EXTDBRST = ((1 << cmd_idx));
     while(dev->port->EXTDBRST != 0) {}
@@ -1515,7 +1516,7 @@ int32_t I3C_TgtSend(I3C_DEVICE_T *dev)
 
             dev->port->EXTCMD[cmd_idx].WORD3 = 0; // For HDR-BT Transfer Read command
         }
-               
+
         I3C_DrvMsg("[ DRV ] EXTCMD WORD1 - 0x%08x.\n", (uint32_t)( (target_idx << I3C_TGTCMDW1_ADDRIDX_Pos) |
                                                                 ((dev->is_HDR_cmd==TRUE)? 0x0:((dev->is_HDRBT_cmd==TRUE)? 0x0:I3C_TGTCMDW1_CCC_Msk)) |
                                                                 I3C_TGTCMDW1_CMDVLD_Msk |
@@ -1551,6 +1552,7 @@ int32_t I3C_TgtGetSendResult(I3C_DEVICE_T *dev)
 {
     volatile uint32_t i, u32CMDDoneBitMsk;
     uint32_t CmdRegVal[3], err_sts, dat_len, dev_sts;
+    (void)dat_len;
 
     I3C_DrvMsg("\n");
 
@@ -1662,7 +1664,7 @@ int32_t I3C_TgtGetSendResult(I3C_DEVICE_T *dev)
                     {
                         I3C_DrvMsg("\t# Frame Error \n");
                     }
-                    
+
                     if(dev_sts & I3C_CCCDEVS_SLVBUSY_Msk)
                     {
                         I3C_DrvMsg("\t# Target Busy \n");

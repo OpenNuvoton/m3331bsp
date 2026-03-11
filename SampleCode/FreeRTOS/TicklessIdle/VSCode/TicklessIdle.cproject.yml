@@ -21,13 +21,15 @@ project:
   linker:
     - for-compiler: GCC
       script: ../../../../Library/Device/Nuvoton/m3331/Config/m3331_gcc.ld
+    - for-compiler: AC6
+      script: ../../../../Library/Device/Nuvoton/m3331/Config/m3331_ac6.sct
   add-path:
         - ../../../../Library/CMSIS/Core/Include
         - ../../../../Library/Device/Nuvoton/m3331/Include
         - ../../../../Library/StdDriver/inc
-        - ../../../../ThirdParty/FreeRTOS/Source/include
+        - ../../../../ThirdParty/FreeRTOS/include
         - ../../../../ThirdParty/FreeRTOS/Demo/Common/include
-        - ../../../../ThirdParty/FreeRTOS/Source/portable/GCC/ARM_CM4F
+        - ../../../../ThirdParty/FreeRTOS/portable/GCC/ARM_CM4F
         - ..
   groups:
     - group: CMSIS
@@ -45,19 +47,11 @@ project:
         - file: ../ParTest.c
     - group: FreeRTOS source
       files:
-        - file: ../../../../ThirdParty/FreeRTOS/Source/timers.c
-        - file: ../../../../ThirdParty/FreeRTOS/Source/list.c
-        - file: ../../../../ThirdParty/FreeRTOS/Source/queue.c
-        - file: ../../../../ThirdParty/FreeRTOS/Source/tasks.c
-        - file: ../../../../ThirdParty/FreeRTOS/Source/portable/MemMang/heap_4.c
-    - group: Common Demo Tasks
-      files:
-        - file: ../../../../ThirdParty/FreeRTOS/Demo/Common/Minimal/dynamic.c
-        - file: ../../../../ThirdParty/FreeRTOS/Demo/Common/Minimal/recmutex.c
-        - file: ../../../../ThirdParty/FreeRTOS/Demo/Common/Minimal/blocktim.c
-        - file: ../../../../ThirdParty/FreeRTOS/Demo/Common/Minimal/countsem.c
-        - file: ../../../../ThirdParty/FreeRTOS/Demo/Common/Minimal/QueueSet.c
-        - file: ../../../../ThirdParty/FreeRTOS/Demo/Common/Minimal/QueueOverwrite.c
+        - file: ../../../../ThirdParty/FreeRTOS/timers.c
+        - file: ../../../../ThirdParty/FreeRTOS/list.c
+        - file: ../../../../ThirdParty/FreeRTOS/queue.c
+        - file: ../../../../ThirdParty/FreeRTOS/tasks.c
+        - file: ../../../../ThirdParty/FreeRTOS/portable/MemMang/heap_4.c
     - group: Library
       files:
         - file: ../../../../Library/StdDriver/src/clk.c

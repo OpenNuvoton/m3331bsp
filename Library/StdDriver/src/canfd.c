@@ -74,7 +74,7 @@
 
 /* Tx Event FIFO Element TSC(Timestamp Captured)    */
 #define TX_FIFO_E1B_EVENT_TXTS_Pos   (0)
-#define TX_FIFO_E1B_EVENT_TXTS_Msk   (0xFul << TX_FIFO_E1B_EVENT_TSC_Pos)
+#define TX_FIFO_E1B_EVENT_TXTS_Msk   (0xFul << TX_FIFO_E1B_EVENT_TXTS_Pos)
 
 /* Rx Buffer and FIFO Element ESI2(Error State Indicator)    */
 #define RX_BUFFER_AND_FIFO_R0_ELEM_ESI_Pos  (31)
@@ -467,42 +467,48 @@ static void CANFD_SetTimingConfig(CANFD_T *psCanfd, const CANFD_TIMEING_CONFIG_T
  */
 static void CANFD_GetSegments(uint32_t u32NominalBaudRate, uint32_t u32DataBaudRate, uint32_t u32Ntq, uint32_t u32Dtq, CANFD_TIMEING_CONFIG_T *psConfig)
 {
-    float ideal_sp;
+    /* Sample-point represented as an exact fraction (numerator / denominator):
+     *   >= 1 Mbit/s  ->  3/4  = 75.0 %
+     *   >= 800 kbit/s -> 4/5  = 80.0 %
+     *   <  800 kbit/s -> 7/8  = 87.5 %
+     * All three are representable exactly in both float and integer arithmetic,
+     * so the truncated result (int)(tq * sp) == (tq * num) / den for tq in [9,20].
+     */
+    uint32_t u32SpNum, u32SpDen;
     int int32P1;
 
-    /* get ideal sample point */
-    if(u32NominalBaudRate >= 1000000)     ideal_sp = 0.750;
-    else if(u32NominalBaudRate >= 800000) ideal_sp = 0.800;
-    else                                   ideal_sp = 0.875;
+    /* get ideal sample point (nominal) as integer fraction */
+    if(u32NominalBaudRate >= 1000000ul)      { u32SpNum = 3u; u32SpDen = 4u; } /* 75.0 % */
+    else if(u32NominalBaudRate >= 800000ul)  { u32SpNum = 4u; u32SpDen = 5u; } /* 80.0 % */
+    else                                     { u32SpNum = 7u; u32SpDen = 8u; } /* 87.5 % */
 
     /* distribute time quanta */
-    int32P1 = (int)(u32Ntq * ideal_sp);
+    int32P1 = (int)((u32Ntq * u32SpNum) / u32SpDen);
     /* can controller doesn't separate prop seg and phase seg 1 */
     psConfig->u8NominalPropSeg = 0;
     /* subtract one TQ for sync seg */
     psConfig->u8NominalPhaseSeg1 = int32P1 - 1;
     psConfig->u8NominalPhaseSeg2 = u32Ntq - int32P1;
     /* sjw is 20% of total TQ, rounded to nearest int */
-    psConfig->u8NominalRJumpwidth = (u32Ntq + (5 - 1)) / 5;
-
+    psConfig->u8NominalRJumpwidth = (u32Ntq + (5u - 1u)) / 5u;
 
     /* if using baud rate switching then distribute time quanta for data rate */
-    if(u32Dtq > 0)
+    if(u32Dtq > 0u)
     {
-        /* get ideal sample point */
-        if(u32DataBaudRate >= 1000000)     ideal_sp = 0.750;
-        else if(u32DataBaudRate >= 800000) ideal_sp = 0.800;
-        else                             ideal_sp = 0.875;
+        /* get ideal sample point (data) as integer fraction */
+        if(u32DataBaudRate >= 1000000ul)     { u32SpNum = 3u; u32SpDen = 4u; } /* 75.0 % */
+        else if(u32DataBaudRate >= 800000ul) { u32SpNum = 4u; u32SpDen = 5u; } /* 80.0 % */
+        else                                 { u32SpNum = 7u; u32SpDen = 8u; } /* 87.5 % */
 
         /* distribute time quanta */
-        int32P1 = (int)(u32Dtq * ideal_sp);
+        int32P1 = (int)((u32Dtq * u32SpNum) / u32SpDen);
         /* can controller doesn't separate prop seg and phase seg 1 */
         psConfig->u8DataPropSeg = 0;
         /* subtract one TQ for sync seg */
         psConfig->u8DataPhaseSeg1 = int32P1 - 1;
         psConfig->u8DataPhaseSeg2 = u32Dtq - int32P1;
         /* sjw is 20% of total TQ, rounded to nearest int */
-        psConfig->u8DataRJumpwidth = (u32Dtq + (5 - 1)) / 5;
+        psConfig->u8DataRJumpwidth = (u32Dtq + (5u - 1u)) / 5u;
     }
     else
     {

@@ -34,16 +34,6 @@
 
 
 /*---------------------------------------------------------------------------
-  Define clocks
- *---------------------------------------------------------------------------*/
-/* ToDo: Add here your necessary defines for device initialization
-         following is an example for different system frequencies */
-#define XTAL            (12000000U)       /* Oscillator frequency */
-
-#define SYSTEM_CLOCK    (5 * XTAL)
-
-
-/*---------------------------------------------------------------------------
   Exception / Interrupt Vector table
  *---------------------------------------------------------------------------*/
 extern const VECTOR_TABLE_Type __VECTOR_TABLE[496];
@@ -207,7 +197,6 @@ void SCU_Setup(void)
         case 0x20000:
             SCU->SRAMNSSET = 0xFFF0000;
             break;
-
         case 0x24000:
             SCU->SRAMNSSET = 0xFFE0000;
             break;
@@ -232,7 +221,6 @@ void SCU_Setup(void)
         case 0x40000:
             SCU->SRAMNSSET = 0xF000000;
             break;
-
         case 0x44000:
             SCU->SRAMNSSET = 0xE000000;
             break;
@@ -330,8 +318,8 @@ void SCU_Setup(void)
         NVIC_ITNS_CONF(LLSI0_IRQn);     /* Int of LLSI0_INT    */
         NVIC_ITNS_CONF(LLSI2_IRQn);     /* Int of LLSI2_INT    */
         NVIC_ITNS_CONF(LLSI4_IRQn);     /* Int of LLSI4_INT    */
-        NVIC_ITNS_CONF(LLSI6_IRQn);     /* Int of LLSI5_INT    */
-        NVIC_ITNS_CONF(LLSI8_IRQn);     /* Int of LLSI6_INT    */
+        NVIC_ITNS_CONF(LLSI6_IRQn);     /* Int of LLSI6_INT    */
+        NVIC_ITNS_CONF(LLSI8_IRQn);     /* Int of LLSI8_INT    */
     }
     if(SCU_INIT_PNSSET4_VAL & BIT9)
     {
@@ -372,7 +360,7 @@ void SCU_Setup(void)
 
 void SCU_IRQHandler(void)
 {
-    char const *master[] = {"CPU", 0, "PDMA0", 0, "SDH0", "HSUSBD", "HSUSBH", "CRC"};
+    char const *master[] = {"CPU", "Unknown", "PDMA0", "Unknown", "SDH0", "HSUSBD", "HSUSBH", "CRC"};
     char const *ipname[] = {"FLASH", "SRAM0", "SRAM1", "SRAM2", "APB0", "APB1", "EBI", "SYS",
                             "FMC", "PDMA0", "CRC", "CANFD0", "CANFD1", "SCU", "GPIO", "HSUSBH",
                             "HSUSBD", "SDH0", "CACHE", "PDCI", "PDMA1"
@@ -588,11 +576,6 @@ void SystemInit(void)
         }
         while(!SYS->REGLCTL);
     }
-    /* FPU settings ------------------------------------------------------------*/
-#if (__FPU_PRESENT == 1U) && (__FPU_USED == 1U)
-    SCB->CPACR |= ((3UL << 10 * 2) |               /* set CP10 Full Access */
-                   (3UL << 11 * 2));               /* set CP11 Full Access */
-#endif
 
 #if defined (__VTOR_PRESENT) && (__VTOR_PRESENT == 1U)
   SCB->VTOR = (uint32_t)(&__VECTOR_TABLE[0]);

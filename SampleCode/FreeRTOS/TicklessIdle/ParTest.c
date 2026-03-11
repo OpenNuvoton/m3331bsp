@@ -14,9 +14,6 @@
 /* Hardware includes. */
 #include "NuMicro.h"
 
-/* Standard demo include. */
-#include "partest.h"
-
 extern int IsDebugFifoEmpty(void);
 
 volatile uint8_t g_u8IsRTCAlarmINT = 0, g_u8IsGPIOINT = 0;
@@ -71,47 +68,40 @@ void RTC_IRQHandler(void)
  *
  * @details     The PB default IRQ, declared in startup_m3331.s.
  */
-void GPB_IRQHandler(void)
+void GPH_IRQHandler(void)
 {
-    if(GPIO_GET_INT_FLAG(PB, BIT1))      /* To check if PB.1 interrupt occurred */
+    if(GPIO_GET_INT_FLAG(PH, BIT4))      /* To check if PH.4 interrupt occurred */
     {
-        GPIO_CLR_INT_FLAG(PB, BIT1);
-        printf("CPU woken up by external interrupt (PB.1 INT occurred).\n");
+        GPIO_CLR_INT_FLAG(PH, BIT4);
+        printf("CPU woken up by external interrupt (PH.4 INT occurred).\n");
 
         g_u8IsGPIOINT ++;
     }
-    else if(GPIO_GET_INT_FLAG(PB, BIT2)) /* To check if PB.2 interrupt occurred */
+    else if(GPIO_GET_INT_FLAG(PH, BIT5)) /* To check if PH.5 interrupt occurred */
     {
-        GPIO_CLR_INT_FLAG(PB, BIT2);
-        printf("CPU woken up by external interrupt (PB.2 INT occurred).\n");
+        GPIO_CLR_INT_FLAG(PH, BIT5);
+        printf("CPU woken up by external interrupt (PH.5 INT occurred).\n");
 
         g_u8IsGPIOINT ++;
     }
-    else if(GPIO_GET_INT_FLAG(PB, BIT3)) /* To check if PB.3 interrupt occurred */
+    else if(GPIO_GET_INT_FLAG(PH, BIT6)) /* To check if PH.6 interrupt occurred */
     {
-        GPIO_CLR_INT_FLAG(PB, BIT3);
-        printf("CPU woken up by external interrupt (PB.3 INT occurred).\n");
+        GPIO_CLR_INT_FLAG(PH, BIT6);
+        printf("CPU woken up by external interrupt (PH.6 INT occurred).\n");
 
         g_u8IsGPIOINT ++;
     }
-    else if(GPIO_GET_INT_FLAG(PB, BIT4)) /* To check if PB.4 interrupt occurred */
+    else if(GPIO_GET_INT_FLAG(PH, BIT7)) /* To check if PH.7 interrupt occurred */
     {
-        GPIO_CLR_INT_FLAG(PB, BIT4);
-        printf("CPU woken up by external interrupt (PB.4 INT occurred).\n");
-
-        g_u8IsGPIOINT ++;
-    }
-    else if(GPIO_GET_INT_FLAG(PB, BIT5)) /* To check if PB.5 interrupt occurred */
-    {
-        GPIO_CLR_INT_FLAG(PB, BIT5);
-        printf("CPU woken up by external interrupt (PB.5 INT occurred).\n");
+        GPIO_CLR_INT_FLAG(PH, BIT7);
+        printf("CPU woken up by external interrupt (PH.7 INT occurred).\n");
 
         g_u8IsGPIOINT ++;
     }
     else
     {
-        /* Un-expected interrupt. Just clear all PB interrupts */
-        PB->INTSRC = PB->INTSRC;
+        /* Un-expected interrupt. Just clear all PH interrupts */
+        PH->INTSRC = PH->INTSRC;
         printf("Un-expected interrupts.\n");
     }
 
@@ -162,7 +152,7 @@ void vParTestInitialise(void)
     CLK_SetCoreClock(FREQ_180MHZ);
 
     /* Enable GPIO clock */
-    CLK->AHBCLK0 |= CLK_AHBCLK0_GPBCKEN_Msk | CLK_AHBCLK0_GPHCKEN_Msk;
+    CLK->AHBCLK0 |= CLK_AHBCLK0_GPBCKEN_Msk | CLK_AHBCLK0_GPGCKEN_Msk | CLK_AHBCLK0_GPHCKEN_Msk;
 
     /* Enable UART module clock */
     CLK_EnableModuleClock(UART0_MODULE);
@@ -198,7 +188,7 @@ void vParTestInitialise(void)
     printf("|    FreeRTOS Tickless Sample Code    |\n");
     printf("+-------------------------------------+\n");
     printf("CLKO(PD.12) can monitor if the CPU enters Power-Down mode.\n");
-    printf("Please toggle PB.1~5 to wake up the CPU.\n\n");
+    printf("Please toggle PH.4~7 to wake up the CPU.\n\n");
 
 #if (configUSE_TICKLESS_IDLE == 1)
     /* Enable RTC module clock */
@@ -228,18 +218,18 @@ void vParTestInitialise(void)
     RTC->CLKFMT |= RTC_CLKFMT_HZCNTEN_Msk;
 #endif /* configUSE_TICKLESS_IDLE */
 
-    /* Configure PB.1~5 as Input mode and enable interrupt by rising or falling edge trigger */
-    GPIO_SetMode(PB, (BIT1 | BIT2 | BIT3 | BIT4 | BIT5), GPIO_MODE_INPUT);
-    for(u32Pin = 1; u32Pin < 6; u32Pin++)
-        GPIO_EnableInt(PB, u32Pin, GPIO_INT_BOTH_EDGE);
-    NVIC_EnableIRQ(GPB_IRQn);
-
     /* LED control */
-    GPIO_SetMode(PH, (BIT4), GPIO_MODE_OUTPUT);
+    GPIO_SetMode(PG, BIT4, GPIO_MODE_OUTPUT);
+
+    /* Configure PH.4~7 as Input mode and enable interrupt by rising or falling edge trigger */
+    GPIO_SetMode(PH, (BIT4 | BIT5 | BIT6 | BIT7), GPIO_MODE_INPUT);
+    for(u32Pin = 4; u32Pin < 8; u32Pin++)
+        GPIO_EnableInt(PH, u32Pin, GPIO_INT_BOTH_EDGE);
+    NVIC_EnableIRQ(GPH_IRQn);
 
     /* Enable interrupt de-bounce function and select de-bounce sampling cycle time is 1024 clocks of LIRC clock */
-    GPIO_SET_DEBOUNCE_TIME(PB, GPIO_DBCTL_DBCLKSRC_LIRC, GPIO_DBCTL_DBCLKSEL_1024);
-    GPIO_ENABLE_DEBOUNCE(PB, (BIT1 | BIT2 | BIT3 | BIT4 | BIT5));
+    GPIO_SET_DEBOUNCE_TIME(PH, GPIO_DBCTL_DBCLKSRC_LIRC, GPIO_DBCTL_DBCLKSEL_1024);
+    GPIO_ENABLE_DEBOUNCE(PH, (BIT4 | BIT5 | BIT6 | BIT7));
 
     /* Unlock protected registers before entering Power-down mode */
     SYS_UnlockReg();

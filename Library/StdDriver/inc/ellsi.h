@@ -493,7 +493,7 @@ typedef struct
 __STATIC_INLINE uint32_t ELLSI_GET_FB_COUNT(ELLSI_T *ellsi, uint32_t u32ID)
 {
     uint32_t i;
-    uint32_t u32FBPCNT;
+    uint32_t u32FBPCNT=0;
 
     if((u32ID == 0) || (u32ID >= 16))
         return -1;
@@ -521,7 +521,7 @@ __STATIC_INLINE uint32_t ELLSI_GET_FB_COUNT(ELLSI_T *ellsi, uint32_t u32ID)
 __STATIC_INLINE uint32_t ELLSI_SET_FB_COUNT(ELLSI_T *ellsi, uint32_t u32ID, uint32_t u32IDCnt)
 {
     uint32_t i;
-    uint32_t *u32FBPCNT;
+    uint32_t *u32FBPCNT = NULL;
 
     if((u32ID == 0) || (u32ID >= 16))
         return -1;
@@ -536,6 +536,9 @@ __STATIC_INLINE uint32_t ELLSI_SET_FB_COUNT(ELLSI_T *ellsi, uint32_t u32ID, uint
             break;
         }
     }
+
+    if(u32FBPCNT == NULL)
+        return -1;
 
     return *u32FBPCNT & ELLSI_FBPCNT_FBPCNT_Msk;
 }
@@ -552,7 +555,7 @@ __STATIC_INLINE uint32_t ELLSI_SET_FB_COUNT(ELLSI_T *ellsi, uint32_t u32ID, uint
 __STATIC_INLINE uint32_t ELLSI_GET_FB_CURRENT(ELLSI_T *ellsi, uint32_t u32ID)
 {
     uint32_t i;
-    uint32_t u32FBPCODE;
+    uint32_t u32FBPCODE = 0;
 
     if((u32ID == 0) || (u32ID >= 16))
         return -1;
@@ -579,7 +582,7 @@ __STATIC_INLINE uint32_t ELLSI_GET_FB_CURRENT(ELLSI_T *ellsi, uint32_t u32ID)
 __STATIC_INLINE uint32_t ELLSI_GET_FB_ID(ELLSI_T *ellsi, uint32_t u32ID)
 {
     uint32_t i;
-    uint32_t u32FBSID;
+    uint32_t u32FBSID = 0;
 
     if((u32ID == 0) || (u32ID >= 16))
         return -1;

@@ -435,7 +435,7 @@ uint32_t SDH_CardDetection(SDH_T *sdh)
 {
     volatile uint32_t i;
     uint32_t val = TRUE;
-    SDH_INFO_T *pSD;
+    SDH_INFO_T *pSD = NULL;
 
     if(sdh == SDH0)
     {

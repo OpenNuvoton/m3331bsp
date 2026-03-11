@@ -3,7 +3,7 @@
     "configurations": [
         {
             "name": "CMSIS_DAP@pyOCD (launch)",
-            "type": "cortex-debug-nuvoton",
+            "type": "cortex-debug",
             "request": "launch",
             "cwd": "${workspaceFolder}",
             "executable": "${command:embedded-debug.getApplicationFile}",
@@ -15,8 +15,29 @@
                 "${command:openocd-helper.getOpenOcdConfigPath}"
             ],
             "runToEntryPoint": "main",
-			"overrideLaunchCommands": [
-            "monitor reset halt"
+            "overrideLaunchCommands": [
+                "monitor reset halt"
+            ]
+        },
+        {
+            "name": "CMSIS_DAP@pyOCD (attach)",
+            "type": "gdbtarget",
+            "request": "attach",
+            "cwd": "${workspaceFolder}/SampleCode\\FreeRTOS\\TicklessIdle\\VSCode",
+            "program": "out/TicklessIdle/ARMCLANG/debug/TicklessIdle.axf",
+            "gdb": "arm-none-eabi-gdb",
+            "initCommands": [
+                ""
+            ],
+            "customResetCommands": [
+                "monitor reset halt"
+            ],
+            "target": {
+                "port": "3333"
+            },
+            "cmsis": {
+                "updateConfiguration": "auto"
+            }
         }
     ]
 }

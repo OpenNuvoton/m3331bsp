@@ -563,7 +563,7 @@ int usbh_set_interface(IFACE_T *iface, uint16_t alt_setting)
 int usbh_get_device_descriptor(UDEV_T *udev, DESC_DEV_T *desc_buff)
 {
     uint32_t  read_len;
-    int       ret, retry;
+    int       ret = 0, retry;
     int       timeout = 10;
 
     for(retry = 0; retry < 3; retry++)
@@ -666,7 +666,7 @@ int usbh_clear_halt(UDEV_T *udev, uint16_t ep_addr)
 
 static int  usbh_parse_endpoint(ALT_IFACE_T *alt, int ep_idx, uint8_t *desc_buff, int len)
 {
-    DESC_EP_T    *ep_desc;
+    DESC_EP_T    *ep_desc = NULL;
     int          parsed_len = 0;
     int          pksz;
 
@@ -715,7 +715,7 @@ static int  usbh_parse_endpoint(ALT_IFACE_T *alt, int ep_idx, uint8_t *desc_buff
 static int  usbh_parse_interface(UDEV_T *udev, uint8_t *desc_buff, int len)
 {
     int         i, matched, parsed_len = 0;
-    DESC_HDR_T  *hdr;
+    DESC_HDR_T  *hdr = NULL;
     DESC_IF_T   *if_desc;
     IFACE_T     *iface = NULL;
     int         ret;

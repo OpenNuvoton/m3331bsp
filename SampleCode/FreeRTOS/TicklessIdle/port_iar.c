@@ -317,13 +317,13 @@ BaseType_t xPortStartScheduler(void)
     uxCriticalNesting = 0;
 
     /* Ensure the VFP is enabled - it should be anyway. */
-    vPortEnableVFP();
+    //vPortEnableVFP();
 
     /* Lazy save always. */
     *(portFPCCR) |= portASPEN_AND_LSPEN_BITS;
 
     /* Start the first task. */
-    vPortStartFirstTask();
+    //vPortStartFirstTask();
 
     /* Should not get here! */
     return 0;

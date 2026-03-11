@@ -32,6 +32,10 @@
 extern uint32_t __INITIAL_SP;
 extern uint32_t __STACK_LIMIT;
 #if defined (__ARM_FEATURE_CMSE) && (__ARM_FEATURE_CMSE == 3U)
+#ifdef __STACK_SEAL
+# undef __STACK_SEAL
+# define __STACK_SEAL              Image$$STACKSEAL$$Base
+#endif
 extern uint64_t __STACK_SEAL;
 #endif
 
@@ -58,7 +62,7 @@ void DebugMon_Handler       (void) __attribute__ ((weak, alias("Default_Handler"
 void PendSV_Handler         (void) __attribute__ ((weak, alias("Default_Handler")));
 void SysTick_Handler        (void) __attribute__ ((weak, alias("Default_Handler")));
 
-/* ToDo: Add your device specific interrupt handler */
+/* Device specific interrupt handler */
 void BOD_IRQHandler     (void) __attribute__ ((weak, alias("Default_Handler")));
 void IRC_IRQHandler     (void) __attribute__ ((weak, alias("Default_Handler")));
 void PWRWU_IRQHandler   (void) __attribute__ ((weak, alias("Default_Handler")));
@@ -166,7 +170,7 @@ void BPWM5_IRQHandler   (void) __attribute__ ((weak, alias("Default_Handler")));
 #pragma GCC diagnostic ignored "-Wpedantic"
 #endif
 
-/* ToDo: Add Cortex exception vectors according the used Cortex-Core */
+/* Device specific interrupt handler */
 extern const VECTOR_TABLE_Type __VECTOR_TABLE[161];
        const VECTOR_TABLE_Type __VECTOR_TABLE[161] __VECTOR_TABLE_ATTRIBUTE = {
   (VECTOR_TABLE_Type)(&__INITIAL_SP),  /*     Initial Stack Pointer */
@@ -345,6 +349,10 @@ __NO_RETURN void Reset_Handler(void)
 
   __set_MSPLIM((uint32_t)(&__STACK_LIMIT));
   __set_PSPLIM((uint32_t)(&__STACK_LIMIT));
+
+#if defined(__ARM_FEATURE_CMSE) && (__ARM_FEATURE_CMSE == 3U)
+  __TZ_set_STACKSEAL_S((uint32_t *)(&__STACK_SEAL));
+#endif
 
   SystemInit();                    /* CMSIS System Initialization */
   __PROGRAM_START();               /* Enter PreMain (C library entry point) */

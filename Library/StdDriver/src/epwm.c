@@ -36,7 +36,7 @@ uint32_t EPWM_ConfigCaptureChannel(EPWM_T *epwm, uint32_t u32ChannelNum, uint32_
 {
     uint32_t u32Src;
     uint32_t u32EPWMClockSrc;
-    uint32_t u32NearestUnitTimeNsec;
+    uint32_t u32NearestUnitTimeNsec = 0;
     uint32_t u16Prescale = 1U, u16CNR = 0xFFFFU;
 
     if(epwm == EPWM0)
@@ -110,7 +110,7 @@ uint32_t EPWM_ConfigCaptureChannel(EPWM_T *epwm, uint32_t u32ChannelNum, uint32_
     (epwm)->CTL1 = ((epwm)->CTL1 & ~(EPWM_CTL1_CNTTYPE0_Msk << (u32ChannelNum << 1U))) | (1UL << (u32ChannelNum << 1U));
     /* set EPWM to auto-reload mode */
     (epwm)->CTL1 &= ~(EPWM_CTL1_CNTMODE0_Msk << u32ChannelNum);
-    
+
     EPWM_SET_CNR(epwm, u32ChannelNum, u16CNR);
 
     return (u32NearestUnitTimeNsec);
@@ -565,7 +565,7 @@ void EPWM_DisableOutput(EPWM_T *epwm, uint32_t u32ChannelMask)
 void EPWM_EnablePDMA(EPWM_T *epwm, uint32_t u32ChannelNum, uint32_t u32RisingFirst, uint32_t u32Mode)
 {
     uint32_t u32IsOddCh;
-    
+
     u32IsOddCh = u32ChannelNum & 0x1U;
     (epwm)->PDMACTL = ((epwm)->PDMACTL & ~((EPWM_PDMACTL_CHSEL0_1_Msk | EPWM_PDMACTL_CAPORD0_1_Msk | EPWM_PDMACTL_CAPMOD0_1_Msk) << ((u32ChannelNum >> 1U) << 3U))) | \
                       (((u32IsOddCh << EPWM_PDMACTL_CHSEL0_1_Pos) | (u32RisingFirst << EPWM_PDMACTL_CAPORD0_1_Pos) | \

@@ -221,7 +221,7 @@ void PDCI_ConfigIO(uint8_t u8SrcGroup, uint8_t u8DstGroup)
     u32Addr = (uint32_t)&(PDCI->CONFIGIO) + u8Offset;
 
     u8CurrentValue = inp8(u32Addr);
-    u8CurrentValue = u8CurrentValue & ~(0xF << u8Shift) | (u8DstGroup << u8Shift);
+    u8CurrentValue = (u8CurrentValue & ~(0xF << u8Shift)) | (u8DstGroup << u8Shift);
 
     outp8(u32Addr, u8CurrentValue);
 }
@@ -621,7 +621,7 @@ void PDCI_ClearStatus(uint32_t u32Mask)
   */
 uint32_t PDCI_GetRxIntFlag(uint32_t u32ChNum, uint32_t u32Mask)
 {
-    uint32_t u32IntStatus;
+    uint32_t u32IntStatus = 0;
     uint32_t u32IntFlag = 0UL;
 
     if((u32Mask == PDCI_RXCRC_INT_MASK) || (u32Mask == PDCI_RXCRCA_INT_MASK))

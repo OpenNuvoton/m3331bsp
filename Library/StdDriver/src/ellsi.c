@@ -203,7 +203,7 @@ void ELLSI_Config_Y_Cable(ELLSI_T *ellsi, S_ELLSI_TIME_INFO_T *sPt)
         u32PCLKFreq = CLK_GetPCLK0Freq();
 
     u32Div = ellsi->CLKDIV & ELLSI_CLKDIV_DIVIDER_Msk;
-    
+
     /* f_ellsi_cmd = f_ellsi_clk_src / (DIVIDER + 1) / (CMDDIV + 1) */
     u32CmdDiv = (((u32PCLKFreq * 10) / u32ELLSICmdFreq / (u32Div + 1) + 5) / 10) - 1; /* Round to the nearest integer */
     if(u32CmdDiv > 0xFF)
@@ -455,7 +455,7 @@ void ELLSI_Config_Y_Cable(ELLSI_T *ellsi, S_ELLSI_TIME_INFO_T *sPt)
   *                   SS4: Low bit of setting PWM Frequency, default should be set to 1.
   *                   SS5: High bit of setting PWM Frequency, default should be set to 1.
   * @return None
-  * @details 
+  * @details
   */
 void ELLSI_SetTH20Data(ELLSI_T *ellsi, S_ELLSI_TH20SET_DATA_T *sPt)
 {
@@ -1369,7 +1369,7 @@ void ELLSI_ClearCmdIntFlag(ELLSI_T *ellsi, uint32_t u32Mask)
 uint32_t ELLSI_GetOverflowFlag(ELLSI_T *ellsi, uint32_t u32ID)
 {
     uint32_t i;
-    uint32_t FBPOV;
+    uint32_t FBPOV = 0;
 
     if((u32ID == 0) || (u32ID >= 16))
         return -1;

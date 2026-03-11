@@ -99,7 +99,7 @@
                 <option>
                     <name>GBECoreSlave</name>
                     <version>33</version>
-                    <state>39</state>
+                    <state>61</state>
                 </option>
                 <option>
                     <name>OGUseCmsis</name>
@@ -292,7 +292,7 @@
                 <option>
                     <name>CCAllowList</name>
                     <version>1</version>
-                    <state>11111110</state>
+                    <state>10010100</state>
                 </option>
                 <option>
                     <name>CCDebugInfo</name>
@@ -355,9 +355,8 @@
                     <state>$PROJ_DIR$\..\..\..\..\Library\CMSIS\Core\Include</state>
                     <state>$PROJ_DIR$\..\..\..\..\Library\Device\Nuvoton\m3331\Include</state>
                     <state>$PROJ_DIR$\..\..\..\..\Library\StdDriver\inc</state>
-                    <state>$PROJ_DIR$\..\..\..\..\ThirdParty\FreeRTOS\Source\include</state>
-                    <state>$PROJ_DIR$\..\..\..\..\ThirdParty\FreeRTOS\Demo\Common\include</state>
-                    <state>$PROJ_DIR$\..\..\..\..\ThirdParty\FreeRTOS\Source\portable\IAR\ARM_CM4F</state>
+                    <state>$PROJ_DIR$\..\..\..\..\ThirdParty\FreeRTOS\include</state>
+                    <state>$PROJ_DIR$\..\..\..\..\ThirdParty\FreeRTOS\portable\IAR\ARM_CM33_NTZ\non_secure</state>
                     <state>$PROJ_DIR$\..</state>
                 </option>
                 <option>
@@ -374,7 +373,7 @@
                 </option>
                 <option>
                     <name>CCOptLevel</name>
-                    <state>3</state>
+                    <state>2</state>
                 </option>
                 <option>
                     <name>CCOptStrategy</name>
@@ -383,7 +382,7 @@
                 </option>
                 <option>
                     <name>CCOptLevelSlave</name>
-                    <state>3</state>
+                    <state>2</state>
                 </option>
                 <option>
                     <name>CCPosIndRopi</name>
@@ -627,6 +626,9 @@
                 <option>
                     <name>AUserIncludes</name>
                     <state>$PROJ_DIR$\..</state>
+                    <state>$PROJ_DIR$\..\..\..\..\ThirdParty\FreeRTOS\portable\IAR\ARM_CM33_NTZ\non_secure</state>
+                    <state>$PROJ_DIR$\..\..\..\..\Library\Device\Nuvoton\m3331\Include</state>
+                    <state>$PROJ_DIR$\..\..\..\..\ThirdParty\FreeRTOS\include</state>
                 </option>
                 <option>
                     <name>AExtraOptionsCheckV2</name>
@@ -767,7 +769,7 @@
                 </option>
                 <option>
                     <name>IlinkIcfOverride</name>
-                    <state>0</state>
+                    <state>1</state>
                 </option>
                 <option>
                     <name>IlinkIcfFile</name>
@@ -1092,27 +1094,6 @@
         </settings>
     </configuration>
     <group>
-        <name>Common Demo Tasks</name>
-        <file>
-            <name>$PROJ_DIR$\..\..\..\..\ThirdParty\FreeRTOS\Demo\Common\Minimal\blocktim.c</name>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\..\..\..\..\ThirdParty\FreeRTOS\Demo\Common\Minimal\countsem.c</name>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\..\..\..\..\ThirdParty\FreeRTOS\Demo\Common\Minimal\dynamic.c</name>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\..\..\..\..\ThirdParty\FreeRTOS\Demo\Common\Minimal\QueueOverwrite.c</name>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\..\..\..\..\ThirdParty\FreeRTOS\Demo\Common\Minimal\QueueSet.c</name>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\..\..\..\..\ThirdParty\FreeRTOS\Demo\Common\Minimal\recmutex.c</name>
-        </file>
-    </group>
-    <group>
         <name>Demo App Source</name>
         <file>
             <name>$PROJ_DIR$\..\FreeRTOSConfig.h</name>
@@ -1121,31 +1102,34 @@
             <name>$PROJ_DIR$\..\main.c</name>
         </file>
         <file>
+            <name>$PROJ_DIR$\..\..\..\..\ThirdParty\FreeRTOS\portable\IAR\ARM_CM33_NTZ\non_secure\mpu_wrappers_v2_asm.S</name>
+        </file>
+        <file>
             <name>$PROJ_DIR$\..\ParTest.c</name>
         </file>
         <file>
-            <name>$PROJ_DIR$\..\port_iar.c</name>
+            <name>$PROJ_DIR$\..\..\..\..\ThirdParty\FreeRTOS\portable\IAR\ARM_CM33_NTZ\non_secure\port.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\..\..\ThirdParty\FreeRTOS\portable\IAR\ARM_CM33_NTZ\non_secure\portasm.s</name>
         </file>
     </group>
     <group>
         <name>FreeRTOS source</name>
         <file>
-            <name>$PROJ_DIR$\..\..\..\..\ThirdParty\FreeRTOS\Source\portable\MemMang\heap_4.c</name>
+            <name>$PROJ_DIR$\..\..\..\..\ThirdParty\FreeRTOS\portable\MemMang\heap_4.c</name>
         </file>
         <file>
-            <name>$PROJ_DIR$\..\..\..\..\ThirdParty\FreeRTOS\Source\list.c</name>
+            <name>$PROJ_DIR$\..\..\..\..\ThirdParty\FreeRTOS\list.c</name>
         </file>
         <file>
-            <name>$PROJ_DIR$\..\..\..\..\ThirdParty\FreeRTOS\Source\portable\IAR\ARM_CM4F\portasm.s</name>
+            <name>$PROJ_DIR$\..\..\..\..\ThirdParty\FreeRTOS\queue.c</name>
         </file>
         <file>
-            <name>$PROJ_DIR$\..\..\..\..\ThirdParty\FreeRTOS\Source\queue.c</name>
+            <name>$PROJ_DIR$\..\..\..\..\ThirdParty\FreeRTOS\tasks.c</name>
         </file>
         <file>
-            <name>$PROJ_DIR$\..\..\..\..\ThirdParty\FreeRTOS\Source\tasks.c</name>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\..\..\..\..\ThirdParty\FreeRTOS\Source\timers.c</name>
+            <name>$PROJ_DIR$\..\..\..\..\ThirdParty\FreeRTOS\timers.c</name>
         </file>
     </group>
     <group>

@@ -187,6 +187,52 @@ void UART_EnableInt(UART_T*  uart, uint32_t u32InterruptFlag)
 
 
 /**
+ *    @brief        Get UART clock source selection and clock divider number
+ *
+ *    @param[in]    uart            The pointer of the specified UART module.
+ *    @param[out]   pu32ClkSrcSel   Pointer to store the clock source selection value.
+ *    @param[out]   pu32ClkDivNum   Pointer to store the clock divider number value.
+ *
+ *    @return       0   Success
+ *    @return       -1  Invalid UART base address
+ */
+static int32_t UART_GetClkInfo(UART_T *uart, uint32_t *pu32ClkSrcSel, uint32_t *pu32ClkDivNum)
+{
+    switch((uint32_t)uart)
+    {
+        case UART0_BASE:
+        case UART0_BASE+NS_OFFSET:
+            *pu32ClkSrcSel = CLK_GetModuleClockSource(UART0_MODULE);
+            *pu32ClkDivNum = CLK_GetModuleClockDivider(UART0_MODULE);
+            break;
+        case UART1_BASE:
+        case UART1_BASE+NS_OFFSET:
+            *pu32ClkSrcSel = CLK_GetModuleClockSource(UART1_MODULE);
+            *pu32ClkDivNum = CLK_GetModuleClockDivider(UART1_MODULE);
+            break;
+        case UART2_BASE:
+        case UART2_BASE+NS_OFFSET:
+            *pu32ClkSrcSel = CLK_GetModuleClockSource(UART2_MODULE);
+            *pu32ClkDivNum = CLK_GetModuleClockDivider(UART2_MODULE);
+            break;
+        case UART3_BASE:
+        case UART3_BASE+NS_OFFSET:
+            *pu32ClkSrcSel = CLK_GetModuleClockSource(UART3_MODULE);
+            *pu32ClkDivNum = CLK_GetModuleClockDivider(UART3_MODULE);
+            break;
+        case UART4_BASE:
+        case UART4_BASE+NS_OFFSET:
+            *pu32ClkSrcSel = CLK_GetModuleClockSource(UART4_MODULE);
+            *pu32ClkDivNum = CLK_GetModuleClockDivider(UART4_MODULE);
+            break;
+        default:
+            return -1;
+    }
+    return 0;
+}
+
+
+/**
  *    @brief        Open and set UART function
  *
  *    @param[in]    uart            The pointer of the specified UART module.
@@ -203,36 +249,8 @@ void UART_Open(UART_T* uart, uint32_t u32baudrate)
     uint32_t u32BaudDiv = 0ul;
 
     /* Get UART clock source selection and UART clock divider number */
-    switch((uint32_t)uart)
-    {
-        case UART0_BASE:
-        case UART0_BASE+NS_OFFSET:
-            u32UartClkSrcSel = CLK_GetModuleClockSource(UART0_MODULE);
-            u32UartClkDivNum = CLK_GetModuleClockDivider(UART0_MODULE);
-            break;
-        case UART1_BASE:
-        case UART1_BASE+NS_OFFSET:
-            u32UartClkSrcSel = CLK_GetModuleClockSource(UART1_MODULE);
-            u32UartClkDivNum = CLK_GetModuleClockDivider(UART1_MODULE);
-            break;
-        case UART2_BASE:
-        case UART2_BASE+NS_OFFSET:
-            u32UartClkSrcSel = CLK_GetModuleClockSource(UART2_MODULE);
-            u32UartClkDivNum = CLK_GetModuleClockDivider(UART2_MODULE);
-            break;
-        case UART3_BASE:
-        case UART3_BASE+NS_OFFSET:
-            u32UartClkSrcSel = CLK_GetModuleClockSource(UART3_MODULE);
-            u32UartClkDivNum = CLK_GetModuleClockDivider(UART3_MODULE);
-            break;
-        case UART4_BASE:
-        case UART4_BASE+NS_OFFSET:
-            u32UartClkSrcSel = CLK_GetModuleClockSource(UART4_MODULE);
-            u32UartClkDivNum = CLK_GetModuleClockDivider(UART4_MODULE);
-            break;
-        default:
-            return;
-    }
+    if(UART_GetClkInfo(uart, &u32UartClkSrcSel, &u32UartClkDivNum) != 0)
+        return;
 
     /* Select UART function */
     uart->FUNCSEL = UART_FUNCSEL_UART;
@@ -346,36 +364,8 @@ void UART_SetLineConfig(UART_T* uart, uint32_t u32baudrate, uint32_t u32data_wid
     uint32_t u32BaudDiv = 0ul;
 
     /* Get UART clock source selection and UART clock divider number */
-    switch((uint32_t)uart)
-    {
-        case UART0_BASE:
-        case UART0_BASE+NS_OFFSET:
-            u32UartClkSrcSel = CLK_GetModuleClockSource(UART0_MODULE);
-            u32UartClkDivNum = CLK_GetModuleClockDivider(UART0_MODULE);
-            break;
-        case UART1_BASE:
-        case UART1_BASE+NS_OFFSET:
-            u32UartClkSrcSel = CLK_GetModuleClockSource(UART1_MODULE);
-            u32UartClkDivNum = CLK_GetModuleClockDivider(UART1_MODULE);
-            break;
-        case UART2_BASE:
-        case UART2_BASE+NS_OFFSET:
-            u32UartClkSrcSel = CLK_GetModuleClockSource(UART2_MODULE);
-            u32UartClkDivNum = CLK_GetModuleClockDivider(UART2_MODULE);
-            break;
-        case UART3_BASE:
-        case UART3_BASE+NS_OFFSET:
-            u32UartClkSrcSel = CLK_GetModuleClockSource(UART3_MODULE);
-            u32UartClkDivNum = CLK_GetModuleClockDivider(UART3_MODULE);
-            break;
-        case UART4_BASE:
-        case UART4_BASE+NS_OFFSET:
-            u32UartClkSrcSel = CLK_GetModuleClockSource(UART4_MODULE);
-            u32UartClkDivNum = CLK_GetModuleClockDivider(UART4_MODULE);
-            break;
-        default:
-            return;
-    }
+    if(UART_GetClkInfo(uart, &u32UartClkSrcSel, &u32UartClkDivNum) != 0)
+        return;
 
     /* Get PLL/2 clock frequency if UART clock source selection is PLL/2 */
     if(u32UartClkSrcSel == 1ul)
@@ -446,36 +436,8 @@ void UART_SelectIrDAMode(UART_T* uart, uint32_t u32Buadrate, uint32_t u32Directi
     uart->FUNCSEL = UART_FUNCSEL_IrDA;
 
     /* Get UART clock source selection and UART clock divider number */
-    switch((uint32_t)uart)
-    {
-        case UART0_BASE:
-        case UART0_BASE+NS_OFFSET:
-            u32UartClkSrcSel = CLK_GetModuleClockSource(UART0_MODULE);
-            u32UartClkDivNum = CLK_GetModuleClockDivider(UART0_MODULE);
-            break;
-        case UART1_BASE:
-        case UART1_BASE+NS_OFFSET:
-            u32UartClkSrcSel = CLK_GetModuleClockSource(UART1_MODULE);
-            u32UartClkDivNum = CLK_GetModuleClockDivider(UART1_MODULE);
-            break;
-        case UART2_BASE:
-        case UART2_BASE+NS_OFFSET:
-            u32UartClkSrcSel = CLK_GetModuleClockSource(UART2_MODULE);
-            u32UartClkDivNum = CLK_GetModuleClockDivider(UART2_MODULE);
-            break;
-        case UART3_BASE:
-        case UART3_BASE+NS_OFFSET:
-            u32UartClkSrcSel = CLK_GetModuleClockSource(UART3_MODULE);
-            u32UartClkDivNum = CLK_GetModuleClockDivider(UART3_MODULE);
-            break;
-        case UART4_BASE:
-        case UART4_BASE+NS_OFFSET:
-            u32UartClkSrcSel = CLK_GetModuleClockSource(UART4_MODULE);
-            u32UartClkDivNum = CLK_GetModuleClockDivider(UART4_MODULE);
-            break;
-        default:
-            return;
-    }
+    if(UART_GetClkInfo(uart, &u32UartClkSrcSel, &u32UartClkDivNum) != 0)
+        return;
 
     /* Get PLL/2 clock frequency if UART clock source selection is PLL/2 */
     if(u32UartClkSrcSel == 1ul)

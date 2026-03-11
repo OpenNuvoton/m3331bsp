@@ -39,6 +39,9 @@ set(CMAKE_SYSTEM_NAME Generic)
 set(CMAKE_SYSTEM_VERSION "5")
 set(CMAKE_SYSTEM_PROCESSOR ARM)
 
+# Optimization level: -O0 (none), -O1, -O2, -O3, -Os (size), -Oz (clang size)
+set(OPTIMIZATION_LEVEL "-O2" CACHE STRING "Compiler optimization level")
+
 if(C_COMPILER_ID STREQUAL ARMCLANG)
 
     find_program(ARM_CC NAMES armclang REQUIRED)
@@ -60,10 +63,11 @@ if(C_COMPILER_ID STREQUAL ARMCLANG)
 
     set(LINK_MCU_CORE "Cortex-M33")
 
-    set(C_FLAGS "--target=arm-arm-none-eabi -mcpu=cortex-m33 -mfloat-abi=hard -c -fno-rtti -funsigned-char -fshort-enums -fshort-wchar -D__MICROLIB -gdwarf-3 -O2 -fno-function-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -D__MICROLIB -DMBEDTLS_CONFIG_FILE=mbedtls_config.h -Ic:/Keil_v5/ARM/ARMCLANG/include")
+    set(C_FLAGS "--target=arm-arm-none-eabi -mcpu=cortex-m33 -mfloat-abi=hard -c -fno-rtti -funsigned-char -fshort-enums -fshort-wchar -D__MICROLIB -gdwarf-3 ${OPTIMIZATION_LEVEL} -flto -fno-function-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wconditional-uninitialized -Wunused-variable -D__MICROLIB -DMBEDTLS_CONFIG_FILE=mbedtls_config.h -Ic:/Keil_v5/ARM/ARMCLANG/include")
     set(CMAKE_C_FLAGS "-xc -std=c99  ${C_FLAGS}")
     set(CMAKE_CXX_FLAGS ${C_FLAGS})
     set(CMAKE_ASM_FLAGS "--target=arm-arm-none-eabi -mcpu=cortex-m33")
+    set(CMAKE_EXE_LINKER_FLAGS "--lto")
     set(CMAKE_EXECUTABLE_SUFFIX ".axf")
 endif()
 
@@ -76,11 +80,15 @@ if(C_COMPILER_ID STREQUAL GCC)
     find_program(ARM_CC NAMES arm-none-eabi-gcc REQUIRED)
     find_program(ARM_CXX NAMES arm-none-eabi-gcc REQUIRED)
     find_program(ARM_OBJCOPY NAMES arm-none-eabi-objcopy REQUIRED)
-
-
+    find_program(ARM_GCC_AR NAMES arm-none-eabi-gcc-ar REQUIRED)
+    find_program(ARM_GCC_RANLIB NAMES arm-none-eabi-gcc-ranlib REQUIRED)
 
     set(CMAKE_C_COMPILER ${ARM_CC} CACHE STRING "")
     set(CMAKE_CXX_COMPILER ${ARM_CXX} CACHE STRING "")
+    set(CMAKE_AR ${ARM_GCC_AR} CACHE FILEPATH "")
+    set(CMAKE_C_COMPILER_AR ${ARM_GCC_AR} CACHE FILEPATH "")
+    set(CMAKE_RANLIB ${ARM_GCC_RANLIB} CACHE FILEPATH "")
+    set(CMAKE_C_COMPILER_RANLIB ${ARM_GCC_RANLIB} CACHE FILEPATH "")
 
     set(CMAKE_FIND_ROOT_PATH_MODE_PROGRAM NEVER)
     set(CMAKE_FIND_ROOT_PATH_MODE_LIBRARY ONLY)
@@ -92,10 +100,10 @@ if(C_COMPILER_ID STREQUAL GCC)
     set(STACK_SIZE 0x4000)
     set(HEAP_SIZE 0x20000)
 
-    set(C_FLAGS "-mcpu=cortex-m33 --specs=nano.specs --specs=nosys.specs -Wall -Wno-format -Wno-return-type -Wno-unused-function -fdata-sections -ffunction-sections -fno-builtin -fshort-enums -funsigned-char -mthumb -std=gnu11 -DMBEDTLS_CONFIG_FILE=mbedtls_config.h")
+    set(C_FLAGS "-mcpu=cortex-m33 -mfloat-abi=hard -mfpu=fpv5-sp-d16 --specs=nano.specs --specs=nosys.specs -Wall -Wno-format -Wno-return-type -Wno-unused-function -Wmaybe-uninitialized -Wunused-variable -fdata-sections -ffunction-sections -fno-builtin -fshort-enums -funsigned-char -mthumb -std=gnu11 ${OPTIMIZATION_LEVEL} -flto=auto -DMBEDTLS_CONFIG_FILE=mbedtls_config.h")
     set(CMAKE_C_FLAGS ${C_FLAGS})
     set(CMAKE_CXX_FLAGS ${C_FLAGS})
-    set(CMAKE_ASM_FLAGS "-mcpu=cortex-m33")
+    set(CMAKE_ASM_FLAGS "-mcpu=cortex-m33 -mfloat-abi=hard -mfpu=fpv5-sp-d16")
 endif()
 
 project(m3331bsp)
@@ -112,6 +120,7 @@ function(create_project PRJ)
             PUBLIC
             --cpu=Cortex-M33
             --library_type=microlib
+            --lto
             --scatter ${BSP_DIR}/Library/Device/Nuvoton/m3331/Config/m3331_ac6.sct
             --entry Reset_Handler
             --map
@@ -140,6 +149,7 @@ function(create_project PRJ)
             --gc-sections
             -Wl,-Map=${PRJ}.map
             -gdwarf-3
+            -flto=auto
         )
 
         add_custom_command(TARGET ${PRJ} POST_BUILD
@@ -159,6 +169,7 @@ function(create_project_no_startup PRJ)
             PUBLIC
             --cpu=Cortex-M33
             --library_type=microlib
+            --lto
             --scatter ${BSP_DIR}/Library/Device/Nuvoton/m3331/Config/m3331_ac6.sct
             --entry Reset_Handler
             --strict
@@ -189,6 +200,7 @@ function(create_project_no_startup PRJ)
             --gc-sections
             -Wl,-Map=${PRJ}.map
             -gdwarf-3
+            -flto=auto
         )
 
         add_custom_command(TARGET ${PRJ} POST_BUILD
@@ -214,11 +226,12 @@ include_directories(${BSP_DIR}/ThirdParty/LibMAD/inc)
 # Build library
 add_subdirectory(${BSP_DIR}/Library/StdDriver/src)
 add_subdirectory(${BSP_DIR}/Library/NuMaker/xmodem)
+add_subdirectory(${BSP_DIR}/Library/UsbHostLib)
 add_subdirectory(${BSP_DIR}/ThirdParty/FatFs/source)
 add_subdirectory(${BSP_DIR}/ThirdParty/LibMAD)
 
 # Build sample code
-add_subdirectory(${BSP_DIR}/SampleCode/NuMaker-M3334KI)
+add_subdirectory(${BSP_DIR}/SampleCode/NuMaker-M3334KIv2)
 add_subdirectory(${BSP_DIR}/SampleCode/StdDriver)
 add_subdirectory(${BSP_DIR}/SampleCode/ISP)
 add_subdirectory(${BSP_DIR}/SampleCode/PowerManagement)
