@@ -177,7 +177,7 @@ void MP3Player(void)
     pcmbuf_idx = 0;
     memset((void *)&audioInfo, 0, sizeof(audioInfo));
     memset((void *)MadInputBuffer, 0, sizeof(MadInputBuffer));
-    memset((void *)aPCMBuffer, 1, sizeof(aPCMBuffer));
+    memset((void *)aPCMBuffer, 0, sizeof(aPCMBuffer));
 
     /* Mark buffer 0, 1 to be available */
     g_u8PCMBuf0Empty = 1;
