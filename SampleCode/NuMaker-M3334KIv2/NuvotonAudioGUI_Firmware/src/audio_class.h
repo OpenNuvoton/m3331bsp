@@ -22,8 +22,10 @@ extern "C"
 /* Macro define                                                                                            */
 /*---------------------------------------------------------------------------------------------------------*/
 /* Define the vendor id and product id */
-#define USBD_VID                            0x0416     
-#define USBD_PID                            0x200F /* For MCU/NuMaker connecting to NuVotonAudioGUI */
+#define USBD_VID                            0x0416
+//#define USBD_PID                            0x200F /* For MCU/NuMaker connecting to NuVotonAudioGUI */
+#define USBD_PID                            0x120B /* Use existed ID for NuVotonAudioGUI tool.
+                                                      It may change to 0x200F when new NuVotonAudioGUI tool is released  */
 
 /*!<Define Audio Class Current State */
 #define UAC_STOP_AUDIO_RECORD               0
@@ -53,12 +55,12 @@ extern "C"
 #define UAC_GET_STAT                        0xFF
 
 /* Define Endpoint maximum packet size */
-#define CEP_MAX_PKT_SIZE                    64     
+#define CEP_MAX_PKT_SIZE                    64
 #define EPC_MAX_PKT_SIZE                    ((REC_RATE_96K * REC_CHANNELS * 2 / 1000) + 50)
 #define EPD_MAX_PKT_SIZE                    ((PLAY_RATE_96K * PLAY_CHANNELS * 2 / 1000) + 50)
-#define EPE_MAX_PKT_SIZE                    4  
-#define EPF_MAX_PKT_SIZE                    16  
-#define EPG_MAX_PKT_SIZE                    64 
+#define EPE_MAX_PKT_SIZE                    4
+#define EPF_MAX_PKT_SIZE                    16
+#define EPG_MAX_PKT_SIZE                    64
 #define EPH_MAX_PKT_SIZE                    64
 
 #define SETUP_BUF_BASE                      0
@@ -186,11 +188,11 @@ typedef __PACKED_UNION
 	__PACKED_STRUCT
 	{
 		uint8_t Recipient : 5;
-		uint8_t Type      : 2;    
-		uint8_t Dir       : 1;		
+		uint8_t Type      : 2;
+		uint8_t Dir       : 1;
 	} BM;
-	
-	uint8_t B;	
+
+	uint8_t B;
 } REQUEST_TYPE;
 
 typedef __PACKED_UNION

@@ -10,7 +10,7 @@
 /*!<Includes */
 #include <stdio.h>
 #include <string.h>
-#include "stdint.h" 
+#include "stdint.h"
 #include "NuMicro.h"
 #include "../src/user_config.h"
 #include "../src/audio_class.h"
@@ -29,7 +29,7 @@ volatile uint8_t g_u8ResetFlag = 0;
   * @param[in]  us              Delay time, unit is us
   *
   * @return     None
-  * 
+  *
   * @details    This function is used to delay some time.
   */
 void NuvotonDelayUs(uint32_t us)

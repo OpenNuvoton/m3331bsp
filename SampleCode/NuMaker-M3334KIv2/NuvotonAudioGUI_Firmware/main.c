@@ -21,7 +21,7 @@
 /* Global Variables                                                                                        */
 /*---------------------------------------------------------------------------------------------------------*/
 // FirmWare Version
-__attribute__((section(".ARM.__at_0x00001000"))) const uint32_t g_u32PID = 0x07020100;
+__attribute__((section(".ARM.__at_0x00001000"))) const uint32_t g_u32PID = 0x08020100;
 
 // Extern USB Variable Declaration
 extern volatile uint32_t g_au32USBPlayRingBuff[];

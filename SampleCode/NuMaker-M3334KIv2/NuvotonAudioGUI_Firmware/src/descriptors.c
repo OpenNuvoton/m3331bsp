@@ -57,9 +57,9 @@ uint8_t gu8ConfigDescriptor[] = {
     LEN_CONFIG,                     /* bLength */
     DESC_CONFIG,                    /* bDescriptorType */
 #if (REC_CHANNELS == 1)
-    WBVAL((261)),                   /* wTotalLength */  
+    WBVAL((261)),                   /* wTotalLength */
 #elif (REC_CHANNELS == 2)
-    WBVAL((226)),                   /* wTotalLength */  
+    WBVAL((226)),                   /* wTotalLength */
 #elif (REC_CHANNELS == 4)
     WBVAL((246)),                   /* wTotalLength */
 #endif
@@ -141,7 +141,7 @@ uint8_t gu8ConfigDescriptor[] = {
     REC_CH_CFG, 0x00,               /* wChannelConfig*/
     0x00,                           /* iChannelNames*/
     0x00,                           /* iTerminal*/
-        
+
     /* Feature Unit */
 #if (REC_CHANNELS == 1)
     0x09,                           /* bLength */
@@ -157,7 +157,7 @@ uint8_t gu8ConfigDescriptor[] = {
     0x01,                           /* bControlSize */
 #if (REC_CHANNELS == 1)
     0x03,                           /* bmaControls(0) */
-    0x00,                           /* bmaControls(1) */ 
+    0x00,                           /* bmaControls(1) */
 #elif (REC_CHANNELS == 2)
     0x01,                           /* bmaControls(0) */
     0x02,                           /* bmaControls(1) */
@@ -196,7 +196,7 @@ uint8_t gu8ConfigDescriptor[] = {
     LEN_INTERFACE,                  /* bLength */
     DESC_INTERFACE,                 /* bDescriptorType */
     0x01,                           /* bInterfaceNumber */
-    0x01,                           /* bAlternateSetting */    
+    0x01,                           /* bAlternateSetting */
     0x01,                           /* bNumEndpoints */
     USB_DEVICE_CLASS_AUDIO,         /* bInterfaceClass:AUDIO */
     AUDIO_SUBCLASS_AUDIOSTREAMING,  /* bInterfaceSubClass:AUDIOSTREAMING */
@@ -226,7 +226,7 @@ uint8_t gu8ConfigDescriptor[] = {
     0x09,                           /* bLength */
     0x05,                           /* bDescriptorType */
     (EPD | EP_OUTPUT),              /* bEndpointAddress */
-    0x09,                           /* bmAttributes */ 
+    0x09,                           /* bmAttributes */
     WBVAL(EPD_MAX_PKT_SIZE),        /* wMaxPacketSize */
     0x01,                           /* bInterval */
     0x00,                           /* bRefresh */
@@ -279,9 +279,9 @@ uint8_t gu8ConfigDescriptor[] = {
     0x02,                           /* bDescriptorSubType:FORMAT_TYPE */
     0x01,                           /* bFormatType:FORMAT_TYPE_I */
 #if (REC_CHANNELS == 1)
-    0x01,                           /* bNrChannels */   
+    0x01,                           /* bNrChannels */
 #elif (REC_CHANNELS == 2)
-    0x02,                           /* bNrChannels */ 
+    0x02,                           /* bNrChannels */
 #elif (REC_CHANNELS == 4)
     0x04,                           /* bNrChannels */
 #endif

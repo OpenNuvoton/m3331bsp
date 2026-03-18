@@ -6,7 +6,7 @@
  * @copyright SPDX-License-Identifier: Apache-2.0
  * @copyright Copyright (c) 2024 Nuvoton Technology Corp. All rights reserved.
  ******************************************************************************/
- 
+
 #ifndef __USER_CONFIG_H__
 #define __USER_CONFIG_H__
 
@@ -74,9 +74,9 @@ typedef uint8_t BOOL;
 typedef enum
 {
 	Empty_Function = 0,
-    
+
     Firmware_Version,
-    
+
 	Reset_Function,
 	Apply_Function,
 
@@ -117,22 +117,22 @@ typedef enum
 	I2C_Address,
 
 	InputClock_Crystal,
-    
+
     USBDin_WordSize,
     USBDout_WordSize,
-    
+
     I2S0_MCLK,
     I2S1_MCLK,
-    
+
 	Default_BongioviConfig,
     Default_BoardNum,
-    
+
     USB_DeviceVID,
     USB_DevicePID,
     USB_Manufacture,
     USB_Product,
     USB_SerialNumber,
-    
+
 	SystemConfig_Max = 127
 } eUserConfig;
 
@@ -195,7 +195,7 @@ typedef enum
     In_Mux_None,
     In_Mux_I2S0,
     In_Mux_I2S1,
-    In_Mux_USB  
+    In_Mux_USB
 } eInputMux;
 
 typedef enum
@@ -251,58 +251,58 @@ typedef __PACKED_STRUCT
 {
     uint8_t u8Flag;
     uint8_t u8Empty_Function;
-    
+
     uint8_t u8Firmware_Version;
-    
+
     uint8_t u8Reset_Function;
     uint8_t u8Apply_Function;
-    
+
     uint8_t u8USBDin_Function;
     uint8_t u8USBDout_Function;
-    
+
     uint8_t u8I2S0DInOut_OnOff;
     uint8_t u8I2S1DInOut_OnOff;
-    
+
     uint8_t u8I2SDSync_DataType;
     uint8_t u8I2SDSync_SerialMode;
-    
+
     uint8_t u8I2S0DInOut_Format;
     uint8_t u8I2S0DInOut_WordSize;
     uint8_t u8I2S0DInOut_FrameSize;
- 
+
     uint8_t u8I2S1DInOut_Format;
     uint8_t u8I2S1DInOut_WordSize;
     uint8_t u8I2S1DInOut_FrameSize;
-    
+
     uint8_t u8InputMultiplexer_DSP;
     uint8_t u8InputMultiplexer_Bypass;
     uint8_t u8OutputMultiplexer_USB;
     uint8_t u8OutputMultiplexer_I2S0;
     uint8_t u8OutputMultiplexer_I2S1;
-    
+
     uint16_t u16InputGain_DSP;
     uint16_t u16InputGain_Bypass;
     uint16_t u16OutputGain_USB;
     uint16_t u16OutputGain_I2S0;
     uint16_t u16OutputGain_I2S1;
-    
+
     uint8_t u8SampleRate;
     uint8_t u8I2SChannelNum;
-    
+
     uint8_t u8I2C_ClockRate;
     uint8_t u8I2C_Address;
-    
+
     uint8_t u8InputClock_Crystal;
-    
+
     uint8_t u8USBDin_WordSize;
     uint8_t u8USBDout_WordSize;
-    
+
     uint8_t u8I2S0_MCLK;
     uint8_t u8I2S1_MCLK;
-    
+
     uint8_t u8Default_BongioviConfig;
     uint8_t u8Default_BoardNum;
-    
+
     uint8_t u8Reserved[93];
 } UserConfig_T;
 
