@@ -255,7 +255,9 @@ int main(void)
     /* Init UART to 115200-8n1 for print message */
     UART_Open(UART0, 115200);
 
-
+    /* Init PF11 for LED control */
+    LED_OFF;
+    GPIO_SetMode(PF, BIT11, GPIO_MODE_OUTPUT);
 
     printf("+-----------------------------------------------------------------------+\n");
     printf("|                   MP3 Player Sample with audio codec                  |\n");

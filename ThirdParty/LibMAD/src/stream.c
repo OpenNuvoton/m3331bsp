@@ -36,8 +36,14 @@
  * NAME:	stream->init()
  * DESCRIPTION:	initialize stream struct
  */
+
+#include "stream.h"
+static unsigned char static_main_data[MAD_BUFFER_MDLEN] = {0};
+
 void mad_stream_init(struct mad_stream *stream)
 {
+  int i;
+
   stream->buffer     = 0;
   stream->bufend     = 0;
   stream->skiplen    = 0;
@@ -52,7 +58,11 @@ void mad_stream_init(struct mad_stream *stream)
   mad_bit_init(&stream->anc_ptr, 0);
   stream->anc_bitlen = 0;
 
-  stream->main_data  = 0;
+  /* clean static_main_data*/
+  for (i = 0; i < MAD_BUFFER_MDLEN; i++)
+    static_main_data[i] = 0;
+
+  stream->main_data  = &static_main_data;
   stream->md_len     = 0;
 
   stream->options    = 0;
@@ -65,11 +75,7 @@ void mad_stream_init(struct mad_stream *stream)
  */
 void mad_stream_finish(struct mad_stream *stream)
 {
-  if (stream->main_data) {
-    free(stream->main_data);
-    stream->main_data = 0;
-  }
-
+  // No need to free static buffer
   mad_bit_finish(&stream->anc_ptr);
   mad_bit_finish(&stream->ptr);
 }

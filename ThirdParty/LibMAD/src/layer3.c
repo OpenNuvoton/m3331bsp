@@ -1645,7 +1645,7 @@ void fastsdct(mad_fixed_t const x[9], mad_fixed_t y[18])
   y[16] = a22 + m7;
 }
 
-static 
+static
 #ifndef __WINS__
 inline
 #endif
@@ -1693,7 +1693,7 @@ void sdctII(mad_fixed_t const x[18], mad_fixed_t X[18])
   }
 }
 
-static 
+static
 #ifndef __WINS__
 inline
 #endif
@@ -1740,7 +1740,7 @@ void dctIV(mad_fixed_t const y[18], mad_fixed_t X[18])
  * NAME:	imdct36
  * DESCRIPTION:	perform X[18]->x[36] IMDCT using Szu-Wei Lee's fast algorithm
  */
-static 
+static
 #ifndef __WINS__
 inline
 #endif
@@ -1776,7 +1776,7 @@ void imdct36(mad_fixed_t const x[18], mad_fixed_t y[36])
  * NAME:	imdct36
  * DESCRIPTION:	perform X[18]->x[36] IMDCT
  */
-static 
+static
 #ifndef __WINS__
 inline
 #endif
@@ -2289,7 +2289,7 @@ void III_overlap(mad_fixed_t const output[36], mad_fixed_t overlap[18],
  * NAME:	III_overlap_z()
  * DESCRIPTION:	perform "overlap-add" of zero IMDCT outputs
  */
-static 
+static
 #ifndef __WINS__
 inline
 #endif
@@ -2544,23 +2544,6 @@ int mad_layer_III(struct mad_stream *stream, struct mad_frame *frame)
   struct sideinfo si;
   enum mad_error error;
   int result = 0;
-
-  /* allocate Layer III dynamic structures */
-  if (stream->main_data == 0) {
-    stream->main_data = malloc(MAD_BUFFER_MDLEN);
-    if (stream->main_data == 0) {
-      stream->error = MAD_ERROR_NOMEM;
-      return -1;
-    }
-  }
-
-  if (frame->overlap == 0) {
-    frame->overlap = calloc(2 * 32 * 18, sizeof(mad_fixed_t));
-    if (frame->overlap == 0) {
-      stream->error = MAD_ERROR_NOMEM;
-      return -1;
-    }
-  }
 
   nch = MAD_NCHANNELS(header);
   si_len = (header->flags & MAD_FLAG_LSF_EXT) ?

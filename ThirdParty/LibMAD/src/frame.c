@@ -63,6 +63,8 @@ int (*const decoder_table[3])(struct mad_stream *, struct mad_frame *) = {
   mad_layer_III
 };
 
+static mad_fixed_t s_u32OverlapBuf[2][32][18];
+
 /*
  * NAME:	header->init()
  * DESCRIPTION:	initialize header struct
@@ -92,11 +94,22 @@ void mad_header_init(struct mad_header *header)
  */
 void mad_frame_init(struct mad_frame *frame)
 {
+  int i, j, k;
+
   mad_header_init(&frame->header);
 
   frame->options = 0;
 
-  frame->overlap = 0;
+  /* clean s_u32OverlapBuf by loop */
+  for (i = 0; i < 2; i++) {
+    for (j = 0; j < 32; j++) {
+      for (k = 0; k < 18; k++) {
+        s_u32OverlapBuf[i][j][k] = 0;
+      }
+    }
+  }
+
+  frame->overlap = &s_u32OverlapBuf;
   mad_frame_mute(frame);
 }
 

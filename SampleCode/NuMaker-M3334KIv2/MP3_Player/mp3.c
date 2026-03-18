@@ -121,7 +121,7 @@ void StartPlay(void)
 
     // enable sound output
     audioInfo.mp3Playing = 1;
-    PD11 = 0;
+
 }
 
 // Disable I2S TX with PDMA function
@@ -177,7 +177,7 @@ void MP3Player(void)
     pcmbuf_idx = 0;
     memset((void *)&audioInfo, 0, sizeof(audioInfo));
     memset((void *)MadInputBuffer, 0, sizeof(MadInputBuffer));
-    memset((void *)aPCMBuffer, 0, sizeof(aPCMBuffer));
+    memset((void *)aPCMBuffer, 1, sizeof(aPCMBuffer));
 
     /* Mark buffer 0, 1 to be available */
     g_u8PCMBuf0Empty = 1;
@@ -209,9 +209,9 @@ void MP3Player(void)
     NVIC_EnableIRQ(I2S0_IRQn);
 
     /* Headphone output enable */
-    PD11 = 1;
     SYS->GPD_MFP2 &= ~(SYS_GPD_MFP2_PD11MFP_Msk);
     GPIO_SetMode(PD, BIT11, GPIO_MODE_OUTPUT);
+    LED_ON;
 
     /* Set MCLK and enable MCLK */
     I2S_EnableMCLK(I2S0, 12000000);
