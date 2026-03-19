@@ -46,7 +46,7 @@ Purpose     : Display controller configuration (single layer)
 #include <stdio.h>
 
 #include "GUI.h"
-#include "GUIDRV_NULL.h"
+#include "GUIDRV_Null.h"
 
 
 /*********************************************************************
