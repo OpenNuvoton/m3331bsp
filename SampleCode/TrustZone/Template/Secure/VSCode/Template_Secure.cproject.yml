@@ -22,6 +22,7 @@ project:
         - for-compiler: AC6
           C:
             - -std=c99
+            - -mcmse
           C-CPP:
             - -fno-rtti
             - -funsigned-char
@@ -46,7 +47,7 @@ project:
             - --info summarysizes
             - --import-cmse-lib-out "../lib/nsclib_Secure_vscode.o"
         - for-compiler: GCC
-          C: [-std=gnu11, --specs=nano.specs, -Wno-return-type, -Wno-unused-but-set-variable, -fdata-sections, -ffunction-sections, -fno-builtin, -fshort-enums, -funsigned-char, -mthumb, -Wno-main, -gdwarf-4]
+          C: [-std=gnu11, --specs=nano.specs, -Wno-return-type, -Wno-unused-but-set-variable, -fdata-sections, -ffunction-sections, -fno-builtin, -fshort-enums, -funsigned-char, -mthumb, -Wno-main, -gdwarf-4, -mcmse]
           Link:
             - -Xlinker
             - --gc-sections

@@ -1,3 +1,4 @@
+#! arm-none-eabi-gcc -E -P -x c -mcpu=cortex-m33 -mcmse
 /******************************************************************************
  * @file     Device_gcc.ld
  * @brief    GNU Linker Script for Cortex-M based device
@@ -60,7 +61,11 @@ __HEAP_SIZE  = 0x00000C00;
 /* ARMv8-M stack sealing:
    to use ARMv8-M stack sealing set __STACKSEAL_SIZE to 8 otherwise keep 0
  */
+#if defined(__ARM_FEATURE_CMSE) && (__ARM_FEATURE_CMSE == 3)
+__STACKSEAL_SIZE = 8;
+#else
 __STACKSEAL_SIZE = 0;
+#endif
 
 
 MEMORY

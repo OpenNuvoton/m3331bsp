@@ -31,13 +31,30 @@
  *---------------------------------------------------------------------------*/
 extern uint32_t __INITIAL_SP;
 extern uint32_t __STACK_LIMIT;
+
 #if defined (__ARM_FEATURE_CMSE) && (__ARM_FEATURE_CMSE == 3U)
+
+# if defined(__ARMCC_VERSION) && (__ARMCC_VERSION >= 6010050)
+// armclang (ARM Compiler 6)
 #ifdef __STACK_SEAL
 # undef __STACK_SEAL
 # define __STACK_SEAL              Image$$STACKSEAL$$Base
 #endif
+
+# elif defined(__GNUC__)
+// GNU C (GCC)
+// armclang (ARM Compiler 6)
+#  ifdef __STACK_SEAL
+#   undef __STACK_SEAL
+#   define __STACK_SEAL              __StackSeal
+#  endif
+# else
+// Other compiler
+# endif
+
 extern uint64_t __STACK_SEAL;
 #endif
+
 
 extern __NO_RETURN void __PROGRAM_START(void);
 
@@ -350,7 +367,7 @@ __NO_RETURN void Reset_Handler(void)
   __set_MSPLIM((uint32_t)(&__STACK_LIMIT));
   __set_PSPLIM((uint32_t)(&__STACK_LIMIT));
 
-#if defined(__ARM_FEATURE_CMSE) && (__ARM_FEATURE_CMSE == 3U)
+#if defined(__ARM_FEATURE_CMSE) && (__ARM_FEATURE_CMSE == 3U) && defined(__GNUCC__)
   __TZ_set_STACKSEAL_S((uint32_t *)(&__STACK_SEAL));
 #endif
 
