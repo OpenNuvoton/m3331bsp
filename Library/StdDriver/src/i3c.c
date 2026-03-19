@@ -1551,7 +1551,7 @@ int32_t I3C_TgtSend(I3C_DEVICE_T *dev)
 int32_t I3C_TgtGetSendResult(I3C_DEVICE_T *dev)
 {
     volatile uint32_t i, u32CMDDoneBitMsk;
-    uint32_t CmdRegVal[3], err_sts, dat_len, dev_sts;
+    uint32_t CmdRegVal[3], err_sts, dat_len = 0, dev_sts;
     (void)dat_len;
 
     I3C_DrvMsg("\n");
