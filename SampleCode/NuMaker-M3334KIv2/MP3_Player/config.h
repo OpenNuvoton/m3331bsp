@@ -12,8 +12,8 @@
 #define NAU8822     1
 #define LED_ON          PF11 = 0
 #define LED_OFF         PF11 = 1
-#define HEADPHONE_ON    PD11 = 1
-#define HEADPHONE_OFF   PD11 = 0
+#define HEADPHONE_ON    PD11 = 0
+#define HEADPHONE_OFF   PD11 = 1
 
 /*---------------------------------------------------------------------------------------------------------*/
 /* Global variables                                                                                        */

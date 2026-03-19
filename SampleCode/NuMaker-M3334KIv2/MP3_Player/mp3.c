@@ -121,6 +121,7 @@ void StartPlay(void)
 
     // enable sound output
     audioInfo.mp3Playing = 1;
+    HEADPHONE_ON;
 
 }
 
@@ -209,7 +210,7 @@ void MP3Player(void)
     NVIC_EnableIRQ(I2S0_IRQn);
 
     /* Headphone output enable */
-    SYS->GPD_MFP2 &= ~(SYS_GPD_MFP2_PD11MFP_Msk);
+    SET_GPIO_PD11();
     GPIO_SetMode(PD, BIT11, GPIO_MODE_OUTPUT);
     LED_ON;
 
