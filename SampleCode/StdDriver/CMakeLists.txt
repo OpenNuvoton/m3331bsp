@@ -76,7 +76,7 @@ create_project(SYS_PLLClockOutput ${CMAKE_CURRENT_LIST_DIR}/SYS_PLLClockOutput/m
 
 create_project(SYS_TrimHIRC ${CMAKE_CURRENT_LIST_DIR}/SYS_TrimHIRC/main.c)
 create_project(UART_AutoBaudRate ${CMAKE_CURRENT_LIST_DIR}/UART_AutoBaudRate/main.c)
-create_project(UART_Autoflow ${CMAKE_CURRENT_LIST_DIR}/UART_Autoflow/main.c)
+create_project(UART_AutoFlow ${CMAKE_CURRENT_LIST_DIR}/UART_AutoFlow/main.c)
 create_project(UART_IrDA ${CMAKE_CURRENT_LIST_DIR}/UART_IrDA/main.c)
 create_project(UART_LIN ${CMAKE_CURRENT_LIST_DIR}/UART_LIN/main.c)
 
