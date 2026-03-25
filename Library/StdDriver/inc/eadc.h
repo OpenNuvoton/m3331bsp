@@ -96,7 +96,7 @@ extern "C"
 /* EADC_MnCTL1 Constant Definitions                                                                        */
 /*---------------------------------------------------------------------------------------------------------*/
 #define EADC_MCTL1_ACU_1                    (0x0UL << EADC_MCTL1_ACU_Pos)   /*!< Accumulated 1 time \hideinitializer */
-#define EADC_MCTL1_ACU_2                    (0x1UL < <EADC_MCTL1_ACU_Pos)   /*!< Accumulated 2 times \hideinitializer */
+#define EADC_MCTL1_ACU_2                    (0x1UL << EADC_MCTL1_ACU_Pos)   /*!< Accumulated 2 times \hideinitializer */
 #define EADC_MCTL1_ACU_4                    (0x2UL << EADC_MCTL1_ACU_Pos)   /*!< Accumulated 4 times \hideinitializer */
 #define EADC_MCTL1_ACU_8                    (0x3UL << EADC_MCTL1_ACU_Pos)   /*!< Accumulated 8 times \hideinitializer */
 #define EADC_MCTL1_ACU_16                   (0x4UL << EADC_MCTL1_ACU_Pos)   /*!< Accumulated 16 times \hideinitializer */
