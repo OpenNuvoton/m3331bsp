@@ -212,6 +212,54 @@ endfunction()
 
 set(BSP_DIR ${CMAKE_CURRENT_LIST_DIR})
 
+set(BSP_THIRDPARTY_WARNING_LEVEL "LOW" CACHE STRING "Warning level for libraries sourced from the ThirdParty folder: DEFAULT, LOW, or OFF")
+set_property(CACHE BSP_THIRDPARTY_WARNING_LEVEL PROPERTY STRINGS DEFAULT LOW OFF)
+
+function(bsp_set_thirdparty_warnings TARGET_NAME)
+    if(NOT TARGET ${TARGET_NAME})
+        message(WARNING "Cannot set third-party warning level: target '${TARGET_NAME}' does not exist")
+        return()
+    endif()
+
+    string(TOUPPER "${BSP_THIRDPARTY_WARNING_LEVEL}" _warning_level)
+    if(_warning_level STREQUAL "DEFAULT")
+        return()
+    elseif(_warning_level STREQUAL "OFF")
+        set(_warning_options -w)
+    elseif(_warning_level STREQUAL "LOW")
+        if(C_COMPILER_ID STREQUAL GCC)
+            set(_warning_options
+                -Wno-format
+                -Wno-return-type
+                -Wno-unused-function
+                -Wno-unused-variable
+                -Wno-maybe-uninitialized
+                -Wno-stringop-overflow
+            )
+        elseif(C_COMPILER_ID STREQUAL ARMCLANG)
+            set(_warning_options
+                -Wno-format
+                -Wno-return-type
+                -Wno-unused-function
+                -Wno-unused-variable
+                -Wno-conditional-uninitialized
+            )
+        else()
+            set(_warning_options)
+        endif()
+    else()
+        message(FATAL_ERROR "Unsupported BSP_THIRDPARTY_WARNING_LEVEL='${BSP_THIRDPARTY_WARNING_LEVEL}'. Use DEFAULT, LOW, or OFF.")
+    endif()
+
+    if(_warning_options)
+        target_compile_options(${TARGET_NAME} PRIVATE ${_warning_options})
+
+        if(C_COMPILER_ID STREQUAL GCC)
+            target_link_options(${TARGET_NAME} INTERFACE ${_warning_options})
+        endif()
+    endif()
+endfunction()
+
 include_directories(${TOOLCHAIN_PATH}/include)
 include_directories(${BSP_DIR}/Library/CMSIS/Core/Include)
 include_directories(${BSP_DIR}/Library/Device/Nuvoton/m3331/Include)
@@ -229,6 +277,8 @@ add_subdirectory(${BSP_DIR}/Library/NuMaker/xmodem)
 add_subdirectory(${BSP_DIR}/Library/UsbHostLib)
 add_subdirectory(${BSP_DIR}/ThirdParty/FatFs/source)
 add_subdirectory(${BSP_DIR}/ThirdParty/LibMAD)
+bsp_set_thirdparty_warnings(fatfs_lib)
+bsp_set_thirdparty_warnings(libmad)
 
 # Build sample code
 add_subdirectory(${BSP_DIR}/SampleCode/NuMaker-M3334KIv2)

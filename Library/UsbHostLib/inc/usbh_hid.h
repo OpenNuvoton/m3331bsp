@@ -235,9 +235,6 @@ typedef struct report_info
     struct report_info  *next;
 } RP_INFO_T;
 
-static uint8_t  _designator_index, _designator_min, _designator_max;
-static uint8_t  _string_index, _string_max, _string_min;
-
 typedef struct rp_desc_info
 {
     uint8_t     has_report_id;          /* If a Report ID tag is used anywhere in Report descriptor, all data reports for the device are preceded by a single byte ID field. */

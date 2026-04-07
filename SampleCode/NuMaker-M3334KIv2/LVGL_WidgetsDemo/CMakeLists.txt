@@ -356,3 +356,5 @@ target_include_directories(LVGL_WidgetsDemo PRIVATE
 target_compile_options(LVGL_WidgetsDemo PRIVATE -Os)
 target_compile_options(lvgl_lib PRIVATE -Os)
 target_compile_options(freertos_lib PRIVATE -Os)
+bsp_set_thirdparty_warnings(lvgl_lib)
+bsp_set_thirdparty_warnings(freertos_lib)

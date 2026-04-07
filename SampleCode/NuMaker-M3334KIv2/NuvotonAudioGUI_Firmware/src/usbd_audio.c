@@ -195,6 +195,8 @@ void PlaybackBuffInit(void)
         I2S0Channel = 2;
     else if (g_u32I2S0Channel == I2S_TDMCHNUM_4CH)
         I2S0Channel = 4;
+    else
+        I2S0Channel = 2; // default 2 channel
 
     g_u16PlayBack_Read_Ptr = 0;
     g_u16PlayBack_Write_Ptr = 0;
@@ -222,6 +224,9 @@ void RecordBuffInit(void)
         I2S0Channel = 2;
     else if (g_u32I2S0Channel == I2S_TDMCHNUM_4CH)
         I2S0Channel = 4;
+    else
+        I2S0Channel = 2; // default 2 channel
+
 
     g_u16Record_Write_Ptr = 0;
     g_u16Record_Read_Ptr = 0;
@@ -1732,7 +1737,6 @@ void UAC_Init(void)
 void UAC_ClassRequest(void)
 {
     uint8_t buf[8];
-    uint32_t u32Temp;
 
     HSUSBD_MemCopy(buf, (void *)&gUsbCmd, 8);
 
@@ -1746,14 +1750,12 @@ void UAC_ClassRequest(void)
             {
                 if (buf[3] == SAMPLING_FREQ_CONTROL && (buf[4] == EPD))
                 {
-                    u32Temp = g_usbd_PlaySampleRate;
                     HSUSBD_PrepareCtrlIn((uint8_t *)&g_usbd_PlaySampleRate, 3);
                     HSUSBD_CLR_CEP_INT_FLAG(HSUSBD_CEPINTSTS_INTKIF_Msk);
                     HSUSBD_ENABLE_CEP_INT(HSUSBD_CEPINTEN_SETUPPKIEN_Msk | HSUSBD_CEPINTEN_INTKIEN_Msk);
                 }
                 else if (buf[3] == SAMPLING_FREQ_CONTROL && (buf[4] == (EPC | EP_INPUT)))
                 {
-                    u32Temp = g_usbd_PlaySampleRate;
                     HSUSBD_PrepareCtrlIn((uint8_t *)&g_usbd_PlaySampleRate, 3);
                     HSUSBD_CLR_CEP_INT_FLAG(HSUSBD_CEPINTSTS_INTKIF_Msk);
                     HSUSBD_ENABLE_CEP_INT(HSUSBD_CEPINTEN_SETUPPKIEN_Msk | HSUSBD_CEPINTEN_INTKIEN_Msk);

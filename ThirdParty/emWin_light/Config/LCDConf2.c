@@ -59,23 +59,23 @@ Purpose     : Display controller configuration (single layer)
 // Physical display size
 //
 #ifdef __DEMO_160x128__
-#define XSIZE_PHYS 128
-#define YSIZE_PHYS 160
+    #define XSIZE_PHYS 128
+    #define YSIZE_PHYS 160
 #elif defined(__DEMO_320x240__)
-#define XSIZE_PHYS 320   /* Landscape 320x240: ILI9341 orientation set via MADCTL hardware */
-#define YSIZE_PHYS 240
+    #define XSIZE_PHYS 320   /* Landscape 320x240: ILI9341 orientation set via MADCTL hardware */
+    #define YSIZE_PHYS 240
 #else
-#define XSIZE_PHYS 240
-#define YSIZE_PHYS 320
+    #define XSIZE_PHYS 240
+    #define YSIZE_PHYS 320
 #endif
 
 //
 // Color conversion
 //
 #ifdef __DEMO_160x128__
-#define COLOR_CONVERSION GUICC_M565
+    #define COLOR_CONVERSION GUICC_M565
 #else
-#define COLOR_CONVERSION GUICC_565
+    #define COLOR_CONVERSION GUICC_565
 #endif
 
 //
@@ -92,11 +92,11 @@ Purpose     : Display controller configuration (single layer)
 //#define DISPLAY_ORIENTATION (GUI_MIRROR_X | GUI_MIRROR_Y)
 //#define DISPLAY_ORIENTATION (GUI_SWAP_XY)
 #ifdef __DEMO_160x128__
-#define DISPLAY_ORIENTATION (GUI_MIRROR_X | GUI_SWAP_XY)
+    #define DISPLAY_ORIENTATION (GUI_MIRROR_X | GUI_SWAP_XY)
 #elif defined(__DEMO_320x240__)
-#define DISPLAY_ORIENTATION (0)  /* ILI9341 handles landscape via MADCTL=0xE8; no emWin transform needed */
+    #define DISPLAY_ORIENTATION (0)  /* ILI9341 handles landscape via MADCTL=0xE8; no emWin transform needed */
 #else
-#define DISPLAY_ORIENTATION (GUI_MIRROR_Y | GUI_SWAP_XY)
+    #define DISPLAY_ORIENTATION (GUI_MIRROR_Y | GUI_SWAP_XY)
 #endif
 //#define DISPLAY_ORIENTATION (GUI_MIRROR_X | GUI_MIRROR_Y | GUI_SWAP_XY)
 
@@ -107,25 +107,25 @@ Purpose     : Display controller configuration (single layer)
 **********************************************************************
 */
 #ifndef   VXSIZE_PHYS
-  #define VXSIZE_PHYS XSIZE_PHYS
+    #define VXSIZE_PHYS XSIZE_PHYS
 #endif
 #ifndef   VYSIZE_PHYS
-  #define VYSIZE_PHYS YSIZE_PHYS
+    #define VYSIZE_PHYS YSIZE_PHYS
 #endif
 #ifndef   XSIZE_PHYS
-  #error Physical X size of display is not defined!
+    #error Physical X size of display is not defined!
 #endif
 #ifndef   YSIZE_PHYS
-  #error Physical Y size of display is not defined!
+    #error Physical Y size of display is not defined!
 #endif
 #ifndef   COLOR_CONVERSION
-  #error Color conversion not defined!
+    #error Color conversion not defined!
 #endif
 #ifndef   DISPLAY_DRIVER
-  #error No display driver defined!
+    #error No display driver defined!
 #endif
 #ifndef   DISPLAY_ORIENTATION
-  #define DISPLAY_ORIENTATION 0
+    #define DISPLAY_ORIENTATION 0
 #endif
 
 /*********************************************************************
@@ -151,31 +151,35 @@ Purpose     : Display controller configuration (single layer)
 */
 
 
-void LCD_X_Config(void) {
-  GUI_DEVICE * pDevice;
+void LCD_X_Config(void)
+{
 
 
-  //
-  // Set display driver and color conversion for 1st layer
-  //
-	pDevice = GUI_DEVICE_CreateAndLink(GUIDRV_NULL, COLOR_CONVERSION, 0, 0);
-  //
-  // Orientation
-  //
 
-  //
-  // Display driver configuration
-  //
-  if (DISPLAY_ORIENTATION & GUI_SWAP_XY) {
-    LCD_SetSizeEx (0, YSIZE_PHYS,   XSIZE_PHYS);
-    LCD_SetVSizeEx(0, VYSIZE_PHYS,  VXSIZE_PHYS);
-  } else {
-    LCD_SetSizeEx (0, XSIZE_PHYS,   YSIZE_PHYS);
-    LCD_SetVSizeEx(0, VXSIZE_PHYS,  VYSIZE_PHYS);
-  }
-  //
-  // Function selection, hardware routines (PortAPI) and operation mode (bus, bpp and cache)
-  //
+    //
+    // Set display driver and color conversion for 1st layer
+    //
+    GUI_DEVICE_CreateAndLink(GUIDRV_NULL, COLOR_CONVERSION, 0, 0);
+    //
+    // Orientation
+    //
+
+    //
+    // Display driver configuration
+    //
+    if(DISPLAY_ORIENTATION & GUI_SWAP_XY)
+    {
+        LCD_SetSizeEx(0, YSIZE_PHYS,   XSIZE_PHYS);
+        LCD_SetVSizeEx(0, VYSIZE_PHYS,  VXSIZE_PHYS);
+    }
+    else
+    {
+        LCD_SetSizeEx(0, XSIZE_PHYS,   YSIZE_PHYS);
+        LCD_SetVSizeEx(0, VXSIZE_PHYS,  VYSIZE_PHYS);
+    }
+    //
+    // Function selection, hardware routines (PortAPI) and operation mode (bus, bpp and cache)
+    //
 
 }
 
@@ -195,29 +199,32 @@ void LCD_X_Config(void) {
 *   Cmd        - Please refer to the details in the switch statement below
 *   pData      - Pointer to a LCD_X_DATA structure
 */
-int LCD_X_DisplayDriver(unsigned LayerIndex, unsigned Cmd, void * pData) {
-  int r;
+int LCD_X_DisplayDriver(unsigned LayerIndex, unsigned Cmd, void *pData)
+{
+    int r;
 
-  GUI_USE_PARA(LayerIndex);
-  GUI_USE_PARA(pData);
-  switch (Cmd) {
-  //
-  // Required
-  //
-  case LCD_X_INITCONTROLLER: {
-    //
-    // Called during the initialization process in order to set up the
-    // display controller and put it into operation. If the display
-    // controller is not initialized by any external routine this needs
-    // to be adapted by the customer...
-    //
+    GUI_USE_PARA(LayerIndex);
+    GUI_USE_PARA(pData);
+    switch(Cmd)
+    {
+        //
+        // Required
+        //
+        case LCD_X_INITCONTROLLER:
+        {
+            //
+            // Called during the initialization process in order to set up the
+            // display controller and put it into operation. If the display
+            // controller is not initialized by any external routine this needs
+            // to be adapted by the customer...
+            //
 
-    return 0;
-  }
-  default:
-    r = -1;
-  }
-  return r;
+            return 0;
+        }
+        default:
+            r = -1;
+    }
+    return r;
 }
 
 /*************************** End of file ****************************/

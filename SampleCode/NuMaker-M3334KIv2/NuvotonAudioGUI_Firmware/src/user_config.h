@@ -318,7 +318,7 @@ extern volatile uint8_t g_u8ResetFlag;
 /*---------------------------------------------------------------------------------------------------------*/
 extern void NuvotonCmdAnalyze(void);
 extern void SetConfigToDefault(void);
-void NuvotonDelayUs(unsigned int us);
+void NuvotonDelayUs(uint32_t us);
 
 #define DelayUs NuvotonDelayUs
 

@@ -13,7 +13,8 @@
                 "CMAKE_BUILD_TYPE": "Debug",
                 "CMAKE_INSTALL_PREFIX": "${sourceDir}/build/install/${presetName}",
                 "C_COMPILER_ID": "ARMCLANG",
-                "CMAKE_EXPORT_COMPILE_COMMANDS": "ON"
+                "CMAKE_EXPORT_COMPILE_COMMANDS": "ON",
+                "BSP_THIRDPARTY_WARNING_LEVEL": "OFF"
             }
         },
         {
@@ -28,7 +29,8 @@
                 "CMAKE_BUILD_TYPE": "Debug",
                 "CMAKE_INSTALL_PREFIX": "${sourceDir}/build/install/${presetName}",
                 "C_COMPILER_ID": "GCC",
-                "CMAKE_EXPORT_COMPILE_COMMANDS": "ON"
+                "CMAKE_EXPORT_COMPILE_COMMANDS": "ON",
+                "BSP_THIRDPARTY_WARNING_LEVEL": "OFF"
             }
         }
     ]

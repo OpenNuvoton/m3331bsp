@@ -5,15 +5,15 @@ solution:
   target-types:
     - type: Release
       device: M3334KIGAE
-      optimize: speed   # -O2
-      debug: on         # 保留 debug symbol 方便 post-mortem 分析
-      define:
-        - NDEBUG         # 讓 assert() 靜默
-    - type: Debug
-      device: M3334KIGAE
-      optimize: none    # -O0
+      optimize: speed
       debug: on
       define:
-        - DEBUG          # 可供程式碼中 #ifdef DEBUG 條件編譯
+        - NDEBUG
+    - type: Debug
+      device: M3334KIGAE
+      optimize: none
+      debug: on
+      define:
+        - DEBUG
   projects:
     - project: emWin_SimpleDemo.cproject.yml

@@ -48,7 +48,7 @@ void SYS_Init(void)
     SET_UART0_TXD_PB13();
 }
 
-int32_t main(void)
+int main(void)
 {
     uint8_t ch;
     uint32_t u32VECMAP;

@@ -1490,7 +1490,6 @@ void HSUSBD_Init(void)
     extern uint8_t *gpu8UsbString[];
     extern uint8_t gu8ConfigDescriptor[];
     extern uint8_t gu8ConfigDescriptor_Normal_mode_Rec_4ch[];
-    extern uint32_t gu32ConfigHidDescIdx[];
     extern uint8_t gu8VendorStringDesc[];
     extern uint8_t gu8ProductStringDesc[];
     extern uint8_t gu8StringSerial[];
@@ -1632,7 +1631,7 @@ void I2S0_Init(void)
 
     CLK_EnableModuleClock(I2S0_MODULE);
     // Select I2S0 clock.
-    CLK_SetModuleClock(I2S0_MODULE, CLK_CLKSEL3_I2S0SEL_HIRC, NULL);
+    CLK_SetModuleClock(I2S0_MODULE, CLK_CLKSEL3_I2S0SEL_HIRC, 0);
 
     // I2S IPReset.
     SYS_ResetModule(I2S0_RST);
@@ -1882,7 +1881,7 @@ void Switch_I2S_Sample_Rate(void)
     I2S0_Rx_Stop();
 
     SYS_ResetModule(I2S0_RST);
-    CLK_SetModuleClock(I2S0_MODULE, CLK_CLKSEL3_I2S0SEL_HIRC, NULL);
+    CLK_SetModuleClock(I2S0_MODULE, CLK_CLKSEL3_I2S0SEL_HIRC, 0);
 
     I2S_open(I2S0, g_u32I2S0SerialMode, g_u32I2S0SampleRate, g_u32I2S0WordSize, g_u32I2S0Channel, g_u32I2S0Mono, g_u32I2S0Format, g_u32I2S0FrameSize);
     // Set PDMA0 bus width

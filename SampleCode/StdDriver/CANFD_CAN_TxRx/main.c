@@ -182,7 +182,7 @@ void CAN_TxRxTest(void)
     uint8_t u8RxTestNum = 0;
     uint8_t u8RxTempLen = 0;
     CANFD_FD_MSG_T      sRxMsgFrame;
-    CANFD_FD_MSG_T      sTxMsgFrame;
+    CANFD_FD_MSG_T      sTxMsgFrame = {0};
 
     /* CAN interface initialization */
     CAN_Init();
