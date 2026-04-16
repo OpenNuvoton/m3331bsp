@@ -301,11 +301,11 @@
                 </option>
                 <option>
                     <name>IExtraOptionsCheck</name>
-                    <state>0</state>
+                    <state>1</state>
                 </option>
                 <option>
                     <name>IExtraOptions</name>
-                    <state></state>
+                    <state>--no_unaligned_access</state>
                 </option>
                 <option>
                     <name>CCLangConformance</name>
@@ -675,7 +675,7 @@
         <settings>
             <name>BICOMP</name>
             <archiveVersion>0</archiveVersion>
-            <data />
+            <data></data>
         </settings>
         <settings>
             <name>BUILDACTION</name>
@@ -1035,7 +1035,7 @@
         <settings>
             <name>BILINK</name>
             <archiveVersion>0</archiveVersion>
-            <data />
+            <data></data>
         </settings>
     </configuration>
     <mfc>

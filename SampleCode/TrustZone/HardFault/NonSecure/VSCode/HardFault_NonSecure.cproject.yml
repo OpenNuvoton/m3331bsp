@@ -31,6 +31,8 @@ project:
             - -funsigned-char
             - -ffunction-sections
             - -fno-inline
+            - -mno-unaligned-access
+            - -Wconditional-uninitialized
           CPP:
             - -xc++
             - -std=c++11
@@ -52,6 +54,9 @@ project:
             - --specs=nano.specs
             - --specs=nosys.specs
             - -Wl,-Map,"$OutDir()$/$Project$.map"
+          C-CPP:
+            - -mno-unaligned-access
+            - -Wmaybe-uninitialized
   linker:
     - for-compiler: AC6
       script: nonsecure.sct

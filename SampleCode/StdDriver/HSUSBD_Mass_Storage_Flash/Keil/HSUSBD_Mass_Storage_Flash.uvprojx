@@ -337,7 +337,7 @@
             <v6WtE>0</v6WtE>
             <v6Rtti>0</v6Rtti>
             <VariousControls>
-              <MiscControls></MiscControls>
+              <MiscControls>-mno-unaligned-access -Wconditional-uninitialized</MiscControls>
               <Define></Define>
               <Undefine></Undefine>
               <IncludePath>..\..\..\..\Library\CMSIS\Core\Include;..\;..\..\..\..\Library\Device\Nuvoton\m3331\Config;..\..\..\..\Library\Device\Nuvoton\m3331\Include;..\..\..\..\Library\StdDriver\inc</IncludePath>
@@ -461,9 +461,9 @@
   </Targets>
 
   <RTE>
-    <apis/>
-    <components/>
-    <files/>
+    <apis></apis>
+    <components></components>
+    <files></files>
   </RTE>
 
 </Project>

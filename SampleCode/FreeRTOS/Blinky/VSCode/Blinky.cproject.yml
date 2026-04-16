@@ -45,6 +45,14 @@ project:
             - --strict
             - --summary_stderr
             - --info summarysizes
+        - for-compiler: AC6
+          C-CPP:
+            - -mno-unaligned-access
+            - -Wconditional-uninitialized
+        - for-compiler: GCC
+          C-CPP:
+            - -mno-unaligned-access
+            - -Wmaybe-uninitialized
   linker:
     - script: ../../../../Library/Device/Nuvoton/m3331/Config/m3331_ac6.sct
   groups:

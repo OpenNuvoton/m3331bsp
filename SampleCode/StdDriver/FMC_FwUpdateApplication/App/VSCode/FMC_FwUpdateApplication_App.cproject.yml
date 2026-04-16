@@ -20,14 +20,20 @@ project:
           Link:
             - --library_type=microlib --map --load_addr_map_info --symbols
             - --info sizes --info totals --strict --summary_stderr --info summarysizes
+          C-CPP:
+            - -mno-unaligned-access
+            - -Wconditional-uninitialized
         - for-compiler: GCC
           C:
             - -std=gnu11 -mthumb -masm-syntax-unified -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections
           Link:
             - -mthumb -fmessage-length=0 -fsigned-char --specs=nano.specs --specs=nosys.specs
             - -Wl,--gc-sections,-Map="$elf()$.map"
+          C-CPP:
+            - -mno-unaligned-access
+            - -Wmaybe-uninitialized
     - setup: Options for App
-      output :
+      output:
         base-name: App
       for-context: .App
       linker:
@@ -36,7 +42,7 @@ project:
         - script: ./App.ld
           for-compiler: GCC
     - setup: Options for NewApp
-      output :
+      output:
         base-name: NewApp
       for-context: .NewApp
       define:

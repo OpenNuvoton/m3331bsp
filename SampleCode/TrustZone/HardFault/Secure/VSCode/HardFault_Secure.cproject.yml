@@ -28,6 +28,8 @@ project:
             - -funsigned-char
             - -ffunction-sections
             - -fno-inline
+            - -mno-unaligned-access
+            - -Wconditional-uninitialized
           CPP:
             - -xc++
             - -std=c++11
@@ -55,6 +57,9 @@ project:
             - --specs=nosys.specs
             - -Wl,-Map,"$OutDir()$/$Project$.map"
             - -Wl,--out-implib="../lib/libnsc_vscode.a",--cmse-implib
+          C-CPP:
+            - -mno-unaligned-access
+            - -Wmaybe-uninitialized
   linker:
     - for-compiler: AC6
       script: ../Keil/secure.sct

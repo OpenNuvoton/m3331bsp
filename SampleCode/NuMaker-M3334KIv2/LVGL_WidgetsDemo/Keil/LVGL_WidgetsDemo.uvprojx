@@ -337,7 +337,7 @@
             <v6WtE>0</v6WtE>
             <v6Rtti>0</v6Rtti>
             <VariousControls>
-              <MiscControls></MiscControls>
+              <MiscControls>-mno-unaligned-access -Wconditional-uninitialized</MiscControls>
               <Define>__320x240__ CPU_CORTEX_M33 LV_CONF_INCLUDE_SIMPLE NUFUN=1</Define>
               <Undefine></Undefine>
               <IncludePath>..\;..\..\..\..\Library\CMSIS\Core\Include;..\..\..\..\Library\Device\Nuvoton\m3331\Include;..\..\..\..\Library\StdDriver\inc;..\..\..\..\ThirdParty\FreeRTOS\portable\GCC\ARM_CM33_NTZ\non_secure;..\..\..\..\ThirdParty\FreeRTOS\include;..\common;..\common\drv_disp;..\common\drv_indev;..\lv_port;..\..\..\..\ThirdParty\lvgl\src;..\..\..\..\ThirdParty\lvgl\src\core;..\..\..\..\ThirdParty\lvgl\src\draw;..\..\..\..\ThirdParty\lvgl\src\draw\sw;..\..\..\..\ThirdParty\lvgl\src\font;..\..\..\..\ThirdParty\lvgl\src\misc;..\..\..\..\ThirdParty\lvgl\src\widgets;..\..\..\..\ThirdParty\lvgl\demos\;..\..\..\..\ThirdParty\lvgl\demos\benchmark;..\..\..\..\ThirdParty\lvgl\demos\music;..\..\..\..\ThirdParty\lvgl\demos\stress;..\..\..\..\ThirdParty\lvgl\demos\widgets;..\..\..\..\ThirdParty\lvgl\demos\music\assets;..\..\..\..\ThirdParty\lvgl\demos\keypad_encoder;..\..\..\</IncludePath>
@@ -1956,9 +1956,9 @@
   </Targets>
 
   <RTE>
-    <apis/>
-    <components/>
-    <files/>
+    <apis></apis>
+    <components></components>
+    <files></files>
   </RTE>
 
   <LayerInfo>
