@@ -28,6 +28,8 @@ project:
             - -funsigned-char
             - -ffunction-sections
             - -fno-inline
+            - -Wconditional-uninitialized
+            - -mno-unaligned-access
           CPP:
             - -xc++
             - -std=c++11
@@ -47,7 +49,7 @@ project:
             - --info summarysizes
             - --import-cmse-lib-out "../lib/nsclib_Secure_vscode.o"
         - for-compiler: GCC
-          C: [-std=gnu11, --specs=nano.specs, -Wno-return-type, -Wno-unused-but-set-variable, -fdata-sections, -ffunction-sections, -fno-builtin, -fshort-enums, -funsigned-char, -mthumb, -Wno-main, -gdwarf-4, -mcmse]
+          C: [-std=gnu11, --specs=nano.specs, -Wno-return-type, -Wno-unused-but-set-variable, -fdata-sections, -ffunction-sections, -fno-builtin, -fshort-enums, -funsigned-char, -mthumb, -Wno-main, -gdwarf-4, -mcmse, -mno-unaligned-access]
           Link:
             - -Xlinker
             - --gc-sections

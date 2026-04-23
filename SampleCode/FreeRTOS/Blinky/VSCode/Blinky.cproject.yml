@@ -28,6 +28,8 @@ project:
             - -fshort-enums
             - -fshort-wchar
             - -ffunction-sections
+            - -Wconditional-uninitialized
+            - -mno-unaligned-access
           CPP:
             - -xc++
             - -std=c++11

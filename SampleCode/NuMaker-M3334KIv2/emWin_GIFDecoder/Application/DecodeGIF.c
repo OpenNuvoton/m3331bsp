@@ -35,7 +35,7 @@ void NVT_SetPhysRAMAddr(unsigned int x0, unsigned int y0, unsigned int x1, unsig
 
 /*
  * NVT_FillRect - 將 MEMDEV 的 16bpp RGB565 像素送至 ILI9341
- * pu16Data: 指向 MEMDEV pixel buffer 起始位址（NULL 則填藍色背景）
+ * pu16Data: 指向 MEMDEV pixel buffer 起始位址(NULL 則填藍色背景)
  */
 void NVT_FillRect(int w, int h, U16 *pu16Data)
 {
@@ -148,7 +148,7 @@ void MainTask(void)
 
 #ifdef __DEMO_320x240__
     _InitController();
-    NVT_FillRect(320, 240, NULL);  /* 初始清除畫面（藍色背景） */
+    NVT_FillRect(320, 240, NULL);  /* 初始清除畫面(藍色背景) */
 #endif
 
     while (1)

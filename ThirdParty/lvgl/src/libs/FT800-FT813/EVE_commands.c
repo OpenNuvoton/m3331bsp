@@ -679,7 +679,7 @@ void EVE_cmd_wait(uint32_t usec)
 #if EVE_GEN > 2
 
 /**
- * @brief Clears the graphics engine’s internal flash cache.
+ * @brief Clears the graphics engine's internal flash cache.
  * @note - This function includes clearing out the display list.
  * @note - Meant to be called outside display-list building.
  * @note - Includes executing the command and waiting for completion.

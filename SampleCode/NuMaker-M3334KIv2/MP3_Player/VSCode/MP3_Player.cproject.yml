@@ -15,7 +15,9 @@ project:
           -D__MICROLIB,
           -o0,
           -gdwarf-4,
-          -fno-inline
+          -fno-inline,          
+          -Wconditional-uninitialized,
+          -mno-unaligned-access
         ]
       ASM: [ -D__MICROLIB, -DStack_Size=0x2000 ]
       Link:
@@ -46,7 +48,8 @@ project:
           -mthumb,
           -Wno-main,
           -gdwarf-4,
-          -Wno-stringop-overflow
+          -Wno-stringop-overflow,
+          -mno-unaligned-access
         ]
       Link:
         - -Xlinker

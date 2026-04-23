@@ -349,7 +349,7 @@ typedef struct
     uint16_t          u16RxTimestamp;                  /*! Rx Timestamp(CCCR.UTSU = 0)) */
     uint8_t           u8RxTimestampPointer;            /*! Rx Timestamp Pointer(CCCR.UTSU = 1)) */
     uint8_t           bTimestampCaptured;              /*! Timestamp Captured */
-    uint8_t           u8FilterIndex;                   /*! Filter Index(Index of matching Rx acceptance filter element (in valid if ANMF = ‘1’) */
+    uint8_t           u8FilterIndex;                   /*! Filter Index(Index of matching Rx acceptance filter element (in valid if ANMF = '1') */
     uint8_t           bNonMatchingFrame;               /*! Accepted Non-matching Frame */
     uint8_t           bFDFormat;                       /*! FD Format (1 = FD Format) */
     uint8_t           bBitRateSwitch;                  /*! Bit Rate Switch (1 = with Bit Rate Switch) */

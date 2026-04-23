@@ -38,6 +38,8 @@ project:
             - -Wno-documentation
             - -Wno-license-management
             - -Wno-parentheses-equality
+            - -Wconditional-uninitialized
+            - -mno-unaligned-access
           CPP:
             - -xc++
             - -std=c++11

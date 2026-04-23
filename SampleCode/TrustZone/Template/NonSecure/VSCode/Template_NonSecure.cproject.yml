@@ -31,6 +31,8 @@ project:
             - -funsigned-char
             - -ffunction-sections
             - -fno-inline
+            - -Wconditional-uninitialized
+            - -mno-unaligned-access
           CPP:
             - -xc++
             - -std=c++11
@@ -45,7 +47,7 @@ project:
             - --summary_stderr
             - --info summarysizes
         - for-compiler: GCC
-          C: [-std=gnu11, --specs=nano.specs, -Wno-return-type, -Wno-unused-but-set-variable, -fdata-sections, -ffunction-sections, -fno-builtin, -fshort-enums, -funsigned-char, -mthumb, -Wno-main, -gdwarf-4]
+          C: [-std=gnu11, --specs=nano.specs, -Wno-return-type, -Wno-unused-but-set-variable, -fdata-sections, -ffunction-sections, -fno-builtin, -fshort-enums, -funsigned-char, -mthumb, -Wno-main, -gdwarf-4, -mno-unaligned-access]
           Link:
             - -Xlinker
             - --gc-sections

@@ -182,7 +182,7 @@ static void lt7381_initial_pll(void)
 static void lt7381_initial_sdram(void)
 {
     disp_write_reg(0xe0, 0x20);
-    disp_write_reg(0xe1, 0x03);  //CAS:2=0x02，CAS:3=0x03
+    disp_write_reg(0xe1, 0x03);  //CAS:2=0x02,CAS:3=0x03
 
     disp_write_reg(0xe2, SDRAM_ITV);
     disp_write_reg(0xe3, SDRAM_ITV >> 8);

@@ -9,12 +9,12 @@ microcontroller device:
 - \c ETH_PHY_NUM and
 - \c ETH_PHY_ADDR
 
-Usually, the Serial Management Interface (\b SMI) (using MDC and MDIO) is used to access the PHY’s internal registers to read
+Usually, the Serial Management Interface (\b SMI) (using MDC and MDIO) is used to access the PHY's internal registers to read
 the state of the link (up/down), duplex mode, speed, and to restart auto-negotiation etc. SMI is a serial bus, which allows
 to connect up to 32 devices. Devices on the bus are accessed using a 5-bit device address. A default device address is
 hardware configurable by pin-strapping on the device (some pins are sampled when a reset is asserted or at power-up).
 
-The device’s internal weak pull-up or pull-down resistors define a default device address. This address can be changed by
+The device's internal weak pull-up or pull-down resistors define a default device address. This address can be changed by
 connecting strong pull-up or pull-down resistors externally. In this case, the \c ETH_PHY_ADDR needs to be defined by the
 user.
 

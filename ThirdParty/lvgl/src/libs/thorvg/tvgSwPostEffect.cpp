@@ -153,7 +153,7 @@ bool effectGaussianPrepare(RenderEffectGaussian* params)
 }
 
 
-/* It is best to take advantage of the Gaussian blur’s separable property
+/* It is best to take advantage of the Gaussian blur's separable property
    by dividing the process into two passes. horizontal and vertical.
    We can expect fewer calculations. */
 bool effectGaussianBlur(SwImage& image, SwImage& buffer, const SwBBox& bbox, const RenderEffectGaussian* params)

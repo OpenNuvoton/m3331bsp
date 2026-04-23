@@ -15,7 +15,9 @@ project:
           -D__MICROLIB,
           -o0,
           -gdwarf-4,
-          -fno-inline
+          -fno-inline,
+          -Wconditional-uninitialized,
+          -mno-unaligned-access
         ]
       ASM: [ -D__MICROLIB ]
       Link:
@@ -45,7 +47,9 @@ project:
           -funsigned-char,
           -mthumb,
           -Wno-main,
-          -gdwarf-4
+          -gdwarf-4,
+          -Wmaybe-uninitialized,
+          -mno-unaligned-access
         ]
       Link:
         - -Xlinker
