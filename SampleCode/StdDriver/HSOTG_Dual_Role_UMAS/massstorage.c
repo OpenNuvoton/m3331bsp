@@ -4,7 +4,7 @@
  * @brief    HSUSBD mass storage sample file.
  *
  * @copyright SPDX-License-Identifier: Apache-2.0
- * @copyright Copyright (c) 2024 Nuvoton Technology Corp. All rights reserved.
+ * @copyright Copyright (c) 2026 Nuvoton Technology Corp. All rights reserved.
  ******************************************************************************/
 
 /*!<Includes */
@@ -432,8 +432,8 @@ void MSC_Init(void)
     /* when doing FDBENCH, the disk size should >= 5MB */
     //g_TotalSectors = 10240;
     g_TotalSectors = 128;
-    g_u32MassBase = 0x2000b000;
-    g_u32StorageBase = 0x2000d000;
+    g_u32MassBase = 0x20011000;
+    g_u32StorageBase = 0x20012000;
 }
 
 void MSC_ClassRequest(void)

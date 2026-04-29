@@ -1061,6 +1061,12 @@
             <name>$PROJ_DIR$\..\..\..\..\Library\StdDriver\src\clk.c</name>
         </file>
         <file>
+            <name>$PROJ_DIR$\..\..\..\..\Library\StdDriver\src\eadc.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\..\..\Library\StdDriver\src\gpio.c</name>
+        </file>
+        <file>
             <name>$PROJ_DIR$\..\..\..\..\Library\StdDriver\src\hsusbd.c</name>
         </file>
         <file>
@@ -1116,6 +1122,9 @@
         </file>
         <file>
             <name>$PROJ_DIR$\..\massstorage.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\swotg.c</name>
         </file>
     </group>
 </project>

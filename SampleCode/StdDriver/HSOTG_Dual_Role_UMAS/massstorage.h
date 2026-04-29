@@ -4,7 +4,7 @@
  * @brief    HSUSBD mass storage header file.
  *
  * @copyright SPDX-License-Identifier: Apache-2.0
- * @copyright Copyright (c) 2024 Nuvoton Technology Corp. All rights reserved.
+ * @copyright Copyright (c) 2026 Nuvoton Technology Corp. All rights reserved.
  ******************************************************************************/
 #ifndef __MASSSTORAGE_H__
 #define __MASSSTORAGE_H__

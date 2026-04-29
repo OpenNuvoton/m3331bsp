@@ -6,7 +6,7 @@
  *           If it works as USB Device, it acts as a mass storage device.
  *
  * @copyright SPDX-License-Identifier: Apache-2.0
- * @copyright Copyright (c) 2024 Nuvoton Technology Corp. All rights reserved.
+ * @copyright Copyright (c) 2026 Nuvoton Technology Corp. All rights reserved.
 *****************************************************************************/
 #include <stdio.h>
 #include <string.h>
@@ -15,6 +15,7 @@
 #include "ff.h"
 #include "diskio.h"
 #include "massstorage.h"
+#include "swotg.h"
 
 uint8_t bIsBdevice = 0, bIsAdevice = 0;
 
@@ -429,14 +430,23 @@ void USBH_Process()
 
     for(;;)
     {
-
+#if (!SWOTG_MODE)
         if(!bIsAdevice)
         {
             printf("break-A (HSOTG_STATUS: 0x%x)\n", HSOTG->STATUS);
             return;
         }
+#endif
 
         usbh_pooling_hubs();
+
+#if (SWOTG_MODE)
+        if(!(HSUSBH->UPSCR[0] & HSUSBH_UPSCR_CCS_Msk))
+        {
+            printf("break-A (HSOTG_STATUS: 0x%x)\n", HSOTG->STATUS);
+            return;
+        }
+#endif
 
         printf(_T(">"));
         ptr = Line;
@@ -917,6 +927,7 @@ void USBH_Process()
 int main(void)
 {
     SYS_Init();                        /* Init System, IP clock and multi-function I/O */
+    swotg_init(SWOTG_ADC_MODULE);      /* Init software otg mode */
     UART_Open(UART0, 115200);          /* Initialize UART0 */
     enable_sys_tick(100);
 
@@ -927,11 +938,20 @@ int main(void)
     printf("|                                                      |\n");
     printf("+------------------------------------------------------+\n");
 
+#if (SWOTG_MODE)
+    printf("The USB role is determined by the Software OTG mode.\n");
+#else
     printf("The USB role is determined by the ID pin state of USB cable.\n");
+#endif
     printf("If acts as a USB host, it can access a mass storage device with a simple file system. ");
     printf("Type '?' on command line to show all supported commands.\n");
     printf("If attempts to switch the USB role as a USB device, press 'Enter' key after unplugging the USB cable to exit the file system. ");
     printf("Then plug a proper USB connector to switch the USB role as a mass storage device. The internal SRAM is used as the storage.\n");
+#if (SWOTG_MODE)
+    printf("Please adjust SW3 to DRP mode, and press any key to start transmission ...");
+    getchar();
+    printf("\n");
+#endif
 
     HSOTG_ENABLE_PHY();
     /* Enable ID detection function */
@@ -947,6 +967,11 @@ int main(void)
 
     while(1)
     {
+#if (SWOTG_MODE)
+        swotg_worker(SWOTG_ADC_MODULE);
+        delay_us(500000);
+        continue;
+#else
         if(HSOTG_GET_STATUS(HSOTG_STATUS_IDSTS_Msk))   /* B-device */
         {
             if(HSOTG_GET_STATUS(HSOTG_STATUS_BVLD_Msk))   /* plug-in */
@@ -988,5 +1013,6 @@ int main(void)
             /* Disable ID status changed interrupt */
             HSOTG_DISABLE_INT(HSOTG_INTEN_IDCHGIEN_Msk);
         }
+#endif
     }
 }
