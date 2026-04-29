@@ -52,7 +52,7 @@ static uint16_t CalCheckSum(uint32_t u32start, uint32_t u32len)
 
 int ParseCmd(uint8_t *pu8Buffer, uint8_t u8len)
 {
-    static uint32_t u32StartAddress, u32StartAddress_bak, u32TotalLen, u32TotalLen_bak, u32LastDataLen, u32PackNo = 1;
+    static uint32_t u32StartAddress, u32StartAddress_bak, u32TotalLen, u32TotalLen_bak, u32LastDataLen, u32Config, u32PackNo = 1;
     uint32_t u32PageAddress;
     uint8_t *pu8Response;
     uint16_t u16Lcksum;
@@ -87,6 +87,12 @@ int ParseCmd(uint8_t *pu8Buffer, uint8_t u8len)
     else if(u32Lcmd == CMD_GET_DEVICEID)
     {
         outpw((uint32_t)(pu8Response + 8), SYS->PDID);
+        goto out;
+    }
+		else if(u32Lcmd == CMD_READ_CONFIG_EXT)
+    {
+				u32Config = inpw((uint32_t)pu8Src);
+				ReadData(Config0 + u32Config * 4, Config0 + u32Config * 4 + 4, (uint32_t *)(uint32_t)(pu8Response + 8));
         goto out;
     }
     else if(u32Lcmd == CMD_RUN_APROM || u32Lcmd == CMD_RUN_LDROM || u32Lcmd == CMD_RESET)
