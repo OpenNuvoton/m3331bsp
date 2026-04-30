@@ -54,7 +54,7 @@ static uint16_t CalCheckSum(uint32_t start, uint32_t len)
 
 int ParseCmd(unsigned char *buffer, uint8_t len)
 {
-    static uint32_t StartAddress, StartAddress_bak, TotalLen, TotalLen_bak, LastDataLen, g_packno = 1;
+    static uint32_t StartAddress, StartAddress_bak, TotalLen, TotalLen_bak, LastDataLen, Config, g_packno = 1;
     uint8_t *response;
     uint16_t lcksum;
     uint32_t lcmd, srclen, i, regcnf0, security;
@@ -88,6 +88,12 @@ int ParseCmd(unsigned char *buffer, uint8_t len)
     else if (lcmd == CMD_GET_DEVICEID)
     {
         outpw(response + 8, SYS->PDID);
+        goto out;
+    }
+		else if(lcmd == CMD_READ_CONFIG_EXT)
+    {
+				Config = inpw((uint32_t)pSrc);
+				ReadData(Config0 + Config * 4, Config0 + Config * 4 + 4, (uint32_t *)(uint32_t)(response + 8));
         goto out;
     }
     else if (lcmd == CMD_RUN_APROM || lcmd == CMD_RUN_LDROM || lcmd == CMD_RESET)
