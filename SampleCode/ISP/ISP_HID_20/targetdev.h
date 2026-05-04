@@ -17,7 +17,7 @@ extern "C"
 // Nuvoton MCU Peripheral Access Layer Header File
 #include "m3331.h"
 #include "isp_user.h"
-#define DetectPin                   PB12
+#define DetectPin                   PB15
 
 #ifdef __cplusplus
 }
