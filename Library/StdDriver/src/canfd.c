@@ -72,9 +72,9 @@
 #define TX_FIFO_E1B_EVENT_TSC_Pos   (4)
 #define TX_FIFO_E1B_EVENT_TSC_Msk   (0x1ul << TX_FIFO_E1B_EVENT_TSC_Pos)
 
-/* Tx Event FIFO Element TSC(Timestamp Captured)    */
-#define TX_FIFO_E1B_EVENT_TXTS_Pos   (0)
-#define TX_FIFO_E1B_EVENT_TXTS_Msk   (0xFul << TX_FIFO_E1B_EVENT_TXTS_Pos)
+/* Tx Event FIFO Element TXTSP(Tx Timestamp Pointer) */
+#define TX_FIFO_E1B_EVENT_TXTSP_Pos (0)
+#define TX_FIFO_E1B_EVENT_TXTSP_Msk (0xFul << TX_FIFO_E1B_EVENT_TXTSP_Pos)
 
 /* Rx Buffer and FIFO Element ESI2(Error State Indicator)    */
 #define RX_BUFFER_AND_FIFO_R0_ELEM_ESI_Pos  (31)
@@ -233,6 +233,92 @@ static uint32_t CANFD_GetSourceClock(CANFD_T *psCanfd)
 /** @endcond HIDDEN_SYMBOLS */
 
 /**
+ * @brief       Gets the CAN FD interface Nominal bit rate.
+ *
+ * @param[in]   psCanfd      The pointer of CAN FD module.
+ *
+ * @return      Nominal bit rate of specified CAN FD interface.
+ * @details     Gets the CAN FD interface Nominal bit rate.
+ */
+uint32_t CANFD_GetNominalBitRate(CANFD_T *psCanfd)
+{
+    uint8_t u8Tq = 0UL;
+    uint8_t u8NtSeg1 = 0UL;
+    uint8_t u8NtSeg2 = 0UL;
+    uint32_t u32BitRate = 0UL;
+    uint32_t u32CanfdClk = 0UL;
+    uint32_t u32CanfdDiv = 0UL;
+
+    u32CanfdClk = CANFD_GetSourceClock(psCanfd);
+
+    if (psCanfd == (CANFD_T *)CANFD0)
+    {
+        u32CanfdDiv = ((CLK->CLKDIV1 & CLK_CLKDIV1_CANFD0DIV_Msk) >> CLK_CLKDIV1_CANFD0DIV_Pos) + 1;
+    }
+    else if (psCanfd == (CANFD_T *)CANFD1)
+    {
+        u32CanfdDiv = ((CLK->CLKDIV1 & CLK_CLKDIV1_CANFD1DIV_Msk) >> CLK_CLKDIV1_CANFD1DIV_Pos) + 1;
+    }
+    else
+    {
+        return 0UL;
+    }
+
+    u32CanfdClk = u32CanfdClk / u32CanfdDiv;
+    u8Tq = ((psCanfd->NBTP & CANFD_NBTP_NBRP_Msk) >> CANFD_NBTP_NBRP_Pos) + 1 ;
+    u8NtSeg1 = ((psCanfd->NBTP & CANFD_NBTP_NTSEG1_Msk) >> CANFD_NBTP_NTSEG1_Pos);
+    u8NtSeg2 = ((psCanfd->NBTP & CANFD_NBTP_NTSEG2_Msk) >> CANFD_NBTP_NTSEG2_Pos);
+    u32BitRate = (u32CanfdClk / u8Tq) / (u8NtSeg1 + u8NtSeg2 + 3);
+
+    return u32BitRate;
+}
+
+/**
+ * @brief       Gets the CAN FD interface Data bit rate.
+ *
+ * @param[in]   psCanfd      The pointer of CAN FD module.
+ *
+ * @return      Data bit rate of specified CAN FD interface.
+ * @details     Gets the CAN FD interface Data bit rate.
+ *              If CAN FD interface is in CAN mode, this function will return 0. Because data bit rate is only valid in CAN FD mode.
+ */
+uint32_t CANFD_GetDataBitRate(CANFD_T *psCanfd)
+{
+    uint8_t u8Tq = 0UL;
+    uint8_t u8NtSeg1 = 0UL;
+    uint8_t u8NtSeg2 = 0UL;
+    uint32_t u32BitRate = 0UL;
+    uint32_t u32CanfdClk = 0UL;
+    uint32_t u32CanfdDiv = 0UL;
+
+    if ((psCanfd->CCCR & CANFD_CCCR_FDOE_Msk) == 0UL)
+        return 0UL;
+
+    u32CanfdClk = CANFD_GetSourceClock(psCanfd);
+
+    if (psCanfd == (CANFD_T *)CANFD0)
+    {
+        u32CanfdDiv = ((CLK->CLKDIV1 & CLK_CLKDIV1_CANFD0DIV_Msk) >> CLK_CLKDIV1_CANFD0DIV_Pos) + 1;
+    }
+    else if (psCanfd == (CANFD_T *)CANFD1)
+    {
+        u32CanfdDiv = ((CLK->CLKDIV1 & CLK_CLKDIV1_CANFD1DIV_Msk) >> CLK_CLKDIV1_CANFD1DIV_Pos) + 1;
+    }
+    else
+    {
+        return 0UL;
+    }
+
+    u32CanfdClk = u32CanfdClk / u32CanfdDiv;
+    u8Tq = ((psCanfd->DBTP & CANFD_DBTP_DBRP_Msk) >> CANFD_DBTP_DBRP_Pos) + 1 ;
+    u8NtSeg1 = ((psCanfd->DBTP & CANFD_DBTP_DTSEG1_Msk) >> CANFD_DBTP_DTSEG1_Pos);
+    u8NtSeg2 = ((psCanfd->DBTP & CANFD_DBTP_DTSEG2_Msk) >> CANFD_DBTP_DTSEG2_Pos);
+    u32BitRate = (u32CanfdClk / u8Tq) / (u8NtSeg1 + u8NtSeg2 + 3);
+
+    return u32BitRate;
+}
+
+/**
  * @brief       Calculates the CAN FD RAM buffer address.
  *
  * @param[in]   psConfigAddr  CAN FD element star address structure.
@@ -314,7 +400,8 @@ static void CANFD_CalculateRamAddress(CANFD_RAM_PART_T *psConfigAddr, CANFD_ELEM
 */
 void CANFD_GetDefaultConfig(CANFD_FD_T *psConfig, uint8_t u8OpMode)
 {
-    memset(psConfig, 0, sizeof(CANFD_FD_T));
+    if (psConfig->sElemSize.u32UserDef == 0)
+        memset(psConfig, 0, sizeof(CANFD_FD_T));
 
     psConfig->sBtConfig.sNormBitRate.u32BitRate = 500000;
 
@@ -331,25 +418,28 @@ void CANFD_GetDefaultConfig(CANFD_FD_T *psConfig, uint8_t u8OpMode)
         psConfig->sBtConfig.bBitRateSwitch = TRUE;
     }
 
-    /*Disable the Internal Loopback mode */
+    /* Disable the Internal Loopback mode */
     psConfig->sBtConfig.bEnableLoopBack = FALSE;
     /* Get the CAN FD memory size (number of byte) */
     psConfig->u32MRamSize  = CANFD_SRAM_SIZE;
 
-    /* CAN FD Standard message ID elements as 12 elements */
-    psConfig->sElemSize.u32SIDFC = 12;
-    /* CAN FD Extended message ID elements as 10 elements */
-    psConfig->sElemSize.u32XIDFC = 10;
-    /* CAN FD TX Buffer elements as 3 elements */
-    psConfig->sElemSize.u32TxBuf = 3;
-    /* CAN FD RX Buffer elements as 3 elements */
-    psConfig->sElemSize.u32RxBuf = 3;
-    /* CAN FD RX FIFO0 elements as 3 elements */
-    psConfig->sElemSize.u32RxFifo0 = 3;
-    /* CAN FD RX FIFO1 elements as 3 elements */
-    psConfig->sElemSize.u32RxFifo1 = 3;
-    /* CAN FD TX Event FOFI elements as 3 elements */
-    psConfig->sElemSize.u32TxEventFifo = 3;
+    if (psConfig->sElemSize.u32UserDef == 0)
+    {
+        /* CAN FD Standard message ID elements as 12 elements */
+        psConfig->sElemSize.u32SIDFC = 12;
+        /* CAN FD Extended message ID elements as 10 elements */
+        psConfig->sElemSize.u32XIDFC = 10;
+        /* CAN FD TX Buffer elements as 3 elements */
+        psConfig->sElemSize.u32TxBuf = 3;
+        /* CAN FD RX Buffer elements as 3 elements */
+        psConfig->sElemSize.u32RxBuf = 3;
+        /* CAN FD RX FIFO0 elements as 3 elements */
+        psConfig->sElemSize.u32RxFifo0 = 3;
+        /* CAN FD RX FIFO1 elements as 3 elements */
+        psConfig->sElemSize.u32RxFifo1 = 3;
+        /* CAN FD TX Event FOFI elements as 3 elements */
+        psConfig->sElemSize.u32TxEventFifo = 3;
+    }
     /*Calculates the CAN FD RAM buffer address*/
     CANFD_CalculateRamAddress(&psConfig->sMRamStartAddr, &psConfig->sElemSize);
 }
@@ -435,19 +525,18 @@ static void CANFD_SetTimingConfig(CANFD_T *psCanfd, const CANFD_TIMEING_CONFIG_T
     psCanfd->CCCR |= CANFD_CCCR_CCE_Msk;
 
     /* nominal bit rate */
-    psCanfd->NBTP = (((psConfig->u8NominalRJumpwidth & 0x7F) - 1) << 25) +
-                    (((psConfig->u16NominalPrescaler & 0x1FF) - 1) << 16) +
-                    ((((psConfig->u8NominalPhaseSeg1 + psConfig->u8NominalPropSeg) & 0xFF) - 1) << 8) +
-                    (((psConfig->u8NominalPhaseSeg2 & 0x7F) - 1) << 0);
-
+    psCanfd->NBTP = (((psConfig->u8NominalRJumpwidth & 0x7F) - 1) << CANFD_NBTP_NSJW_Pos) +
+                    (((psConfig->u16NominalPrescaler & 0x1FF) - 1) << CANFD_NBTP_NBRP_Pos) +
+                    ((((psConfig->u8NominalPhaseSeg1 + psConfig->u8NominalPropSeg) & 0xFF) - 1) << CANFD_NBTP_NTSEG1_Pos) +
+                    (((psConfig->u8NominalPhaseSeg2 & 0x7F) - 1) << CANFD_NBTP_NTSEG2_Pos);
 
     /* canfd->DBTP */
     if(psCanfd->CCCR & CANFD_CCCR_FDOE_Msk)
     {
-        psCanfd->DBTP = (((psConfig->u8DataPrescaler & 0x1F) - 1) << 16) +
-                        ((((psConfig->u8DataPhaseSeg1 + psConfig->u8DataPropSeg) & 0x1F) - 1) << 8) +
-                        (((psConfig->u8DataPhaseSeg2 & 0xF) - 1) << 4) +
-                        (((psConfig->u8DataRJumpwidth & 0xF) - 1) << 0);
+        psCanfd->DBTP = (((psConfig->u8DataPrescaler & 0x1F) - 1) << CANFD_DBTP_DBRP_Pos) +
+                        ((((psConfig->u8DataPhaseSeg1 + psConfig->u8DataPropSeg) & 0x1F) - 1) << CANFD_DBTP_DTSEG1_Pos) +
+                        (((psConfig->u8DataPhaseSeg2 & 0xF) - 1) << CANFD_DBTP_DTSEG2_Pos) +
+                        (((psConfig->u8DataRJumpwidth & 0xF) - 1) << CANFD_DBTP_DSJW_Pos);
     }
 }
 
@@ -548,7 +637,7 @@ static uint32_t CANFD_CalculateTimingValues(CANFD_T *psCanfd, uint32_t u32Nomina
     {
         i32Nclk = u32NominalBaudRate * i32Ntq;
 
-        for(psConfig->u16NominalPrescaler = 0x001; psConfig->u16NominalPrescaler <= 0x400; (psConfig->u16NominalPrescaler)++)
+        for(psConfig->u16NominalPrescaler = 0x001; psConfig->u16NominalPrescaler <= 0x200; (psConfig->u16NominalPrescaler)++)
         {
             i32Nclk2 = i32Nclk * psConfig->u16NominalPrescaler;
 
@@ -1080,7 +1169,7 @@ static void CANFD_InitRxFifo(CANFD_T *psCanfd, uint32_t u32RxFifoNum, CANFD_RAM_
     uint32_t u32Size;
 
     /* ignore if index is too high */
-    if(u32RxFifoNum > CANFD_NUM_RX_FIFOS)return;
+    if(u32RxFifoNum > CANFD_NUM_RX_FIFOS) return;
 
     /* ignore if index is too high */
     if(psElemSize-> u32RxFifo0 > CANFD_MAX_RX_FIFO0_ELEMS) return;
@@ -1529,6 +1618,7 @@ void CANFD_CopyDBufToMsgBuf(CANFD_T *psCanfd, CANFD_BUF_T *psRxBuf, CANFD_FD_MSG
     if(psCanfd->TSCC & CANFD_TSCC_TSS_Msk)
     {
         psMsgBuf->bTimestampCaptured = FALSE;
+        psMsgBuf->u8RxTimestampPointer = 0;
         psMsgBuf->u16RxTimestamp = (psRxBuf->u32Config & RX_BUFFER_AND_FIFO_R1_ELEM_RXTS_Msk);
     }
 
@@ -1861,7 +1951,7 @@ uint32_t CANFD_GetStatusFlag(CANFD_T *psCanfd, uint32_t u32IntTypeFlag)
 void CANFD_ClearStatusFlag(CANFD_T *psCanfd, uint32_t u32InterruptFlag)
 {
     /* Write 1 to clear status flag. */
-    psCanfd->IR = psCanfd->IR | u32InterruptFlag;
+    psCanfd->IR = u32InterruptFlag;
 }
 
 

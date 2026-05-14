@@ -188,6 +188,8 @@ void CANFD_CAN_Loopback(void)
     uint8_t u8Loop;
     CANFD_FD_T sCANFD_Config;
 
+    /* Use defined configuration */
+    sCANFD_Config.sElemSize.u32UserDef = 0;
     /* Get the CAN configuration value */
     CANFD_GetDefaultConfig(&sCANFD_Config, CANFD_OP_CAN_MODE);
     /* Enable internal loopback mode */
@@ -204,6 +206,8 @@ void CANFD_CAN_Loopback(void)
 #else
     NVIC_EnableIRQ(CANFD10_IRQn);
 #endif
+
+    printf("CAN Nominal bit rate(bps): %d\n", CANFD_GetNominalBitRate(g_pCanfd));
 
     /* Receive 0x110~0x11F in CAN rx FIFO0 buffer by setting mask 0 */
     CANFD_SetSIDFltr(g_pCanfd, 0, CANFD_RX_FIFO0_STD_MASK(0x110, 0x7F0));

@@ -30,17 +30,22 @@ CANFD_T * g_pCanfd = ((CANFD_MODULE == 0) ? CANFD0 : CANFD1);
 CANFD_FD_MSG_T      g_sRxMsgFrame;
 CANFD_FD_MSG_T      g_sTxMsgFrame;
 volatile uint8_t   g_u8RxFIFO0CompleteFlag = 0;
+volatile uint8_t   g_u8BusOffFlag = 0;
+volatile uint32_t  g_u32BusOffRecoveryCounter = 0;
 
 /*---------------------------------------------------------------------------------------------------------*/
 /* Define functions prototype                                                                              */
 /*---------------------------------------------------------------------------------------------------------*/
+int32_t main(void);
 void SYS_Init(void);
 void CAN_ShowRecvMessage(void);
 void CAN_RxTest(void);
 void CAN_TxTest(void);
+void CAN_Init(void);
+void CAN_Fini(void);
 void CAN_TxRxINTTest(void);
 void CAN_SendMessage(CANFD_FD_MSG_T *psTxMsg, E_CANFD_ID_TYPE eIdType, uint32_t u32Id, uint8_t u8Len);
-
+uint8_t CAN_BusOffRecovery(void);
 
 /*---------------------------------------------------------------------------------------------------------*/
 /* ISR to handle CAN Line 0 interrupt event                                                                */
@@ -53,12 +58,50 @@ void CANFD10_IRQHandler(void)
 void CANFD10_IRQHandler(void)
 #endif
 {
-    printf("IR =0x%08X \n", g_pCanfd->IR);
-    /* Clear the Interrupt flag */
-    CANFD_ClearStatusFlag(g_pCanfd, CANFD_IR_TOO_Msk | CANFD_IR_RF1N_Msk);
-    /* Receive the Rx FIFO0 buffer */
-    CANFD_ReadRxFifoMsg(g_pCanfd, 0, &g_sRxMsgFrame);
-    g_u8RxFIFO0CompleteFlag = 1;
+    uint32_t u32IntStatus;
+
+    u32IntStatus = g_pCanfd->IR;
+    printf("IR =0x%08X \n", u32IntStatus);
+
+    /* Check Error Warning status */
+    if (u32IntStatus & CANFD_IR_EW_Msk)
+    {
+        printf("Error warning flag is set.\n");
+        CANFD_ClearStatusFlag(g_pCanfd, CANFD_IR_EW_Msk);
+    }
+
+    /* Check Error Passive status */
+    if (u32IntStatus & CANFD_IR_EP_Msk)
+    {
+        printf("Error passive flag is set.\n");
+        CANFD_ClearStatusFlag(g_pCanfd, CANFD_IR_EP_Msk);
+    }
+
+    /* Check Bus-Off status */
+    if (u32IntStatus & CANFD_IR_BO_Msk)
+    {
+        if (g_pCanfd->PSR & CANFD_PSR_BO_Msk)
+        {
+            printf("Bus-Off detected! Recovery will be triggered on next transmission attempt.\n");
+            g_u8BusOffFlag = 1;
+        }
+
+        /* Always clear Bus-Off interrupt flag to prevent repeated interrupts */
+        CANFD_ClearStatusFlag(g_pCanfd, CANFD_IR_BO_Msk);
+    }
+
+    /* Check Rx FIFO0 New Message interrupt */
+    if (u32IntStatus & CANFD_IR_RF0N_Msk)
+    {
+        /* Receive the Rx FIFO0 buffer */
+        CANFD_ReadRxFifoMsg(g_pCanfd, 0, &g_sRxMsgFrame);
+        g_u8RxFIFO0CompleteFlag = 1;
+        /* Clear Rx FIFO0 New Message interrupt flag */
+        CANFD_ClearStatusFlag(g_pCanfd, CANFD_IR_RF0N_Msk);
+    }
+
+    /* Clear other interrupt flags */
+    CANFD_ClearStatusFlag(g_pCanfd, CANFD_IR_TOO_Msk);
 }
 
 
@@ -211,6 +254,22 @@ void CAN_SendMessage(CANFD_FD_MSG_T *psTxMsg, E_CANFD_ID_TYPE eIdType, uint32_t 
 {
     uint8_t u8Cnt;
 
+    /* Check if CAN is in Bus-Off state before transmitting */
+    if (g_u8BusOffFlag)
+    {
+        printf("CAN is in Bus-Off state. Starting recovery process...\n");
+
+        if (CAN_BusOffRecovery())
+        {
+            printf("Bus-Off recovery successful. Proceeding with transmission.\n");
+        }
+        else
+        {
+            printf("Bus-Off recovery failed. Cannot transmit.\n");
+            return;
+        }
+    }
+
     /* Set the ID number */
     psTxMsg->u32Id = u32Id;
     /* Set the ID type */
@@ -223,8 +282,6 @@ void CAN_SendMessage(CANFD_FD_MSG_T *psTxMsg, E_CANFD_ID_TYPE eIdType, uint32_t 
     psTxMsg->u32DLC = u8Len;
 
     for(u8Cnt = 0; u8Cnt < psTxMsg->u32DLC; u8Cnt++) psTxMsg->au8Data[u8Cnt] = u8Cnt;
-
-    g_u8RxFIFO0CompleteFlag = 0;
 
     /* Use message buffer 0 */
     if(eIdType == eCANFD_SID)
@@ -282,6 +339,46 @@ void CAN_ShowRecvMessage(void)
     printf("\n\n");
 }
 
+/*---------------------------------------------------------------------------------------------------------*/
+/* CAN Bus-Off Recovery Function                                                                           */
+/*---------------------------------------------------------------------------------------------------------*/
+uint8_t CAN_BusOffRecovery(void)
+{
+    printf("Starting CAN Bus-Off recovery sequence...\n");
+
+    /* CAN run to initial mode */
+    CANFD_RunToNormal(g_pCanfd, FALSE);
+
+    /* Cancel all transmit requests */
+    g_pCanfd->TXBCR = 0xFFFFFFFF;
+
+    /* Clear all interrupt flag */
+    CANFD_ClearStatusFlag(g_pCanfd, 0xFFFFFFFF);
+
+    /* CAN run to normal mode */
+    CANFD_RunToNormal(g_pCanfd, TRUE);
+
+    /* 50ms delay after recovery process */
+    CLK_SysTickDelay(50000);
+
+    /* Check if recovery was successful by verifying Bus-Off status */
+    if (g_pCanfd->PSR & CANFD_PSR_BO_Msk)
+    {
+        /* Still in Bus-Off state, recovery failed */
+        printf("CAN Bus-Off recovery failed. Still in Bus-Off state.\n");
+        /* Recovery failed */
+        return 0;
+    }
+    else
+    {
+        /* Recovery successful, clear Bus-Off flag */
+        g_u8BusOffFlag = 0;
+        g_u32BusOffRecoveryCounter++;
+        printf("CAN Bus-Off recovery completed. Recovery count: %u\n", g_u32BusOffRecoveryCounter);
+        /* Recovery successful */
+        return 1;
+    }
+}
 
 /*---------------------------------------------------------------------------------------------------------*/
 /* Init CAN                                                                                                */
@@ -304,6 +401,8 @@ void CAN_Init(void)
     printf("|         |-----------|          |-----------|                |\n");
     printf("+-------------------------------------------------------------+\n\n");
 
+    /* Use defined configuration */
+    sCANFD_Config.sElemSize.u32UserDef = 0;
     /* Get the CAN configuration value */
     CANFD_GetDefaultConfig(&sCANFD_Config, CANFD_OP_CAN_MODE);
     sCANFD_Config.sBtConfig.sNormBitRate.u32BitRate = 1000000;
@@ -318,6 +417,8 @@ void CAN_Init(void)
 #else
     NVIC_EnableIRQ(CANFD10_IRQn);
 #endif
+
+    printf("CAN Nominal bit rate(bps): %d\n", CANFD_GetNominalBitRate(g_pCanfd));
 
     /* Receive 0x110~0x11F in CAN rx FIFO0 buffer by setting mask 0 */
     CANFD_SetSIDFltr(g_pCanfd, 0, CANFD_RX_FIFO0_STD_MASK(0x110, 0x7F0));
@@ -334,8 +435,8 @@ void CAN_Init(void)
     CANFD_SetXIDFltr(g_pCanfd, 2, CANFD_RX_FIFO0_EXT_MASK_LOW(0x44444), CANFD_RX_FIFO0_EXT_MASK_HIGH(0x1FFFFFFF));
     /* Reject Non-Matching Standard ID and Extended ID Filter(RX FIFO0) */
     CANFD_SetGFC(g_pCanfd, eCANFD_REJ_NON_MATCH_FRM, eCANFD_REJ_NON_MATCH_FRM, 1, 1);
-    /* Enable RX FIFO0 new message interrupt using interrupt line 0 */
-    CANFD_EnableInt(g_pCanfd, (CANFD_IE_TOOE_Msk | CANFD_IE_RF0NE_Msk), 0, 0, 0);
+    /* Enable RX FIFO0 new message interrupt, Bus-Off interrupt, Error Warning and Error Passive interrupts using interrupt line 0 */
+    CANFD_EnableInt(g_pCanfd, (CANFD_IE_RF0NE_Msk | CANFD_IE_BOE_Msk | CANFD_IE_EWE_Msk | CANFD_IE_EPE_Msk), 0, 0, 0);
     /* CAN Run to Normal mode */
     CANFD_RunToNormal(g_pCanfd, TRUE);
 }
@@ -374,6 +475,7 @@ void CAN_TxRxINTTest(void)
     printf("|    the other is slave(CAN receiver). Master will send 6 messages with      |\n");
     printf("|    different sizes of data and ID to the slave. Slave will check if        |\n");
     printf("|    received data is correct after getting 6 messages data.                 |\n");
+    printf("|    Bus-Off recovery feature is enabled for error handling.               |\n");
     printf("|  Please select Master or Slave test                                        |\n");
     printf("|  [0] Master(CAN transmitter)    [1] Slave(CAN receiver)                    |\n");
     printf("+----------------------------------------------------------------------------+\n\n");
@@ -393,6 +495,11 @@ void CAN_TxRxINTTest(void)
     CAN_Fini();
 
     printf("CAN Sample Code End.\n");
+
+    if (g_u32BusOffRecoveryCounter > 0)
+    {
+        printf("Total Bus-Off recovery cycles: %u\n", g_u32BusOffRecoveryCounter);
+    }
 }
 
 void UART0_Init(void)

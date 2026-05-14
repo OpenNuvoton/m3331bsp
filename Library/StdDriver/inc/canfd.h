@@ -266,6 +266,7 @@ typedef struct
     uint32_t  u32RxBuf;          /*!< Rx Buffer element size in words */
     uint32_t  u32TxBuf;          /*!< Tx Buffer element size in words */
     uint32_t  u32TxEventFifo;    /*!< Tx Event FIFO element size in words */
+    uint32_t  u32UserDef;        /*!< Element for user define */
 } CANFD_ELEM_SIZE_T;
 
 /* CAN FD Message frame structure */
@@ -497,6 +498,8 @@ int32_t CANFD_RunToNormal(CANFD_T *canfd, uint8_t u8Enable);
 void CANFD_GetDefaultConfig(CANFD_FD_T *psConfig, uint8_t u8OpMode);
 void CANFD_ClearStatusFlag(CANFD_T *canfd, uint32_t u32InterruptFlag);
 uint32_t CANFD_GetStatusFlag(CANFD_T *canfd, uint32_t u32IntTypeFlag);
+uint32_t CANFD_GetNominalBitRate(CANFD_T *canfd);
+uint32_t CANFD_GetDataBitRate(CANFD_T *canfd);
 
 /*@}*/ /* end of group CANFD_EXPORTED_FUNCTIONS */
 

@@ -191,6 +191,8 @@ void CAN_Init(void)
     GPIO_SETMODE(PC, 11, GPIO_MODE_OUTPUT);
     PC11 = 0;
 
+    /* Use defined configuration */
+    sCANFD_Config.sElemSize.u32UserDef = 0;
     /* Get the CAN configuration value */
     CANFD_GetDefaultConfig(&sCANFD_Config, CANFD_OP_CAN_MODE);
     sCANFD_Config.sBtConfig.sNormBitRate.u32BitRate = CAN_BAUD_RATE;
