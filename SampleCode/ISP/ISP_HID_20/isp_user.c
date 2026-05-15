@@ -134,8 +134,6 @@ int ParseCmd(uint8_t *pu8Buffer, uint8_t u8len)
         if(u32Lcmd == CMD_ERASE_ALL)    /* Erase data flash */
         {
             EraseAP(g_u32DataFlashAddr, g_u32DataFlashSize);
-            *(uint32_t *)(pu8Response + 8) = u32regcnf0 | 0x02;
-            UpdateConfig((uint32_t *)(pu8Response + 8), NULL);
         }
 
         g_u32UpdateApromCmd = TRUE;
