@@ -552,7 +552,7 @@ __STATIC_INLINE uint32_t ELLSI_SET_FB_COUNT(ELLSI_T *ellsi, uint32_t u32ID, uint
   * @retval     -1 Unknown strip ID number.
   * @details    Read FBPCODE bit of ELLSI_FBPCNTn register to get the feedback pixel code of IDn.
   */
-__STATIC_INLINE uint32_t ELLSI_GET_FB_CURRENT(ELLSI_T *ellsi, uint32_t u32ID)
+__STATIC_INLINE uint32_t ELLSI_GET_FB_CODE(ELLSI_T *ellsi, uint32_t u32ID)
 {
     uint32_t i;
     uint32_t u32FBPCODE = 0;
