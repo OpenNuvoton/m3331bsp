@@ -449,6 +449,11 @@
               <FileType>1</FileType>
               <FilePath>..\..\..\..\Library\StdDriver\src\bpwm.c</FilePath>
             </File>
+            <File>
+              <FileName>pdma.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\Library\StdDriver\src\pdma.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -468,11 +473,6 @@
               <FileName>led_gen2_control.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\Library\LlsiYcableLib\led_gen2_control.c</FilePath>
-            </File>
-            <File>
-              <FileName>pdma_config.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\Library\LlsiYcableLib\pdma_config.c</FilePath>
             </File>
           </Files>
         </Group>

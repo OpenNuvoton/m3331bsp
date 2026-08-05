@@ -176,6 +176,12 @@ int main(void)
         LED_Gen2_Enable_Control(i, LED_Gen2_Port_Setting[Gen2_Ctrl.Current_Port].Use_Gen2);
     }
 
+    /* Report LED Gen2 detect result */
+    if(LED_Gen2_Detect_Err_Code == DETECT_ERR_CODE_NUMOVERMAX)
+    {
+        printf("WARNING! The actual total number of LEDs exceeded the maximum limit, and all ports reverted to Gen1 mode operation.\n");
+    }
+
     /* Initial SysTick, enable interrupt and 1000 interrupt tick per second to add counter */
     SysTick_Initial();
 

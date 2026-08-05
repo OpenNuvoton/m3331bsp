@@ -32,6 +32,8 @@ __attribute__((aligned (4))) volatile LED_Setting_T User_LEDSetting = {0, 0, 100
 __attribute__((aligned (4))) volatile LED_Gen2_Setting_T LED_Gen2_Port_Setting[LED_GEN2_MAX_SUPPORT_PORT];
 /* The setting of current Gen2 control port */
 __attribute__((aligned (4))) volatile LED_Gen2_Ctrl_T Gen2_Ctrl;
+/* LED Gen2 detect result error code (set by LED_Gen2_Control_Port(), read by application) */
+volatile uint8_t LED_Gen2_Detect_Err_Code = DETECT_ERR_CODE_NOERR;
 /* Data */
 /* Descriptor table */
 #define LED_Gen2_PDMA_DESC_NUM    11    // Total dexcriptior table for single strip conctrol
@@ -1260,6 +1262,8 @@ void LED_Gen2_Control_Port(void)
                 /* Check LED_Gen2_ACK_Count, the total max value is LED_GEN2_MAX_LED_NUMBER */
                 if((Total_LED_Gen2_Num + LED_Gen2_ACK_Count) > LED_GEN2_MAX_LED_NUMBER)
                 {
+                    /* Total LED count exceeds maximum limit */
+                    /* All ports revert to Gen1 mode, using the original LED_Mapping[port] settings for general control */
                     /* Disable LED Gen2 control */
                     LED_Gen2_Enable_Control(Gen2_Ctrl.Current_Port, FALSE);
                     /* Clear detected strip count */
@@ -1271,6 +1275,9 @@ void LED_Gen2_Control_Port(void)
 
                     /* Change status to finish */
                     LED_Gen2_Port_Setting[Gen2_Ctrl.Current_Port].Control_Status = 0x00;
+
+                    /* Record error code so the application can print the warning message */
+                    LED_Gen2_Detect_Err_Code = DETECT_ERR_CODE_NUMOVERMAX;
                 }
                 else
                 {

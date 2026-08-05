@@ -45,9 +45,9 @@ project:
         - file: ../../../../Library/StdDriver/src/llsi.c
         - file: ../../../../Library/StdDriver/src/gpio.c
         - file: ../../../../Library/StdDriver/src/bpwm.c
+        - file: ../../../../Library/StdDriver/src/pdma.c
     - group: LlsiYcableLib
       files:
         - file: ../../../../Library/LlsiYcableLib/hdiv.c
         - file: ../../../../Library/LlsiYcableLib/led_control.c
         - file: ../../../../Library/LlsiYcableLib/led_gen2_control.c
-        - file: ../../../../Library/LlsiYcableLib/pdma_config.c

@@ -118,5 +118,6 @@ void LED_Gen2_ACK(void);
 
 #define LED_GEN2_PDMA_DESC_NUM    8    // Total dexcriptior table for single strip conctrol
 extern volatile DSCT_T* LED_Gen2_PDMA_DESC[LED_GEN2_MAX_SUPPORT_PORT];
+extern volatile uint8_t LED_Gen2_Detect_Err_Code;
 
 #endif  /* __LED_GEN2_CONTROL_H__ */

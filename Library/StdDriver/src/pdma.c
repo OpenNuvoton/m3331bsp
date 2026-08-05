@@ -253,9 +253,6 @@ void PDMA_SetTransferMode(PDMA_T * pdma, uint32_t u32Ch, uint32_t u32Peripheral,
     if(u32Ch >= PDMA_CH_MAX)
         return;
 
-    /* Select peripheral for the channel */
-    reg[u32Ch / 4] = (reg[u32Ch / 4] & ~(PDMA_REQSEL0_3_REQSRC0_Msk << ((u32Ch % 4) * 8))) | (u32Peripheral << ((u32Ch % 4) * 8));
-
     if(u32ScatterEn)
     {
         (pdma)->DSCT[u32Ch].NEXT = u32DescAddr - ((pdma)->SCATBA);
@@ -265,6 +262,29 @@ void PDMA_SetTransferMode(PDMA_T * pdma, uint32_t u32Ch, uint32_t u32Peripheral,
     {
         (pdma)->DSCT[u32Ch].CTL = ((pdma)->DSCT[u32Ch].CTL & ~PDMA_DSCT_CTL_OPMODE_Msk) | PDMA_OP_BASIC;
     }
+
+    /* Select peripheral for the channel */
+    reg[u32Ch / 4] = (reg[u32Ch / 4] & ~(PDMA_REQSEL0_3_REQSRC0_Msk << ((u32Ch % 4) * 8))) | (u32Peripheral << ((u32Ch % 4) * 8));
+}
+
+/**
+ * @brief       Clear PDMA Request Source Select
+ *
+ * @param[in]   u32Ch           The selected channel
+ *
+ * @return      None
+ *
+ * @details     This function clear the request source selection of the selected channel.
+ */
+void PDMA_SetREQSEL(PDMA_T * pdma, uint32_t u32Ch)
+{
+    __IO uint32_t *reg = &((pdma)->REQSEL0_3);
+
+    if(u32Ch >= PDMA_CH_MAX)
+        return;
+
+    /* Select peripheral for the channel */
+    reg[u32Ch / 4] = (reg[u32Ch / 4] & ~(PDMA_REQSEL0_3_REQSRC0_Msk << ((u32Ch % 4) * 8)));
 }
 
 /**

@@ -1083,6 +1083,9 @@
             <name>$PROJ_DIR$\..\..\..\..\Library\StdDriver\src\llsi.c</name>
         </file>
         <file>
+            <name>$PROJ_DIR$\..\..\..\..\Library\StdDriver\src\pdma.c</name>
+        </file>
+        <file>
             <name>$PROJ_DIR$\..\..\..\..\Library\StdDriver\src\retarget.c</name>
         </file>
         <file>
@@ -1105,9 +1108,6 @@
         </file>
         <file>
             <name>$PROJ_DIR$\..\..\..\..\Library\LlsiYcableLib\led_gen2_control.c</name>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\..\..\..\..\Library\LlsiYcableLib\pdma_config.c</name>
         </file>
     </group>
     <group>
