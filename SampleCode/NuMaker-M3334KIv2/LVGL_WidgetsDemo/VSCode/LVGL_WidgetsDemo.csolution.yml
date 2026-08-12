@@ -4,7 +4,7 @@ solution:
   compiler: AC6
   target-types:
     - type: LVGL_WidgetsDemo
-      device: M3334KIGAE
+      device: Nuvoton::M3334KIGAE
       optimize: size
   projects:
     - project: LVGL_WidgetsDemo.cproject.yml

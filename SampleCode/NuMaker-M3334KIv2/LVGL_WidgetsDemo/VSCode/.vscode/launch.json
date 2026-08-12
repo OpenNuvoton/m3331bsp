@@ -4,31 +4,21 @@
         {
             "name": "CMSIS_DAP@pyOCD (launch)",
             "type": "gdbtarget",
-            "request": "launch",
+            "request": "attach",
             "cwd": "${workspaceFolder}/",
-            "program": "LVGL_WidgetsDemo/LVGL_WidgetsDemo/LVGL_WidgetsDemo.axf",
+            "program": "${command:embedded-debug.getApplicationFile}",
             "gdb": "arm-none-eabi-gdb",
-            "preLaunchTask": "CMSIS Load",
+            "preLaunchTask": "LaunchpyOCDServer",
             "initCommands": [
                 "monitor reset halt",
+                "set breakpoint pending on",
                 "tbreak main"
             ],
             "customResetCommands": [
-                "monitor reset halt"
+                "monitor reset halt",
+                "tbreak main"
             ],
             "target": {
-                "server": "pyocd",
-                "serverParameters": [
-                    "gdbserver",
-                    "--port",
-                    "3333",
-                    "--probe",
-                    "cmsisdap:",
-                    "--connect",
-                    "attach",
-                    "--cbuild-run",
-                    "${command:cmsis-csolution.getCbuildRunFile}"
-                ],
                 "port": "3333"
             },
             "cmsis": {
@@ -41,8 +31,9 @@
             "type": "gdbtarget",
             "request": "attach",
             "cwd": "${workspaceFolder}/",
-            "program": "LVGL_WidgetsDemo/LVGL_WidgetsDemo/LVGL_WidgetsDemo.axf",
+            "program": "${command:embedded-debug.getApplicationFile}",
             "gdb": "arm-none-eabi-gdb",
+            "preLaunchTask": "LaunchpyOCDServer",
             "initCommands": [
                 ""
             ],
