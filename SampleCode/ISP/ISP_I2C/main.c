@@ -132,8 +132,10 @@ int main(void)
 
     CLK->AHBCLK0 |= CLK_AHBCLK0_ISPCKEN_Msk;
     FMC->ISPCTL |= (FMC_ISPCTL_ISPEN_Msk | FMC_ISPCTL_APUEN_Msk | FMC_ISPCTL_DFUEN_Msk);
+    /* Get APROM and Data Flash size */
     g_apromSize = GetApromSize();
-    GetDataFlashInfo(&g_dataFlashAddr, &g_dataFlashSize);
+    g_dataFlashAddr = FMC_DATA_FLASH_BASE;
+    g_dataFlashSize = FMC_DATA_FLASH_SIZE;
     I2C_Init();
     SysTick->LOAD = 300000 * CyclesPerUs;
     SysTick->VAL   = (0x00);
