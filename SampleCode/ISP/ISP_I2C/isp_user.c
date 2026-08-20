@@ -178,7 +178,6 @@ int ParseCmd(unsigned char *buffer, uint8_t len)
         }
 
         UpdateConfig((uint32_t *)(pSrc), (uint32_t *)(response + 8));
-        GetDataFlashInfo(&g_dataFlashAddr, &g_dataFlashSize);
         goto out;
     }
     else if (lcmd == CMD_RESEND_PACKET)     //for APROM&Data flash only
@@ -186,7 +185,7 @@ int ParseCmd(unsigned char *buffer, uint8_t len)
         uint32_t PageAddress;
         StartAddress -= LastDataLen;
         TotalLen += LastDataLen;
-        PageAddress = StartAddress & (0x100000 - FMC_FLASH_PAGE_SIZE);
+        PageAddress = StartAddress & ~(FMC_FLASH_PAGE_SIZE - 1);
 
         if (PageAddress >= Config0)
         {
