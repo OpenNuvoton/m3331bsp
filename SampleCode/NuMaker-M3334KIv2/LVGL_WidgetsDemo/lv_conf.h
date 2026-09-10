@@ -21,7 +21,7 @@
 // <i> Enable the LVGL benchmark demo.
 // <0=> Disabled
 // <1=> Enabled
-#define LV_USE_DEMO_BENCHMARK           1
+#define LV_USE_DEMO_BENCHMARK           0
 
 
 // <e> LV_USE_PERF_MONITOR - Performance Monitor

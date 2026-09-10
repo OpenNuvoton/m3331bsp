@@ -2,6 +2,55 @@
     "version": "2.0.0",
     "tasks": [
         {
+            "label": "Probe-rs Load",
+            "type": "shell",
+            "command": "${command:openocd-helper.getProbeRsPath}",
+            "args": [
+                "download",
+                "--chip",
+                "${command:cmsis-csolution.getDeviceName}",
+                "--chip-description-path",
+                "${command:openocd-helper.getChipDescriptionPath}",
+                "${command:embedded-debug.getApplicationFile}"
+            ],
+            "group": "build",
+            "problemMatcher": [],
+            "presentation": {
+                "reveal": "always",
+                "panel": "shared",
+                "focus": false,
+                "close": false
+            }
+        },
+        {
+            "label": "LaunchpyOCDServer",
+            "type": "shell",
+            "command": "${command:openocd-helper.getPyOCDServerPath}",
+            "args": [
+                "${command:cmsis-csolution.getDeviceName}",
+                "${command:cmsis-csolution.getCbuildRunFile}"
+            ],
+            "isBackground": true,
+            "problemMatcher": {
+                "owner": "pyocd",
+                "pattern": [
+                    {
+                        "regexp": ".*",
+                        "kind": "location",
+                        "file": 1,
+                        "line": 1,
+                        "column": 1,
+                        "message": 1
+                    }
+                ],
+                "background": {
+                    "activeOnStart": true,
+                    "beginsPattern": "Starting pyOCD",
+                    "endsPattern": "GDB server started"
+                }
+            }
+        },
+        {
             "label": "CMSIS Erase",
             "type": "shell",
             "command": "pyocd",
@@ -152,7 +201,7 @@
         {
             "label": "CMSIS Load+Run",
             "dependsOn": [
-                "CMSIS Load"
+                "Probe-rs Load"
             ],
             "dependsOrder": "sequence",
             "problemMatcher": []
