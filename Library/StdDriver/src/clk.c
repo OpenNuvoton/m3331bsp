@@ -366,9 +366,9 @@ uint32_t CLK_SetCoreClock(uint32_t u32Hclk)
     /* Switch HCLK clock source to HIRC clock for safe */
     CLK->PWRCTL |= CLK_PWRCTL_HIRCEN_Msk;
     CLK_WaitClockReady(CLK_STATUS_HIRCSTB_Msk);
-    FMC->CYCCTL = (FMC->CYCCTL & (~FMC_CYCCTL_CYCLE_Msk)) | (8);
+    FMC->CYCCTL = (FMC->CYCCTL & (~FMC_CYCCTL_CYCLE_Msk)) | (7);
     CLK->CLKSEL0 |= CLK_CLKSEL0_HCLKSEL_Msk;
-    FMC->CYCCTL = (FMC->CYCCTL & (~FMC_CYCCTL_CYCLE_Msk)) | (2);
+    FMC->CYCCTL = (FMC->CYCCTL & (~FMC_CYCCTL_CYCLE_Msk)) | (3);
     CLK->CLKDIV0 &= (~CLK_CLKDIV0_HCLKDIV_Msk);
 
     /* Configure PLL setting if HXT clock is stable */
@@ -426,9 +426,9 @@ void CLK_SetHCLK(uint32_t u32ClkSrc, uint32_t u32ClkDiv)
     /* Switch to HIRC for safe. Avoid HCLK too high when applying new divider. */
     CLK->PWRCTL |= CLK_PWRCTL_HIRCEN_Msk;
     CLK_WaitClockReady(CLK_STATUS_HIRCSTB_Msk);
-    FMC->CYCCTL = (FMC->CYCCTL & (~FMC_CYCCTL_CYCLE_Msk)) | (8);
+    FMC->CYCCTL = (FMC->CYCCTL & (~FMC_CYCCTL_CYCLE_Msk)) | (7);
     CLK->CLKSEL0 |= CLK_CLKSEL0_HCLKSEL_Msk;
-    FMC->CYCCTL = (FMC->CYCCTL & (~FMC_CYCCTL_CYCLE_Msk)) | (2);
+    FMC->CYCCTL = (FMC->CYCCTL & (~FMC_CYCCTL_CYCLE_Msk)) | (3);
 
     /* Switch to power level 0 for safe */
     SYS->PLCTL = (SYS->PLCTL & (~SYS_PLCTL_PLSEL_Msk)) | SYS_PLCTL_PLSEL_PL0;
@@ -438,8 +438,8 @@ void CLK_SetHCLK(uint32_t u32ClkSrc, uint32_t u32ClkDiv)
         if(u32TimeOutCount-- == 0) break;
     }
 
-    /* Set Flash Access Cycle to 8 for safe */
-    FMC->CYCCTL = (FMC->CYCCTL & (~FMC_CYCCTL_CYCLE_Msk)) | (8);
+    /* Set Flash Access Cycle to 7 for safe */
+    FMC->CYCCTL = (FMC->CYCCTL & (~FMC_CYCCTL_CYCLE_Msk)) | (7);
 
     /* Apply new Divider */
     CLK->CLKDIV0 = (CLK->CLKDIV0 & (~CLK_CLKDIV0_HCLKDIV_Msk)) | u32ClkDiv;
@@ -462,35 +462,31 @@ void CLK_SetHCLK(uint32_t u32ClkSrc, uint32_t u32ClkDiv)
     }
 
     /* Switch flash access cycle to suitable value base on HCLK */
-    if(SystemCoreClock >= FREQ_175MHZ)
-    {
-        FMC->CYCCTL = (FMC->CYCCTL & (~FMC_CYCCTL_CYCLE_Msk)) | (8);
-    }
-    else if(SystemCoreClock >= FREQ_150MHZ)
+    if(SystemCoreClock > FREQ_160MHZ)
     {
         FMC->CYCCTL = (FMC->CYCCTL & (~FMC_CYCCTL_CYCLE_Msk)) | (7);
     }
-    else if(SystemCoreClock >= FREQ_125MHZ)
+    else if(SystemCoreClock > FREQ_130MHZ)
     {
         FMC->CYCCTL = (FMC->CYCCTL & (~FMC_CYCCTL_CYCLE_Msk)) | (6);
     }
-    else if(SystemCoreClock >= FREQ_100MHZ)
+    else if(SystemCoreClock > FREQ_100MHZ)
     {
         FMC->CYCCTL = (FMC->CYCCTL & (~FMC_CYCCTL_CYCLE_Msk)) | (5);
     }
-    else if(SystemCoreClock >= FREQ_75MHZ)
+    else if(SystemCoreClock > FREQ_70MHZ)
     {
         FMC->CYCCTL = (FMC->CYCCTL & (~FMC_CYCCTL_CYCLE_Msk)) | (4);
     }
-    else if(SystemCoreClock >= FREQ_50MHZ)
+    else if(SystemCoreClock > FREQ_40MHZ)
     {
         FMC->CYCCTL = (FMC->CYCCTL & (~FMC_CYCCTL_CYCLE_Msk)) | (3);
     }
-    else if(SystemCoreClock >= FREQ_24MHZ)
+    else if(SystemCoreClock > FREQ_12MHZ)
     {
         FMC->CYCCTL = (FMC->CYCCTL & (~FMC_CYCCTL_CYCLE_Msk)) | (2);
     }
-    else /* SystemCoreClock < FREQ_24MHZ */
+    else /* SystemCoreClock <= FREQ_12MHZ */
     {
         FMC->CYCCTL = (FMC->CYCCTL & (~FMC_CYCCTL_CYCLE_Msk)) | (1);
     }
