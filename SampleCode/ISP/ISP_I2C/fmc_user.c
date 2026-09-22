@@ -183,16 +183,15 @@ int EraseAP(uint32_t addr_start, uint32_t size)
     return 0;
 }
 
-void UpdateConfig(uint32_t *data, uint32_t *res)
+void UpdateConfig(uint32_t u32ConfigAddr, uint32_t u32ConfigBytes, uint32_t *pu32Data, uint32_t *pu32Resp)
 {
-    uint32_t u32Size = 56;
     FMC_ENABLE_CFG_UPDATE();
-    FMC_Proc(FMC_ISPCMD_PAGE_ERASE, Config0, Config0 + 8, 0);
-    FMC_Proc(FMC_ISPCMD_PROGRAM, Config0, Config0 + u32Size, data);
+    FMC_Proc(FMC_ISPCMD_CFG_ERASE, u32ConfigAddr, (u32ConfigAddr + u32ConfigBytes), 0);
+    FMC_Proc(FMC_ISPCMD_PROGRAM,   u32ConfigAddr, (u32ConfigAddr + u32ConfigBytes), pu32Data);
 
-    if(res)
+    if(pu32Resp)
     {
-        FMC_Proc(FMC_ISPCMD_READ, Config0, Config0 + u32Size, res);
+        FMC_Proc(FMC_ISPCMD_READ, u32ConfigAddr, (u32ConfigAddr + u32ConfigBytes), pu32Resp);
     }
 
     FMC_DISABLE_CFG_UPDATE();

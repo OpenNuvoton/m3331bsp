@@ -12,10 +12,10 @@
 #include "NuMicro.h"
 #include "isp_user.h"
 
-__ALIGNED(4) uint8_t response_buff[64];
-__ALIGNED(4) static uint8_t aprom_buf[FMC_FLASH_PAGE_SIZE];
-uint32_t bUpdateApromCmd;
-uint32_t g_apromSize, g_dataFlashAddr, g_dataFlashSize;
+__ALIGNED(4) uint8_t g_au8ResponseBuff[64];
+__ALIGNED(4) static uint8_t g_au8ApromBuf[FMC_FLASH_PAGE_SIZE];
+uint32_t g_u32UpdateApromCmd;
+uint32_t g_u32ApromSize, g_u32DataFlashAddr, g_u32DataFlashSize;
 
 static uint16_t Checksum(unsigned char *buf, int len)
 {
@@ -37,121 +37,126 @@ static uint16_t CalCheckSum(uint32_t start, uint32_t len)
 
     for (i = 0; i < len; i += FMC_FLASH_PAGE_SIZE)
     {
-        ReadData(start + i, start + i + FMC_FLASH_PAGE_SIZE, (uint32_t *)aprom_buf);
+        ReadData(start + i, start + i + FMC_FLASH_PAGE_SIZE, (uint32_t *)g_au8ApromBuf);
 
         if (len - i >= FMC_FLASH_PAGE_SIZE)
         {
-            lcksum += Checksum(aprom_buf, FMC_FLASH_PAGE_SIZE);
+            lcksum += Checksum(g_au8ApromBuf, FMC_FLASH_PAGE_SIZE);
         }
         else
         {
-            lcksum += Checksum(aprom_buf, len - i);
+            lcksum += Checksum(g_au8ApromBuf, len - i);
         }
     }
 
     return lcksum;
 }
 
-int ParseCmd(unsigned char *buffer, uint8_t len)
+int ParseCmd(uint8_t *pu8Buffer, uint8_t u8len)
 {
-    static uint32_t StartAddress, StartAddress_bak, TotalLen, TotalLen_bak, LastDataLen, Config, g_packno = 1;
-    uint8_t *response;
-    uint16_t lcksum;
-    uint32_t lcmd, srclen, i, regcnf0, security;
-    unsigned char *pSrc;
-    static uint32_t gcmd;
-    response = response_buff;
-    pSrc = buffer;
-    srclen = len;
-    lcmd = inpw(pSrc);
-    outpw(response + 4, 0);
-    pSrc += 8;
-    srclen -= 8;
-    ReadData(Config0, Config0 + 16, (uint32_t *)(response + 8)); //read config
-    regcnf0 = *(uint32_t *)(response + 8);
-    security = regcnf0 & 0x2;
+    static uint32_t u32StartAddress, u32StartAddress_bak, u32TotalLen, u32TotalLen_bak, u32LastDataLen, u32PackNo = 1;
+    uint32_t u32PageAddress;
+    uint8_t *pu8Response;
+    uint16_t u16Lcksum;
+    uint32_t u32Lcmd, u32srclen, u32i, u32Lsecurity;
+    uint32_t *pu32Config;
+    uint8_t *pu8Src;
+    static uint32_t u32Gcmd;
+    static uint32_t s_u32CfgCmd;        /* Config transaction in progress: UPDATE / READ / 0 = idle */
+    static uint32_t s_u32CfgSecurity;   /* Security lock state sampled on the first Config packet */
+    pu8Response = g_au8ResponseBuff;
+    pu8Src = pu8Buffer;
+    u32srclen = u8len;
+    u32Lcmd = inpw((uint32_t)pu8Src);
+    outpw((uint32_t)(pu8Response + 4), 0);
+    pu8Src += 8;
+    u32srclen -= 8;
+    ReadData(Config0, Config0 + (14 * 4), (uint32_t *)(uint32_t)(pu8Response + 8)); /* Read config */
+    pu32Config = (uint32_t *)(pu8Response + 8);
+    u32Lsecurity = (((pu32Config[11] & 0xFF) != 0x5A) || ((pu32Config[13] & 0xFF) != 0x5A));
 
-    if (lcmd == CMD_SYNC_PACKNO)
+    if(u32Lcmd == CMD_SYNC_PACKNO)
     {
-        g_packno = inpw(pSrc);
+        u32PackNo = inpw((uint32_t)pu8Src);
     }
 
-    if ((lcmd) && (lcmd != CMD_RESEND_PACKET))
+    if((u32Lcmd) && (u32Lcmd != CMD_RESEND_PACKET))
     {
-        gcmd = lcmd;
+        u32Gcmd = u32Lcmd;
+
+        if((u32Lcmd != CMD_UPDATE_CONFIG) && (u32Lcmd != CMD_READ_CONFIG))
+        {
+            s_u32CfgCmd = 0;    /* A new command terminates a pending Config transaction */
+        }
     }
 
-    if (lcmd == CMD_GET_FWVER)
+    if(u32Lcmd == CMD_GET_FWVER)
     {
-        response[8] = FW_VERSION;//version 2.3
+        pu8Response[8] = FW_VERSION; /* version 2.3 */
     }
-    else if (lcmd == CMD_GET_DEVICEID)
+    else if(u32Lcmd == CMD_GET_DEVICEID)
     {
-        outpw(response + 8, SYS->PDID);
+        outpw((uint32_t)(pu8Response + 8), SYS->PDID);
         goto out;
     }
-		else if(lcmd == CMD_READ_CONFIG_EXT)
+    else if(u32Lcmd == CMD_RUN_APROM || u32Lcmd == CMD_RUN_LDROM || u32Lcmd == CMD_RESET)
     {
-				Config = inpw((uint32_t)pSrc);
-				ReadData(Config0 + Config * 4, Config0 + Config * 4 + 4, (uint32_t *)(uint32_t)(response + 8));
-        goto out;
-    }
-    else if (lcmd == CMD_RUN_APROM || lcmd == CMD_RUN_LDROM || lcmd == CMD_RESET)
-    {
-        outpw(&SYS->RSTSTS, 3);//clear bit
+        /* Clear POR and Reset Pin reset flag */
+        SYS_CLEAR_RST_SOURCE(SYS_RSTSTS_PORF_Msk);
+        SYS_CLEAR_RST_SOURCE(SYS_RSTSTS_PINRF_Msk);
 
         /* Set BS */
-        if (lcmd == CMD_RUN_APROM)
+        if(u32Lcmd == CMD_RUN_APROM)
         {
-            i = (FMC->ISPCTL & 0xFFFFFFFC);
+            u32i = (FMC->ISPCTL & 0xFFFFFFFC);
         }
-        else if (lcmd == CMD_RUN_LDROM)
+        else if(u32Lcmd == CMD_RUN_LDROM)
         {
-            i = (FMC->ISPCTL & 0xFFFFFFFC);
-            i |= 0x00000002;
+            u32i = (FMC->ISPCTL & 0xFFFFFFFC);
+            u32i |= 0x00000002;
         }
         else
         {
-            i = (FMC->ISPCTL & 0xFFFFFFFE);//ISP disable
+            u32i = (FMC->ISPCTL & 0xFFFFFFFE); /* ISP disable */
         }
 
-        outpw(&FMC->ISPCTL, i);
+        outpw(&FMC->ISPCTL, u32i);
         outpw(&SCB->AIRCR, (V6M_AIRCR_VECTKEY_DATA | V6M_AIRCR_SYSRESETREQ));
 
         /* Trap the CPU */
-        while (1);
+        while(1);
     }
-    else if (lcmd == CMD_CONNECT)
+    else if(u32Lcmd == CMD_CONNECT)
     {
-        g_packno = 1;
+        u32PackNo = 1;
         goto out;
     }
-    else if ((lcmd == CMD_UPDATE_APROM) || (lcmd == CMD_ERASE_ALL))
+    else if((u32Lcmd == CMD_UPDATE_APROM) || (u32Lcmd == CMD_ERASE_ALL))
     {
-        EraseAP(FMC_APROM_BASE, (g_apromSize < g_dataFlashAddr) ? g_apromSize : g_dataFlashAddr); // erase APROM // g_dataFlashAddr, g_apromSize
+        EraseAP(FMC_APROM_BASE, (g_u32ApromSize < g_u32DataFlashAddr) ? g_u32ApromSize : g_u32DataFlashAddr);
 
-        if (lcmd == CMD_ERASE_ALL)   //erase data flash
+        if(u32Lcmd == CMD_ERASE_ALL)    /* Erase data flash */
         {
-            EraseAP(g_dataFlashAddr, g_dataFlashSize);
+            EraseAP(g_u32DataFlashAddr, g_u32DataFlashSize);
         }
 
-        bUpdateApromCmd = TRUE;
+        g_u32UpdateApromCmd = TRUE;
     }
-    else if (lcmd == CMD_GET_FLASHMODE)
+    else if(u32Lcmd == CMD_GET_FLASHMODE)
     {
-        //return 1: APROM, 2: LDROM
-        outpw(response + 8, (FMC->ISPCTL & 0x2) ? 2 : 1);
+        /* Return 1: APROM, 2: LDROM */
+        outpw(pu8Response + 8, (FMC->ISPCTL & 0x2) ? 2 : 1);
     }
 
-    if ((lcmd == CMD_UPDATE_APROM) || (lcmd == CMD_UPDATE_DATAFLASH))
+    if((u32Lcmd == CMD_UPDATE_APROM) || (u32Lcmd == CMD_UPDATE_DATAFLASH))
     {
-        if (lcmd == CMD_UPDATE_DATAFLASH)
+        if(u32Lcmd == CMD_UPDATE_DATAFLASH)
         {
-            StartAddress = g_dataFlashAddr;
+            u32StartAddress = g_u32DataFlashAddr;
 
-            if (g_dataFlashSize)   //g_dataFlashAddr
+            if(g_u32DataFlashSize)
             {
-                EraseAP(g_dataFlashAddr, g_dataFlashSize);
+                EraseAP(g_u32DataFlashAddr, g_u32DataFlashSize);
             }
             else
             {
@@ -160,76 +165,114 @@ int ParseCmd(unsigned char *buffer, uint8_t len)
         }
         else
         {
-            StartAddress = 0;
+            u32StartAddress = 0;
         }
 
-        //StartAddress = inpw(pSrc);
-        TotalLen = inpw(pSrc + 4);
-        pSrc += 8;
-        srclen -= 8;
-        StartAddress_bak = StartAddress;
-        TotalLen_bak = TotalLen;
+        u32TotalLen = inpw(pu8Src + 4);
+        pu8Src += 8;
+        u32srclen -= 8;
+        u32StartAddress_bak = u32StartAddress;
+        u32TotalLen_bak = u32TotalLen;
     }
-    else if (lcmd == CMD_UPDATE_CONFIG)
+    /* Config0-18 does not fit in one packet, so the transfer is split into two
+     * packets. Both packets are handled here so that the command has a single
+     * entry point and a well defined end of transaction. */
+    else if((u32Lcmd == CMD_UPDATE_CONFIG) || (u32Lcmd == CMD_READ_CONFIG) ||
+            ((u32Lcmd == 0) && (s_u32CfgCmd != 0)))
     {
-        if ((security == 0) && (!bUpdateApromCmd))   //security lock
+        if(u32Lcmd != 0)
+        {
+            /* First packet: Config0 - Config13 */
+            s_u32CfgCmd = u32Lcmd;              /* Arm the transaction, one more packet is expected */
+            s_u32CfgSecurity = u32Lsecurity;
+
+            if((u32Lcmd == CMD_UPDATE_CONFIG) &&
+               !((u32Lsecurity) && (!g_u32UpdateApromCmd)))    /* security lock */
+            {
+                UpdateConfig(Config0, (14 * 4), (uint32_t *)(uint32_t)pu8Src, (uint32_t *)(uint32_t)(pu8Response + 8));
+            }
+            else
+            {
+                /* CMD_READ_CONFIG, or CMD_UPDATE_CONFIG rejected by the security
+                 * lock: report the current values. */
+                ReadData(Config0, Config0 + (14 * 4), (uint32_t *)(uint32_t)(pu8Response + 8));
+            }
+        }
+        else
+        {
+            /* Second packet: Config14 - Config18 */
+            uint32_t u32CfgCmd = s_u32CfgCmd;
+            uint32_t u32Locked = ((s_u32CfgSecurity) && (!g_u32UpdateApromCmd));
+
+            /* Disarm before doing the work: the transaction ends here, so a
+             * following zero-command packet must not repeat this update. */
+            s_u32CfgCmd = 0;
+
+            if((u32CfgCmd == CMD_UPDATE_CONFIG) && (!u32Locked))
+            {
+                UpdateConfig(Config14, (2 * 4), (uint32_t *)(uint32_t)pu8Src, (uint32_t *)(uint32_t)(pu8Response + 8));
+                UpdateConfig(Config16, (3 * 4), (uint32_t *)(uint32_t)(pu8Src + (2 * 4)), (uint32_t *)(uint32_t)(pu8Response + 8 + (2 * 4)));
+            }
+            else
+            {
+                /* CMD_READ_CONFIG, or CMD_UPDATE_CONFIG rejected by the security
+                 * lock: report the current values. */
+                ReadData(Config14, (Config14 + (2 * 4)), (uint32_t *)(uint32_t)(pu8Response + 8));
+                ReadData(Config16, (Config16 + (3 * 4)), (uint32_t *)(uint32_t)(pu8Response + 8 + (2 * 4)));
+            }
+        }
+
+        goto out;
+    }
+    else if(u32Lcmd == CMD_RESEND_PACKET)      /* for APROM and Data flash only */
+    {
+        u32StartAddress -= u32LastDataLen;
+        u32TotalLen += u32LastDataLen;
+        u32PageAddress = u32StartAddress & ~(FMC_FLASH_PAGE_SIZE - 1);
+
+        if(u32PageAddress >= Config0)
         {
             goto out;
         }
 
-        UpdateConfig((uint32_t *)(pSrc), (uint32_t *)(response + 8));
-        goto out;
-    }
-    else if (lcmd == CMD_RESEND_PACKET)     //for APROM&Data flash only
-    {
-        uint32_t PageAddress;
-        StartAddress -= LastDataLen;
-        TotalLen += LastDataLen;
-        PageAddress = StartAddress & ~(FMC_FLASH_PAGE_SIZE - 1);
+        ReadData(u32PageAddress, u32StartAddress, (uint32_t *)g_au8ApromBuf);
+        FMC_Erase_User(u32PageAddress);
+        WriteData(u32PageAddress, u32StartAddress, (uint32_t *)g_au8ApromBuf);
 
-        if (PageAddress >= Config0)
+        if((u32StartAddress % FMC_FLASH_PAGE_SIZE) >= (FMC_FLASH_PAGE_SIZE - u32LastDataLen))
         {
-            goto out;
-        }
-
-        ReadData(PageAddress, StartAddress, (uint32_t *)aprom_buf);
-        FMC_Erase_User(PageAddress);
-        WriteData(PageAddress, StartAddress, (uint32_t *)aprom_buf);
-
-        if ((StartAddress % FMC_FLASH_PAGE_SIZE) >= (FMC_FLASH_PAGE_SIZE - LastDataLen))
-        {
-            FMC_Erase_User(PageAddress + FMC_FLASH_PAGE_SIZE);
+            FMC_Erase_User(u32PageAddress + FMC_FLASH_PAGE_SIZE);
         }
 
         goto out;
     }
 
-    if ((gcmd == CMD_UPDATE_APROM) || (gcmd == CMD_UPDATE_DATAFLASH))
+    if((u32Gcmd == CMD_UPDATE_APROM) || (u32Gcmd == CMD_UPDATE_DATAFLASH))
     {
-        if (TotalLen < srclen)
+        if(u32TotalLen < u32srclen)
         {
-            srclen = TotalLen;//prevent last package from over writing
+            u32srclen = u32TotalLen; /* Prevent last package from over writing */
         }
 
-        TotalLen -= srclen;
-        WriteData(StartAddress, StartAddress + srclen, (uint32_t *)pSrc); //WriteData(StartAddress, StartAddress + srclen, (uint32_t*)pSrc);
-        memset(pSrc, 0, srclen);
-        ReadData(StartAddress, StartAddress + srclen, (uint32_t *)pSrc);
-        StartAddress += srclen;
-        LastDataLen =  srclen;
+        u32TotalLen -= u32srclen;
+        WriteData(u32StartAddress, u32StartAddress + u32srclen, (uint32_t *)(uint32_t)pu8Src);
+        memset(pu8Src, 0, u32srclen);
+        ReadData(u32StartAddress, u32StartAddress + u32srclen, (uint32_t *)(uint32_t)pu8Src);
+        u32StartAddress += u32srclen;
+        u32LastDataLen = u32srclen;
 
-        if (TotalLen == 0)
+        if(u32TotalLen == 0)
         {
-            lcksum = CalCheckSum(StartAddress_bak, TotalLen_bak);
-            outps(response + 8, lcksum);
+            u16Lcksum = CalCheckSum(u32StartAddress_bak, u32TotalLen_bak);
+            outps(pu8Response + 8, u16Lcksum);
         }
     }
 
 out:
-    lcksum = Checksum(buffer, len);
-    outps(response, lcksum);
-    ++g_packno;
-    outpw(response + 4, g_packno);
-    g_packno++;
+    u16Lcksum = Checksum(pu8Buffer, u8len);
+    outps((uint32_t)pu8Response, u16Lcksum);
+    ++u32PackNo;
+    outpw((uint32_t)(pu8Response + 4), u32PackNo);
+    u32PackNo++;
     return 0;
 }

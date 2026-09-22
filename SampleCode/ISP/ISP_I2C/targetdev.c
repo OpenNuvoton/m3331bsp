@@ -46,17 +46,17 @@ void GetDataFlashInfo(uint32_t *addr, uint32_t *size)
 
         uData &= 0x000FFFFF;
 
-        if (uData > g_apromSize || uData & (FMC_FLASH_PAGE_SIZE - 1))   //avoid config1 value from error
+        if (uData > g_u32ApromSize || uData & (FMC_FLASH_PAGE_SIZE - 1))   //avoid config1 value from error
         {
-            uData = g_apromSize;
+            uData = g_u32ApromSize;
         }
 
         *addr = uData;
-        *size = g_apromSize - uData;
+        *size = g_u32ApromSize - uData;
     }
     else
     {
-        *addr = g_apromSize;
+        *addr = g_u32ApromSize;
         *size = 0;
     }
 }

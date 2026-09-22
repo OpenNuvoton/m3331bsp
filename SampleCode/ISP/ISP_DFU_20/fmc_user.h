@@ -15,7 +15,8 @@
 // #define FMC_CONFIG1_ADDR        (FMC_CONFIG_BASE + 4)   /*!< CONFIG 1 Address */
 
 #define Config0         FMC_CONFIG_BASE
-#define Config1         (FMC_CONFIG_BASE+4)
+#define Config14        (FMC_CONFIG_BASE + 0x38)
+#define Config16        (FMC_CONFIG_BASE + 0x80)
 
 #define ISPGO           0x01
 
@@ -35,7 +36,7 @@ int FMC_Erase_User(uint32_t u32Addr);
 void ReadData(uint32_t addr_start, uint32_t addr_end, uint32_t *data);
 void WriteData(uint32_t addr_start, uint32_t addr_end, uint32_t *data);
 int EraseAP(uint32_t addr_start, uint32_t size);
-void UpdateConfig(uint32_t *data, uint32_t *res);
+void UpdateConfig(uint32_t u32ConfigAddr, uint32_t u32ConfigBytes, uint32_t *pu32Data, uint32_t *pu32Resp);
 
 
 #endif  /* FMC_USER_H */

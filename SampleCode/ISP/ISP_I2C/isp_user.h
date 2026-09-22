@@ -32,8 +32,6 @@
 #define CMD_WRITE_CHECKSUM          0x000000C9
 #define CMD_GET_FLASHMODE           0x000000CA
 
-#define CMD_READ_CONFIG_EXT         0x000000E0
-
 #define CMD_RESEND_PACKET           0x000000FF
 
 #define V6M_AIRCR_VECTKEY_DATA      0x05FA0000UL
@@ -41,10 +39,10 @@
 
 extern void GetDataFlashInfo(uint32_t *addr, uint32_t *size);
 extern uint32_t GetApromSize(void);
-extern int ParseCmd(unsigned char *buffer, uint8_t len);
-extern uint32_t g_apromSize, g_dataFlashAddr, g_dataFlashSize;
+extern int ParseCmd(uint8_t *pu8Buffer, uint8_t u8len);
+extern uint32_t g_u32ApromSize, g_u32DataFlashAddr, g_u32DataFlashSize;
 
 extern __ALIGNED(4) uint8_t usb_rcvbuf[];
 extern __ALIGNED(4) uint8_t usb_sendbuf[];
-extern __ALIGNED(4) uint8_t response_buff[64];
+extern __ALIGNED(4) uint8_t g_au8ResponseBuff[64];
 #endif  // #ifndef ISP_USER_H
