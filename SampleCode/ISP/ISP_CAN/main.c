@@ -62,7 +62,7 @@ void CANFD00_IRQHandler(void)
     /**************************/
     /* Status Change interrupt*/
     /**************************/
-    if((u32IIDRstatus & CANFD_IR_RF0N_Msk) == CANFD_IR_RF0N_Msk)
+    if ((u32IIDRstatus & CANFD_IR_RF0N_Msk) == CANFD_IR_RF0N_Msk)
     {
         /*Clear the Interrupt flag */
         CANFD_ClearStatusFlag(CANFD0, CANFD_IR_TOO_Msk | CANFD_IR_RF0N_Msk);
@@ -84,9 +84,10 @@ int32_t SYS_Init(void)
 
     /* Wait for HIRC clock ready */
     u32TimeOutCnt = SystemCoreClock; /* 1 second time-out */
-    while(!(CLK->STATUS & CLK_STATUS_HIRCSTB_Msk))
+
+    while (!(CLK->STATUS & CLK_STATUS_HIRCSTB_Msk))
     {
-        if(--u32TimeOutCnt == 0)
+        if (--u32TimeOutCnt == 0)
             return -1;
     }
 
@@ -101,18 +102,20 @@ int32_t SYS_Init(void)
 
     /* Wait for PLL clock ready */
     u32TimeOutCnt = SystemCoreClock; /* 1 second time-out */
-    while(!(CLK->STATUS & CLK_STATUS_PLLSTB_Msk))
+
+    while (!(CLK->STATUS & CLK_STATUS_PLLSTB_Msk))
     {
-        if(--u32TimeOutCnt == 0)
+        if (--u32TimeOutCnt == 0)
             return -1;
     }
 
     /* Set power level by HCLK working frequency */
     SYS->PLCTL = (SYS->PLCTL & (~SYS_PLCTL_PLSEL_Msk)) | SYS_PLCTL_PLSEL_PL0;
     u32TimeOutCnt = SystemCoreClock; /* 1 second time-out */
-    while(SYS->PLSTS & SYS_PLSTS_PLCBUSY_Msk)
+
+    while (SYS->PLSTS & SYS_PLSTS_PLCBUSY_Msk)
     {
-        if(u32TimeOutCnt-- == 0)
+        if (u32TimeOutCnt-- == 0)
             return -1;
     }
 
@@ -169,7 +172,7 @@ void CAN_Package_ACK(CANFD_T *psCanfd)
     sTxMsgFrame.au32Data[0] = g_sRxMsgFrame.au32Data[0];
     sTxMsgFrame.au32Data[1] = g_sRxMsgFrame.au32Data[1];
 
-    if(CANFD_TransmitTxMsg(psCanfd, 0, &sTxMsgFrame) == FALSE)     // Configure Msg RAM and send the Msg in the RAM
+    if (CANFD_TransmitTxMsg(psCanfd, 0, &sTxMsgFrame) == FALSE)    // Configure Msg RAM and send the Msg in the RAM
     {
         return;
     }
@@ -226,7 +229,7 @@ int main(void)
     SYS_UnlockReg();
 
     /* Init System, IP clock and multi-function I/O */
-    if(SYS_Init() < 0)
+    if (SYS_Init() < 0)
         goto _APROM;
 
     /* Enable FMC ISP AP CFG function & clear ISPFF */
@@ -240,73 +243,82 @@ int main(void)
     SysTick->VAL   = (0x00);
     SysTick->CTRL = SysTick->CTRL | SysTick_CTRL_CLKSOURCE_Msk | SysTick_CTRL_ENABLE_Msk;
 
-    while(1)
+    while (1)
     {
-        if(s_u8CANPackageFlag == 1)
+        if (s_u8CANPackageFlag == 1)
         {
             break;
         }
 
-        if(SysTick->CTRL & SysTick_CTRL_COUNTFLAG_Msk)
+        if (SysTick->CTRL & SysTick_CTRL_COUNTFLAG_Msk)
         {
             goto _APROM;
         }
     }
 
     /* state of update program */
-    while(1)
+    while (1)
     {
-        if(s_u8CANPackageFlag)
+        if (s_u8CANPackageFlag)
         {
-            volatile STR_CANMSG_ISP_T *psISPCanMsg = (STR_CANMSG_ISP_T *)&g_sRxMsgFrame.au32Data[0];
+            __IO STR_CANMSG_ISP_T *psISPCanMsg = (STR_CANMSG_ISP_T *)&g_sRxMsgFrame.au32Data[0];
+            __IO uint32_t u32Addr = psISPCanMsg->Address;
+            __IO uint32_t u32Data = psISPCanMsg->Data;
             s_u8CANPackageFlag = 0;
 
-            if(psISPCanMsg->Address == CMD_GET_DEVICEID)
+            if (u32Addr == CMD_GET_DEVICEID)
             {
                 psISPCanMsg->Data = SYS->PDID;
             }
-            else if(psISPCanMsg->Address == CMD_READ_CONFIG)
+            else if (u32Addr == CMD_READ_CONFIG)
             {
-                psISPCanMsg->Data = FMC_Read((psISPCanMsg->Data | FMC_CONFIG_BASE));
+                psISPCanMsg->Data = FMC_Read((u32Data | FMC_CONFIG_BASE));
             }
-            else if(psISPCanMsg->Address == CMD_RUN_APROM)
+            else if (u32Addr == CMD_RUN_APROM)
             {
                 break;
             }
-            else if (psISPCanMsg->Address == CMD_READ_FLASH_64)
+            else if (u32Addr == CMD_READ_FLASH_64)
             {
                 /* read back MSW data */
-                psISPCanMsg->Data = FMC_Read(psISPCanMsg->Data);
+                psISPCanMsg->Data = FMC_Read(u32Data);
             }
             else
             {
                 PD2 = 0;
-                if((psISPCanMsg->Address % FMC_FLASH_PAGE_SIZE) == 0)
-                {
-                    FMC_Erase(psISPCanMsg->Address);
-                }
 
-                if ((psISPCanMsg->Address & 0x00300000UL) == 0x00300000UL) /* User Configuration */
+                if ((u32Addr & 0x00300000UL) == 0x00300000UL) /* User Configuration */
                 {
-                    FMC_Write((psISPCanMsg->Address | FMC_CONFIG_BASE), psISPCanMsg->Data);
-                    psISPCanMsg->Data = FMC_Read((psISPCanMsg->Address | FMC_CONFIG_BASE));
+                    u32Addr = (u32Addr | FMC_CONFIG_BASE);
+
+                    if (u32Data != FMC_Read(u32Addr))
+                    {
+                        FMC_WriteConfig(u32Addr, u32Data);
+                    }
+
+                    psISPCanMsg->Data = FMC_Read(u32Addr);
                 }
                 else
                 {
-                    if ((psISPCanMsg->Address & 0x7) == 0x0)
+                    if ((u32Addr % FMC_FLASH_PAGE_SIZE) == 0)
+                    {
+                        FMC_Erase(u32Addr);
+                    }
+
+                    if ((u32Addr & 0x7) == 0x0)
                     {
                         /* must keep LSW data for next write */
-                        u32LSWData = psISPCanMsg->Data;
-                        
+                        u32LSWData = u32Data;
+
                         /* return ack */
                         psISPCanMsg->Data = ~u32LSWData;
                     }
                     else
                     {
-                        FMC_Write8Bytes((psISPCanMsg->Address & 0xFFFFFFF8), u32LSWData, psISPCanMsg->Data);
+                        FMC_Write8Bytes((u32Addr & 0xFFFFFFF8), u32LSWData, u32Data);
 
                         /* read back LSW data */
-                        psISPCanMsg->Data = FMC_Read(psISPCanMsg->Address & 0xFFFFFFF8);
+                        psISPCanMsg->Data = FMC_Read(u32Addr & 0xFFFFFFF8);
                     }
                 }
 
@@ -324,7 +336,7 @@ _APROM:
     NVIC_SystemReset();
 
     /* Trap the CPU */
-    while(1);
+    while (1);
 }
 
 /*---------------------------------------------------------------------------------------------------------*/
