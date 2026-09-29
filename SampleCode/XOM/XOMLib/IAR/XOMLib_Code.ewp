@@ -117,7 +117,7 @@
                 <option>
                     <name>GBECoreSlave</name>
                     <version>28</version>
-                    <state>39</state>
+                    <state>59</state>
                 </option>
                 <option>
                     <name>OGUseCmsis</name>
@@ -134,7 +134,7 @@
                 <option>
                     <name>CoreVariant</name>
                     <version>28</version>
-                    <state>39</state>
+                    <state>59</state>
                 </option>
                 <option>
                     <name>GFPUDeviceSlave</name>
@@ -143,12 +143,12 @@
                 <option>
                     <name>FPU2</name>
                     <version>0</version>
-                    <state>4</state>
+                    <state>0</state>
                 </option>
                 <option>
                     <name>NrRegs</name>
                     <version>0</version>
-                    <state>1</state>
+                    <state>0</state>
                 </option>
                 <option>
                     <name>NEON</name>
@@ -157,7 +157,7 @@
                 <option>
                     <name>GFPUCoreSlave2</name>
                     <version>28</version>
-                    <state>39</state>
+                    <state>59</state>
                 </option>
                 <option>
                     <name>OGCMSISPackSelectDevice</name>
@@ -656,7 +656,7 @@
                 </option>
                 <option>
                     <name>OOCOutputFile</name>
-                    <state>XOMCode.bin</state>
+                    <state>XOMLib_Code.bin</state>
                 </option>
                 <option>
                     <name>OOCCommandLineProducer</name>
@@ -680,14 +680,14 @@
         <settings>
             <name>BICOMP</name>
             <archiveVersion>0</archiveVersion>
-            <data></data>
+            <data />
         </settings>
         <settings>
             <name>BUILDACTION</name>
             <archiveVersion>1</archiveVersion>
             <data>
                 <prebuild></prebuild>
-                <postbuild>$PROJ_DIR$\..\XOMAddr.exe $PROJ_DIR$\Release\List\XOMCode.map  $PROJ_DIR$\..\xomlib.c</postbuild>
+                <postbuild></postbuild>
             </data>
         </settings>
         <settings>
@@ -775,7 +775,7 @@
                 </option>
                 <option>
                     <name>IlinkIcfFile</name>
-                    <state>$PROJ_DIR$\xom.icf</state>
+                    <state>$PROJ_DIR$\XOMLib_Code.icf</state>
                 </option>
                 <option>
                     <name>IlinkIcfFileSlave</name>
@@ -1056,7 +1056,7 @@
         <settings>
             <name>BILINK</name>
             <archiveVersion>0</archiveVersion>
-            <data></data>
+            <data />
         </settings>
     </configuration>
     <group>
@@ -1070,9 +1070,6 @@
     </group>
     <group>
         <name>Library</name>
-        <file>
-            <name>$PROJ_DIR$\..\..\..\..\Library\StdDriver\src\acmp.c</name>
-        </file>
         <file>
             <name>$PROJ_DIR$\..\..\..\..\Library\StdDriver\src\clk.c</name>
         </file>

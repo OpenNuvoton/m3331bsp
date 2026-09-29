@@ -4,7 +4,7 @@
  * @brief    Show how to use XOM Library
  *
  * @copyright SPDX-License-Identifier: Apache-2.0
- * @copyright Copyright (C) 2025 Nuvoton Technology Corp. All rights reserved.
+ * @copyright Copyright (C) 2026 Nuvoton Technology Corp. All rights reserved.
 *****************************************************************************/
 #include <stdio.h>
 #include "NuMicro.h"

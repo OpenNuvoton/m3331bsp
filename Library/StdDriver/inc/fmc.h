@@ -485,6 +485,15 @@ __STATIC_INLINE int32_t FMC_SetVectorPageAddr(uint32_t u32PageAddr)
     return 0;
 }
 
+/**
+ * @brief       Get selected flash bank/segment index.
+ * @param       None
+ * @return      The selected flash bank/segment index. 0: Bank/Segment0, 1: Bank/Segment1.
+ */
+__STATIC_INLINE uint32_t FMC_GetBankIdx(void)
+{
+    return ((FMC->ISPSTS & FMC_ISPSTS_FBS_Msk) >> FMC_ISPSTS_FBS_Pos);
+}
 
 /*---------------------------------------------------------------------------------------------------------*/
 /*  Functions                                                                                              */

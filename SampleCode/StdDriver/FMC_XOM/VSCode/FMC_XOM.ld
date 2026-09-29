@@ -109,7 +109,9 @@ SECTIONS
   .text :
   {
     KEEP(*(.vectors))
-    *(.text*)
+
+    /* *(.text*)*/
+    *(EXCLUDE_FILE(*xom_add.c.obj) .text*)
 
     KEEP(*(.init))
     KEEP(*(.fini))

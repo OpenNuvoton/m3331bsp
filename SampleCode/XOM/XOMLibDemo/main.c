@@ -1,15 +1,18 @@
 /******************************************************************************
  * @file     main.c
  * @version  V1.00
- * @brief    Demo how to use XOM library
+ * @brief    Demo how to use XOM library in dual bank/Segment.
  *
  * @copyright SPDX-License-Identifier: Apache-2.0
- * @copyright Copyright (c) 2025 Nuvoton Technology Corp. All rights reserved.
+ * @copyright Copyright (c) 2026 Nuvoton Technology Corp. All rights reserved.
  ******************************************************************************/
 #include <stdio.h>
 #include "NuMicro.h"
 #include "xomlib.h"
 
+/* XOM limitation : After return from XOM region function, need to delay one cycle */
+/* The marco XOM_CALL is using for avoid XOM limitation. */
+#define XOM_CALL(pfunc, ret, ...)      { ret = pfunc(__VA_ARGS__); __NOP(); }
 
 
 void SYS_Init(void);
@@ -47,8 +50,8 @@ void SYS_Init(void)
 
 int main(void)
 {
-    extern void func(void);
-    int32_t NumArray[10] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+    uint32_t u32Data = 0;
+    int32_t  ai32NumArray[] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
 
     /* Unlock protected registers */
     SYS_UnlockReg();
@@ -56,36 +59,42 @@ int main(void)
     /* Init System, IP clock and multi-function I/O. */
     SYS_Init();
 
+    /* Set Vector Table Offset Register */
+    SCB->VTOR = 0x8000;
 
     /* Configure UART0: 115200, 8-bit word, no parity bit, 1 stop bit. */
     UART_Open(UART0, 115200);
 
     /*
-        This sample code is used to show how to call XOM library.
+        This sample code is used to show how to call XOM library in dual bank/segment.
 
-        The XOM library is built by XOMLib project.
-        User need to add include path of xomlib.h and add object file xomlib.lib(Keil) or xomlib.a(IAR) to using XOM library built by XOMLib project.
-
-    Note:
-        xomlib.lib(Keil) or xomlib.a(IAR) only contain API function pointers.
-        XOM code must be download to XOM region before call them by xomlib.lib(Keil) or xomlib.a(IAR).
-
+        The XOM library is build by XOMLib project.
+        Users need to add include path of xomlib.h and add object file xomlib.lib(Keil)/xomlib.a(IAR)/libXOMLib.a(GCC)
+        to using XOM library built by XOMLib project.
     */
 
     printf("\n\n");
-    printf("+-------------------------------------------+\n");
-    printf("|  Demo how to use XOM library Sample Code  |\n");
-    printf("+-------------------------------------------+\n");
+    printf("+------------------------------------------------+\n");
+    printf("|  Demo how to use XOM library in Bank/Segment%d  |\n", DL_BANK);
+    printf("+------------------------------------------------+\n");
 
-    /* Run XOM function */
-    printf("\n");
-    printf(" 100 + 200 = %d\n", XOM_Add(100, 200));
-    printf(" 500 - 100 = %d\n", XOM_Sub(500, 100));
-    printf(" 200 * 100 = %d\n", XOM_Mul(200, 100));
-    printf("1000 / 250 = %d\n", XOM_Div(1000, 250));
+    XOM_CALL(XOM_Add, u32Data, 100, (200 + DL_BANK));
+    printf(" 100 + %d = %d\n", (200 + DL_BANK), u32Data);
 
-    printf("\n");
-    printf("1 + 2 +..+ 10 = %d\n", XOM_Sum(NumArray, 10));
+    XOM_CALL(XOM_Sub, u32Data, 500, (100 + DL_BANK));
+    printf(" 500 - %d = %d\n", (100 + DL_BANK), u32Data);
 
-    while(1);
+    XOM_CALL(XOM_Mul, u32Data, 200, (100 + DL_BANK));
+    printf(" 200 * %d = %d\n", (100 + DL_BANK), u32Data);
+
+    XOM_CALL(XOM_Div, u32Data, 1000, ((DL_BANK == 0) ? 250 : 500));
+    printf("1000 / %d = %d\n", ((DL_BANK == 0) ? 250 : 500), u32Data);
+
+    u32Data = XOM_Sum(ai32NumArray, sizeof(ai32NumArray) / sizeof(ai32NumArray[0]));
+    printf("Sum of ai32NumArray = %d\n", u32Data);
+
+    printf("Done\n");
+
+    while (1);
 }
+

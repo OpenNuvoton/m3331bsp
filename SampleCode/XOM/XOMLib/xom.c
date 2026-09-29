@@ -1,67 +1,63 @@
 /******************************************************************************
  * @file     xom.c
  * @version  V3.00
- * @brief    XOM library  --  Add function
+ * @brief    XOM library  --  Custom XOM function
  *
  * @copyright SPDX-License-Identifier: Apache-2.0
- * @copyright Copyright (c) 2025 Nuvoton Technology Corp. All rights reserved.
+ * @copyright Copyright (c) 2026 Nuvoton Technology Corp. All rights reserved.
 *****************************************************************************/
+
 #include <stdio.h>
 #include "NuMicro.h"
 
-int32_t XOM_Add(int32_t a, int32_t b);
-int32_t XOM_Sub(int32_t a, int32_t b);
-int32_t XOM_Mul(int32_t a, int32_t b);
-int32_t XOM_Div(int32_t a, int32_t b);
-int32_t XOM_Sum(int32_t *pbuf, int32_t n);
-
-int32_t XOM_Add(int32_t a, int32_t b)
+int32_t XOM_Add(int32_t i32Val1, int32_t i32Val2)
 {
-    int32_t c;
-    c =  a + b;
+    uint32_t u32Result;
 
-    return c;
+    u32Result =  i32Val1 + i32Val2;
+
+    return u32Result;
 }
 
-int32_t XOM_Sub(int32_t a, int32_t b)
+int32_t XOM_Sub(int32_t i32Val1, int32_t i32Val2)
 {
-    int32_t c;
+    uint32_t u32Result;
 
-    c =  a - b;
+    u32Result =  i32Val1 - i32Val2;
 
-    return c;
+    return u32Result;
 }
 
-int32_t XOM_Mul(int32_t a, int32_t b)
+int32_t XOM_Mul(int32_t i32Val1, int32_t i32Val2)
 {
-    int32_t c;
+    uint32_t u32Result;
 
+    u32Result =  i32Val1 * i32Val2;
 
-    c =  a * b;
-
-    return c;
+    return u32Result;
 }
 
-int32_t XOM_Div(int32_t a, int32_t b)
+int32_t XOM_Div(int32_t i32Val1, int32_t i32Val2)
 {
-    int32_t c;
+    uint32_t u32Result;
 
-    c =  a / b;
+    u32Result =  i32Val1 / i32Val2;
 
-    return c;
+    return u32Result;
 }
 
-
-int32_t XOM_Sum(int32_t *pbuf, int32_t n)
+int32_t XOM_Sum(int32_t *pi32buf, int32_t i32n)
 {
-    int32_t i;
+    int32_t i32LoopCnt;
     int32_t i32Sum;
 
     i32Sum = 0;
-    for(i = 0; i < n; i++)
+
+    for (i32LoopCnt = 0; i32LoopCnt < i32n; i32LoopCnt++)
     {
-        i32Sum += pbuf[i];
+        i32Sum += pi32buf[i32LoopCnt];
     }
 
     return i32Sum;
 }
+

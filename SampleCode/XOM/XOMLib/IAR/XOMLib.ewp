@@ -117,7 +117,7 @@
                 <option>
                     <name>GBECoreSlave</name>
                     <version>28</version>
-                    <state>39</state>
+                    <state>59</state>
                 </option>
                 <option>
                     <name>OGUseCmsis</name>
@@ -134,7 +134,7 @@
                 <option>
                     <name>CoreVariant</name>
                     <version>28</version>
-                    <state>39</state>
+                    <state>59</state>
                 </option>
                 <option>
                     <name>GFPUDeviceSlave</name>
@@ -143,12 +143,12 @@
                 <option>
                     <name>FPU2</name>
                     <version>0</version>
-                    <state>4</state>
+                    <state>0</state>
                 </option>
                 <option>
                     <name>NrRegs</name>
                     <version>0</version>
-                    <state>1</state>
+                    <state>0</state>
                 </option>
                 <option>
                     <name>NEON</name>
@@ -157,7 +157,7 @@
                 <option>
                     <name>GFPUCoreSlave2</name>
                     <version>28</version>
-                    <state>39</state>
+                    <state>59</state>
                 </option>
                 <option>
                     <name>OGCMSISPackSelectDevice</name>
@@ -679,14 +679,14 @@
         <settings>
             <name>BICOMP</name>
             <archiveVersion>0</archiveVersion>
-            <data></data>
+            <data />
         </settings>
         <settings>
             <name>BUILDACTION</name>
             <archiveVersion>1</archiveVersion>
             <data>
                 <prebuild></prebuild>
-                <postbuild>cmd.exe /c echo "$PROJ_DIR$\..\xomconv.exe" "$PROJ_PATH$"  ..\xomapi.h ..\lib\xomlib "$EW_DIR$" &gt; $PROJ_DIR$\makexom.bat</postbuild>
+                <postbuild></postbuild>
             </data>
         </settings>
         <settings>
@@ -1055,13 +1055,13 @@
         <settings>
             <name>BILINK</name>
             <archiveVersion>0</archiveVersion>
-            <data></data>
+            <data />
         </settings>
     </configuration>
     <group>
         <name>Src</name>
         <file>
-            <name>$PROJ_DIR$\..\xomlibIAR.c</name>
+            <name>$PROJ_DIR$\xomlib.c</name>
         </file>
     </group>
 </project>
