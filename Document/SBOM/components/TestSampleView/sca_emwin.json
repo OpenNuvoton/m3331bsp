@@ -7,6 +7,9 @@
       "version": "6.46.12",
       "scope": "required",
       "author": "SEGGER Microcontroller GmbH",
+      "manufacturer": {
+        "name": "SEGGER Microcontroller GmbH"
+      },
       "supplier": {
         "name": "SEGGER Microcontroller GmbH"
       },

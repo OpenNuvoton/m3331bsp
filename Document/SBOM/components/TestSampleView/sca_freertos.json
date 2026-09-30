@@ -7,10 +7,14 @@
       "version": "11.1.0",
       "scope": "required",
       "author": "Amazon.com, Inc. (FreeRTOS project)",
+      "manufacturer": {
+        "name": "Amazon.com, Inc."
+      },
       "supplier": {
-        "name": "Amazon.com, Inc. (FreeRTOS project)"
+        "name": "Amazon.com, Inc."
       },
       "purl": "pkg:generic/freertos-kernel@11.1.0",
+      "cpe": "cpe:2.3:o:amazon:freertos:11.1.0:*:*:*:*:*:*:*",
       "description": "FreeRTOS Kernel vendored in ThirdParty/FreeRTOS.",
       "licenses": [
         {

@@ -7,6 +7,9 @@
       "version": "1.10.0",
       "scope": "required",
       "author": "Arm Limited",
+      "manufacturer": {
+        "name": "Arm Limited"
+      },
       "supplier": {
         "name": "Arm Limited"
       },
