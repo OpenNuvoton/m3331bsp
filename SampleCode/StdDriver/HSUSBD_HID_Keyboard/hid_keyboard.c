@@ -541,7 +541,7 @@ void HID_UpdateKbData(void)
 {
     uint32_t volatile u32Key = 0xF;
 
-    if((GPIO_GET_IN_DATA(PE) & BIT8) == 0x0)
+    if((GPIO_GET_IN_DATA(PH) & BIT5) == 0x0)
         u32Key = 1;
     else
         u32Key = 0;
