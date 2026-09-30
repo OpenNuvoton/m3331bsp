@@ -1,12 +1,11 @@
-//{{NO_DEPENDENCIES}}
+ï»¿//{{NO_DEPENDENCIES}}
 // Microsoft Visual C++ generated include file.
 // Used by HIDTransferTest.rc
 //
 
 #define IDS_APP_TITLE           103
 
-// ¤U¤@­Ó·s¼Wª«¥óªº¹w³]­È
-//
+
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_NEXT_RESOURCE_VALUE    101
