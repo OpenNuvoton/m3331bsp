@@ -395,5 +395,168 @@ public:
 };
 
 
+/* HID Control Transfer Class - uses HidD_SetOutputReport and HidD_GetInputReport */
+class CHidCtrlTransfer
+{
+protected:
+	HANDLE m_hDeviceHandle;
+	HIDP_CAPS m_Capabilities;
+	USHORT m_usVID;
+	USHORT m_usPID;
+
+public:
+	CHidCtrlTransfer()
+		: m_hDeviceHandle(INVALID_HANDLE_VALUE)
+		, m_usVID(0)
+		, m_usPID(0)
+	{
+		memset(&m_Capabilities, 0, sizeof(m_Capabilities));
+	}
+
+	virtual ~CHidCtrlTransfer()
+	{
+		CloseDevice();
+	}
+
+	void CloseDevice()
+	{
+		if(m_hDeviceHandle != INVALID_HANDLE_VALUE)
+		{
+			CloseHandle(m_hDeviceHandle);
+			m_hDeviceHandle = INVALID_HANDLE_VALUE;
+		}
+	}
+
+	BOOL OpenDevice(USHORT usVID, USHORT usPID)
+	{
+		m_usVID = usVID;
+		m_usPID = usPID;
+
+		GUID HidGuid;
+		HDEVINFO hDevInfoSet;
+		DWORD MemberIndex;
+		SP_DEVICE_INTERFACE_DATA DevInterfaceData;
+		BOOL Result;
+		DWORD RequiredSize;
+		PSP_DEVICE_INTERFACE_DETAIL_DATA pDevDetailData;
+		HIDD_ATTRIBUTES DevAttributes;
+		BOOL MyDevFound = FALSE;
+
+		m_hDeviceHandle = INVALID_HANDLE_VALUE;
+
+		DevInterfaceData.cbSize = sizeof(DevInterfaceData);
+		DevAttributes.Size = sizeof(DevAttributes);
+
+		HidD_GetHidGuid(&HidGuid);
+
+		hDevInfoSet = SetupDiGetClassDevs(&HidGuid, NULL, NULL, 
+			DIGCF_PRESENT | DIGCF_INTERFACEDEVICE);
+
+		MemberIndex = 0;
+
+		while(1)
+		{
+			Result = SetupDiEnumDeviceInterfaces(hDevInfoSet, 0, &HidGuid, 
+				MemberIndex, &DevInterfaceData);
+
+			if(Result == FALSE)
+				break;
+
+			Result = SetupDiGetDeviceInterfaceDetail(hDevInfoSet, &DevInterfaceData, 
+				NULL, 0, &RequiredSize, NULL);
+
+			pDevDetailData = (PSP_DEVICE_INTERFACE_DETAIL_DATA)malloc(RequiredSize);
+			pDevDetailData->cbSize = sizeof(SP_DEVICE_INTERFACE_DETAIL_DATA);
+
+			Result = SetupDiGetDeviceInterfaceDetail(hDevInfoSet, &DevInterfaceData, 
+				pDevDetailData, RequiredSize, NULL, NULL);
+
+			if(Result == FALSE)
+			{
+				free(pDevDetailData);
+				continue;
+			}
+
+			HANDLE hDevHandle = CreateFile(pDevDetailData->DevicePath,
+				0, FILE_SHARE_READ | FILE_SHARE_WRITE, NULL, OPEN_EXISTING, 0, NULL);
+
+			if(hDevHandle == INVALID_HANDLE_VALUE)
+			{
+				free(pDevDetailData);
+				MemberIndex++;
+				continue;
+			}
+
+			Result = HidD_GetAttributes(hDevHandle, &DevAttributes);
+			CloseHandle(hDevHandle);
+
+			if(Result == FALSE)
+			{
+				free(pDevDetailData);
+				continue;
+			}
+
+			if(DevAttributes.VendorID == usVID && DevAttributes.ProductID == usPID)
+			{
+				MyDevFound = TRUE;
+
+				// Open with read/write access
+				m_hDeviceHandle = CreateFile(pDevDetailData->DevicePath,
+					GENERIC_READ | GENERIC_WRITE,
+					FILE_SHARE_READ | FILE_SHARE_WRITE,
+					NULL, OPEN_EXISTING, 0, NULL);
+
+				if(m_hDeviceHandle != INVALID_HANDLE_VALUE)
+				{
+					// Get capabilities
+					PHIDP_PREPARSED_DATA PreparsedData;
+					if(HidD_GetPreparsedData(m_hDeviceHandle, &PreparsedData))
+					{
+						HidP_GetCaps(PreparsedData, &m_Capabilities);
+						HidD_FreePreparsedData(PreparsedData);
+					}
+				}
+
+				free(pDevDetailData);
+				break;
+			}
+
+			free(pDevDetailData);
+			MemberIndex++;
+		}
+
+		SetupDiDestroyDeviceInfoList(hDevInfoSet);
+
+		return MyDevFound && (m_hDeviceHandle != INVALID_HANDLE_VALUE);
+	}
+
+	BOOL SetOutputReport(unsigned char *pBuffer, DWORD dwLen)
+	{
+		if(m_hDeviceHandle == INVALID_HANDLE_VALUE)
+			return FALSE;
+
+		return HidD_SetOutputReport(m_hDeviceHandle, pBuffer, dwLen);
+	}
+
+	BOOL GetInputReport(unsigned char *pBuffer, DWORD dwLen)
+	{
+		if(m_hDeviceHandle == INVALID_HANDLE_VALUE)
+			return FALSE;
+
+		return HidD_GetInputReport(m_hDeviceHandle, pBuffer, dwLen);
+	}
+
+	USHORT GetOutputReportLength()
+	{
+		return m_Capabilities.OutputReportByteLength;
+	}
+
+	USHORT GetInputReportLength()
+	{
+		return m_Capabilities.InputReportByteLength;
+	}
+};
+
+
 
 #endif
