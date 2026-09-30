@@ -7,10 +7,14 @@
       "version": "9.4.0",
       "scope": "required",
       "author": "LVGL Kft",
+      "manufacturer": {
+        "name": "LVGL Kft"
+      },
       "supplier": {
         "name": "LVGL Kft"
       },
       "purl": "pkg:generic/lvgl@9.4.0",
+      "cpe": "cpe:2.3:a:lvgl:lvgl:9.4.0:*:*:*:*:*:*:*",
       "description": "LVGL (Light and Versatile Graphics Library) vendored in ThirdParty/lvgl.",
       "externalReferences": [
         {
