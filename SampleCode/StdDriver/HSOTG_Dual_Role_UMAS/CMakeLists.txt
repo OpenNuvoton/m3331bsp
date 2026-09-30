@@ -8,6 +8,7 @@ create_project(HSOTG_Dual_Role_UMAS
     ${HSOTG_DIR}/descriptors.c
     ${HSOTG_DIR}/diskio.c
     ${HSOTG_DIR}/massstorage.c
+    ${HSOTG_DIR}/swotg.c
 )
 target_link_libraries(HSOTG_Dual_Role_UMAS usbhost_msc fatfs_lib)
 target_include_directories(HSOTG_Dual_Role_UMAS PRIVATE

@@ -36,7 +36,7 @@ volatile uint32_t  g_u32BusOffRecoveryCounter = 0;
 /*---------------------------------------------------------------------------------------------------------*/
 /* Define functions prototype                                                                              */
 /*---------------------------------------------------------------------------------------------------------*/
-int32_t main(void);
+int main(void);
 void SYS_Init(void);
 void CAN_ShowRecvMessage(void);
 void CAN_RxTest(void);
