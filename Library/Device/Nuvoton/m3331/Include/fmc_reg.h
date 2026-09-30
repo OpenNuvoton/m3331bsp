@@ -218,11 +218,11 @@ typedef struct
      * |        |          |0100 = CPU access with four wait cycles if cache miss; Flash access cycle is 4.
      * |        |          |The optimized HCLK working frequency range is 70~100 MHz.
      * |        |          |0101 = CPU access with five wait cycles if cache miss; Flash access cycle is 5.
-     * |        |          |The optimized HCLK working frequency range is 100~130 MHz.
+     * |        |          |The optimized HCLK working frequency range is 100~126 MHz.
      * |        |          |0110 = CPU access with six wait cycles if cache miss; Flash access cycle is 6.
-     * |        |          |The optimized HCLK working frequency range is 130~160 MHz.
+     * |        |          |The optimized HCLK working frequency range is 126~156 MHz.
      * |        |          |0111 = CPU access with seven wait cycles if cache miss; Flash access cycle is 7.
-     * |        |          |The optimized HCLK working frequency range is 160~180 MHz
+     * |        |          |The optimized HCLK working frequency range is 156~180 MHz
      * |        |          |Others = Reserved.
      * |        |          |Note: These bits are write protected. Refer to the SYS_REGLCTL register.
      * @var FMC_T::MPDAT0
