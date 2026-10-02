@@ -490,10 +490,9 @@ __WEAK uint32_t ProcessHardFault(uint32_t lr, uint32_t msp, uint32_t psp)
     printf("Press any key to reset ...\n");
     getchar();
     SYS->IPRST0 = SYS_IPRST0_CHIPRST_Msk;
-    /* Or *sp to remove compiler warning */
-    while(1U | *sp) {}
 
-    return lr;
+    /* Halt here */
+    while(1) {}
 }
 #endif /* defined(DEBUG_ENABLE_SEMIHOST) */
 
