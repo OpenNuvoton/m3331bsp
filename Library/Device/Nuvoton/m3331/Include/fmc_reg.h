@@ -209,20 +209,24 @@ typedef struct
      * | :----: | :----:   | :---- |
      * |[3:0]   |CYCLE     |Flash Access Cycle Control (Write Protect)
      * |        |          |This register is updated by user before HCLK running in different frequency.
-     * |        |          |0001 = CPU access with one wait cycle if cache miss; Flash access cycle is 1.
+     * |        |          |0001 = CPU access with one wait cycle; Flash access cycle is 1.
      * |        |          |The HCLK working frequency range is <=12 MHz.
-     * |        |          |0010 = CPU access with two wait cycles if cache miss; Flash access cycle is 2.
+     * |        |          |0010 = CPU access with two wait cycles; Flash access cycle is 2.
      * |        |          |The optimized HCLK working frequency range is 12~40 MHz.
-     * |        |          |0011 = CPU access with three wait cycles if cache miss; Flash access cycle is 3.
+     * |        |          |0011 = CPU access with three wait cycles; Flash access cycle is 3.
      * |        |          |The optimized HCLK working frequency range is 40~70 MHz.
-     * |        |          |0100 = CPU access with four wait cycles if cache miss; Flash access cycle is 4.
-     * |        |          |The optimized HCLK working frequency range is 70~100 MHz.
-     * |        |          |0101 = CPU access with five wait cycles if cache miss; Flash access cycle is 5.
-     * |        |          |The optimized HCLK working frequency range is 100~126 MHz.
-     * |        |          |0110 = CPU access with six wait cycles if cache miss; Flash access cycle is 6.
-     * |        |          |The optimized HCLK working frequency range is 126~156 MHz.
-     * |        |          |0111 = CPU access with seven wait cycles if cache miss; Flash access cycle is 7.
-     * |        |          |The optimized HCLK working frequency range is 156~180 MHz
+     * |        |          |0100 = CPU access with four wait cycles; Flash access cycle is 4.
+     * |        |          |The optimized HCLK working frequency range is 70~90 MHz.
+     * |        |          |0101 = CPU access with five wait cycles; Flash access cycle is 5.
+     * |        |          |The optimized HCLK working frequency range is 90~120 MHz.
+     * |        |          |0110 = CPU access with six wait cycles; Flash access cycle is 6.
+     * |        |          |The optimized HCLK working frequency range is 120~150 MHz.
+     * |        |          |When PLSEL(SYS_PLCTL[1:0])(Power Level Control Register) value is 00:
+     * |        |          |0111 = CPU access with seven wait cycles; Flash access cycle is 7.
+     * |        |          |The optimized HCLK working frequency range is 150~180 MHz.
+     * |        |          |When PLSEL(SYS_PLCTL[1:0])(Power Level Control Register) value is 01:
+     * |        |          |0111 = CPU access with seven wait cycles; Flash access cycle is 7.
+     * |        |          |The optimized HCLK working frequency range is 150~160 MHz.
      * |        |          |Others = Reserved.
      * |        |          |Note: These bits are write protected. Refer to the SYS_REGLCTL register.
      * @var FMC_T::MPDAT0

@@ -462,15 +462,15 @@ void CLK_SetHCLK(uint32_t u32ClkSrc, uint32_t u32ClkDiv)
     }
 
     /* Switch flash access cycle to suitable value base on HCLK */
-    if(SystemCoreClock > FREQ_156MHZ)
+    if(SystemCoreClock > FREQ_150MHZ)
     {
         FMC->CYCCTL = (FMC->CYCCTL & (~FMC_CYCCTL_CYCLE_Msk)) | (7);
     }
-    else if(SystemCoreClock > FREQ_126MHZ)
+    else if(SystemCoreClock > FREQ_120MHZ)
     {
         FMC->CYCCTL = (FMC->CYCCTL & (~FMC_CYCCTL_CYCLE_Msk)) | (6);
     }
-    else if(SystemCoreClock > FREQ_100MHZ)
+    else if(SystemCoreClock > FREQ_90MHZ)
     {
         FMC->CYCCTL = (FMC->CYCCTL & (~FMC_CYCCTL_CYCLE_Msk)) | (5);
     }

@@ -40,8 +40,10 @@ extern "C"
 #define FREQ_64MHZ         64000000UL   /*!< 64 MHz \hideinitializer */
 #define FREQ_70MHZ         70000000UL   /*!< 70 MHz \hideinitializer */
 #define FREQ_75MHZ         75000000UL   /*!< 75 MHz \hideinitializer */
+#define FREQ_90MHZ         90000000UL   /*!< 90 MHz \hideinitializer */
 #define FREQ_96MHZ         96000000UL   /*!< 96 MHz \hideinitializer */
 #define FREQ_100MHZ        100000000UL  /*!< 100 MHz \hideinitializer */
+#define FREQ_120MHZ        120000000UL  /*!< 120 MHz \hideinitializer */
 #define FREQ_125MHZ        125000000UL  /*!< 125 MHz \hideinitializer */
 #define FREQ_126MHZ        126000000UL  /*!< 126 MHz \hideinitializer */
 #define FREQ_130MHZ        130000000UL  /*!< 130 MHz \hideinitializer */
