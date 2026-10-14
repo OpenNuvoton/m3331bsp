@@ -2,10 +2,10 @@
   "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
   "bomFormat": "CycloneDX",
   "specVersion": "1.6",
-  "serialNumber": "urn:uuid:87be5037-9c3b-4626-89d6-98a69a0e2f3b",
+  "serialNumber": "urn:uuid:b7427130-0f34-41f5-898b-844365aa89ba",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-09-30T16:41:08+08:00",
+    "timestamp": "2026-10-14T14:08:13+08:00",
     "tools": {
       "components": [
         {
@@ -20,14 +20,14 @@
       "bom-ref": "75895ef93da71df0",
       "type": "library",
       "name": "MCU Driver",
-      "version": "v3.00.002-25-g9ce14f09",
+      "version": "v3.00.002-37-gf0f483ce",
       "supplier": {
         "name": "Nuvoton Technology Corp.",
         "url": [
           "https://www.nuvoton.com"
         ]
       },
-      "purl": "pkg:generic/nuvoton/mcu-driver@v3.00.002-25-g9ce14f09",
+      "purl": "pkg:generic/nuvoton/mcu-driver@v3.00.002-37-gf0f483ce",
       "licenses": [
         {
           "license": {
@@ -128,14 +128,14 @@
       "type": "library",
       "bom-ref": "m3331bsp:product-component:library-cmsis-dsp",
       "name": "m3331 CMSIS-DSP",
-      "version": "v3.00.002-25-g9ce14f09",
+      "version": "v3.00.002-37-gf0f483ce",
       "supplier": {
         "name": "Nuvoton Technology Corp.",
         "url": [
           "https://www.nuvoton.com"
         ]
       },
-      "purl": "pkg:generic/nuvoton/library-cmsis-dsp@v3.00.002-25-g9ce14f09",
+      "purl": "pkg:generic/nuvoton/library-cmsis-dsp@v3.00.002-37-gf0f483ce",
       "hashes": [
         {
           "alg": "SHA-256",
@@ -186,18 +186,18 @@
       "type": "library",
       "bom-ref": "m3331bsp:product-component:library-device",
       "name": "m3331 Device",
-      "version": "v3.00.002-25-g9ce14f09",
+      "version": "v3.00.002-37-gf0f483ce",
       "supplier": {
         "name": "Nuvoton Technology Corp.",
         "url": [
           "https://www.nuvoton.com"
         ]
       },
-      "purl": "pkg:generic/nuvoton/library-device@v3.00.002-25-g9ce14f09",
+      "purl": "pkg:generic/nuvoton/library-device@v3.00.002-37-gf0f483ce",
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "9987d40b4904c5a56d387bf19a8247f85e999c879b96dc3af7d5d47f12830d10"
+          "content": "36d5dd5cfcc0d4495169083fcb697d670e26c758a2575518ab2dd010b3882cac"
         }
       ],
       "licenses": [
@@ -244,14 +244,14 @@
       "type": "library",
       "bom-ref": "m3331bsp:product-component:library-llsiycablelib",
       "name": "m3331 LlsiYcableLib",
-      "version": "v3.00.002-25-g9ce14f09",
+      "version": "v3.00.002-37-gf0f483ce",
       "supplier": {
         "name": "Nuvoton Technology Corp.",
         "url": [
           "https://www.nuvoton.com"
         ]
       },
-      "purl": "pkg:generic/nuvoton/library-llsiycablelib@v3.00.002-25-g9ce14f09",
+      "purl": "pkg:generic/nuvoton/library-llsiycablelib@v3.00.002-37-gf0f483ce",
       "hashes": [
         {
           "alg": "SHA-256",
@@ -302,14 +302,14 @@
       "type": "library",
       "bom-ref": "m3331bsp:product-component:library-numaker",
       "name": "m3331 NuMaker",
-      "version": "v3.00.002-25-g9ce14f09",
+      "version": "v3.00.002-37-gf0f483ce",
       "supplier": {
         "name": "Nuvoton Technology Corp.",
         "url": [
           "https://www.nuvoton.com"
         ]
       },
-      "purl": "pkg:generic/nuvoton/library-numaker@v3.00.002-25-g9ce14f09",
+      "purl": "pkg:generic/nuvoton/library-numaker@v3.00.002-37-gf0f483ce",
       "hashes": [
         {
           "alg": "SHA-256",
@@ -360,18 +360,18 @@
       "type": "library",
       "bom-ref": "m3331bsp:product-component:library-stddriver",
       "name": "m3331 StdDriver",
-      "version": "v3.00.002-25-g9ce14f09",
+      "version": "v3.00.002-37-gf0f483ce",
       "supplier": {
         "name": "Nuvoton Technology Corp.",
         "url": [
           "https://www.nuvoton.com"
         ]
       },
-      "purl": "pkg:generic/nuvoton/library-stddriver@v3.00.002-25-g9ce14f09",
+      "purl": "pkg:generic/nuvoton/library-stddriver@v3.00.002-37-gf0f483ce",
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "4aa560a557d090870a28c91f6a6fbbb8ae100c10edb9e6cba0206f9b2877b322"
+          "content": "247980fd358651b10fa63cdd107528e5f2b37b7e53c328367ed6113fbe75051d"
         }
       ],
       "licenses": [
@@ -418,14 +418,14 @@
       "type": "library",
       "bom-ref": "m3331bsp:product-component:library-usbhostlib",
       "name": "m3331 UsbHostLib",
-      "version": "v3.00.002-25-g9ce14f09",
+      "version": "v3.00.002-37-gf0f483ce",
       "supplier": {
         "name": "Nuvoton Technology Corp.",
         "url": [
           "https://www.nuvoton.com"
         ]
       },
-      "purl": "pkg:generic/nuvoton/library-usbhostlib@v3.00.002-25-g9ce14f09",
+      "purl": "pkg:generic/nuvoton/library-usbhostlib@v3.00.002-37-gf0f483ce",
       "hashes": [
         {
           "alg": "SHA-256",
@@ -625,13 +625,14 @@
     }
   ],
   "signature": {
-    "algorithm": "Ed25519",
+    "algorithm": "ES256",
     "keyId": "wschang0@nuvoton.com",
     "publicKey": {
-      "kty": "OKP",
-      "crv": "Ed25519",
-      "x": "TgbfwoVHePVjOGkBXjwGXZ8R9W6uukRP7UOt3Sr52QM"
+      "kty": "EC",
+      "crv": "P-256",
+      "x": "Yjak-cZfA8dgOThPETOK7jyK7VE8E8jz8BnURXS2h24",
+      "y": "QfyRtTn7Hdbu7YoOOEVRKP_PFTXZVFQ12TW8E5rO_pU"
     },
-    "value": "K8FX8-LbDTGlCz1UkXLznjbCQM5tIA-8Xk4u3gqpEIagYClidtz6I6c2w-9lWDBhQTZ5bVPjodbHy73mB3v-DQ"
+    "value": "ENcKOSAtCtILouHLpfidngDFwft9zqeLUNwBeLzwLIMySe0VvHJGdwfc0DC2HkgEdDLD4pRtATNbOSztVtKVdg"
   }
 }

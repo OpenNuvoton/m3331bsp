@@ -2,10 +2,10 @@
   "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
   "bomFormat": "CycloneDX",
   "specVersion": "1.6",
-  "serialNumber": "urn:uuid:3f65d08a-b837-4e11-9d4e-4851aa4cea9f",
+  "serialNumber": "urn:uuid:21d4c112-628c-4b4b-bf58-f6faa9693bec",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-09-30T16:41:16+08:00",
+    "timestamp": "2026-10-14T14:08:23+08:00",
     "tools": {
       "components": [
         {
@@ -20,14 +20,14 @@
       "bom-ref": "24c78cb3856ef90f",
       "type": "application",
       "name": "MCU Test Sample",
-      "version": "v3.00.002-25-g9ce14f09",
+      "version": "v3.00.002-37-gf0f483ce",
       "supplier": {
         "name": "Nuvoton Technology Corp.",
         "url": [
           "https://www.nuvoton.com"
         ]
       },
-      "purl": "pkg:generic/nuvoton/mcu-test-sample@v3.00.002-25-g9ce14f09",
+      "purl": "pkg:generic/nuvoton/mcu-test-sample@v3.00.002-37-gf0f483ce",
       "licenses": [
         {
           "license": {
@@ -176,107 +176,6 @@
         "name": "Nuvoton Technology Corporation"
       },
       "purl": "pkg:generic/hid-transfer-test-tool@1.1.0.0"
-    },
-    {
-      "bom-ref": "4469a6b94ddb29ec",
-      "type": "library",
-      "name": "Lua - The Programming Language",
-      "version": "5.1.4",
-      "cpe": "cpe:2.3:a:Lua_-_The_Programming_Language:Lua_-_The_Programming_Language:5.1.4:*:*:*:*:*:*:*",
-      "properties": [
-        {
-          "name": "syft:package:foundBy",
-          "value": "pe-binary-package-cataloger"
-        },
-        {
-          "name": "syft:package:type",
-          "value": "binary"
-        },
-        {
-          "name": "syft:package:metadataType",
-          "value": "pe-binary"
-        },
-        {
-          "name": "syft:cpe23",
-          "value": "cpe:2.3:a:Lua_-_The_Programming_Language:Lua___The_Programming_Language:5.1.4:*:*:*:*:*:*:*"
-        },
-        {
-          "name": "syft:cpe23",
-          "value": "cpe:2.3:a:Lua___The_Programming_Language:Lua_-_The_Programming_Language:5.1.4:*:*:*:*:*:*:*"
-        },
-        {
-          "name": "syft:cpe23",
-          "value": "cpe:2.3:a:Lua___The_Programming_Language:Lua___The_Programming_Language:5.1.4:*:*:*:*:*:*:*"
-        },
-        {
-          "name": "syft:cpe23",
-          "value": "cpe:2.3:a:Lua_:Lua_-_The_Programming_Language:5.1.4:*:*:*:*:*:*:*"
-        },
-        {
-          "name": "syft:cpe23",
-          "value": "cpe:2.3:a:Lua_:Lua___The_Programming_Language:5.1.4:*:*:*:*:*:*:*"
-        },
-        {
-          "name": "syft:location:0:path",
-          "value": "/SampleCode/XOM/XOMLib/lua5.1.dll"
-        },
-        {
-          "name": "bsp:component-origin",
-          "value": "third-party"
-        },
-        {
-          "name": "bsp:license-status",
-          "value": "identified"
-        },
-        {
-          "name": "bsp:license-source",
-          "value": "manual-binary-license-mapping"
-        },
-        {
-          "name": "bsp:license-match-method",
-          "value": "sha256"
-        },
-        {
-          "name": "bsp:license-evidence-id",
-          "value": "samplecode-xom-xomlib-lua5.1-dll.md-15b240a83ea4efc8db8ee7276663690fca44d89e00872ea63197f906b9938913"
-        },
-        {
-          "name": "bsp:included-in-product-firmware",
-          "value": "false"
-        },
-        {
-          "name": "bsp:runtime-dependency",
-          "value": "false"
-        },
-        {
-          "name": "bsp:usage",
-          "value": "host-side Windows Lua runtime library bundled with the XOM sample code"
-        },
-        {
-          "name": "bsp:file-path",
-          "value": "SampleCode/XOM/XOMLib/lua5.1.dll"
-        }
-      ],
-      "hashes": [
-        {
-          "alg": "SHA-256",
-          "content": "26384c6ee7d50863e3fb65fdc1bad452d9311f34d782390401de9bb130eecc4a"
-        }
-      ],
-      "licenses": [
-        {
-          "license": {
-            "id": "MIT"
-          }
-        }
-      ],
-      "supplier": {
-        "name": "Lua.org, PUC-Rio"
-      },
-      "manufacturer": {
-        "name": "Lua.org, PUC-Rio"
-      },
-      "purl": "pkg:generic/lua---the-programming-language@5.1.4"
     },
     {
       "bom-ref": "fe4ed4607d2096b2",
@@ -566,84 +465,6 @@
         "name": "Microsoft Corporation"
       },
       "purl": "pkg:generic/windows-driver-foundation---user-mode-platform-device-update-co-installer@6.1.7600.16385"
-    },
-    {
-      "bom-ref": "17aa5837af702890",
-      "type": "application",
-      "name": "/SampleCode/XOM/XOMLib/XOMAddr",
-      "version": "1.0",
-      "properties": [
-        {
-          "name": "syft:package:foundBy",
-          "value": "pe-binary-package-cataloger"
-        },
-        {
-          "name": "syft:package:type",
-          "value": "binary"
-        },
-        {
-          "name": "syft:package:metadataType",
-          "value": "pe-binary"
-        },
-        {
-          "name": "syft:location:0:path",
-          "value": "/SampleCode/XOM/XOMLib/XOMAddr.exe"
-        },
-        {
-          "name": "bsp:component-origin",
-          "value": "first-party"
-        },
-        {
-          "name": "bsp:license-status",
-          "value": "proprietary"
-        },
-        {
-          "name": "bsp:license-source",
-          "value": "manual-binary-license-mapping"
-        },
-        {
-          "name": "bsp:license-match-method",
-          "value": "sha256"
-        },
-        {
-          "name": "bsp:license-evidence-id",
-          "value": "samplecode-xom-xomlib-xomaddr-exe.md-0e350c41db213eaea3b6f7aecfd6b40d9b65a55fc250221833784a211ff8b4ba"
-        },
-        {
-          "name": "bsp:included-in-product-firmware",
-          "value": "false"
-        },
-        {
-          "name": "bsp:runtime-dependency",
-          "value": "false"
-        },
-        {
-          "name": "bsp:usage",
-          "value": "host-side Windows XOM sample code post-build utility"
-        },
-        {
-          "name": "bsp:file-path",
-          "value": "SampleCode/XOM/XOMLib/XOMAddr.exe"
-        }
-      ],
-      "hashes": [
-        {
-          "alg": "SHA-256",
-          "content": "10d3cf6d50b65b6adc13efd4c782ec7b09fd5894381e437c63517ccf7d7dfb6a"
-        }
-      ],
-      "licenses": [
-        {
-          "expression": "LicenseRef-Nuvoton-Software-License-Agreement"
-        }
-      ],
-      "supplier": {
-        "name": "Nuvoton Technology Corporation"
-      },
-      "manufacturer": {
-        "name": "Nuvoton Technology Corporation"
-      },
-      "purl": "pkg:generic/samplecode-xom-xomlib-xomaddr@1.0"
     },
     {
       "bom-ref": "f67901f38aab2272",
@@ -1519,18 +1340,18 @@
       "type": "application",
       "bom-ref": "m3331bsp:test-sample-component:samplecode",
       "name": "m3331 SampleCode",
-      "version": "v3.00.002-25-g9ce14f09",
+      "version": "v3.00.002-37-gf0f483ce",
       "supplier": {
         "name": "Nuvoton Technology Corp.",
         "url": [
           "https://www.nuvoton.com"
         ]
       },
-      "purl": "pkg:generic/nuvoton/samplecode@v3.00.002-25-g9ce14f09",
+      "purl": "pkg:generic/nuvoton/samplecode@v3.00.002-37-gf0f483ce",
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "c55f70077bce525fd5e02a23a0aeec86dc4e5840557a14a579c45417b565605d"
+          "content": "1b24b8565aaf37d31c5b9b14137da19caa0172d14069e92163b922ade4af4000"
         }
       ],
       "licenses": [
@@ -2219,13 +2040,14 @@
     }
   ],
   "signature": {
-    "algorithm": "Ed25519",
+    "algorithm": "ES256",
     "keyId": "wschang0@nuvoton.com",
     "publicKey": {
-      "kty": "OKP",
-      "crv": "Ed25519",
-      "x": "TgbfwoVHePVjOGkBXjwGXZ8R9W6uukRP7UOt3Sr52QM"
+      "kty": "EC",
+      "crv": "P-256",
+      "x": "Yjak-cZfA8dgOThPETOK7jyK7VE8E8jz8BnURXS2h24",
+      "y": "QfyRtTn7Hdbu7YoOOEVRKP_PFTXZVFQ12TW8E5rO_pU"
     },
-    "value": "lhmu5g8EsKok-W0lTAC9DimBIsl85T4WQrLun8nwjNSauFpzLhrIjH2GzPdwwV_5fGGcNGyXdW8SshPhbRzjCg"
+    "value": "X2R3AdFGqPJLYQvww_VdGdbREJJPjp-ybxiW_KQX_SWWWcYROrKlwv7-fSuR5_etr_JG_i1EpfCNgTR00Q1ZAw"
   }
 }

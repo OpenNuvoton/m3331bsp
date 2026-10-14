@@ -1,13 +1,13 @@
 {
   "manifestFormat": "MCU-BSP-SBOM-Manifest",
   "manifestVersion": "1.0",
-  "serialNumber": "urn:uuid:419e9a83-2c65-4542-88d6-f79c4660d174",
-  "createdAt": "2026-09-30T08:41:28.228150Z",
+  "serialNumber": "urn:uuid:70db9917-f927-40c9-8a85-fba61ac467cd",
+  "createdAt": "2026-10-14T06:08:37.372026Z",
   "bsp": {
     "name": "m3331bsp",
-    "version": "v3.00.002-25-g9ce14f09",
+    "version": "v3.00.002-37-gf0f483ce",
     "releaseIdentifierSource": "SBOM file name",
-    "gitDescribe": "v3.00.002-25-g9ce14f09"
+    "gitDescribe": "v3.00.002-37-gf0f483ce"
   },
   "sbomPackage": {
     "name": "MCU BSP SBOM Package",
@@ -24,14 +24,14 @@
       "sbomType": "Product SBOM",
       "bomFormat": "CycloneDX",
       "specVersion": "1.6",
-      "serialNumber": "urn:uuid:87be5037-9c3b-4626-89d6-98a69a0e2f3b",
+      "serialNumber": "urn:uuid:b7427130-0f34-41f5-898b-844365aa89ba",
       "sbomVersion": 1,
-      "generatedTimestamp": "2026-09-30T16:41:08+08:00",
+      "generatedTimestamp": "2026-10-14T14:08:13+08:00",
       "metadataComponent": {
         "bomRef": "75895ef93da71df0",
         "type": "library",
         "name": "MCU Driver",
-        "version": "v3.00.002-25-g9ce14f09",
+        "version": "v3.00.002-37-gf0f483ce",
         "properties": [
           {
             "name": "bsp:sbom-category",
@@ -116,7 +116,7 @@
       },
       "hash": {
         "algorithm": "SHA-256",
-        "value": "9d425ed212c87fd6f51c4310df71b15449968c3048f397d25a23b83e268ed5ca"
+        "value": "b66ea1602347169345449fc2b3c2caf1c9caa3195f2102505750dd3e0d76bc86"
       }
     },
     {
@@ -124,14 +124,14 @@
       "sbomType": "Test Sample SBOM",
       "bomFormat": "CycloneDX",
       "specVersion": "1.6",
-      "serialNumber": "urn:uuid:3f65d08a-b837-4e11-9d4e-4851aa4cea9f",
+      "serialNumber": "urn:uuid:21d4c112-628c-4b4b-bf58-f6faa9693bec",
       "sbomVersion": 1,
-      "generatedTimestamp": "2026-09-30T16:41:16+08:00",
+      "generatedTimestamp": "2026-10-14T14:08:23+08:00",
       "metadataComponent": {
         "bomRef": "24c78cb3856ef90f",
         "type": "application",
         "name": "MCU Test Sample",
-        "version": "v3.00.002-25-g9ce14f09",
+        "version": "v3.00.002-37-gf0f483ce",
         "properties": [
           {
             "name": "bsp:sbom-category",
@@ -178,15 +178,14 @@
       "scope": "Components used only for examples, demonstrations, validation, host-side utilities, or testing; not included in product runtime unless explicitly integrated by the user.",
       "isProductRuntimeScope": false,
       "componentSummary": {
-        "componentCount": 25,
+        "componentCount": 23,
         "componentCountByType": {
-          "application": 6,
+          "application": 5,
           "device-driver": 3,
           "file": 2,
-          "library": 14
+          "library": 13
         },
         "applicationNames": [
-          "/SampleCode/XOM/XOMLib/XOMAddr",
           "HID Transfer Test Tool",
           "WDF Coinstaller",
           "Windows Driver Foundation - User-mode Platform Device Update Co-Installer",
@@ -197,7 +196,7 @@
       },
       "hash": {
         "algorithm": "SHA-256",
-        "value": "5269b3c018525a9c113c5bbbd1ca92d35387c40301b41043613c4be477abd921"
+        "value": "2949869d553a5f26ce2ccdc9eb941bf04dd3abf1151c3d10c28442819a8993b9"
       },
       "relationshipToProductSbom": {
         "usesProductComponents": true,
